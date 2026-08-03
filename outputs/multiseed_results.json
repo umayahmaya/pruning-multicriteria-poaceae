@@ -1,0 +1,102 @@
+{
+  "seeds": [
+    42,
+    123,
+    2024
+  ],
+  "epochs": 30,
+  "weights_used": {
+    "w1": 0.3360824742268041,
+    "w2": 0.3319587628865979,
+    "w3": 0.3319587628865979
+  },
+  "pruning_note": "Mask pemangkasan untuk multicriteria_20pct dan multicriteria_60pct dihitung SEKALI dari baseline yang sudah ada dan IDENTIK di ketiga seed -- channel yang dibuang sama persis. Variasi antar seed pada kedua konfigurasi ini murni variasi fine-tuning (urutan batch, augmentasi acak, dropout), BUKAN variasi pemilihan channel. Konfigurasi baseline melatih model baru dari awal secara independen tiap seed.",
+  "configs": {
+    "multicriteria_20pct": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.9314285714285714,
+          "f1_score": 0.931716810116957,
+          "correct": 163,
+          "total": 175,
+          "checkpoint": "multicriteria_20pct_30ep_valweights_seed42.pth"
+        },
+        "123": {
+          "accuracy": 0.9485714285714286,
+          "f1_score": 0.9488519099947671,
+          "correct": 166,
+          "total": 175,
+          "checkpoint": "multicriteria_20pct_30ep_valweights_seed123.pth"
+        },
+        "2024": {
+          "accuracy": 0.96,
+          "f1_score": 0.960303068623626,
+          "correct": 168,
+          "total": 175,
+          "checkpoint": "multicriteria_20pct_30ep_valweights_seed2024.pth"
+        }
+      },
+      "mean_accuracy": 0.9466666666666667,
+      "std_accuracy": 0.011741740958036154,
+      "n_seeds": 3
+    },
+    "multicriteria_60pct": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.8857142857142857,
+          "f1_score": 0.8839487504623803,
+          "correct": 155,
+          "total": 175,
+          "checkpoint": "multicriteria_60pct_30ep_valweights_seed42.pth"
+        },
+        "123": {
+          "accuracy": 0.9028571428571428,
+          "f1_score": 0.9028822605965463,
+          "correct": 158,
+          "total": 175,
+          "checkpoint": "multicriteria_60pct_30ep_valweights_seed123.pth"
+        },
+        "2024": {
+          "accuracy": 0.92,
+          "f1_score": 0.9195362772629919,
+          "correct": 161,
+          "total": 175,
+          "checkpoint": "multicriteria_60pct_30ep_valweights_seed2024.pth"
+        }
+      },
+      "mean_accuracy": 0.9028571428571429,
+      "std_accuracy": 0.013997084244475334,
+      "n_seeds": 3
+    },
+    "baseline": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.96,
+          "f1_score": 0.9602503656162192,
+          "correct": 168,
+          "total": 175,
+          "checkpoint": "baseline_30ep_seed42.pth"
+        },
+        "123": {
+          "accuracy": 0.9428571428571428,
+          "f1_score": 0.9430057713263289,
+          "correct": 165,
+          "total": 175,
+          "checkpoint": "baseline_30ep_seed123.pth"
+        },
+        "2024": {
+          "accuracy": 0.96,
+          "f1_score": 0.9599511838128214,
+          "correct": 168,
+          "total": 175,
+          "checkpoint": "baseline_30ep_seed2024.pth"
+        }
+      },
+      "mean_accuracy": 0.9542857142857143,
+      "std_accuracy": 0.008081220356417678,
+      "n_seeds": 3
+    }
+  },
+  "status": "SELESAI",
+  "total_time_seconds": 50323.927815675735
+}

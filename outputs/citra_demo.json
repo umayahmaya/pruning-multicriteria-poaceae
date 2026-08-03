@@ -1,0 +1,233 @@
+{
+  "checkpoint": "multicriteria_20pct_30ep_valweights.pth",
+  "total_test_images": 175,
+  "total_correct": 168,
+  "total_misclassified": 7,
+  "accuracy": 96.0,
+  "demo_images_top3_per_class": {
+    "Brown_Spot_Rice": [
+      {
+        "filename": "Brown_spot  (23).jpg",
+        "true_class": "Brown_Spot_Rice",
+        "predicted_class": "Brown_Spot_Rice",
+        "probability": 100.0
+      },
+      {
+        "filename": "Brown_spot  (121).jpg",
+        "true_class": "Brown_Spot_Rice",
+        "predicted_class": "Brown_Spot_Rice",
+        "probability": 99.99
+      },
+      {
+        "filename": "Brown_spot  (256).jpg",
+        "true_class": "Brown_Spot_Rice",
+        "predicted_class": "Brown_Spot_Rice",
+        "probability": 99.99
+      }
+    ],
+    "Common_Rust_Corn": [
+      {
+        "filename": "IMG_20230429_180554.png",
+        "true_class": "Common_Rust_Corn",
+        "predicted_class": "Common_Rust_Corn",
+        "probability": 100.0
+      },
+      {
+        "filename": "IMG_20230429_180716.png",
+        "true_class": "Common_Rust_Corn",
+        "predicted_class": "Common_Rust_Corn",
+        "probability": 100.0
+      },
+      {
+        "filename": "IMG_20230429_180717.png",
+        "true_class": "Common_Rust_Corn",
+        "predicted_class": "Common_Rust_Corn",
+        "probability": 100.0
+      }
+    ],
+    "Gray_Leaf_Spot_Corn": [
+      {
+        "filename": "DSC_0390.JPG",
+        "true_class": "Gray_Leaf_Spot_Corn",
+        "predicted_class": "Gray_Leaf_Spot_Corn",
+        "probability": 100.0
+      },
+      {
+        "filename": "DSC_0576.JPG",
+        "true_class": "Gray_Leaf_Spot_Corn",
+        "predicted_class": "Gray_Leaf_Spot_Corn",
+        "probability": 100.0
+      },
+      {
+        "filename": "DSC_0610.JPG",
+        "true_class": "Gray_Leaf_Spot_Corn",
+        "predicted_class": "Gray_Leaf_Spot_Corn",
+        "probability": 100.0
+      }
+    ],
+    "Healthy_Corn": [
+      {
+        "filename": "IMG_20240210_155535.jpg",
+        "true_class": "Healthy_Corn",
+        "predicted_class": "Healthy_Corn",
+        "probability": 100.0
+      },
+      {
+        "filename": "IMG_20240210_161446.jpg",
+        "true_class": "Healthy_Corn",
+        "predicted_class": "Healthy_Corn",
+        "probability": 99.99
+      },
+      {
+        "filename": "IMG_20240210_162006.jpg",
+        "true_class": "Healthy_Corn",
+        "predicted_class": "Healthy_Corn",
+        "probability": 99.99
+      }
+    ],
+    "Healthy_Rice": [
+      {
+        "filename": "Healthy_rice_leaf  (102).jpg",
+        "true_class": "Healthy_Rice",
+        "predicted_class": "Healthy_Rice",
+        "probability": 100.0
+      },
+      {
+        "filename": "Healthy_rice_leaf  (14).jpg",
+        "true_class": "Healthy_Rice",
+        "predicted_class": "Healthy_Rice",
+        "probability": 100.0
+      },
+      {
+        "filename": "Healthy_rice_leaf  (7).jpg",
+        "true_class": "Healthy_Rice",
+        "predicted_class": "Healthy_Rice",
+        "probability": 100.0
+      }
+    ],
+    "Healthy_Sugarcane": [
+      {
+        "filename": "healthy (201).jpeg",
+        "true_class": "Healthy_Sugarcane",
+        "predicted_class": "Healthy_Sugarcane",
+        "probability": 100.0
+      },
+      {
+        "filename": "healthy (203).jpeg",
+        "true_class": "Healthy_Sugarcane",
+        "predicted_class": "Healthy_Sugarcane",
+        "probability": 99.99
+      },
+      {
+        "filename": "healthy (352).jpeg",
+        "true_class": "Healthy_Sugarcane",
+        "predicted_class": "Healthy_Sugarcane",
+        "probability": 99.99
+      }
+    ],
+    "Leaf_Blast_Rice": [
+      {
+        "filename": "Leaf_blast  (150).jpg",
+        "true_class": "Leaf_Blast_Rice",
+        "predicted_class": "Leaf_Blast_Rice",
+        "probability": 99.98
+      },
+      {
+        "filename": "Leaf_blast  (16).jpg",
+        "true_class": "Leaf_Blast_Rice",
+        "predicted_class": "Leaf_Blast_Rice",
+        "probability": 99.98
+      },
+      {
+        "filename": "Leaf_blast  (305).jpg",
+        "true_class": "Leaf_Blast_Rice",
+        "predicted_class": "Leaf_Blast_Rice",
+        "probability": 99.97
+      }
+    ],
+    "Mosaic_Sugarcane": [
+      {
+        "filename": "mosaic (221).jpeg",
+        "true_class": "Mosaic_Sugarcane",
+        "predicted_class": "Mosaic_Sugarcane",
+        "probability": 100.0
+      },
+      {
+        "filename": "mosaic (266).jpeg",
+        "true_class": "Mosaic_Sugarcane",
+        "predicted_class": "Mosaic_Sugarcane",
+        "probability": 100.0
+      },
+      {
+        "filename": "mosaic (350).jpeg",
+        "true_class": "Mosaic_Sugarcane",
+        "predicted_class": "Mosaic_Sugarcane",
+        "probability": 100.0
+      }
+    ],
+    "Rust_Sugarcane": [
+      {
+        "filename": "rust (227).jpeg",
+        "true_class": "Rust_Sugarcane",
+        "predicted_class": "Rust_Sugarcane",
+        "probability": 100.0
+      },
+      {
+        "filename": "rust (244).jpeg",
+        "true_class": "Rust_Sugarcane",
+        "predicted_class": "Rust_Sugarcane",
+        "probability": 100.0
+      },
+      {
+        "filename": "rust (273).jpeg",
+        "true_class": "Rust_Sugarcane",
+        "predicted_class": "Rust_Sugarcane",
+        "probability": 100.0
+      }
+    ]
+  },
+  "misclassified_images": [
+    {
+      "filename": "Brown_spot  (249).jpg",
+      "true_class": "Brown_Spot_Rice",
+      "predicted_class": "Healthy_Rice",
+      "probability": 87.06
+    },
+    {
+      "filename": "Healthy_rice_leaf  (72).jpg",
+      "true_class": "Healthy_Rice",
+      "predicted_class": "Brown_Spot_Rice",
+      "probability": 97.04
+    },
+    {
+      "filename": "Leaf_blast  (246).jpg",
+      "true_class": "Leaf_Blast_Rice",
+      "predicted_class": "Brown_Spot_Rice",
+      "probability": 99.86
+    },
+    {
+      "filename": "Leaf_blast  (88).jpg",
+      "true_class": "Leaf_Blast_Rice",
+      "predicted_class": "Brown_Spot_Rice",
+      "probability": 82.92
+    },
+    {
+      "filename": "mosaic (11).jpeg",
+      "true_class": "Mosaic_Sugarcane",
+      "predicted_class": "Healthy_Sugarcane",
+      "probability": 90.3
+    },
+    {
+      "filename": "rust (131).jpeg",
+      "true_class": "Rust_Sugarcane",
+      "predicted_class": "Healthy_Sugarcane",
+      "probability": 83.92
+    },
+    {
+      "filename": "rust (486).jpeg",
+      "true_class": "Rust_Sugarcane",
+      "predicted_class": "Common_Rust_Corn",
+      "probability": 89.52
+    }
+  ]
+}

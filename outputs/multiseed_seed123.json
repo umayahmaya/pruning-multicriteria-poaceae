@@ -1,0 +1,34 @@
+{
+  "seed": 123,
+  "epochs": 30,
+  "weights_used": {
+    "w1": 0.3360824742268041,
+    "w2": 0.3319587628865979,
+    "w3": 0.3319587628865979
+  },
+  "pruning_note": "Mask pemangkasan untuk multicriteria_20pct dan multicriteria_60pct dihitung SEKALI dari baseline yang sudah ada dan IDENTIK di ketiga seed -- channel yang dibuang sama persis. Variasi antar seed pada kedua konfigurasi ini murni variasi fine-tuning (urutan batch, augmentasi acak, dropout), BUKAN variasi pemilihan channel. Konfigurasi baseline melatih model baru dari awal secara independen tiap seed.",
+  "configs": {
+    "multicriteria_20pct": {
+      "accuracy": 0.9485714285714286,
+      "f1_score": 0.9488519099947671,
+      "correct": 166,
+      "total": 175,
+      "checkpoint": "multicriteria_20pct_30ep_valweights_seed123.pth"
+    },
+    "multicriteria_60pct": {
+      "accuracy": 0.9028571428571428,
+      "f1_score": 0.9028822605965463,
+      "correct": 158,
+      "total": 175,
+      "checkpoint": "multicriteria_60pct_30ep_valweights_seed123.pth"
+    },
+    "baseline": {
+      "accuracy": 0.9428571428571428,
+      "f1_score": 0.9430057713263289,
+      "correct": 165,
+      "total": 175,
+      "checkpoint": "baseline_30ep_seed123.pth"
+    }
+  },
+  "source": "outputs/multiseed_results.json (15_multiseed_validation.py)"
+}

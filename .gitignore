@@ -1,0 +1,13 @@
+venv/
+dataset/
+dataset_split/
+checkpoints/*.pth
+outputs/*
+!outputs/*.json
+!outputs/*.md
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
