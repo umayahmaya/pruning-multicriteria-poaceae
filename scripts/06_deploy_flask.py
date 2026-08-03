@@ -39,11 +39,13 @@ except ImportError:
 # konsisten dengan klaim tesis -- lihat outputs/tabel_hasil_lengkap.json.
 MODEL_CHOICES = [
     ("baseline", "Baseline (tanpa pemangkasan)", "baseline_9class.pth"),
-    ("10", "Rasio 10%", "multicriteria_10pct_30ep_valweights.pth"),
-    ("20", "Rasio 20% (bawaan)", "multicriteria_20pct_30ep_valweights.pth"),
-    ("30", "Rasio 30%", "multicriteria_30pct_30ep_valweights.pth"),
-    ("40", "Rasio 40%", "multicriteria_40pct_30ep_valweights.pth"),
-    ("50", "Rasio 50%", "multicriteria_50pct_30ep_valweights.pth"),
+    ("10", "Rasio 10% (zona kompresi rendah)", "multicriteria_10pct_30ep_valweights.pth"),
+    ("20", "Rasio 20% (titik operasi direkomendasikan)", "multicriteria_20pct_30ep_valweights.pth"),
+    ("30", "Rasio 30% (zona kompresi rendah)", "multicriteria_30pct_30ep_valweights.pth"),
+    ("40", "Rasio 40% (zona kompresi menengah)", "multicriteria_40pct_30ep_valweights.pth"),
+    ("50", "Rasio 50% (zona kompresi menengah)", "multicriteria_50pct_30ep_valweights.pth"),
+    ("60", "Rasio 60% (zona kompresi tinggi)", "multicriteria_60pct_30ep_valweights.pth"),
+    ("70", "Rasio 70% (zona kompresi tinggi)", "multicriteria_70pct_30ep_valweights.pth"),
 ]
 MODEL_LABELS = {key: label for key, label, _ in MODEL_CHOICES}
 DEFAULT_RATIO_KEY = "20"
