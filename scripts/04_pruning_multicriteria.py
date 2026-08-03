@@ -54,25 +54,27 @@ def main():
 
     # Tentukan bobot -- sumber bobot wajib eksplisit, tidak ada fallback diam-diam
     if args.load_weights:
-        ablation_path = CFG.OUTPUT_DIR / "ablation_results.json"
+        ablation_path = CFG.OUTPUT_DIR / "ablation_val_results.json"
         if not ablation_path.exists():
-            print(f"[ERROR] File ablation tidak ditemukan: {ablation_path}")
-            print("Jalankan 03_ablation_study.py terlebih dahulu, atau tentukan "
-                  "bobot manual dengan --w1 --w2 --w3.")
+            print(f"[ERROR] File bobot val tidak ditemukan: {ablation_path}")
+            print("Jalankan 07_recompute_weights_val.py terlebih dahulu (bobot harus "
+                  "diturunkan dari akurasi validasi, bukan test -- lihat CLAUDE.md "
+                  "butir 4.1), atau tentukan bobot manual dengan --w1 --w2 --w3.")
             return
 
         with open(ablation_path) as f:
             ablation_data = json.load(f)
-        weights = ablation_data.get("optimal_weights") or {}
+        weights = ablation_data.get("optimal_weights_val") or {}
         if not all(k in weights for k in ("w1_l1", "w2_bn", "w3_entropy")):
-            print(f"[ERROR] Kunci 'optimal_weights' tidak lengkap di {ablation_path}")
-            print("Jalankan 03_ablation_study.py sampai selesai agar bobot optimal tersimpan.")
+            print(f"[ERROR] Kunci 'optimal_weights_val' tidak lengkap di {ablation_path}")
+            print("Jalankan 07_recompute_weights_val.py sampai selesai agar bobot "
+                  "val-derived tersimpan.")
             return
 
         w1 = weights["w1_l1"]
         w2 = weights["w2_bn"]
         w3 = weights["w3_entropy"]
-        print(f"[INFO] Bobot dimuat dari ablation study")
+        print(f"[INFO] Bobot dimuat dari {ablation_path.name} (diturunkan dari akurasi validasi)")
     elif args.w1 is not None and args.w2 is not None and args.w3 is not None:
         w1, w2, w3 = args.w1, args.w2, args.w3
     else:
