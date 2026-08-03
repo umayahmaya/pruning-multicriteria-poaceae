@@ -137,7 +137,7 @@ Catatan penting soal lokasi file:
 
 **Lingkungan:** Python dengan virtual environment di `venv/`, training pada CPU (laptop Windows), eksperimen berat dipindah ke Google Colab.
 **Deployment:** Flask untuk antarmuka web.
-**Repositori:** https://github.com/umayahmaya/pruning-multicriteria
+**Repositori:** lihat Bagian 11 untuk konvensi remote Git yang berlaku saat ini.
 
 ---
 
@@ -195,3 +195,33 @@ Hanya gunakan referensi berikut. Untuk referensi baru, DOI wajib diverifikasi te
 - OECD Frascati Manual (2015), DOI 10.1787/9789264239012-en
 
 **Catatan:** Jurnal terbitan MDPI tidak digunakan dalam penelitian ini sesuai ketentuan kampus.
+
+---
+
+## 11. Konvensi Repositori Git
+
+Repositori ini memakai dua remote Git dengan peran berbeda.
+
+- **`publish`** (`https://github.com/umayahmaya/pruning-multicriteria-poaceae.git`) adalah tujuan push untuk seterusnya. Ini remote yang aktif dipakai.
+- **`origin`** (`https://github.com/umayahmaya/pruning-multicriteria.git`) tidak dipakai lagi. Riwayat commit lokalnya memuat sekitar 2,9 GB dataset mentah dan checkpoint model (`.pth`) yang sempat ter-commit lalu dihapus di commit berikutnya, sehingga tetap terbawa di riwayat dan melampaui batas 2 GB per push GitHub. Riwayatnya tidak ditulis ulang, remote ini hanya ditinggalkan.
+
+Riwayat commit lengkap (termasuk seluruh proses perbaikan metodologi) tetap tersimpan apa adanya di branch `main` lokal sebagai catatan pribadi, dan tidak direplikasi ke remote mana pun. Branch `publish` hanya berisi satu commit snapshot kode terbaru, tanpa riwayat, tanpa dataset, dan tanpa checkpoint.
+
+Alur kerja untuk memublikasikan perubahan:
+
+```bash
+# 1. Kerja seperti biasa di branch main, commit seperti biasa
+git checkout main
+# ... edit, commit ...
+
+# 2. Saat siap memublikasikan, salin isi pohon kerja terbaru ke branch publish
+git checkout publish
+git checkout main -- .
+git commit -m "snapshot: ..."
+
+# 3. Push snapshot terbaru sebagai main di remote publish
+git push publish publish:main
+
+# 4. Kembali ke main untuk melanjutkan kerja
+git checkout main
+```
