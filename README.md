@@ -89,17 +89,18 @@ Lihat "Urutan Menjalankan" di bawah.
 
 ## Urutan Menjalankan
 
-Alur utama, skrip 01 sampai 06, dijalankan berurutan:
+Alur utama dijalankan berurutan:
 ```bash
 venv/Scripts/python.exe scripts/01_prepare_dataset.py
 venv/Scripts/python.exe scripts/02_train_baseline.py
 venv/Scripts/python.exe scripts/03_ablation_study.py
+venv/Scripts/python.exe scripts/07_recompute_weights_val.py
 venv/Scripts/python.exe scripts/04_pruning_multicriteria.py --load_weights
 venv/Scripts/python.exe scripts/05_generate_report.py
 venv/Scripts/python.exe scripts/06_deploy_flask.py
 ```
 
-Skrip 07 ke atas **bukan** bagian dari alur utama ini. Skrip 07, 11, dan 12 adalah **koreksi metodologis** (memperbaiki sumber bobot ablation dari akurasi test menjadi akurasi validasi, dan kalibrasi entropi dari val menjadi train -- lihat CLAUDE.md Bagian 4 dan 9). Skrip 08, 10, 13 sampai 18 adalah **analisis lanjutan** (korelasi seleksi channel, smoke test, pengukuran ulang waktu inferensi, validasi multi-seed, tabel hasil akhir, dan penyiapan citra demonstrasi). Hasil yang sah dikutip untuk bab hasil berasal dari rantai skrip yang telah dikoreksi (07 → 11/12 → 17), bukan dari keluaran default skrip 03/04 saja -- lihat `outputs/README_OUTPUTS.md`.
+Skrip 07 kini bagian dari alur utama: bobot w1/w2/w3 harus diturunkan dari akurasi VALIDASI, bukan test (CLAUDE.md butir 4.1), sebelum dipakai untuk pruning multi-kriteria -- `04_pruning_multicriteria.py --load_weights` membaca keluaran skrip 07 (`outputs/ablation_val_results.json`), bukan keluaran mentah skrip 03. Skrip 08, 10 sampai 18 tetap **di luar** alur utama. Skrip 11 dan 12 adalah **koreksi metodologis lanjutan** (kalibrasi entropi dari val menjadi train, lalu pruning ulang dengan bobot val-derived -- lihat CLAUDE.md Bagian 9). Skrip 08, 10, 13 sampai 18 adalah **analisis lanjutan** (korelasi seleksi channel, smoke test, pengukuran ulang waktu inferensi, validasi multi-seed, tabel hasil akhir, dan penyiapan citra demonstrasi). Hasil yang sah dikutip untuk bab hasil berasal dari rantai skrip yang telah dikoreksi (07 → 11/12 → 17), bukan dari keluaran skrip 03/04 saja -- lihat `outputs/README_OUTPUTS.md`.
 
 ## Opsi Command Line
 

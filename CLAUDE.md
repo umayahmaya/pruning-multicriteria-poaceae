@@ -161,6 +161,7 @@ Catatan penting soal lokasi file:
 4. Jalankan eksperimen kontrol dengan bobot rata sepertiga sebagai pembanding.
 5. Verifikasi kesetaraan total epoch antara baseline dan model hasil pruning.
 6. Pertimbangkan pengujian tiga seed pada konfigurasi optimal untuk melaporkan rata-rata dan simpangan baku.
+7. ~~(Prioritas sedang, ditemukan 2026-08-03) Alur utama 01→06 di README.md tidak mandiri tanpa menjalankan skrip 07 dulu, karena 04_pruning_multicriteria.py --load_weights mensyaratkan outputs/ablation_val_results.json yang hanya dihasilkan skrip 07.~~ **SELESAI (2026-08-03).** README.md Bagian "Urutan Menjalankan" diperbarui: skrip 07 dimasukkan ke alur utama di antara 03 dan 04 (urutan menjadi 01, 02, 03, 07, 04, 05, 06), dengan penjelasan bahwa 07 wajib dijalankan karena bobot harus diturunkan dari akurasi validasi sebelum pruning. Skrip 08, 10 sampai 18 tetap didokumentasikan sebagai koreksi metodologis lanjutan (11, 12) dan analisis lanjutan (sisanya), di luar alur utama.
 
 ---
 
