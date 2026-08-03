@@ -5,9 +5,11 @@ Web deployment menggunakan Flask untuk klasifikasi penyakit daun multi-crop
 Jalankan:
     python scripts/06_deploy_flask.py
     python scripts/06_deploy_flask.py --port 8080
-    python scripts/06_deploy_flask.py --checkpoint checkpoints/baseline_9class.pth
 
 Akses di browser: http://localhost:5000
+Pilih model lewat dropdown "Rasio Pemangkasan" di halaman -- seluruh 6
+model (baseline + rasio 10/20/30/40/50 persen, bobot val-derived) dimuat
+sekali saat startup dan disimpan di memori.
 """
 
 import sys
@@ -32,10 +34,19 @@ except ImportError:
     sys.exit(1)
 
 
-# Checkpoint default untuk deployment -- rasio 20% dengan bobot val-derived,
-# klaim utama tesis: akurasi setara baseline (96,00%) dengan parameter,
-# FLOPs, dan waktu inferensi lebih kecil. Override dengan --checkpoint.
-DEFAULT_CHECKPOINT = "multicriteria_20pct_30ep_valweights.pth"
+# Model yang dimuat saat startup: (kunci rasio, label tampilan, nama berkas
+# checkpoint). Kunci "baseline" dan bobot val-derived (_valweights) dipakai
+# konsisten dengan klaim tesis -- lihat outputs/tabel_hasil_lengkap.json.
+MODEL_CHOICES = [
+    ("baseline", "Baseline (tanpa pemangkasan)", "baseline_9class.pth"),
+    ("10", "Rasio 10%", "multicriteria_10pct_30ep_valweights.pth"),
+    ("20", "Rasio 20% (bawaan)", "multicriteria_20pct_30ep_valweights.pth"),
+    ("30", "Rasio 30%", "multicriteria_30pct_30ep_valweights.pth"),
+    ("40", "Rasio 40%", "multicriteria_40pct_30ep_valweights.pth"),
+    ("50", "Rasio 50%", "multicriteria_50pct_30ep_valweights.pth"),
+]
+MODEL_LABELS = {key: label for key, label, _ in MODEL_CHOICES}
+DEFAULT_RATIO_KEY = "20"
 
 
 # ==================== TEMPLATE HTML ====================
@@ -76,6 +87,22 @@ HTML_TEMPLATE = r"""
             text-align: center;
             font-size: 14px;
             margin-bottom: 30px;
+        }
+        .field { margin-bottom: 16px; }
+        .field label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+        }
+        .field select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            background: white;
         }
         .upload-area {
             border: 2px dashed #ccc;
@@ -138,6 +165,36 @@ HTML_TEMPLATE = r"""
         .plant-padi { background: #2e7d32; }
         .plant-tebu { background: #e65100; }
         .plant-jagung { background: #1565c0; }
+        .disease-panel.tipe-cendawan { background: #fff8e1; border: 1px solid #f9a825; }
+        .disease-panel.tipe-virus { background: #ffebee; border: 1px solid #c62828; }
+        .disease-panel.tipe-tidak-ada { background: #e8f5e9; border: 1px solid #2e7d32; }
+        .patogen-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+        .patogen-badge.cendawan { background: #f9a825; }
+        .patogen-badge.virus { background: #c62828; }
+        .patogen-badge.tidak-ada { background: #2e7d32; }
+        .virus-warning {
+            background: #c62828;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+        .disease-list { margin: 6px 0 10px 20px; }
+        .disease-list li { margin-bottom: 4px; }
+        .disease-note {
+            margin-top: 16px;
+            font-size: 11px;
+            color: #888;
+            line-height: 1.5;
+        }
         .footer {
             margin-top: 30px;
             text-align: center;
@@ -153,6 +210,14 @@ HTML_TEMPLATE = r"""
             MobileNetV2 + Pruning Terstruktur Multi-Kriteria</p>
 
         <form id="uploadForm" enctype="multipart/form-data">
+            <div class="field">
+                <label for="ratioSelect">Pilih Model (Rasio Pemangkasan)</label>
+                <select id="ratioSelect" name="ratio">
+                    {% for key, label, _ in model_choices %}
+                    <option value="{{ key }}"{% if key == default_ratio %} selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <div class="upload-area" id="dropArea" onclick="document.getElementById('fileInput').click()">
                 <div id="preview">
                     <p>Klik atau seret gambar daun ke sini</p>
@@ -164,14 +229,6 @@ HTML_TEMPLATE = r"""
         </form>
 
         <div id="resultArea" style="display:none"></div>
-
-        <div class="result">
-            <h3>Informasi Model</h3>
-            <div class="result-item"><span>Checkpoint</span><span>{{ model_info.checkpoint }}</span></div>
-            <div class="result-item"><span>Jumlah Parameter</span><span>{{ model_info.num_params_display }}</span></div>
-            <div class="result-item"><span>Rasio Pemangkasan</span><span>{{ model_info.pruning_ratio_display }}</span></div>
-            <div class="result-item"><span>Akurasi Uji Tercatat</span><span>{{ model_info.test_accuracy_display }}</span></div>
-        </div>
 
         <div class="footer">
             Tesis Magister Teknik Informatika | Nurul Umayah Hafilda | Universitas Hasanuddin | 2026
@@ -200,6 +257,57 @@ HTML_TEMPLATE = r"""
             }
         }
 
+        function renderDiseaseInfo(info, catatan) {
+            if (!info) {
+                return '<div class="result"><h3>Informasi Penanganan</h3>' +
+                    '<p style="color:#888">Informasi penanganan belum tersedia untuk kelas ini.</p></div>';
+            }
+            const tipeSlug = info.tipe_patogen === 'Cendawan' ? 'cendawan' :
+                (info.tipe_patogen === 'Virus' ? 'virus' : 'tidak-ada');
+            let html = '<div class="result disease-panel tipe-' + tipeSlug + '">';
+            html += '<h3>Informasi Penanganan: ' + info.nama_penyakit + '</h3>';
+            html += '<p><span class="patogen-badge ' + tipeSlug + '">' + info.tipe_patogen +
+                '</span> &nbsp;' + info.patogen + '</p>';
+            if (info.tipe_patogen === 'Virus') {
+                html += '<div class="virus-warning">PERINGATAN: Penyakit virus ini tidak dapat ' +
+                    'diobati. Penanganan berupa eradikasi (pemusnahan tanaman terinfeksi).</div>';
+            }
+            html += '<p style="margin-top:10px">' + info.ringkasan + '</p>';
+            html += '<h4 style="margin-top:14px">Penanganan</h4><ul class="disease-list">' +
+                info.penanganan.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>';
+            html += '<h4>Pencegahan</h4><ul class="disease-list">' +
+                info.pencegahan.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>';
+            if (info.sumber && info.sumber.length) {
+                html += '<h4>Sumber</h4><ul class="disease-list">' +
+                    info.sumber.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>';
+            }
+            if (catatan) {
+                html += '<p class="disease-note">' + catatan + '</p>';
+            }
+            html += '</div>';
+            return html;
+        }
+
+        function renderEfficiencyPanel(eff, inferenceMs) {
+            if (!eff) return '';
+            let html = '<div class="result"><h3>Panel Efisiensi Model (' + eff.model_label + ')</h3>';
+            html += '<div class="result-item"><span>Jumlah Parameter</span><span>' +
+                eff.num_params + ' <span style="color:#666">(' + eff.num_params_change + ')</span></span></div>';
+            html += '<div class="result-item"><span>Ukuran Model</span><span>' +
+                eff.model_size_mb + ' <span style="color:#666">(' + eff.model_size_mb_change + ')</span></span></div>';
+            html += '<div class="result-item"><span>FLOPs</span><span>' +
+                eff.flops + ' <span style="color:#666">(' + eff.flops_change + ')</span></span></div>';
+            html += '<div class="result-item"><span>Akurasi Uji Tercatat</span><span>' +
+                eff.accuracy + ' <span style="color:#666">(' + eff.accuracy_change + ')</span></span></div>';
+            html += '<div class="result-item"><span>Waktu Inferensi (barusan)</span><span>' +
+                inferenceMs + ' ms</span></div>';
+            html += '<p class="disease-note">Akurasi uji yang ditampilkan merupakan hasil satu ' +
+                'kali pelatihan dengan seed 42. Validasi multi-seed menunjukkan variasi akurasi ' +
+                'antar seed sebesar 0,81 sampai 1,40 poin persentase.</p>';
+            html += '</div>';
+            return html;
+        }
+
         document.getElementById('uploadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const formData = new FormData();
@@ -207,6 +315,7 @@ HTML_TEMPLATE = r"""
             if (!fileInput.files[0]) return;
 
             formData.append('image', fileInput.files[0]);
+            formData.append('ratio', document.getElementById('ratioSelect').value);
             document.getElementById('submitBtn').disabled = true;
             document.getElementById('submitBtn').textContent = 'Memproses...';
 
@@ -234,6 +343,9 @@ HTML_TEMPLATE = r"""
                 html += '<div class="result-item"><span>Waktu Inferensi</span>' +
                     '<span>' + data.inference_ms + ' ms</span></div>';
                 html += '</div>';
+
+                html += renderDiseaseInfo(data.disease_info, data.catatan_penanganan);
+                html += renderEfficiencyPanel(data.efficiency, data.inference_ms);
 
                 html += '<div class="result"><h3>Seluruh Probabilitas Kelas</h3>';
                 data.all_classes.forEach(function(item, idx) {
@@ -273,9 +385,8 @@ def load_model(checkpoint_path):
     if not checkpoint_path or not Path(checkpoint_path).exists():
         raise FileNotFoundError(
             f"Checkpoint tidak ditemukan: {checkpoint_path}. "
-            "Deployment wajib memakai checkpoint terlatih -- tentukan path yang "
-            "valid lewat --checkpoint, atau jalankan 12_multicriteria_valweights.py "
-            "untuk menghasilkan checkpoint default."
+            "Deployment wajib memakai checkpoint terlatih -- jalankan "
+            "12_multicriteria_valweights.py untuk menghasilkan checkpoint yang hilang."
         )
 
     model, checkpoint = load_checkpoint(checkpoint_path, device)
@@ -325,67 +436,104 @@ def verify_class_consistency(model):
           f"urutan cocok dengan dataset_split/test.")
 
 
-def load_model_info(checkpoint_path):
-    """Cari entri model yang sedang dimuat di outputs/tabel_hasil_lengkap.json
-    untuk panel informasi model -- nilainya TIDAK ditulis sebagai konstanta
-    di kode, murni hasil pencarian di berkas hasil eksperimen. Kalau berkas
-    atau entrinya tidak ada, cetak PERINGATAN saat startup (aplikasi tetap
-    boleh berjalan, tapi diam-diam menampilkan "Tidak tercatat" tanpa
-    penjelasan itu membingungkan)."""
-    ckpt_name = Path(checkpoint_path).name
-    info = {
-        "checkpoint": ckpt_name,
-        "num_params_display": "Tidak tercatat",
-        "pruning_ratio_display": "Tidak tercatat",
-        "test_accuracy_display": "Tidak tercatat",
-    }
-
+def load_hasil_table():
+    """Muat outputs/tabel_hasil_lengkap.json sekali saat startup -- sumber
+    tunggal nilai acuan Panel Efisiensi Model (jumlah parameter, ukuran MB,
+    FLOPs, akurasi uji). Tidak ada nilai ini yang ditulis sebagai konstanta
+    di kode. Mengembalikan None kalau berkas tidak ada (soft-warning, bukan
+    hard-fail, karena aplikasi tetap bisa melayani prediksi tanpa panel ini)."""
     table_path = CFG.OUTPUT_DIR / "tabel_hasil_lengkap.json"
     if not table_path.exists():
-        print(f"[PERINGATAN] {table_path} tidak ditemukan -- panel info model untuk "
-              f"'{ckpt_name}' akan menampilkan 'Tidak tercatat' untuk parameter, "
-              f"rasio, dan akurasi. Jalankan 17_generate_final_table.py untuk mengisi ini.")
-        return info
-
+        print(f"[PERINGATAN] {table_path} tidak ditemukan -- Panel Efisiensi "
+              "Model akan menampilkan 'Tidak tercatat' untuk seluruh metrik acuan. "
+              "Jalankan 17_generate_final_table.py untuk mengisi ini.")
+        return None
     with open(table_path) as f:
-        table = json.load(f)
+        return json.load(f)
+
+
+def load_efficiency_metrics(checkpoint_name, table):
+    """Cari entri checkpoint_name di tabel_hasil_lengkap.json, kembalikan
+    nilai MENTAH (num_params, model_size_mb, flops, accuracy) -- bukan
+    string tampilan -- supaya persentase perubahan terhadap baseline bisa
+    dihitung ulang setiap request. None kalau tidak ditemukan."""
+    if table is None:
+        return None
     results = table.get("results", {})
-
-    entry = None
-    ratio_label = None
-
     base = results.get("baseline")
-    if base and base.get("checkpoint") == ckpt_name:
-        entry = base
-        ratio_label = "0% (baseline, tidak dipangkas)"
-    else:
-        scenario_labels = {
-            "l1": "L1 saja", "bn": "BN saja",
-            "entropy": "Entropi saja", "multicriteria": "Multi-Kriteria",
-        }
-        for scenario_key, label in scenario_labels.items():
-            for ratio_key, candidate in results.get(scenario_key, {}).items():
-                if candidate.get("checkpoint") == ckpt_name:
-                    entry = candidate
-                    ratio_label = f"{ratio_key} ({label})"
-                    break
-            if entry:
-                break
-
-    if entry:
-        info["num_params_display"] = f"{entry['num_params']:,}"
-        info["pruning_ratio_display"] = ratio_label
-        info["test_accuracy_display"] = f"{entry['accuracy']*100:.2f}%"
-    else:
-        print(f"[PERINGATAN] Checkpoint '{ckpt_name}' tidak ditemukan di "
-              f"{table_path.name} -- panel info model akan menampilkan "
-              f"'Tidak tercatat' untuk parameter, rasio, dan akurasi.")
-
-    return info
+    if base and base.get("checkpoint") == checkpoint_name:
+        return {k: base[k] for k in ("num_params", "model_size_mb", "flops", "accuracy")}
+    for scenario_key in ("l1", "bn", "entropy", "multicriteria"):
+        for candidate in results.get(scenario_key, {}).values():
+            if candidate.get("checkpoint") == checkpoint_name:
+                return {k: candidate[k] for k in ("num_params", "model_size_mb", "flops", "accuracy")}
+    return None
 
 
-def predict(model, image_bytes):
-    """Jalankan inferensi pada satu gambar, kembalikan seluruh probabilitas kelas."""
+def load_penanganan_data():
+    """Muat outputs/penanganan_penyakit.json sekali saat startup. Panel
+    Informasi Penanganan adalah fitur inti (bukan pelengkap opsional),
+    jadi berkas yang hilang membuat aplikasi berhenti, bukan diam-diam
+    menonaktifkan panelnya."""
+    data_path = CFG.OUTPUT_DIR / "penanganan_penyakit.json"
+    if not data_path.exists():
+        print(f"[ERROR] {data_path} tidak ditemukan. Panel Informasi Penanganan "
+              "membutuhkan berkas ini untuk berjalan.")
+        sys.exit(1)
+    with open(data_path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def format_probability(score_percent):
+    """Nilai di bawah 0,01 persen ditampilkan 4 desimal supaya tidak
+    membulat jadi 0,00; selebihnya 2 desimal seperti biasa."""
+    if score_percent < 0.01:
+        return f"{score_percent:.4f}"
+    return f"{score_percent:.2f}"
+
+
+def build_efficiency_panel(ratio_key, efficiency_by_ratio):
+    """Susun Panel Efisiensi Model untuk rasio yang dipakai pada satu
+    prediksi: nilai mentah dari tabel_hasil_lengkap.json plus perubahan
+    terhadap baseline, dihitung saat itu juga. Akurasi dilaporkan sebagai
+    selisih POIN PERSENTASE (bukan persentase relatif) karena akurasi
+    sendiri sudah berupa persentase -- num_params/model_size_mb/flops
+    tetap persentase relatif seperti biasa."""
+    panel = {"model_label": MODEL_LABELS.get(ratio_key, ratio_key)}
+    current = efficiency_by_ratio.get(ratio_key)
+    baseline = efficiency_by_ratio.get("baseline")
+
+    metrics = (
+        ("num_params", lambda v: f"{v:,}", "percent"),
+        ("model_size_mb", lambda v: f"{v:.2f} MB", "percent"),
+        ("flops", lambda v: f"{v:,.0f}", "percent"),
+        ("accuracy", lambda v: f"{v * 100:.2f}%", "points"),
+    )
+    for name, fmt, change_type in metrics:
+        if not current or current.get(name) is None:
+            panel[name] = "Tidak tercatat"
+            panel[f"{name}_change"] = "Tidak tercatat"
+            continue
+        value = current[name]
+        panel[name] = fmt(value)
+        if ratio_key == "baseline":
+            panel[f"{name}_change"] = "Referensi"
+            continue
+        base_value = baseline.get(name) if baseline else None
+        if base_value is None or (change_type == "percent" and base_value == 0):
+            panel[f"{name}_change"] = "Tidak tercatat"
+        elif change_type == "points":
+            diff_points = (value - base_value) * 100
+            panel[f"{name}_change"] = f"{diff_points:+.2f} poin"
+        else:
+            pct = (value - base_value) / base_value * 100
+            panel[f"{name}_change"] = f"{pct:+.2f}%"
+    return panel
+
+
+def predict(model, image_bytes, penanganan_data):
+    """Jalankan inferensi pada satu gambar, kembalikan seluruh probabilitas
+    kelas beserta informasi penanganan penyakit untuk kelas teratas."""
     import time
 
     transform = get_transforms("test")
@@ -405,21 +553,27 @@ def predict(model, image_bytes):
     for idx, cls_name in enumerate(CFG.CLASS_NAMES):
         all_classes.append({
             "class": cls_name.replace("_", " "),
+            "raw_class": cls_name,
             "plant": CFG.PLANT_MAP.get(cls_name, "Unknown"),
             "score": probs[idx] * 100,
         })
     all_classes.sort(key=lambda c: c["score"], reverse=True)
     top = all_classes[0]
 
+    disease_info = penanganan_data.get("kelas", {}).get(top["raw_class"])
+    catatan = penanganan_data.get("_catatan")
+
     return {
         "disease": top["class"],
         "plant": top["plant"],
-        "confidence": f"{top['score']:.2f}",
+        "confidence": format_probability(top["score"]),
         "inference_ms": f"{inference_ms:.2f}",
         "all_classes": [
-            {"class": c["class"], "plant": c["plant"], "score": f"{c['score']:.2f}"}
+            {"class": c["class"], "plant": c["plant"], "score": format_probability(c["score"])}
             for c in all_classes
         ],
+        "disease_info": disease_info,
+        "catatan_penanganan": catatan,
     }
 
 
@@ -427,27 +581,32 @@ def main():
     parser = argparse.ArgumentParser(description="Web Deployment Flask")
     parser.add_argument("--port", type=int, default=5000)
     parser.add_argument("--host", type=str, default="0.0.0.0")
-    parser.add_argument("--checkpoint", type=str, default=None,
-                        help="Path ke checkpoint model pruned")
     parser.add_argument("--debug", action="store_true")
     args = parser.parse_args()
 
-    # Checkpoint default eksplisit jika tidak dispesifikasi -- HARUS ada,
-    # tidak jatuh ke berkas lain.
-    if args.checkpoint is None:
-        default_path = CFG.CHECKPOINT_DIR / DEFAULT_CHECKPOINT
-        if not default_path.exists():
-            print(f"[ERROR] Checkpoint default tidak ditemukan: {default_path}")
-            print("Jalankan 12_multicriteria_valweights.py terlebih dahulu, "
-                  "atau tentukan checkpoint lain lewat --checkpoint.")
-            sys.exit(1)
-        args.checkpoint = str(default_path)
-        print(f"[INFO] Memakai checkpoint default: {args.checkpoint}")
+    hasil_table = load_hasil_table()
+    penanganan_data = load_penanganan_data()
 
-    # Muat model
-    model = load_model(args.checkpoint)
-    verify_class_consistency(model)
-    model_info = load_model_info(args.checkpoint)
+    # Muat keenam model sekali saat startup. Checkpoint hilang atau gagal
+    # verifikasi (parameter/urutan kelas) membuat aplikasi berhenti dengan
+    # pesan yang menyebut checkpoint mana -- tidak ada fallback diam-diam.
+    models = {}
+    efficiency_by_ratio = {}
+    for ratio_key, label, ckpt_filename in MODEL_CHOICES:
+        ckpt_path = CFG.CHECKPOINT_DIR / ckpt_filename
+        try:
+            model = load_model(ckpt_path)
+            verify_class_consistency(model)
+        except (FileNotFoundError, RuntimeError) as e:
+            print(f"[ERROR] Gagal memuat model '{label}' ({ckpt_filename}): {e}")
+            sys.exit(1)
+        models[ratio_key] = model
+        efficiency_by_ratio[ratio_key] = load_efficiency_metrics(ckpt_filename, hasil_table)
+        if efficiency_by_ratio[ratio_key] is None:
+            print(f"[PERINGATAN] Checkpoint '{ckpt_filename}' ({label}) tidak ditemukan "
+                  "di tabel_hasil_lengkap.json -- Panel Efisiensi Model akan menampilkan "
+                  "'Tidak tercatat' untuk rasio ini.")
+        print(f"[INFO] Model dimuat: {label} ({ckpt_filename})")
 
     # Buat Flask app
     app = Flask(__name__)
@@ -459,7 +618,9 @@ def main():
 
     @app.route("/")
     def index():
-        return render_template_string(HTML_TEMPLATE, model_info=model_info)
+        return render_template_string(
+            HTML_TEMPLATE, model_choices=MODEL_CHOICES, default_ratio=DEFAULT_RATIO_KEY
+        )
 
     @app.route("/predict", methods=["POST"])
     def predict_endpoint():
@@ -469,6 +630,10 @@ def main():
         file = request.files["image"]
         if file.filename == "":
             return jsonify({"error": "File kosong"}), 400
+
+        ratio_key = request.form.get("ratio", DEFAULT_RATIO_KEY)
+        if ratio_key not in models:
+            return jsonify({"error": f"Rasio model '{ratio_key}' tidak dikenal."}), 400
 
         ext = Path(file.filename).suffix.lower()
         if ext not in (".jpg", ".jpeg", ".png"):
@@ -488,16 +653,18 @@ def main():
             return jsonify({"error": "Berkas bukan citra yang valid."}), 400
 
         try:
-            result = predict(model, image_bytes)
+            result = predict(models[ratio_key], image_bytes, penanganan_data)
         except Exception:
             return jsonify({"error": "Berkas tidak bisa dibaca sebagai gambar."}), 400
+
+        result["efficiency"] = build_efficiency_panel(ratio_key, efficiency_by_ratio)
         return jsonify(result)
 
     print(f"\n{'=' * 60}")
     print(f"WEB SERVER KLASIFIKASI PENYAKIT DAUN POACEAE")
     print(f"{'=' * 60}")
     print(f"  URL     : http://localhost:{args.port}")
-    print(f"  Model   : {args.checkpoint}")
+    print(f"  Model   : {len(models)} rasio dimuat ({', '.join(MODEL_LABELS.values())})")
     print(f"  Kelas   : {CFG.NUM_CLASSES}")
     print(f"{'=' * 60}")
     print(f"\nBuka browser dan akses http://localhost:{args.port}")

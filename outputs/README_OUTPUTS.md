@@ -28,6 +28,13 @@ dikutip di bab hasil.
   dengan kalibrasi train yang sudah diperbaiki.
 - **kurva_kompresi_akurasi.png** -- grafik rasio pemangkasan vs akurasi,
   keempat skenario dalam satu gambar.
+- **penanganan_penyakit.json** -- informasi penanganan untuk kesembilan
+  kelas (nama penyakit, patogen, tipe patogen, ringkasan, penanganan,
+  pencegahan, sumber), dipakai Panel Informasi Penanganan di
+  `06_deploy_flask.py`. Disusun dari sumber resmi lembaga penelitian dan
+  penyuluhan pertanian (IRRI, universitas, lembaga extension). TIDAK
+  memuat rekomendasi merek pestisida maupun dosis -- lihat kunci
+  `_catatan` di dalam berkas untuk keterangan lengkapnya.
 
 ## Arsip metodologi lama (JANGAN dikutip untuk bab hasil)
 

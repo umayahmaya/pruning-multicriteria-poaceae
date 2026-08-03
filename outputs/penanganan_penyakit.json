@@ -1,0 +1,196 @@
+{
+  "_catatan": "Informasi penanganan bersifat umum dan disusun dari sumber resmi lembaga penelitian dan penyuluhan pertanian. Tidak memuat rekomendasi merek pestisida maupun dosis. Konfirmasi kepada penyuluh pertanian setempat tetap diperlukan sebelum tindakan pengendalian dilakukan, karena rekomendasi varietas dan bahan aktif berbeda antar wilayah.",
+  "_disusun": "2026-08-03",
+  "kelas": {
+    "Brown_Spot_Rice": {
+      "nama_penyakit": "Bercak Coklat Padi",
+      "nama_inggris": "Brown Spot",
+      "tanaman": "Padi",
+      "patogen": "Bipolaris oryzae (sinonim Cochliobolus miyabeanus)",
+      "tipe_patogen": "Cendawan",
+      "kategori_penanganan": "Fungisida dan perbaikan nutrisi",
+      "ringkasan": "Penyakit cendawan yang sering muncul pada lahan dengan kesuburan rendah atau kekurangan hara. Menurunkan hasil panen dan mutu gabah.",
+      "penanganan": [
+        "Perbaiki status hara tanah karena penyakit ini erat kaitannya dengan kekurangan unsur hara, terutama kalium dan silikon",
+        "Gunakan varietas yang tahan sesuai anjuran setempat",
+        "Perlakuan benih dengan air panas 53 sampai 54 derajat Celsius selama 10 sampai 12 menit sebelum tanam",
+        "Aplikasi fungisida dapat dipertimbangkan sebagai pelengkap, bukan sebagai tindakan utama"
+      ],
+      "pencegahan": [
+        "Kumpulkan dan bakar jerami sisa panen, atau benamkan ke dalam tanah",
+        "Gunakan benih bersertifikat dan bebas patogen",
+        "Jaga pemupukan berimbang sejak awal musim tanam"
+      ],
+      "sumber": [
+        "IRRI Rice Knowledge Bank, Brown spot fact sheet",
+        "Pacific Pests, Pathogens and Weeds, fact sheet 427 Rice brown leaf spot"
+      ]
+    },
+    "Leaf_Blast_Rice": {
+      "nama_penyakit": "Blas Daun Padi",
+      "nama_inggris": "Leaf Blast",
+      "tanaman": "Padi",
+      "patogen": "Magnaporthe oryzae (bentuk aseksual Pyricularia oryzae)",
+      "tipe_patogen": "Cendawan",
+      "kategori_penanganan": "Fungisida dan pengelolaan pemupukan",
+      "ringkasan": "Salah satu penyakit padi paling merusak. Dapat mematikan tanaman bahkan pada fase bibit. Berkembang pada kelembapan tinggi, embun yang lama bertahan, dan suhu siang yang sejuk.",
+      "penanganan": [
+        "Gunakan varietas tahan blas yang dianjurkan untuk wilayah setempat",
+        "Hindari pemupukan nitrogen berlebihan karena memicu perkembangan penyakit",
+        "Jaga ketersediaan air agar tanah tidak mengering, karena kelembapan tanah yang rendah memperparah serangan",
+        "Aplikasi fungisida dapat dipertimbangkan, dan sebaiknya bahan aktif dirotasi agar patogen tidak cepat resisten"
+      ],
+      "pencegahan": [
+        "Gunakan benih sehat dan bersertifikat",
+        "Bakar atau kompos sisa tanaman sakit setelah panen",
+        "Kendalikan rumput liar di sekitar lahan yang dapat menjadi inang alternatif"
+      ],
+      "sumber": [
+        "IRRI Rice Knowledge Bank, Blast leaf and collar fact sheet",
+        "Pacific Pests, Pathogens and Weeds, fact sheet 252 Rice blast"
+      ]
+    },
+    "Healthy_Rice": {
+      "nama_penyakit": "Daun Padi Sehat",
+      "nama_inggris": "Healthy Rice Leaf",
+      "tanaman": "Padi",
+      "patogen": "Tidak ada",
+      "tipe_patogen": "Tidak ada",
+      "kategori_penanganan": "Tidak diperlukan tindakan pengendalian",
+      "ringkasan": "Tidak ditemukan gejala penyakit pada daun. Lanjutkan pemeliharaan rutin.",
+      "penanganan": [
+        "Tidak diperlukan tindakan pengendalian penyakit"
+      ],
+      "pencegahan": [
+        "Lakukan pemantauan berkala terutama pada fase anakan dan menjelang berbunga",
+        "Pertahankan pemupukan berimbang dan pengelolaan air yang baik"
+      ],
+      "sumber": []
+    },
+    "Common_Rust_Corn": {
+      "nama_penyakit": "Karat Daun Jagung",
+      "nama_inggris": "Common Rust",
+      "tanaman": "Jagung",
+      "patogen": "Puccinia sorghi",
+      "tipe_patogen": "Cendawan",
+      "kategori_penanganan": "Fungisida dan varietas tahan",
+      "ringkasan": "Ditandai pustul berbentuk bulat sampai memanjang berwarna coklat keemasan sampai coklat kayu manis pada kedua permukaan daun. Berkembang pada suhu sedang dan kelembapan relatif yang tinggi.",
+      "penanganan": [
+        "Gunakan hibrida atau varietas tahan sebagai tindakan utama",
+        "Aplikasi fungisida dapat bermanfaat, terutama bila dilakukan lebih awal saat pustul masih sedikit"
+      ],
+      "pencegahan": [
+        "Pantau pertanaman sejak fase vegetatif agar serangan dini dapat dikenali",
+        "Hindari penanaman yang terlalu rapat agar kelembapan di dalam tajuk tidak terlalu tinggi"
+      ],
+      "sumber": [
+        "University of Minnesota Extension, Common rust on corn",
+        "University of Arkansas Division of Agriculture, Corn Diseases"
+      ]
+    },
+    "Gray_Leaf_Spot_Corn": {
+      "nama_penyakit": "Bercak Daun Kelabu Jagung",
+      "nama_inggris": "Gray Leaf Spot",
+      "tanaman": "Jagung",
+      "patogen": "Cercospora zeae-maydis",
+      "tipe_patogen": "Cendawan",
+      "kategori_penanganan": "Fungisida, rotasi tanaman, dan pengelolaan sisa tanaman",
+      "ringkasan": "Bercak memanjang berbentuk persegi panjang berwarna kelabu sampai coklat yang dibatasi tulang daun. Patogen bertahan pada sisa tanaman jagung di permukaan tanah, sehingga penyakit lebih berat pada lahan yang ditanami jagung terus-menerus.",
+      "penanganan": [
+        "Gunakan hibrida atau varietas tahan",
+        "Terapkan rotasi tanaman dengan komoditas selain jagung",
+        "Olah tanah agar sisa tanaman terbenam dan lebih cepat terurai",
+        "Aplikasi fungisida daun dapat dipertimbangkan pada varietas rentan bila kondisi cuaca mendukung penyakit dan potensi hasil tinggi"
+      ],
+      "pencegahan": [
+        "Hindari menanam jagung berturut-turut pada lahan yang sama tanpa rotasi",
+        "Kurangi sisa tanaman jagung yang tertinggal di permukaan tanah"
+      ],
+      "sumber": [
+        "University of Minnesota Extension, Gray leaf spot on corn",
+        "Purdue Extension BP-56-W, Gray Leaf Spot",
+        "Nebraska Extension G1902, Gray Leaf Spot of Corn"
+      ]
+    },
+    "Healthy_Corn": {
+      "nama_penyakit": "Daun Jagung Sehat",
+      "nama_inggris": "Healthy Corn Leaf",
+      "tanaman": "Jagung",
+      "patogen": "Tidak ada",
+      "tipe_patogen": "Tidak ada",
+      "kategori_penanganan": "Tidak diperlukan tindakan pengendalian",
+      "ringkasan": "Tidak ditemukan gejala penyakit pada daun. Lanjutkan pemeliharaan rutin.",
+      "penanganan": [
+        "Tidak diperlukan tindakan pengendalian penyakit"
+      ],
+      "pencegahan": [
+        "Pantau pertanaman terutama pada dua sampai empat minggu menjelang penyerbukan",
+        "Perhatikan pengelolaan sisa tanaman dan rotasi untuk musim berikutnya"
+      ],
+      "sumber": []
+    },
+    "Rust_Sugarcane": {
+      "nama_penyakit": "Karat Daun Tebu",
+      "nama_inggris": "Sugarcane Rust",
+      "tanaman": "Tebu",
+      "patogen": "Puccinia melanocephala (karat coklat) atau Puccinia kuehnii (karat oranye)",
+      "tipe_patogen": "Cendawan",
+      "kategori_penanganan": "Varietas tahan sebagai tindakan utama, fungisida sebagai pelengkap",
+      "ringkasan": "Bercak memanjang yang berkembang menjadi pustul pada permukaan bawah daun dan melepaskan massa spora berwarna coklat kemerahan. Merupakan salah satu penyakit tebu yang paling luas persebarannya.",
+      "penanganan": [
+        "Gunakan kultivar tahan karat sebagai cara pengendalian utama",
+        "Aplikasi fungisida dapat dilakukan, namun biayanya tinggi sehingga penggunaan varietas tahan lebih diutamakan"
+      ],
+      "pencegahan": [
+        "Pilih bahan tanam dari sumber yang sehat",
+        "Pantau pertanaman secara berkala terutama pada musim dengan kelembapan tinggi"
+      ],
+      "sumber": [
+        "University of Florida IFAS Extension, SS-AGR-441 Sugarcane Cultivar Descriptive Fact Sheet",
+        "LSU AgCenter, Integrated Disease Management of Sugarcane"
+      ]
+    },
+    "Mosaic_Sugarcane": {
+      "nama_penyakit": "Mosaik Tebu",
+      "nama_inggris": "Sugarcane Mosaic",
+      "tanaman": "Tebu",
+      "patogen": "Sugarcane mosaic virus, Sorghum mosaic virus, atau Sugarcane streak mosaic virus",
+      "tipe_patogen": "Virus",
+      "kategori_penanganan": "Tidak dapat diobati. Pengendalian melalui eradikasi dan bahan tanam sehat",
+      "ringkasan": "Pola mosaik berupa belang hijau muda, kekuningan, dan hijau yang tersebar tidak beraturan pada daun. Paling jelas terlihat pada daun muda yang baru membuka. Virus bertahan pada tanaman terinfeksi dan menyebar melalui kutu daun serta penanaman bibit yang sudah terinfeksi.",
+      "penanganan": [
+        "Tidak ada bahan kimia yang dapat menyembuhkan tanaman yang sudah terinfeksi virus",
+        "Bongkar dan musnahkan tanaman yang menunjukkan gejala agar tidak menjadi sumber penularan",
+        "Gunakan varietas tahan sebagai cara pengendalian utama",
+        "Penyemprotan insektisida untuk membunuh kutu daun umumnya tidak efektif karena penularan virus berlangsung sangat cepat sebelum insektisida bekerja"
+      ],
+      "pencegahan": [
+        "Gunakan bibit yang berasal dari kebun benih bebas penyakit",
+        "Hindari perlakuan keprasan pada pertanaman yang diduga terinfeksi",
+        "Bersihkan dan sanitasi peralatan pertanian setelah dipakai di lahan terinfeksi",
+        "Hindari menanam jagung atau sorgum berdekatan karena keduanya menjadi inang bagi kutu daun penular"
+      ],
+      "sumber": [
+        "LSU AgCenter, Integrated Disease Management of Sugarcane",
+        "CABI Plantwise Plus Knowledge Bank, Sugarcane mosaic virus"
+      ]
+    },
+    "Healthy_Sugarcane": {
+      "nama_penyakit": "Daun Tebu Sehat",
+      "nama_inggris": "Healthy Sugarcane Leaf",
+      "tanaman": "Tebu",
+      "patogen": "Tidak ada",
+      "tipe_patogen": "Tidak ada",
+      "kategori_penanganan": "Tidak diperlukan tindakan pengendalian",
+      "ringkasan": "Tidak ditemukan gejala penyakit pada daun. Lanjutkan pemeliharaan rutin.",
+      "penanganan": [
+        "Tidak diperlukan tindakan pengendalian penyakit"
+      ],
+      "pencegahan": [
+        "Pantau daun muda secara berkala karena gejala mosaik paling awal terlihat di bagian tersebut",
+        "Pastikan bahan tanam untuk musim berikutnya berasal dari sumber yang sehat"
+      ],
+      "sumber": []
+    }
+  }
+}
