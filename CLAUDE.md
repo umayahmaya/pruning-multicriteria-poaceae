@@ -14,33 +14,72 @@ Dokumen ini dibaca otomatis oleh Claude Code pada setiap sesi baru. Isinya adala
 Model Klasifikasi Penyakit Daun Tanaman Famili Poaceae Menggunakan Pruning Terstruktur Berbasis Skoring Multi-Kriteria pada MobileNetV2
 
 **Kontribusi metodologis utama:**
-Fungsi skoring kepentingan channel berbasis multi-kriteria untuk pruning terstruktur pada MobileNetV2, diadaptasi dari Weighted Sum Model (Fishburn, 1967).
+Fungsi skoring kepentingan channel berbasis multi-kriteria (L1-norm, jarak antar-channel conv ekspansi/GM, entropi Shannon) untuk pruning terstruktur pada MobileNetV2, bobot per-kriteria diadaptasi dari Weighted Sum Model (Fishburn, 1967) dan sejak 26 Agustus 2026 diturunkan secara adaptif per rasio pemangkasan dari akurasi validasi (lihat Bagian 2).
 
 ---
 
 ## 2. Metodologi Inti
 
+**Status (10 September 2026):** bagian ini mendeskripsikan formula yang AKTIF dipakai sebagai kontribusi metodologis tesis sejak 26 Agustus 2026. Formula sebelumnya (dipakai sampai awal Agustus 2026, menghasilkan `outputs/tabel_hasil_lengkap.json`) diarsipkan di Bagian 2a untuk ketertelusuran, bukan dihapus.
+
 ### Fungsi skoring
 
 ```
-I(c) = w1 * S_L1(c) + w2 * S_BN(c) + w3 * S_H(c)
+I(c) = w_L1(r) * S_L1(c) + w_GM(r) * S_GM(c) + w_Ent(r) * S_H(c)
 ```
 
-Ketiga komponen dinormalisasi min-max per layer sebelum digabungkan, sehingga `I(c)` berada pada rentang [0, 1] sebagai convex combination.
+Ketiga komponen dinormalisasi min-max per layer sebelum digabungkan, sehingga `I(c)` berada pada rentang [0, 1] sebagai convex combination. Skor mentah S_L1/S_GM/S_H sendiri TIDAK bergantung rasio pemangkasan `r` -- dihitung sekali dari `checkpoints/baseline_9class.pth` dan dipakai ulang untuk ketujuh rasio. Yang bergantung `r` hanyalah bobot `w_k(r)` (lihat subbagian berikut) dan rasio pemangkasan itu sendiri.
 
 | Simbol | Kriteria | Sumber nilai | Sifat |
 |---|---|---|---|
 | S_L1 | L1-norm bobot filter | Bobot depthwise conv 3x3 | Data-free |
-| S_BN | Skala gamma batch norm | Layer BN setelah depthwise | Data-free |
+| S_GM | Skor GM-Ekspansi: `sum_{j != c} \|\|W_c - W_j\|\|_2` (jumlah jarak Euclidean berpasangan ke seluruh channel lain di layer yang sama; kecil = redundan = dipangkas) | Bobot conv ekspansi 1x1 (sebelum depthwise) | Data-free |
 | S_H | Entropi Shannon feature map | Output feature map, 256 bin | Butuh data kalibrasi |
 
-### Bobot hasil ablation study (rasio 30 persen)
+**Catatan versi:** kriteria kedua semula S_BN (skala gamma batch norm setelah depthwise), diganti S_GM-Ekspansi pada 26 Agustus 2026 (`scripts/43_ablation_gm_expansion.py`), setelah eksplorasi lanjutan pertengahan Agustus 2026 (skrip `22` sampai `43`, belum di-commit ke git) membandingkan beberapa varian kriteria berbasis redundansi channel -- termasuk GM dari bobot depthwise (`src/gm_scores.py`, `42_ablation_gm.py`), GM/kosinus dari conv ekspansi terhadap median geometrik (`36_skor_redundansi.py`), korelasi antar-lapisan, dan skema alokasi anggaran kalibrasi entropi. S_GM-Ekspansi (jarak berpasangan dari bobot conv ekspansi) yang akhirnya diadopsi.
+
+### Bobot: per-rasio, diturunkan dari akurasi validasi ablation kriteria tunggal
+
+Sejak 26 Agustus 2026 (`scripts/44_multicriteria_per_rasio.py`), bobot TIDAK LAGI konstan di seluruh rasio (beda dari versi awal, Bagian 2a). Untuk tiap rasio pemangkasan `r`, bobot diturunkan dari selisih akurasi VALIDASI ketiga ablation kriteria tunggal (L1, GM-Ekspansi, Entropi) pada rasio `r` yang sama:
 
 ```
-w1 = 0.3401   (L1-norm)
-w2 = 0.3259   (BN gamma)
-w3 = 0.3340   (Entropi)
+d_k(r) = Acc_k(r) - min(Acc_L1(r), Acc_GM(r), Acc_Ent(r)) + 0.01
+w_k(r) = d_k(r) / (d_L1(r) + d_GM(r) + d_Ent(r))
 ```
+
+(selisih akurasi terhadap kriteria terlemah pada rasio itu, plus 0,01 supaya kriteria terlemah tetap mendapat bobot kecil positif -- bukan nol). Konsisten dengan Aturan 1 (Bagian 4): akurasi validasi dipakai untuk keputusan bobot, akurasi test HANYA untuk pelaporan akhir dan TIDAK PERNAH dipakai memilih apa pun (dicatat eksplisit di `outputs/multicriteria_per_rasio.json`).
+
+Sumber akurasi ablation kriteria tunggal: L1 dan Entropi dari `outputs/ablation_val_results.json` (tidak berubah dari versi awal), GM-Ekspansi dari `outputs/ablation_gm_expansion.json`.
+
+| Rasio | w_L1 | w_GM | w_Ent |
+|---|---|---|---|
+| 10% | 0,333 | 0,333 | 0,333 |
+| 20% | 0,280 | 0,280 | 0,441 |
+| 30% | 0,455 | 0,333 | 0,212 |
+| 40% | 0,544 | 0,333 | 0,122 |
+| 50% | 0,466 | 0,466 | 0,069 |
+| 60% | 0,170 | 0,562 | 0,268 |
+| 70% | 0,086 | 0,383 | 0,531 |
+
+Hasil lengkap per rasio (bobot, akurasi val/test, params, ukuran model, FLOPs, waktu inferensi): `outputs/multicriteria_per_rasio.json`.
+
+### 2a. Formula versi awal (diarsipkan, bukan lagi metodologi resmi)
+
+Dipakai sampai awal Agustus 2026, menghasilkan `outputs/tabel_hasil_lengkap.json` (checkpoint `multicriteria_*_valweights.pth`). Skrip yang mengimplementasikannya (`03`, `04`, `07`, `12`) TIDAK dihapus dan tetap reproducible, tapi jangan dianggap sebagai hasil akhir tesis tanpa instruksi eksplisit.
+
+```
+I(c) = w1 * S_L1(c) + w2 * S_BN(c) + w3 * S_H(c)   (bobot KONSTAN di semua rasio)
+```
+
+S_BN = skala gamma batch norm pada layer BN setelah depthwise conv, data-free.
+
+```
+w1 = 0.3361   (L1-norm)      -- setelah koreksi val, lihat Bagian 8 butir 1
+w2 = 0.3320   (BN gamma)
+w3 = 0.3320   (Entropi)
+```
+
+Bobot sebelum koreksi (keliru, diturunkan dari akurasi TEST): w1=0,3401 / w2=0,3259 / w3=0,3340.
 
 ### Lokasi pemangkasan
 
@@ -162,6 +201,27 @@ Catatan penting soal lokasi file:
 5. ~~Verifikasi kesetaraan total epoch antara baseline dan model hasil pruning.~~ **SELESAI.** `BASELINE_EPOCHS` dan `FINETUNE_EPOCHS` di `src/config.py` sama-sama 30.
 6. ~~Pertimbangkan pengujian tiga seed pada konfigurasi optimal untuk melaporkan rata-rata dan simpangan baku.~~ **SELESAI.** Dijalankan di `15_multiseed_validation.py` (baseline, rasio 20%, rasio 60%; seed 42/123/2024) dan `16_multiseed_remaining_ratios.py` (rasio 10/30/40/50/70%; seed 123/2024, seed 42 dipakai ulang dari `12_multicriteria_valweights.py`). Hasil di `outputs/multiseed_results.json`, `outputs/multiseed_remaining_results.json`, dan `outputs/multiseed_seed{42,123,2024}.json`.
 7. ~~(Prioritas sedang, ditemukan 2026-08-03) Alur utama 01→06 di README.md tidak mandiri tanpa menjalankan skrip 07 dulu, karena 04_pruning_multicriteria.py --load_weights mensyaratkan outputs/ablation_val_results.json yang hanya dihasilkan skrip 07.~~ **SELESAI (2026-08-03).** README.md Bagian "Urutan Menjalankan" diperbarui: skrip 07 dimasukkan ke alur utama di antara 03 dan 04 (urutan menjadi 01, 02, 03, 07, 04, 05, 06), dengan penjelasan bahwa 07 wajib dijalankan karena bobot harus diturunkan dari akurasi validasi sebelum pruning. Skrip 08, 10 sampai 18 tetap didokumentasikan sebagai koreksi metodologis lanjutan (11, 12) dan analisis lanjutan (sisanya), di luar alur utama.
+8. ~~(ditemukan 2026-08-04) executorch.runtime.Runtime gagal dimuat di venv/ untuk uji ekspor ExecuTorch, sehingga kesamaan prediksi dan selisih logit belum terverifikasi.~~ **SELESAI (2026-08-04).** `19_test_executorch_export.py` (di `venv/`) memverifikasi poin 1 (ekspor berhasil) dan poin 2 (ukuran berkas) untuk baseline/rasio 20%/rasio 60% -- 8,734 MB, 7,338 MB, 4,537 MB. `20_test_executorch_runtime.py` (di `venv_mobile/`) melengkapi poin 3 dan 4: untuk ketiga model, 20/20 prediksi PyTorch vs ExecuTorch identik, selisih logit maksimum di orde 1e-05 (noise floating-point). Hasil di `outputs/executorch_runtime_test.json`.
+
+   Akar masalah: executorch 1.3.1 (versi terbaru di PyPI) memiliki modul native `_portable_lib` yang gagal dimuat di Windows untuk SEMUA kombinasi torch yang dicoba (torch 2.13.0+cpu yang terpasang di `venv/`, torch 2.13.0 default PyPI, torch nightly 2.14.0.dev) -- kemungkinan cacat pada wheel Windows rilis itu sendiri, bukan soal versi torch. executorch 1.0.1 dengan torch 2.9.1+cpu (versi yang secara eksplisit ia syaratkan) terbukti berfungsi.
+
+   `venv_mobile/` (gitignored, tidak di-commit) adalah lingkungan Python 3.11 terpisah khusus untuk ini. `venv/` (lingkungan penelitian utama) TIDAK diubah lagi untuk mengejar kecocokan versi torch dengan executorch (tidak dipasangi torch nightly dsb.) -- satu-satunya perubahan di `venv/` adalah instalasi `executorch==1.3.1` itu sendiri (untuk `19_test_executorch_export.py`), yang sebagai efek samping menurunkan `scikit-learn` dari 1.9.0 ke 1.7.1 (dependensi transitif `torchao`). Hanya `train_test_split` dan `sklearn.metrics` yang dipakai di proyek ini, API yang stabil di kedua versi. `test_system.py` dijalankan ulang setelah instalasi dan tetap lulus 75 dari 75. `requirements.txt` diperbarui lewat `pip freeze` untuk mencerminkan kondisi `venv/` yang sekarang.
+
+   Cara reproduksi `venv_mobile/`:
+   ```
+   py -3.11 -m venv venv_mobile
+   venv_mobile/Scripts/python.exe -m pip install "executorch==1.0.1"
+   venv_mobile/Scripts/python.exe -m pip install "torchvision==0.24.1"
+   ```
+   (torch 2.9.1+cpu terpasang otomatis sebagai dependensi executorch==1.0.1). `flatc` (kompilator FlatBuffers, dibutuhkan saat serialisasi .pte) di-resolve otomatis lewat env var `FLATC_EXECUTABLE` di dalam `20_test_executorch_runtime.py` sendiri karena `venv_mobile/Scripts` tidak selalu ada di PATH -- tidak perlu setup manual tambahan.
+
+9. **SELESAI (2026-08-26), didokumentasikan di sini 2026-09-10.** Kriteria kedua I(c) diganti dari S_BN ke S_GM-Ekspansi dan skema bobot diganti dari konstan ke per-rasio -- lihat Bagian 2 (formula aktif) dan Bagian 2a (formula lama, diarsipkan). Hasil: `outputs/multicriteria_per_rasio.json`. Rasio 20% mencapai 97,14% akurasi test (vs baseline 96,00%, selisih 1,14 pp) -- BELUM boleh diklaim sebagai peningkatan definitif karena di bawah ambang 2 pp pada Aturan 5 (Bagian 4) dan belum diuji multi-seed.
+
+   **Masih terbuka akibat perubahan ini:**
+   - Validasi multi-seed (`15`/`16_multiseed_*.py`) hanya menguji formula LAMA (Bagian 2a). Formula per-rasio yang baru (Bagian 2) belum divalidasi multi-seed sama sekali -- simpangan baku pada Bagian 9 TIDAK berlaku untuk formula baru ini.
+   - Seluruh pekerjaan eksplorasi 10-26 Agustus 2026 (skrip `22` sampai `44`, seluruh file baru di `outputs/` pada rentang tanggal itu, `src/gm_scores.py`) belum pernah di-commit ke git -- masih berstatus untracked per `git status` per 10 September 2026. Commit ini perlu dibuat (di branch `main`, lalu disalin ke `publish` sesuai Bagian 11) sebelum riwayat kerja sebulan ini berisiko hilang.
+   - `channel_selection_comparison.json` (Bagian 8 butir 3) dan uji sensitivitas bobot terkait hanya membandingkan bobot konstan lama vs lebih lama -- belum dihitung ulang untuk bobot per-rasio yang baru.
+   - README.md (alur "01 sampai 06" plus skrip 07, Bagian 8 butir 7) belum menyebut skrip 43/44 sama sekali.
 
 ---
 

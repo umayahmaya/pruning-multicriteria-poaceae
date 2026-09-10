@@ -1,0 +1,1594 @@
+{
+  "checkpoint": "baseline_9class.pth",
+  "sumber_bobot": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\outputs\\bobot_per_rasio_results.json",
+  "catatan": "Bobot power-law dibaca dari outputs/bobot_per_rasio_results.json (hasil 32_bobot_per_rasio.py), TIDAK dihitung ulang di sini. Skrip ini TIDAK mengevaluasi akurasi model apa pun dan TIDAK melatih apa pun -- murni membandingkan mask pemangkasan (boolean per channel).",
+  "beta_acuan": 1,
+  "beta_dibandingkan": [
+    10,
+    20
+  ],
+  "per_rasio": {
+    "10%": {
+      "rasio": "10%",
+      "bobot_acuan_beta1": {
+        "w1": 0.3340080971659919,
+        "w2": 0.33198380566801616,
+        "w3": 0.3340080971659919
+      },
+      "dibandingkan": {
+        "10": {
+          "bobot": {
+            "w1": 0.34001804273884045,
+            "w2": 0.31996391452231915,
+            "w3": 0.34001804273884045
+          },
+          "jumlah_channel_beda": 16,
+          "total_channel": 7104,
+          "persen_beda": 0.22522522522522523,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 2,
+              "persen_beda": 0.5208333333333333
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 2,
+              "persen_beda": 0.5208333333333333
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 4,
+              "persen_beda": 0.6944444444444444
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 2,
+              "persen_beda": 0.3472222222222222
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 4,
+              "persen_beda": 0.4166666666666667
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 2,
+              "persen_beda": 0.20833333333333334
+            }
+          ]
+        },
+        "20": {
+          "bobot": {
+            "w1": 0.34655805900034725,
+            "w2": 0.30688388199930555,
+            "w3": 0.34655805900034725
+          },
+          "jumlah_channel_beda": 28,
+          "total_channel": 7104,
+          "persen_beda": 0.3941441441441441,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 2,
+              "persen_beda": 1.3888888888888888
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 2,
+              "persen_beda": 0.5208333333333333
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 2,
+              "persen_beda": 0.5208333333333333
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 2,
+              "persen_beda": 0.5208333333333333
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 4,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 4,
+              "persen_beda": 0.6944444444444444
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 2,
+              "persen_beda": 0.3472222222222222
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 2,
+              "persen_beda": 0.3472222222222222
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 2,
+              "persen_beda": 0.20833333333333334
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 4,
+              "persen_beda": 0.4166666666666667
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 2,
+              "persen_beda": 0.20833333333333334
+            }
+          ]
+        }
+      }
+    },
+    "20%": {
+      "rasio": "20%",
+      "bobot_acuan_beta1": {
+        "w1": 0.3326612903225806,
+        "w2": 0.3326612903225806,
+        "w3": 0.3346774193548387
+      },
+      "dibandingkan": {
+        "10": {
+          "bobot": {
+            "w1": 0.3265534361198338,
+            "w2": 0.3265534361198338,
+            "w3": 0.3468931277603323
+          },
+          "jumlah_channel_beda": 40,
+          "total_channel": 7104,
+          "persen_beda": 0.5630630630630631,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 2,
+              "persen_beda": 1.3888888888888888
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 6,
+              "persen_beda": 3.125
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 6,
+              "persen_beda": 3.125
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 2,
+              "persen_beda": 0.5208333333333333
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 2,
+              "persen_beda": 0.5208333333333333
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 2,
+              "persen_beda": 0.3472222222222222
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 2,
+              "persen_beda": 0.3472222222222222
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 2,
+              "persen_beda": 0.3472222222222222
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 4,
+              "persen_beda": 0.4166666666666667
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 8,
+              "persen_beda": 0.8333333333333334
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 4,
+              "persen_beda": 0.4166666666666667
+            }
+          ]
+        },
+        "20": {
+          "bobot": {
+            "w1": 0.3196469620748887,
+            "w2": 0.3196469620748887,
+            "w3": 0.3607060758502227
+          },
+          "jumlah_channel_beda": 80,
+          "total_channel": 7104,
+          "persen_beda": 1.1261261261261262,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 2,
+              "persen_beda": 2.083333333333333
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 4,
+              "persen_beda": 2.7777777777777777
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 2,
+              "persen_beda": 1.3888888888888888
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 8,
+              "persen_beda": 4.166666666666666
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 2,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 8,
+              "persen_beda": 4.166666666666666
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 2,
+              "persen_beda": 0.5208333333333333
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 4,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 4,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 2,
+              "persen_beda": 0.5208333333333333
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 4,
+              "persen_beda": 0.6944444444444444
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 4,
+              "persen_beda": 0.6944444444444444
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 6,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 8,
+              "persen_beda": 0.8333333333333334
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 14,
+              "persen_beda": 1.4583333333333333
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 6,
+              "persen_beda": 0.625
+            }
+          ]
+        }
+      }
+    },
+    "30%": {
+      "rasio": "30%",
+      "bobot_acuan_beta1": {
+        "w1": 0.3360824742268041,
+        "w2": 0.3319587628865979,
+        "w3": 0.3319587628865979
+      },
+      "dibandingkan": {
+        "10": {
+          "bobot": {
+            "w1": 0.3613086305729311,
+            "w2": 0.3193456847135344,
+            "w3": 0.3193456847135344
+          },
+          "jumlah_channel_beda": 74,
+          "total_channel": 7104,
+          "persen_beda": 1.0416666666666665,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 4,
+              "persen_beda": 4.166666666666666
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 2,
+              "persen_beda": 1.3888888888888888
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 2,
+              "persen_beda": 1.3888888888888888
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 2,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 2,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 4,
+              "persen_beda": 2.083333333333333
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 6,
+              "persen_beda": 1.5625
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 2,
+              "persen_beda": 0.5208333333333333
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 4,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 4,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 2,
+              "persen_beda": 0.3472222222222222
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 0,
+              "persen_beda": 0.0
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 16,
+              "persen_beda": 2.7777777777777777
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 10,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 8,
+              "persen_beda": 0.8333333333333334
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 6,
+              "persen_beda": 0.625
+            }
+          ]
+        },
+        "20": {
+          "bobot": {
+            "w1": 0.39025737986116277,
+            "w2": 0.3048713100694186,
+            "w3": 0.3048713100694186
+          },
+          "jumlah_channel_beda": 140,
+          "total_channel": 7104,
+          "persen_beda": 1.9707207207207207,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 6,
+              "persen_beda": 6.25
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 4,
+              "persen_beda": 2.7777777777777777
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 4,
+              "persen_beda": 2.7777777777777777
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 4,
+              "persen_beda": 2.083333333333333
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 4,
+              "persen_beda": 2.083333333333333
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 4,
+              "persen_beda": 2.083333333333333
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 12,
+              "persen_beda": 3.125
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 6,
+              "persen_beda": 1.5625
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 8,
+              "persen_beda": 2.083333333333333
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 6,
+              "persen_beda": 1.5625
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 6,
+              "persen_beda": 1.0416666666666665
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 4,
+              "persen_beda": 0.6944444444444444
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 28,
+              "persen_beda": 4.861111111111112
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 16,
+              "persen_beda": 1.6666666666666667
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 16,
+              "persen_beda": 1.6666666666666667
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 12,
+              "persen_beda": 1.25
+            }
+          ]
+        }
+      }
+    },
+    "40%": {
+      "rasio": "40%",
+      "bobot_acuan_beta1": {
+        "w1": 0.34237995824634654,
+        "w2": 0.3277661795407098,
+        "w3": 0.32985386221294366
+      },
+      "dibandingkan": {
+        "10": {
+          "bobot": {
+            "w1": 0.42820195521027893,
+            "w2": 0.2768258802818398,
+            "w3": 0.2949721645078813
+          },
+          "jumlah_channel_beda": 276,
+          "total_channel": 7104,
+          "persen_beda": 3.885135135135135,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 6,
+              "persen_beda": 6.25
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 2,
+              "persen_beda": 1.3888888888888888
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 6,
+              "persen_beda": 4.166666666666666
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 4,
+              "persen_beda": 2.083333333333333
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 8,
+              "persen_beda": 4.166666666666666
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 8,
+              "persen_beda": 4.166666666666666
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 26,
+              "persen_beda": 6.770833333333333
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 22,
+              "persen_beda": 5.729166666666666
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 6,
+              "persen_beda": 1.5625
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 12,
+              "persen_beda": 3.125
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 16,
+              "persen_beda": 2.7777777777777777
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 10,
+              "persen_beda": 1.7361111111111112
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 42,
+              "persen_beda": 7.291666666666667
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 68,
+              "persen_beda": 7.083333333333333
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 24,
+              "persen_beda": 2.5
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 16,
+              "persen_beda": 1.6666666666666667
+            }
+          ]
+        },
+        "20": {
+          "bobot": {
+            "w1": 0.5284090473042514,
+            "w2": 0.22084436994622708,
+            "w3": 0.25074658274952144
+          },
+          "jumlah_channel_beda": 644,
+          "total_channel": 7104,
+          "persen_beda": 9.065315315315315,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 12,
+              "persen_beda": 12.5
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 6,
+              "persen_beda": 4.166666666666666
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 10,
+              "persen_beda": 6.944444444444445
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 12,
+              "persen_beda": 6.25
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 16,
+              "persen_beda": 8.333333333333332
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 18,
+              "persen_beda": 9.375
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 48,
+              "persen_beda": 12.5
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 40,
+              "persen_beda": 10.416666666666668
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 20,
+              "persen_beda": 5.208333333333334
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 22,
+              "persen_beda": 5.729166666666666
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 38,
+              "persen_beda": 6.597222222222222
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 28,
+              "persen_beda": 4.861111111111112
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 100,
+              "persen_beda": 17.36111111111111
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 166,
+              "persen_beda": 17.291666666666668
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 66,
+              "persen_beda": 6.875000000000001
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 42,
+              "persen_beda": 4.375
+            }
+          ]
+        }
+      }
+    },
+    "50%": {
+      "rasio": "50%",
+      "bobot_acuan_beta1": {
+        "w1": 0.3455723542116631,
+        "w2": 0.33045356371490286,
+        "w3": 0.32397408207343414
+      },
+      "dibandingkan": {
+        "10": {
+          "bobot": {
+            "w1": 0.462155289330197,
+            "w2": 0.2954625280814062,
+            "w3": 0.24238218258839686
+          },
+          "jumlah_channel_beda": 752,
+          "total_channel": 7104,
+          "persen_beda": 10.585585585585585,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 6,
+              "persen_beda": 6.25
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 10,
+              "persen_beda": 6.944444444444445
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 16,
+              "persen_beda": 11.11111111111111
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 10,
+              "persen_beda": 5.208333333333334
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 26,
+              "persen_beda": 13.541666666666666
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 18,
+              "persen_beda": 9.375
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 26,
+              "persen_beda": 6.770833333333333
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 34,
+              "persen_beda": 8.854166666666668
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 30,
+              "persen_beda": 7.8125
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 24,
+              "persen_beda": 6.25
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 54,
+              "persen_beda": 9.375
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 58,
+              "persen_beda": 10.069444444444445
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 118,
+              "persen_beda": 20.48611111111111
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 176,
+              "persen_beda": 18.333333333333332
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 104,
+              "persen_beda": 10.833333333333334
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 42,
+              "persen_beda": 4.375
+            }
+          ]
+        },
+        "20": {
+          "bobot": {
+            "w1": 0.5939012227147563,
+            "w2": 0.2427410256521196,
+            "w3": 0.16335775163312405
+          },
+          "jumlah_channel_beda": 1488,
+          "total_channel": 7104,
+          "persen_beda": 20.945945945945947,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 10,
+              "persen_beda": 10.416666666666668
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 14,
+              "persen_beda": 9.722222222222223
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 26,
+              "persen_beda": 18.055555555555554
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 16,
+              "persen_beda": 8.333333333333332
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 38,
+              "persen_beda": 19.791666666666664
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 38,
+              "persen_beda": 19.791666666666664
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 42,
+              "persen_beda": 10.9375
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 64,
+              "persen_beda": 16.666666666666664
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 64,
+              "persen_beda": 16.666666666666664
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 40,
+              "persen_beda": 10.416666666666668
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 118,
+              "persen_beda": 20.48611111111111
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 120,
+              "persen_beda": 20.833333333333336
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 226,
+              "persen_beda": 39.23611111111111
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 310,
+              "persen_beda": 32.29166666666667
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 266,
+              "persen_beda": 27.708333333333336
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 96,
+              "persen_beda": 10.0
+            }
+          ]
+        }
+      }
+    },
+    "60%": {
+      "rasio": "60%",
+      "bobot_acuan_beta1": {
+        "w1": 0.34411085450346424,
+        "w2": 0.30946882217090066,
+        "w3": 0.3464203233256351
+      },
+      "dibandingkan": {
+        "10": {
+          "bobot": {
+            "w1": 0.41403328626938035,
+            "w2": 0.14329154231539507,
+            "w3": 0.4426751714152245
+          },
+          "jumlah_channel_beda": 580,
+          "total_channel": 7104,
+          "persen_beda": 8.164414414414415,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 10,
+              "persen_beda": 10.416666666666668
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 20,
+              "persen_beda": 13.88888888888889
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 16,
+              "persen_beda": 11.11111111111111
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 16,
+              "persen_beda": 8.333333333333332
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 20,
+              "persen_beda": 10.416666666666668
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 24,
+              "persen_beda": 12.5
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 34,
+              "persen_beda": 8.854166666666668
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 48,
+              "persen_beda": 12.5
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 30,
+              "persen_beda": 7.8125
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 38,
+              "persen_beda": 9.895833333333332
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 54,
+              "persen_beda": 9.375
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 24,
+              "persen_beda": 4.166666666666666
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 58,
+              "persen_beda": 10.069444444444445
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 78,
+              "persen_beda": 8.125
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 70,
+              "persen_beda": 7.291666666666667
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 40,
+              "persen_beda": 4.166666666666666
+            }
+          ]
+        },
+        "20": {
+          "bobot": {
+            "w1": 0.44190745397481446,
+            "w2": 0.052930003929855904,
+            "w3": 0.5051625420953297
+          },
+          "jumlah_channel_beda": 786,
+          "total_channel": 7104,
+          "persen_beda": 11.06418918918919,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 16,
+              "persen_beda": 16.666666666666664
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 28,
+              "persen_beda": 19.444444444444446
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 22,
+              "persen_beda": 15.277777777777779
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 22,
+              "persen_beda": 11.458333333333332
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 24,
+              "persen_beda": 12.5
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 32,
+              "persen_beda": 16.666666666666664
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 54,
+              "persen_beda": 14.0625
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 64,
+              "persen_beda": 16.666666666666664
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 42,
+              "persen_beda": 10.9375
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 56,
+              "persen_beda": 14.583333333333334
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 68,
+              "persen_beda": 11.805555555555555
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 32,
+              "persen_beda": 5.555555555555555
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 78,
+              "persen_beda": 13.541666666666666
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 102,
+              "persen_beda": 10.625
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 92,
+              "persen_beda": 9.583333333333334
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 54,
+              "persen_beda": 5.625
+            }
+          ]
+        }
+      }
+    },
+    "70%": {
+      "rasio": "70%",
+      "bobot_acuan_beta1": {
+        "w1": 0.3408521303258146,
+        "w2": 0.2957393483709273,
+        "w3": 0.3634085213032582
+      },
+      "dibandingkan": {
+        "10": {
+          "bobot": {
+            "w1": 0.31849538891916035,
+            "w2": 0.07700769752486976,
+            "w3": 0.6044969135559699
+          },
+          "jumlah_channel_beda": 878,
+          "total_channel": 7104,
+          "persen_beda": 12.359234234234235,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 20,
+              "persen_beda": 20.833333333333336
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 30,
+              "persen_beda": 20.833333333333336
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 16,
+              "persen_beda": 11.11111111111111
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 24,
+              "persen_beda": 12.5
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 26,
+              "persen_beda": 13.541666666666666
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 28,
+              "persen_beda": 14.583333333333334
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 56,
+              "persen_beda": 14.583333333333334
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 58,
+              "persen_beda": 15.104166666666666
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 36,
+              "persen_beda": 9.375
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 56,
+              "persen_beda": 14.583333333333334
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 106,
+              "persen_beda": 18.40277777777778
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 52,
+              "persen_beda": 9.027777777777777
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 58,
+              "persen_beda": 10.069444444444445
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 144,
+              "persen_beda": 15.0
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 132,
+              "persen_beda": 13.750000000000002
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 36,
+              "persen_beda": 3.75
+            }
+          ]
+        },
+        "20": {
+          "bobot": {
+            "w1": 0.2145564994970018,
+            "w2": 0.012543064448009598,
+            "w3": 0.7729004360549886
+          },
+          "jumlah_channel_beda": 1122,
+          "total_channel": 7104,
+          "persen_beda": 15.79391891891892,
+          "per_layer": [
+            {
+              "layer_idx": 0,
+              "jumlah_channel": 96,
+              "jumlah_beda": 24,
+              "persen_beda": 25.0
+            },
+            {
+              "layer_idx": 1,
+              "jumlah_channel": 144,
+              "jumlah_beda": 34,
+              "persen_beda": 23.61111111111111
+            },
+            {
+              "layer_idx": 2,
+              "jumlah_channel": 144,
+              "jumlah_beda": 22,
+              "persen_beda": 15.277777777777779
+            },
+            {
+              "layer_idx": 3,
+              "jumlah_channel": 192,
+              "jumlah_beda": 38,
+              "persen_beda": 19.791666666666664
+            },
+            {
+              "layer_idx": 4,
+              "jumlah_channel": 192,
+              "jumlah_beda": 40,
+              "persen_beda": 20.833333333333336
+            },
+            {
+              "layer_idx": 5,
+              "jumlah_channel": 192,
+              "jumlah_beda": 40,
+              "persen_beda": 20.833333333333336
+            },
+            {
+              "layer_idx": 6,
+              "jumlah_channel": 384,
+              "jumlah_beda": 82,
+              "persen_beda": 21.354166666666664
+            },
+            {
+              "layer_idx": 7,
+              "jumlah_channel": 384,
+              "jumlah_beda": 74,
+              "persen_beda": 19.270833333333336
+            },
+            {
+              "layer_idx": 8,
+              "jumlah_channel": 384,
+              "jumlah_beda": 50,
+              "persen_beda": 13.020833333333334
+            },
+            {
+              "layer_idx": 9,
+              "jumlah_channel": 384,
+              "jumlah_beda": 76,
+              "persen_beda": 19.791666666666664
+            },
+            {
+              "layer_idx": 10,
+              "jumlah_channel": 576,
+              "jumlah_beda": 116,
+              "persen_beda": 20.13888888888889
+            },
+            {
+              "layer_idx": 11,
+              "jumlah_channel": 576,
+              "jumlah_beda": 70,
+              "persen_beda": 12.152777777777777
+            },
+            {
+              "layer_idx": 12,
+              "jumlah_channel": 576,
+              "jumlah_beda": 68,
+              "persen_beda": 11.805555555555555
+            },
+            {
+              "layer_idx": 13,
+              "jumlah_channel": 960,
+              "jumlah_beda": 176,
+              "persen_beda": 18.333333333333332
+            },
+            {
+              "layer_idx": 14,
+              "jumlah_channel": 960,
+              "jumlah_beda": 156,
+              "persen_beda": 16.25
+            },
+            {
+              "layer_idx": 15,
+              "jumlah_channel": 960,
+              "jumlah_beda": 56,
+              "persen_beda": 5.833333333333333
+            }
+          ]
+        }
+      }
+    }
+  }
+}

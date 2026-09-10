@@ -1,10 +1,16 @@
 venv/
+venv_mobile/
 dataset/
 dataset_split/
 checkpoints/*.pth
 outputs/*
 !outputs/*.json
 !outputs/*.md
+android_assets/*.pte
+demo_sidang/*.jpg
+demo_sidang/*.jpeg
+demo_sidang/*.JPG
+demo_sidang/*.png
 __pycache__/
 *.pyc
 *.pyo

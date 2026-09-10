@@ -57,13 +57,15 @@ Total 1.161 citra (129 x 9 kelas), dibagi 70/15/15 stratified dengan seed 42 (li
 
 ## Hasil Utama
 
-| | Baseline | Multi-Kriteria 20% |
+**Formula I(c) aktif sejak 26 Agustus 2026:** L1-norm + GM-Ekspansi (bukan lagi BN gamma) + Entropi, bobot `w_k(r)` diturunkan PER RASIO dari akurasi validasi (bukan bobot konstan) -- lihat CLAUDE.md Bagian 2. Formula lama (S_BN, bobot konstan) diarsipkan di CLAUDE.md Bagian 2a.
+
+| | Baseline | Multi-Kriteria 20% (formula per-rasio) |
 |---|---|---|
-| Akurasi test | 96,00% | 96,00% |
+| Akurasi test | 96,00% | 97,14% |
 | Jumlah parameter | 2.235.401 | 1.874.851 (turun 16,13%) |
 | FLOPs | 326.218.240 | 270.836.921 (turun 16,98%) |
 
-Rasio 20% adalah titik operasi terpilih. Angka 96,00% pada tabel di atas adalah hasil satu tarikan (seed 42). Validasi multi-seed (seed 42, 123, 2024) pada konfigurasi yang sama menghasilkan rerata akurasi 94,67%, rentang 93,14% sampai 96,00%, dan simpangan baku 1,17 poin persentase (lihat `outputs/multiseed_results.json`) -- selisihnya terhadap baseline TIDAK boleh diklaim sebagai peningkatan tanpa mempertimbangkan sebaran ini. Parameter dan FLOPs tetap lebih kecil dari baseline pada rasio ini, tidak bergantung pada seed. Rincian lengkap kedelapan metrik (akurasi, precision, recall, F1, jumlah parameter, ukuran MB, FLOPs, waktu inferensi) untuk seluruh 4 skenario x 7 rasio ada di `outputs/tabel_hasil_lengkap.json`. Berkas mana yang sah dikutip untuk bab hasil, dan mana yang arsip metodologi lama, dijelaskan di `outputs/README_OUTPUTS.md`.
+Rasio 20% adalah titik operasi terpilih. Selisih akurasi test terhadap baseline (1,14 poin persentase) berada di atas resolusi 0,57%/gambar tapi di bawah ambang 2 poin persentase pada Aturan 5 (CLAUDE.md Bagian 4) -- **belum boleh diklaim sebagai peningkatan** sampai diuji multi-seed. Validasi multi-seed yang sudah ada (`outputs/multiseed_results.json`: rerata 94,67%, simpangan baku 1,17 poin persentase pada rasio 20%) mengacu ke formula LAMA (bobot konstan), BELUM ke formula per-rasio ini -- lihat CLAUDE.md Bagian 8 butir 9 untuk pekerjaan yang masih terbuka. Parameter dan FLOPs pada rasio ini identik dengan ablation L1 tunggal (konsekuensi rasio target, bukan pilihan channel). Rincian lengkap per rasio (bobot, akurasi val/test, params, ukuran, FLOPs, waktu inferensi) ada di `outputs/multicriteria_per_rasio.json`. Tabel 4 skenario x 7 rasio untuk formula LAMA (arsip, masih berguna sebagai pembanding kriteria tunggal L1/BN/Entropi) ada di `outputs/tabel_hasil_lengkap.json`. Berkas mana yang sah dikutip untuk bab hasil, dan mana yang arsip metodologi lama, dijelaskan di `outputs/README_OUTPUTS.md`.
 
 ## Cara Memulai
 
@@ -100,7 +102,15 @@ venv/Scripts/python.exe scripts/05_generate_report.py
 venv/Scripts/python.exe scripts/06_deploy_flask.py
 ```
 
-Skrip 07 kini bagian dari alur utama: bobot w1/w2/w3 harus diturunkan dari akurasi VALIDASI, bukan test (CLAUDE.md butir 4.1), sebelum dipakai untuk pruning multi-kriteria -- `04_pruning_multicriteria.py --load_weights` membaca keluaran skrip 07 (`outputs/ablation_val_results.json`), bukan keluaran mentah skrip 03. Skrip 08, 10 sampai 18 tetap **di luar** alur utama. Skrip 11 dan 12 adalah **koreksi metodologis lanjutan** (kalibrasi entropi dari val menjadi train, lalu pruning ulang dengan bobot val-derived -- lihat CLAUDE.md Bagian 9). Skrip 08, 10, 13 sampai 18 adalah **analisis lanjutan** (korelasi seleksi channel, smoke test, pengukuran ulang waktu inferensi, validasi multi-seed, tabel hasil akhir, dan penyiapan citra demonstrasi). Hasil yang sah dikutip untuk bab hasil berasal dari rantai skrip yang telah dikoreksi (07 → 11/12 → 17), bukan dari keluaran skrip 03/04 saja -- lihat `outputs/README_OUTPUTS.md`.
+Skrip 07 kini bagian dari alur utama: bobot w1/w2/w3 harus diturunkan dari akurasi VALIDASI, bukan test (CLAUDE.md butir 4.1), sebelum dipakai untuk pruning multi-kriteria -- `04_pruning_multicriteria.py --load_weights` membaca keluaran skrip 07 (`outputs/ablation_val_results.json`), bukan keluaran mentah skrip 03. Skrip 08, 10 sampai 18 tetap **di luar** alur utama. Skrip 11 dan 12 adalah **koreksi metodologis lanjutan** (kalibrasi entropi dari val menjadi train, lalu pruning ulang dengan bobot val-derived -- lihat CLAUDE.md Bagian 9). Skrip 08, 10, 13 sampai 18 adalah **analisis lanjutan** (korelasi seleksi channel, smoke test, pengukuran ulang waktu inferensi, validasi multi-seed, tabel hasil akhir, dan penyiapan citra demonstrasi). Skrip 03/04/07/12 dan `outputs/tabel_hasil_lengkap.json` sekarang mengimplementasikan formula I(c) versi **awal/arsip** (S_BN, bobot konstan) -- lihat CLAUDE.md Bagian 2a.
+
+**Formula I(c) aktif (26 Agustus 2026 dan seterusnya)** dijalankan lewat rantai skrip terpisah, DI LUAR alur 01-07 di atas:
+```bash
+venv/Scripts/python.exe scripts/42_ablation_gm.py              # ablation kriteria GM tunggal (depthwise)
+venv/Scripts/python.exe scripts/43_ablation_gm_expansion.py    # ablation kriteria GM-Ekspansi tunggal, 7 rasio
+venv/Scripts/python.exe scripts/44_multicriteria_per_rasio.py  # I(c) final, bobot w_k(r) per rasio
+```
+Skrip 43 mensyaratkan skrip 01/02/07 sudah dijalankan lebih dulu (butuh `checkpoints/baseline_9class.pth` dan `outputs/ablation_val_results.json`). Skrip 44 mensyaratkan skrip 43 sudah selesai (butuh `outputs/ablation_gm_expansion.json`). Hasil: `outputs/multicriteria_per_rasio.json` -- lihat CLAUDE.md Bagian 2 untuk formula lengkap, Bagian 8 butir 9 untuk status dan pekerjaan yang masih terbuka (validasi multi-seed formula ini belum dijalankan). Skrip 22-41 (aset demo Android, eksplorasi kriteria redundansi lain yang TIDAK diadopsi) tidak perlu dijalankan untuk mereproduksi hasil akhir.
 
 ## Opsi Command Line
 

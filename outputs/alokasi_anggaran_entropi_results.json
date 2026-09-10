@@ -1,0 +1,470 @@
+{
+  "entropi": {
+    "40%": {
+      "checkpoint": "alokasi_entropi_alpha2.0_40pct_30ep.pth",
+      "mode": "entropi",
+      "alpha": 2.0,
+      "accuracy": 0.9428571428571428,
+      "precision": 0.947555752735877,
+      "recall": 0.9428571428571428,
+      "f1_score": 0.9418269348978369,
+      "num_params": 1505458,
+      "model_size_mb": 5.830009460449219,
+      "flops": 222058744.0,
+      "inference_ms": 23.369399990770034,
+      "durasi_finetuning_detik": 4092.509024620056,
+      "alokasi_per_lapisan": {
+        "0": {
+          "entropi_rata_rata": 4.827340602874756,
+          "entropi_relatif": 1.1235681537540503,
+          "bobot_balik": 0.7921385658405377,
+          "jumlah_channel": 96,
+          "rasio_mentah": 0.2760620006987524,
+          "rasio_terklip": 0.2760620006987524,
+          "diklip": false
+        },
+        "1": {
+          "entropi_rata_rata": 4.339846611022949,
+          "entropi_relatif": 1.0101034597432437,
+          "bobot_balik": 0.9800952462464736,
+          "jumlah_channel": 144,
+          "rasio_mentah": 0.341565309684221,
+          "rasio_terklip": 0.341565309684221,
+          "diklip": false
+        },
+        "2": {
+          "entropi_rata_rata": 5.539371967315674,
+          "entropi_relatif": 1.2892941365205113,
+          "bobot_balik": 0.6015835952530406,
+          "jumlah_channel": 144,
+          "rasio_mentah": 0.20965318197439547,
+          "rasio_terklip": 0.20965318197439547,
+          "diklip": false
+        },
+        "3": {
+          "entropi_rata_rata": 3.8430802822113037,
+          "entropi_relatif": 0.894480620414755,
+          "bobot_balik": 1.249850673625879,
+          "jumlah_channel": 192,
+          "rasio_mentah": 0.4355756586219557,
+          "rasio_terklip": 0.4355756586219557,
+          "diklip": false
+        },
+        "4": {
+          "entropi_rata_rata": 3.5426180362701416,
+          "entropi_relatif": 0.8245477445899443,
+          "bobot_balik": 1.470849996609783,
+          "jumlah_channel": 192,
+          "rasio_mentah": 0.5125943998964311,
+          "rasio_terklip": 0.5125943998964311,
+          "diklip": false
+        },
+        "5": {
+          "entropi_rata_rata": 6.138027191162109,
+          "entropi_relatif": 1.4286317138590143,
+          "bobot_balik": 0.4899586469103666,
+          "jumlah_channel": 192,
+          "rasio_mentah": 0.17075164643979457,
+          "rasio_terklip": 0.17075164643979457,
+          "diklip": false
+        },
+        "6": {
+          "entropi_rata_rata": 3.99835467338562,
+          "entropi_relatif": 0.9306208838370451,
+          "bobot_balik": 1.1546607722165132,
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.4024017724326088,
+          "rasio_terklip": 0.4024017724326088,
+          "diklip": false
+        },
+        "7": {
+          "entropi_rata_rata": 4.0311384201049805,
+          "entropi_relatif": 0.9382513323189021,
+          "bobot_balik": 1.1359562894112245,
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.39588321978546637,
+          "rasio_terklip": 0.39588321978546637,
+          "diklip": false
+        },
+        "8": {
+          "entropi_rata_rata": 3.8381595611572266,
+          "entropi_relatif": 0.8933353178714507,
+          "bobot_balik": 1.2530574756587185,
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.4366932360550038,
+          "rasio_terklip": 0.4366932360550038,
+          "diklip": false
+        },
+        "9": {
+          "entropi_rata_rata": 4.857252597808838,
+          "entropi_relatif": 1.1305301992544594,
+          "bobot_balik": 0.7824122909240993,
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.27267237288795526,
+          "rasio_terklip": 0.27267237288795526,
+          "diklip": false
+        },
+        "10": {
+          "entropi_rata_rata": 3.667335033416748,
+          "entropi_relatif": 0.8535757452539773,
+          "bobot_balik": 1.3725111086439228,
+          "jumlah_channel": 576,
+          "rasio_mentah": 0.47832308509238597,
+          "rasio_terklip": 0.47832308509238597,
+          "diklip": false
+        },
+        "11": {
+          "entropi_rata_rata": 3.5975112915039062,
+          "entropi_relatif": 0.8373242023770375,
+          "bobot_balik": 1.4263060065969377,
+          "jumlah_channel": 576,
+          "rasio_mentah": 0.49707072319095075,
+          "rasio_terklip": 0.49707072319095075,
+          "diklip": false
+        },
+        "12": {
+          "entropi_rata_rata": 4.775269508361816,
+          "entropi_relatif": 1.1114485565806054,
+          "bobot_balik": 0.8095082285439825,
+          "jumlah_channel": 576,
+          "rasio_mentah": 0.2821153656580603,
+          "rasio_terklip": 0.2821153656580603,
+          "diklip": false
+        },
+        "13": {
+          "entropi_rata_rata": 3.8597757816314697,
+          "entropi_relatif": 0.898366513912377,
+          "bobot_balik": 1.2390615747655631,
+          "jumlah_channel": 960,
+          "rasio_mentah": 0.4318156343717098,
+          "rasio_terklip": 0.4318156343717098,
+          "diklip": false
+        },
+        "14": {
+          "entropi_rata_rata": 3.702115774154663,
+          "entropi_relatif": 0.8616709960083627,
+          "bobot_balik": 1.3468432388646268,
+          "jumlah_channel": 960,
+          "rasio_mentah": 0.46937777704842193,
+          "rasio_terklip": 0.46937777704842193,
+          "diklip": false
+        },
+        "15": {
+          "entropi_rata_rata": 4.1858062744140625,
+          "entropi_relatif": 0.9742504237042638,
+          "bobot_balik": 1.0535588348335398,
+          "jumlah_channel": 960,
+          "rasio_mentah": 0.3671675289403128,
+          "rasio_terklip": 0.3671675289403128,
+          "diklip": false
+        }
+      },
+      "ringkasan_alokasi": {
+        "rasio_target": 0.4,
+        "total_channel": 7104,
+        "total_prune_target": 2841.6000000000004,
+        "total_prune_aktual": 2843,
+        "rasio_aktual": 0.40019707207207206,
+        "selisih_persen_dari_target": 0.04926801801800884,
+        "std_rasio_per_lapisan_aktual": 0.10136705215402324,
+        "mode": "entropi",
+        "alpha": 2.0
+      },
+      "perbandingan_l1": {
+        "num_params_l1": 1513575,
+        "l1_checkpoint": "ablation_l1_40pct_30ep.pth",
+        "valid": true,
+        "catatan": "VALID: selisih jumlah parameter 0.54% (dalam ambang 1%)."
+      }
+    }
+  },
+  "acak": {
+    "40%": {
+      "checkpoint": "alokasi_acak_40pct_30ep.pth",
+      "mode": "acak",
+      "alpha": null,
+      "accuracy": 0.9314285714285714,
+      "precision": 0.9344547515976088,
+      "recall": 0.9314285714285714,
+      "f1_score": 0.9315621325656169,
+      "num_params": 1570364,
+      "model_size_mb": 6.07763671875,
+      "flops": 203466331.0,
+      "inference_ms": 19.043950000195764,
+      "durasi_finetuning_detik": 2508.8158445358276,
+      "alokasi_per_lapisan": {
+        "0": {
+          "jumlah_channel": 96,
+          "rasio_mentah": 0.5017446520148083,
+          "rasio_terklip": 0.5017446520148083,
+          "diklip": false
+        },
+        "1": {
+          "jumlah_channel": 144,
+          "rasio_mentah": 0.4332864121090916,
+          "rasio_terklip": 0.4332864121090916,
+          "diklip": false
+        },
+        "2": {
+          "jumlah_channel": 144,
+          "rasio_mentah": 0.5180214888208382,
+          "rasio_terklip": 0.5180214888208382,
+          "diklip": false
+        },
+        "3": {
+          "jumlah_channel": 192,
+          "rasio_mentah": 0.6123937081825594,
+          "rasio_terklip": 0.6123937081825594,
+          "diklip": false
+        },
+        "4": {
+          "jumlah_channel": 192,
+          "rasio_mentah": 0.4229484279486333,
+          "rasio_terklip": 0.4229484279486333,
+          "diklip": false
+        },
+        "5": {
+          "jumlah_channel": 192,
+          "rasio_mentah": 0.4229501979802217,
+          "rasio_terklip": 0.4229501979802217,
+          "diklip": false
+        },
+        "6": {
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.6184509003082195,
+          "rasio_terklip": 0.6184509003082195,
+          "diklip": false
+        },
+        "7": {
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.5309315543842492,
+          "rasio_terklip": 0.5309315543842492,
+          "diklip": false
+        },
+        "8": {
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.3975780202847653,
+          "rasio_terklip": 0.3975780202847653,
+          "diklip": false
+        },
+        "9": {
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.5066873850398168,
+          "rasio_terklip": 0.5066873850398168,
+          "diklip": false
+        },
+        "10": {
+          "jumlah_channel": 576,
+          "rasio_mentah": 0.39823100393812183,
+          "rasio_terklip": 0.39823100393812183,
+          "diklip": false
+        },
+        "11": {
+          "jumlah_channel": 576,
+          "rasio_mentah": 0.39798173625196465,
+          "rasio_terklip": 0.39798173625196465,
+          "diklip": false
+        },
+        "12": {
+          "jumlah_channel": 576,
+          "rasio_mentah": 0.4742793651195809,
+          "rasio_terklip": 0.4742793651195809,
+          "diklip": false
+        },
+        "13": {
+          "jumlah_channel": 960,
+          "rasio_mentah": 0.2419185530970282,
+          "rasio_terklip": 0.2419185530970282,
+          "diklip": false
+        },
+        "14": {
+          "jumlah_channel": 960,
+          "rasio_mentah": 0.26222626450816433,
+          "rasio_terklip": 0.26222626450816433,
+          "diklip": false
+        },
+        "15": {
+          "jumlah_channel": 960,
+          "rasio_mentah": 0.387571658038934,
+          "rasio_terklip": 0.387571658038934,
+          "diklip": false
+        }
+      },
+      "ringkasan_alokasi": {
+        "rasio_target": 0.4,
+        "total_channel": 7104.0,
+        "total_prune_target": 2841.6000000000004,
+        "total_prune_aktual": 2841,
+        "rasio_aktual": 0.3999155405405405,
+        "selisih_persen_dari_target": 0.021114864864876792,
+        "std_rasio_per_lapisan_aktual": 0.10136705215402322,
+        "mode": "acak",
+        "seed": 42,
+        "std_target_setara_entropi": 0.10136705215402324
+      },
+      "perbandingan_l1": {
+        "num_params_l1": 1513575,
+        "l1_checkpoint": "ablation_l1_40pct_30ep.pth",
+        "valid": false,
+        "catatan": "TIDAK VALID: selisih jumlah parameter 3.75% (alokasi-acak=1,570,364 vs ablation_l1=1,513,575) melebihi ambang 1%. Perbandingan akurasi pada rasio ini TIDAK ADIL, gunakan dengan hati-hati."
+      },
+      "alokasi_entropi_acuan": {
+        "0": {
+          "entropi_rata_rata": 4.827340602874756,
+          "entropi_relatif": 1.1235681537540503,
+          "bobot_balik": 0.7921385658405377,
+          "jumlah_channel": 96,
+          "rasio_mentah": 0.2760620006987524,
+          "rasio_terklip": 0.2760620006987524,
+          "diklip": false
+        },
+        "1": {
+          "entropi_rata_rata": 4.339846611022949,
+          "entropi_relatif": 1.0101034597432437,
+          "bobot_balik": 0.9800952462464736,
+          "jumlah_channel": 144,
+          "rasio_mentah": 0.341565309684221,
+          "rasio_terklip": 0.341565309684221,
+          "diklip": false
+        },
+        "2": {
+          "entropi_rata_rata": 5.539371967315674,
+          "entropi_relatif": 1.2892941365205113,
+          "bobot_balik": 0.6015835952530406,
+          "jumlah_channel": 144,
+          "rasio_mentah": 0.20965318197439547,
+          "rasio_terklip": 0.20965318197439547,
+          "diklip": false
+        },
+        "3": {
+          "entropi_rata_rata": 3.8430802822113037,
+          "entropi_relatif": 0.894480620414755,
+          "bobot_balik": 1.249850673625879,
+          "jumlah_channel": 192,
+          "rasio_mentah": 0.4355756586219557,
+          "rasio_terklip": 0.4355756586219557,
+          "diklip": false
+        },
+        "4": {
+          "entropi_rata_rata": 3.5426180362701416,
+          "entropi_relatif": 0.8245477445899443,
+          "bobot_balik": 1.470849996609783,
+          "jumlah_channel": 192,
+          "rasio_mentah": 0.5125943998964311,
+          "rasio_terklip": 0.5125943998964311,
+          "diklip": false
+        },
+        "5": {
+          "entropi_rata_rata": 6.138027191162109,
+          "entropi_relatif": 1.4286317138590143,
+          "bobot_balik": 0.4899586469103666,
+          "jumlah_channel": 192,
+          "rasio_mentah": 0.17075164643979457,
+          "rasio_terklip": 0.17075164643979457,
+          "diklip": false
+        },
+        "6": {
+          "entropi_rata_rata": 3.99835467338562,
+          "entropi_relatif": 0.9306208838370451,
+          "bobot_balik": 1.1546607722165132,
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.4024017724326088,
+          "rasio_terklip": 0.4024017724326088,
+          "diklip": false
+        },
+        "7": {
+          "entropi_rata_rata": 4.0311384201049805,
+          "entropi_relatif": 0.9382513323189021,
+          "bobot_balik": 1.1359562894112245,
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.39588321978546637,
+          "rasio_terklip": 0.39588321978546637,
+          "diklip": false
+        },
+        "8": {
+          "entropi_rata_rata": 3.8381595611572266,
+          "entropi_relatif": 0.8933353178714507,
+          "bobot_balik": 1.2530574756587185,
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.4366932360550038,
+          "rasio_terklip": 0.4366932360550038,
+          "diklip": false
+        },
+        "9": {
+          "entropi_rata_rata": 4.857252597808838,
+          "entropi_relatif": 1.1305301992544594,
+          "bobot_balik": 0.7824122909240993,
+          "jumlah_channel": 384,
+          "rasio_mentah": 0.27267237288795526,
+          "rasio_terklip": 0.27267237288795526,
+          "diklip": false
+        },
+        "10": {
+          "entropi_rata_rata": 3.667335033416748,
+          "entropi_relatif": 0.8535757452539773,
+          "bobot_balik": 1.3725111086439228,
+          "jumlah_channel": 576,
+          "rasio_mentah": 0.47832308509238597,
+          "rasio_terklip": 0.47832308509238597,
+          "diklip": false
+        },
+        "11": {
+          "entropi_rata_rata": 3.5975112915039062,
+          "entropi_relatif": 0.8373242023770375,
+          "bobot_balik": 1.4263060065969377,
+          "jumlah_channel": 576,
+          "rasio_mentah": 0.49707072319095075,
+          "rasio_terklip": 0.49707072319095075,
+          "diklip": false
+        },
+        "12": {
+          "entropi_rata_rata": 4.775269508361816,
+          "entropi_relatif": 1.1114485565806054,
+          "bobot_balik": 0.8095082285439825,
+          "jumlah_channel": 576,
+          "rasio_mentah": 0.2821153656580603,
+          "rasio_terklip": 0.2821153656580603,
+          "diklip": false
+        },
+        "13": {
+          "entropi_rata_rata": 3.8597757816314697,
+          "entropi_relatif": 0.898366513912377,
+          "bobot_balik": 1.2390615747655631,
+          "jumlah_channel": 960,
+          "rasio_mentah": 0.4318156343717098,
+          "rasio_terklip": 0.4318156343717098,
+          "diklip": false
+        },
+        "14": {
+          "entropi_rata_rata": 3.702115774154663,
+          "entropi_relatif": 0.8616709960083627,
+          "bobot_balik": 1.3468432388646268,
+          "jumlah_channel": 960,
+          "rasio_mentah": 0.46937777704842193,
+          "rasio_terklip": 0.46937777704842193,
+          "diklip": false
+        },
+        "15": {
+          "entropi_rata_rata": 4.1858062744140625,
+          "entropi_relatif": 0.9742504237042638,
+          "bobot_balik": 1.0535588348335398,
+          "jumlah_channel": 960,
+          "rasio_mentah": 0.3671675289403128,
+          "rasio_terklip": 0.3671675289403128,
+          "diklip": false
+        }
+      },
+      "ringkasan_alokasi_entropi_acuan": {
+        "rasio_target": 0.4,
+        "total_channel": 7104,
+        "total_prune_target": 2841.6000000000004,
+        "total_prune_aktual": 2843,
+        "rasio_aktual": 0.40019707207207206,
+        "selisih_persen_dari_target": 0.04926801801800884,
+        "std_rasio_per_lapisan_aktual": 0.10136705215402324,
+        "mode": "entropi",
+        "alpha": 2.0
+      }
+    }
+  }
+}

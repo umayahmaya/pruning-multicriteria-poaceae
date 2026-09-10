@@ -1,0 +1,9 @@
+Brown_Spot_Rice
+Common_Rust_Corn
+Gray_Leaf_Spot_Corn
+Healthy_Corn
+Healthy_Rice
+Healthy_Sugarcane
+Leaf_Blast_Rice
+Mosaic_Sugarcane
+Rust_Sugarcane

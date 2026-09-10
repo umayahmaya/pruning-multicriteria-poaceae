@@ -1,0 +1,115 @@
+{
+  "criterion": "gm_expansion",
+  "definisi": "s_GM(c) = sum_{j!=c} ||W_c - W_j||_2, dari bobot EXPANSION CONV 1x1 (identifikasi lapisan disalin dari 36/37/38, rumus skor sama dengan src/gm_scores.py tapi sumber bobot beda) -- beda dari GM depthwise 42_ablation_gm.py dan GM median-geometrik 36/37/38/40/41.",
+  "epochs_used": 30,
+  "seed": 42,
+  "results": {
+    "10%": {
+      "checkpoint": "ablation_gmexp_10pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9482758620689655,
+        "f1_score": 0.9482228831460827
+      },
+      "test": {
+        "accuracy": 0.9714285714285714,
+        "f1_score": 0.9716574950721291
+      },
+      "num_params": 2055492,
+      "model_size_mb": 7.960845947265625,
+      "flops": 298766039.0,
+      "inference_ms": 25.276450032833964
+    },
+    "20%": {
+      "checkpoint": "ablation_gmexp_20pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9482758620689655,
+        "f1_score": 0.94799598765116
+      },
+      "test": {
+        "accuracy": 0.9657142857142857,
+        "f1_score": 0.9659432093578434
+      },
+      "num_params": 1874851,
+      "model_size_mb": 7.260936737060547,
+      "flops": 270836921.0,
+      "inference_ms": 24.75629997206852
+    },
+    "30%": {
+      "checkpoint": "ablation_gmexp_30pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9310344827586207,
+        "f1_score": 0.9308564532702464
+      },
+      "test": {
+        "accuracy": 0.96,
+        "f1_score": 0.9601241275695703
+      },
+      "num_params": 1694216,
+      "model_size_mb": 6.5610198974609375,
+      "flops": 242937840.0,
+      "inference_ms": 21.75900002475828
+    },
+    "40%": {
+      "checkpoint": "ablation_gmexp_40pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9252873563218391,
+        "f1_score": 0.9249970492279376
+      },
+      "test": {
+        "accuracy": 0.9542857142857143,
+        "f1_score": 0.9540415108754788
+      },
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 18.97629996528849
+    },
+    "50%": {
+      "checkpoint": "ablation_gmexp_50pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9195402298850575,
+        "f1_score": 0.9201332662312699
+      },
+      "test": {
+        "accuracy": 0.9085714285714286,
+        "f1_score": 0.9081972764253334
+      },
+      "num_params": 1331945,
+      "model_size_mb": 5.157291412353516,
+      "flops": 186462400.0,
+      "inference_ms": 16.767450026236475
+    },
+    "60%": {
+      "checkpoint": "ablation_gmexp_60pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.8793103448275862,
+        "f1_score": 0.8789587678922081
+      },
+      "test": {
+        "accuracy": 0.8742857142857143,
+        "f1_score": 0.8740911114525207
+      },
+      "num_params": 1152036,
+      "model_size_mb": 4.460235595703125,
+      "flops": 159010199.0,
+      "inference_ms": 15.233299985993654
+    },
+    "70%": {
+      "checkpoint": "ablation_gmexp_70pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.8160919540229885,
+        "f1_score": 0.8117262860670569
+      },
+      "test": {
+        "accuracy": 0.8457142857142858,
+        "f1_score": 0.8451124800114347
+      },
+      "num_params": 971395,
+      "model_size_mb": 3.760326385498047,
+      "flops": 131081081.0,
+      "inference_ms": 13.007049972657114
+    }
+  },
+  "status": "SELESAI",
+  "total_time_seconds": 17844.77948307991
+}

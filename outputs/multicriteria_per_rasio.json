@@ -1,0 +1,251 @@
+{
+  "formula": "I(c) = w_L1(r)*S_norm_L1 + w_GM(r)*S_norm_GM-Ekspansi + w_Ent(r)*S_norm_Entropi",
+  "rumus_bobot": "d_k(r) = Acc_k(r) - min(Acc_L1,Acc_GM,Acc_Ent)(r) + 0.01 ; w_k(r) = d_k(r) / sum(d)(r)",
+  "bobot_per_rasio": {
+    "10%": {
+      "acc_l1_val": 0.9482758620689655,
+      "acc_gm_val": 0.9482758620689655,
+      "acc_entropi_val": 0.9482758620689655,
+      "d_l1": 0.01,
+      "d_gm": 0.01,
+      "d_entropi": 0.01,
+      "w_l1": 0.33333333333333337,
+      "w_gm": 0.33333333333333337,
+      "w_entropi": 0.33333333333333337
+    },
+    "20%": {
+      "acc_l1_val": 0.9482758620689655,
+      "acc_gm_val": 0.9482758620689655,
+      "acc_entropi_val": 0.9540229885057471,
+      "d_l1": 0.01,
+      "d_gm": 0.01,
+      "d_entropi": 0.01574712643678155,
+      "w_l1": 0.2797427652733124,
+      "w_gm": 0.2797427652733124,
+      "w_entropi": 0.4405144694533753
+    },
+    "30%": {
+      "acc_l1_val": 0.9367816091954023,
+      "acc_gm_val": 0.9310344827586207,
+      "acc_entropi_val": 0.9252873563218391,
+      "d_l1": 0.021494252873563206,
+      "d_gm": 0.01574712643678155,
+      "d_entropi": 0.01,
+      "w_l1": 0.4549878345498788,
+      "w_gm": 0.33333333333333254,
+      "w_entropi": 0.21167883211678865
+    },
+    "40%": {
+      "acc_l1_val": 0.9425287356321839,
+      "acc_gm_val": 0.9252873563218391,
+      "acc_entropi_val": 0.9080459770114943,
+      "d_l1": 0.044482758620689615,
+      "d_gm": 0.027241379310344864,
+      "d_entropi": 0.01,
+      "w_l1": 0.544303797468354,
+      "w_gm": 0.3333333333333338,
+      "w_entropi": 0.12236286919831225
+    },
+    "50%": {
+      "acc_l1_val": 0.9195402298850575,
+      "acc_gm_val": 0.9195402298850575,
+      "acc_entropi_val": 0.8620689655172413,
+      "d_l1": 0.06747126436781613,
+      "d_gm": 0.06747126436781613,
+      "d_entropi": 0.01,
+      "w_l1": 0.4655035685963521,
+      "w_gm": 0.4655035685963521,
+      "w_entropi": 0.06899286280729576
+    },
+    "60%": {
+      "acc_l1_val": 0.8563218390804598,
+      "acc_gm_val": 0.8793103448275862,
+      "acc_entropi_val": 0.8620689655172413,
+      "d_l1": 0.01,
+      "d_gm": 0.03298850574712641,
+      "d_entropi": 0.01574712643678155,
+      "w_l1": 0.1702544031311157,
+      "w_gm": 0.5616438356164387,
+      "w_entropi": 0.26810176125244556
+    },
+    "70%": {
+      "acc_l1_val": 0.7816091954022989,
+      "acc_gm_val": 0.8160919540229885,
+      "acc_entropi_val": 0.8333333333333334,
+      "d_l1": 0.01,
+      "d_gm": 0.044482758620689615,
+      "d_entropi": 0.06172413793103448,
+      "w_l1": 0.08605341246290805,
+      "w_gm": 0.38278931750741824,
+      "w_entropi": 0.5311572700296737
+    }
+  },
+  "seed": 42,
+  "epochs": 30,
+  "catatan_evaluasi": "accuracy pada 'validasi' untuk keputusan metodologis; 'test' hanya untuk pelaporan, TIDAK dipakai untuk memilih apa pun.",
+  "results": {
+    "10%": {
+      "bobot": {
+        "w_l1": 0.33333333333333337,
+        "w_gm": 0.33333333333333337,
+        "w_entropi": 0.33333333333333337
+      },
+      "checkpoint": "multicriteria_per_rasio_10pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9482758620689655,
+        "f1_score": 0.9478792927068788
+      },
+      "test": {
+        "accuracy": 0.9485714285714286,
+        "f1_score": 0.9488519556731552
+      },
+      "num_params": 2055492,
+      "model_size_mb": 7.960845947265625,
+      "flops": 298766039.0,
+      "inference_ms": 28.90809999371413,
+      "num_params_l1_rasio_sama": 2055492,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (2,055,492)"
+    },
+    "20%": {
+      "bobot": {
+        "w_l1": 0.2797427652733124,
+        "w_gm": 0.2797427652733124,
+        "w_entropi": 0.4405144694533753
+      },
+      "checkpoint": "multicriteria_per_rasio_20pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9540229885057471,
+        "f1_score": 0.9535805509943441
+      },
+      "test": {
+        "accuracy": 0.9714285714285714,
+        "f1_score": 0.971490514905149
+      },
+      "num_params": 1874851,
+      "model_size_mb": 7.260936737060547,
+      "flops": 270836921.0,
+      "inference_ms": 31.19735000655055,
+      "num_params_l1_rasio_sama": 1874851,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,874,851)"
+    },
+    "30%": {
+      "bobot": {
+        "w_l1": 0.4549878345498788,
+        "w_gm": 0.33333333333333254,
+        "w_entropi": 0.21167883211678865
+      },
+      "checkpoint": "multicriteria_per_rasio_30pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9425287356321839,
+        "f1_score": 0.9417849165536297
+      },
+      "test": {
+        "accuracy": 0.96,
+        "f1_score": 0.9602280020149083
+      },
+      "num_params": 1694216,
+      "model_size_mb": 6.5610198974609375,
+      "flops": 242937840.0,
+      "inference_ms": 21.422100006020628,
+      "num_params_l1_rasio_sama": 1694216,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,694,216)"
+    },
+    "40%": {
+      "bobot": {
+        "w_l1": 0.544303797468354,
+        "w_gm": 0.3333333333333338,
+        "w_entropi": 0.12236286919831225
+      },
+      "checkpoint": "multicriteria_per_rasio_40pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9425287356321839,
+        "f1_score": 0.9417605650364271
+      },
+      "test": {
+        "accuracy": 0.9428571428571428,
+        "f1_score": 0.9420321683736318
+      },
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 19.113550006295554,
+      "num_params_l1_rasio_sama": 1513575,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,513,575)"
+    },
+    "50%": {
+      "bobot": {
+        "w_l1": 0.4655035685963521,
+        "w_gm": 0.4655035685963521,
+        "w_entropi": 0.06899286280729576
+      },
+      "checkpoint": "multicriteria_per_rasio_50pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9367816091954023,
+        "f1_score": 0.9360951314904217
+      },
+      "test": {
+        "accuracy": 0.9428571428571428,
+        "f1_score": 0.9432566326837455
+      },
+      "num_params": 1331945,
+      "model_size_mb": 5.157291412353516,
+      "flops": 186462400.0,
+      "inference_ms": 16.469449998112395,
+      "num_params_l1_rasio_sama": 1331945,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,331,945)"
+    },
+    "60%": {
+      "bobot": {
+        "w_l1": 0.1702544031311157,
+        "w_gm": 0.5616438356164387,
+        "w_entropi": 0.26810176125244556
+      },
+      "checkpoint": "multicriteria_per_rasio_60pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.8793103448275862,
+        "f1_score": 0.8774982381662033
+      },
+      "test": {
+        "accuracy": 0.8971428571428571,
+        "f1_score": 0.8975883962951632
+      },
+      "num_params": 1152036,
+      "model_size_mb": 4.460235595703125,
+      "flops": 159010199.0,
+      "inference_ms": 14.851249987259507,
+      "num_params_l1_rasio_sama": 1152036,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,152,036)"
+    },
+    "70%": {
+      "bobot": {
+        "w_l1": 0.08605341246290805,
+        "w_gm": 0.38278931750741824,
+        "w_entropi": 0.5311572700296737
+      },
+      "checkpoint": "multicriteria_per_rasio_70pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.8390804597701149,
+        "f1_score": 0.838663038385273
+      },
+      "test": {
+        "accuracy": 0.88,
+        "f1_score": 0.8785105601778076
+      },
+      "num_params": 971395,
+      "model_size_mb": 3.760326385498047,
+      "flops": 131081081.0,
+      "inference_ms": 13.7620000023162,
+      "num_params_l1_rasio_sama": 971395,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (971,395)"
+    }
+  },
+  "status": "SELESAI",
+  "total_time_seconds": 40992.772691726685
+}

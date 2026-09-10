@@ -1,0 +1,49 @@
+{
+  "environment": {
+    "python_executable": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\venv_mobile\\Scripts\\python.exe",
+    "torch_version": "2.9.1+cpu"
+  },
+  "n_samples": 20,
+  "seed": 42,
+  "tested_points": [
+    "1_export_success",
+    "2_file_size_mb",
+    "3_prediction_equivalence",
+    "4_max_logit_diff"
+  ],
+  "results": [
+    {
+      "checkpoint": "baseline_9class.pth",
+      "status": "OK",
+      "pte_path": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\outputs\\baseline_9class.pte",
+      "size_mb": 8.733,
+      "n_images_tested": 20,
+      "n_prediction_mismatches": 0,
+      "predictions_identical": true,
+      "mismatches": [],
+      "max_logit_diff": 1.239776611328125e-05
+    },
+    {
+      "checkpoint": "multicriteria_20pct_30ep_valweights.pth",
+      "status": "OK",
+      "pte_path": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\outputs\\multicriteria_20pct_30ep_valweights.pte",
+      "size_mb": 7.336,
+      "n_images_tested": 20,
+      "n_prediction_mismatches": 0,
+      "predictions_identical": true,
+      "mismatches": [],
+      "max_logit_diff": 1.52587890625e-05
+    },
+    {
+      "checkpoint": "multicriteria_60pct_30ep_valweights.pth",
+      "status": "OK",
+      "pte_path": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\outputs\\multicriteria_60pct_30ep_valweights.pte",
+      "size_mb": 4.536,
+      "n_images_tested": 20,
+      "n_prediction_mismatches": 0,
+      "predictions_identical": true,
+      "mismatches": [],
+      "max_logit_diff": 1.049041748046875e-05
+    }
+  ]
+}

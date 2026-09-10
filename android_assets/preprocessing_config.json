@@ -1,0 +1,30 @@
+{
+  "resize": {
+    "width": 224,
+    "height": 224,
+    "interpolation": "InterpolationMode.BILINEAR",
+    "antialias": true
+  },
+  "channel_order": "RGB",
+  "pixel_scale": "PIL uint8 [0, 255] dibagi 255.0 -> float32 [0, 1] (setara torchvision ToTensor())",
+  "normalize": {
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "formula": "(pixel - mean[c]) / std[c], per channel, setelah pixel_scale di atas"
+  },
+  "input_tensor_shape_nchw": [
+    1,
+    3,
+    224,
+    224
+  ],
+  "catatan_penting": "resize.antialias=true berarti PyTorch memakai bilinear resize DENGAN antialiasing saat downsampling. Ini BERBEDA secara numerik dari resize bilinear biasa tanpa antialiasing (mis. Bitmap.createScaledBitmap bawaan Android). Kalau praproses Android tidak mereplikasi antialiasing ini, angka di reference_*.txt TIDAK akan cocok persis meski arsitekturnya benar."
+}

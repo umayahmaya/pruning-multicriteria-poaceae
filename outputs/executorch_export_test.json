@@ -1,0 +1,31 @@
+{
+  "tested_points": [
+    "1_export_success",
+    "2_file_size_mb"
+  ],
+  "not_tested_points": [
+    "3_prediction_equivalence_20_images",
+    "4_max_logit_diff"
+  ],
+  "limitation_note": "executorch.runtime.Runtime gagal dimuat di venv/ ini (ImportError: DLL load failed while importing _portable_lib), diduga ketidakcocokan ABI C++ antara wheel executorch dan versi torch yang terpasang. Perbandingan prediksi/logit PyTorch vs ExecuTorch memerlukan lingkungan Python terpisah (venv_mobile/) dengan versi torch yang kompatibel dengan executorch.",
+  "results": [
+    {
+      "checkpoint": "baseline_9class.pth",
+      "status": "OK",
+      "pte_path": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\outputs\\baseline_9class.pte",
+      "size_mb": 8.734
+    },
+    {
+      "checkpoint": "multicriteria_20pct_30ep_valweights.pth",
+      "status": "OK",
+      "pte_path": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\outputs\\multicriteria_20pct_30ep_valweights.pte",
+      "size_mb": 7.338
+    },
+    {
+      "checkpoint": "multicriteria_60pct_30ep_valweights.pth",
+      "status": "OK",
+      "pte_path": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\outputs\\multicriteria_60pct_30ep_valweights.pte",
+      "size_mb": 4.537
+    }
+  ]
+}

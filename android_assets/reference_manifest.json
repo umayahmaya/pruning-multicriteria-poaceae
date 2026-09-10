@@ -1,0 +1,52 @@
+{
+  "reference_checkpoint": "multicriteria_20pct_30ep_valweights.pth",
+  "n_input_values": 150528,
+  "n_output_values": 9,
+  "file_format": "Satu angka per baris. N_INPUT_VALUES baris pertama adalah tensor input hasil praproses, flatten C-order (seluruh piksel channel R, lalu G, lalu B, tiap channel baris demi baris/row-major). N_OUTPUT_VALUES baris terakhir adalah logit keluaran model mentah (SEBELUM softmax), urutan sesuai labels.txt / CFG.CLASS_NAMES.",
+  "seed": 42,
+  "images": [
+    {
+      "reference_file": "reference_01.txt",
+      "source_image": "rust (389).jpeg",
+      "true_class": "Rust_Sugarcane",
+      "predicted_class": "Rust_Sugarcane",
+      "image_file": "reference_01.png"
+    },
+    {
+      "reference_file": "reference_02.txt",
+      "source_image": "IMG_20230429_181400.png",
+      "true_class": "Common_Rust_Corn",
+      "predicted_class": "Common_Rust_Corn",
+      "image_file": "reference_02.png"
+    },
+    {
+      "reference_file": "reference_03.txt",
+      "source_image": "Brown_spot  (215).jpg",
+      "true_class": "Brown_Spot_Rice",
+      "predicted_class": "Brown_Spot_Rice",
+      "image_file": "reference_03.png"
+    },
+    {
+      "reference_file": "reference_04.txt",
+      "source_image": "IMG_20240210_161831.png",
+      "true_class": "Healthy_Corn",
+      "predicted_class": "Healthy_Corn",
+      "image_file": "reference_04.png"
+    },
+    {
+      "reference_file": "reference_05.txt",
+      "source_image": "IMG_20240210_160634.png",
+      "true_class": "Healthy_Corn",
+      "predicted_class": "Healthy_Corn",
+      "image_file": "reference_05.png"
+    }
+  ],
+  "reference_224": {
+    "note": "Pelengkap reference_01..05: reference_224.png sudah 224x224 (hasil langkah resize get_transforms('test') yang dibekukan), jadi praproses Android untuk berkas ini TIDAK PERLU resize -- hanya baca piksel + normalisasi. reference_224.txt = tensor hasil praproses PENUH (resize + ToTensor + Normalize) dari citra sumber yang sama dengan reference_01.",
+    "source_image": "rust (389).jpeg",
+    "true_class": "Rust_Sugarcane",
+    "image_file": "reference_224.png",
+    "reference_file": "reference_224.txt",
+    "n_input_values": 150528
+  }
+}
