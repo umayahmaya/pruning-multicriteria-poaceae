@@ -1,0 +1,67 @@
+{
+  "criterion": "entropy",
+  "calibration_source": "train",
+  "calibration_samples_per_class": 20,
+  "calibration_seed": 42,
+  "results": {
+    "10%": {
+      "accuracy": 0.9657142857142857,
+      "f1_score": 0.9660641321106438,
+      "num_params": 2055492,
+      "model_size_mb": 7.960845947265625,
+      "flops": 298766039.0,
+      "inference_ms": 21.649735999380937
+    },
+    "20%": {
+      "accuracy": 0.9657142857142857,
+      "f1_score": 0.9658140557908811,
+      "num_params": 1874851,
+      "model_size_mb": 7.260936737060547,
+      "flops": 270836921.0,
+      "inference_ms": 20.397930999461096
+    },
+    "30%": {
+      "accuracy": 0.9314285714285714,
+      "f1_score": 0.9316415300277395,
+      "num_params": 1694216,
+      "model_size_mb": 6.5610198974609375,
+      "flops": 242937840.0,
+      "inference_ms": 19.976722999708727
+    },
+    "40%": {
+      "accuracy": 0.92,
+      "f1_score": 0.9202529785555644,
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 16.43000299925916
+    },
+    "50%": {
+      "accuracy": 0.8971428571428571,
+      "f1_score": 0.8963945129883231,
+      "num_params": 1331945,
+      "model_size_mb": 5.157291412353516,
+      "flops": 186462400.0,
+      "inference_ms": 14.801490000390913
+    },
+    "60%": {
+      "accuracy": 0.9257142857142857,
+      "f1_score": 0.9251800232288039,
+      "num_params": 1152036,
+      "model_size_mb": 4.460235595703125,
+      "flops": 159010199.0,
+      "inference_ms": 14.754041998530738
+    },
+    "70%": {
+      "accuracy": 0.8457142857142858,
+      "f1_score": 0.8470787020649482,
+      "num_params": 971395,
+      "model_size_mb": 3.760326385498047,
+      "flops": 131081081.0,
+      "inference_ms": 13.218074000178603
+    }
+  },
+  "epochs_used": 30,
+  "total_time_seconds": 17679.831610679626,
+  "status": "SELESAI"
+}

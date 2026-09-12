@@ -1,0 +1,89 @@
+{
+  "warmup": 20,
+  "runs": 300,
+  "num_threads": 1,
+  "results": {
+    "baseline": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\baseline_9class.pth",
+      "p5_ms": 27.296295007545268,
+      "median_ms": 29.29184999811696,
+      "p95_ms": 37.783169993781485,
+      "mean_ms": 30.21390733352746,
+      "std_ms": 3.0324258848833625,
+      "runs": 300,
+      "warmup": 20
+    },
+    "multicriteria_10pct_valweights": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_10pct_30ep_valweights.pth",
+      "p5_ms": 25.81561499464442,
+      "median_ms": 26.914900001429487,
+      "p95_ms": 30.979604999447474,
+      "mean_ms": 27.858702333760448,
+      "std_ms": 4.675453338119934,
+      "runs": 300,
+      "warmup": 20
+    },
+    "multicriteria_20pct_valweights": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_20pct_30ep_valweights.pth",
+      "p5_ms": 23.801719994662562,
+      "median_ms": 24.934050008596387,
+      "p95_ms": 29.840184997738106,
+      "mean_ms": 25.631403666678427,
+      "std_ms": 2.807264219773447,
+      "runs": 300,
+      "warmup": 20
+    },
+    "multicriteria_30pct_valweights": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_30pct_30ep_valweights.pth",
+      "p5_ms": 21.77677500367281,
+      "median_ms": 23.21470000606496,
+      "p95_ms": 30.535914997744843,
+      "mean_ms": 24.403552999622963,
+      "std_ms": 4.091558753057209,
+      "runs": 300,
+      "warmup": 20
+    },
+    "multicriteria_40pct_valweights": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_40pct_30ep_valweights.pth",
+      "p5_ms": 19.423485001607332,
+      "median_ms": 20.287199993617833,
+      "p95_ms": 23.614014992199373,
+      "mean_ms": 20.935306000028504,
+      "std_ms": 2.4500984906742875,
+      "runs": 300,
+      "warmup": 20
+    },
+    "multicriteria_50pct_valweights": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_50pct_30ep_valweights.pth",
+      "p5_ms": 17.441544993926072,
+      "median_ms": 18.028250000497792,
+      "p95_ms": 21.08643999381457,
+      "mean_ms": 18.7397176665642,
+      "std_ms": 2.2871364230722224,
+      "runs": 300,
+      "warmup": 20
+    },
+    "multicriteria_60pct_valweights": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_60pct_30ep_valweights.pth",
+      "p5_ms": 15.336285005469108,
+      "median_ms": 16.12300000124378,
+      "p95_ms": 19.486714994127396,
+      "mean_ms": 16.896463333299227,
+      "std_ms": 3.32765310831578,
+      "runs": 300,
+      "warmup": 20
+    },
+    "multicriteria_70pct_valweights": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_70pct_30ep_valweights.pth",
+      "p5_ms": 13.007439995271852,
+      "median_ms": 14.025050004420336,
+      "p95_ms": 17.103760000463808,
+      "mean_ms": 14.521707000385504,
+      "std_ms": 2.05799349364472,
+      "runs": 300,
+      "warmup": 20
+    }
+  },
+  "total_time_seconds": 58.794522523880005,
+  "status": "SELESAI"
+}

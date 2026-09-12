@@ -1,0 +1,78 @@
+{
+  "weights_used": {
+    "w1": 0.3360824742268041,
+    "w2": 0.3319587628865979,
+    "w3": 0.3319587628865979
+  },
+  "weights_source": "val (07_recompute_weights_val.py)",
+  "calibration_source": "train",
+  "results": {
+    "baseline": {
+      "accuracy": 0.96,
+      "f1_score": 0.9602503656162192,
+      "num_params": 2235401,
+      "model_size_mb": 8.657901763916016,
+      "flops": 326218240.0,
+      "inference_ms": 26.257514000026276
+    },
+    "10%": {
+      "accuracy": 0.9485714285714286,
+      "f1_score": 0.9488458568458569,
+      "num_params": 2055492,
+      "model_size_mb": 7.960845947265625,
+      "flops": 298766039.0,
+      "inference_ms": 26.643458000071405
+    },
+    "20%": {
+      "accuracy": 0.96,
+      "f1_score": 0.9602213652138465,
+      "num_params": 1874851,
+      "model_size_mb": 7.260936737060547,
+      "flops": 270836921.0,
+      "inference_ms": 24.393368999917584
+    },
+    "30%": {
+      "accuracy": 0.9485714285714286,
+      "f1_score": 0.9488269407774051,
+      "num_params": 1694216,
+      "model_size_mb": 6.5610198974609375,
+      "flops": 242937840.0,
+      "inference_ms": 23.42815999953018
+    },
+    "40%": {
+      "accuracy": 0.9142857142857143,
+      "f1_score": 0.9145377440934932,
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 17.746276000179932
+    },
+    "50%": {
+      "accuracy": 0.9142857142857143,
+      "f1_score": 0.9139887139887141,
+      "num_params": 1331945,
+      "model_size_mb": 5.157291412353516,
+      "flops": 186462400.0,
+      "inference_ms": 17.22135699892533
+    },
+    "60%": {
+      "accuracy": 0.9142857142857143,
+      "f1_score": 0.9139944751542037,
+      "num_params": 1152036,
+      "model_size_mb": 4.460235595703125,
+      "flops": 159010199.0,
+      "inference_ms": 15.116595001600217
+    },
+    "70%": {
+      "accuracy": 0.84,
+      "f1_score": 0.8387614106730931,
+      "num_params": 971395,
+      "model_size_mb": 3.760326385498047,
+      "flops": 131081081.0,
+      "inference_ms": 16.26023300079396
+    }
+  },
+  "epochs_used": 30,
+  "total_time_seconds": 85951.7713534832,
+  "status": "SELESAI"
+}

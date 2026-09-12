@@ -1,0 +1,598 @@
+{
+  "checkpoint": "baseline_9class.pth",
+  "rasio": 0.4,
+  "alpha_diuji": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "entropi_alpha_0.5": {
+    "alokasi": {
+      "0": {
+        "entropi_rata_rata": 4.827340602874756,
+        "entropi_relatif": 1.1235681537540503,
+        "bobot_balik": 0.9434095960603931,
+        "jumlah_channel": 96,
+        "rasio_mentah": 0.3663988811683912,
+        "rasio_terklip": 0.3663988811683912,
+        "diklip": false
+      },
+      "1": {
+        "entropi_rata_rata": 4.339846611022949,
+        "entropi_relatif": 1.0101034597432437,
+        "bobot_balik": 0.9949862306140067,
+        "jumlah_channel": 144,
+        "rasio_mentah": 0.38643007575639415,
+        "rasio_terklip": 0.38643007575639415,
+        "diklip": false
+      },
+      "2": {
+        "entropi_rata_rata": 5.539371967315674,
+        "entropi_relatif": 1.2892941365205113,
+        "bobot_balik": 0.8806918882257709,
+        "jumlah_channel": 144,
+        "rasio_mentah": 0.3420407465087343,
+        "rasio_terklip": 0.3420407465087343,
+        "diklip": false
+      },
+      "3": {
+        "entropi_rata_rata": 3.8430802822113037,
+        "entropi_relatif": 0.894480620414755,
+        "bobot_balik": 1.0573396833424327,
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.41064674199774426,
+        "rasio_terklip": 0.41064674199774426,
+        "diklip": false
+      },
+      "4": {
+        "entropi_rata_rata": 3.5426180362701416,
+        "entropi_relatif": 0.8245477445899443,
+        "bobot_balik": 1.1012656570213764,
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.42770659349534007,
+        "rasio_terklip": 0.42770659349534007,
+        "diklip": false
+      },
+      "5": {
+        "entropi_rata_rata": 6.138027191162109,
+        "entropi_relatif": 1.4286317138590143,
+        "bobot_balik": 0.8366423736911732,
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.32493291454594153,
+        "rasio_terklip": 0.32493291454594153,
+        "diklip": false
+      },
+      "6": {
+        "entropi_rata_rata": 3.99835467338562,
+        "entropi_relatif": 0.9306208838370451,
+        "bobot_balik": 1.0366057246475617,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.4025941428936897,
+        "rasio_terklip": 0.4025941428936897,
+        "diklip": false
+      },
+      "7": {
+        "entropi_rata_rata": 4.0311384201049805,
+        "entropi_relatif": 0.9382513323189021,
+        "bobot_balik": 1.0323819554777764,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.4009537267853679,
+        "rasio_terklip": 0.4009537267853679,
+        "diklip": false
+      },
+      "8": {
+        "entropi_rata_rata": 3.8381595611572266,
+        "entropi_relatif": 0.8933353178714507,
+        "bobot_balik": 1.058017248597006,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.4109098929686809,
+        "rasio_terklip": 0.4109098929686809,
+        "diklip": false
+      },
+      "9": {
+        "entropi_rata_rata": 4.857252597808838,
+        "entropi_relatif": 1.1305301992544594,
+        "bobot_balik": 0.9405002515457187,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.36526895777185003,
+        "rasio_terklip": 0.36526895777185003,
+        "diklip": false
+      },
+      "10": {
+        "entropi_rata_rata": 3.667335033416748,
+        "entropi_relatif": 0.8535757452539773,
+        "bobot_balik": 1.08237802658318,
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.4203710663930334,
+        "rasio_terklip": 0.4203710663930334,
+        "diklip": false
+      },
+      "11": {
+        "entropi_rata_rata": 3.5975112915039062,
+        "entropi_relatif": 0.8373242023770375,
+        "bobot_balik": 1.092831432252641,
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.4244309319675241,
+        "rasio_terklip": 0.4244309319675241,
+        "diklip": false
+      },
+      "12": {
+        "entropi_rata_rata": 4.775269508361816,
+        "entropi_relatif": 1.1114485565806054,
+        "bobot_balik": 0.948539272858711,
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.36839113124461237,
+        "rasio_terklip": 0.36839113124461237,
+        "diklip": false
+      },
+      "13": {
+        "entropi_rata_rata": 3.8597757816314697,
+        "entropi_relatif": 0.898366513912377,
+        "bobot_balik": 1.0550504383416555,
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.4097576511823574,
+        "rasio_terklip": 0.4097576511823574,
+        "diklip": false
+      },
+      "14": {
+        "entropi_rata_rata": 3.702115774154663,
+        "entropi_relatif": 0.8616709960083627,
+        "bobot_balik": 1.0772816507764402,
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.4183917496663424,
+        "rasio_terklip": 0.4183917496663424,
+        "diklip": false
+      },
+      "15": {
+        "entropi_rata_rata": 4.1858062744140625,
+        "entropi_relatif": 0.9742504237042638,
+        "bobot_balik": 1.0131288867828943,
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.39347627175594985,
+        "rasio_terklip": 0.39347627175594985,
+        "diklip": false
+      }
+    },
+    "ringkasan": {
+      "rasio_target": 0.4,
+      "total_channel": 7104,
+      "total_prune_target": 2841.6000000000004,
+      "total_prune_aktual": 2841,
+      "rasio_aktual": 0.3999155405405405,
+      "selisih_persen_dari_target": 0.021114864864876792,
+      "std_rasio_per_lapisan_aktual": 0.0295757824880782,
+      "mode": "entropi",
+      "alpha": 0.5
+    }
+  },
+  "entropi_alpha_1.0": {
+    "alokasi": {
+      "0": {
+        "entropi_rata_rata": 4.827340602874756,
+        "entropi_relatif": 1.1235681537540503,
+        "bobot_balik": 0.8900216659388341,
+        "jumlah_channel": 96,
+        "rasio_mentah": 0.3344443137334523,
+        "rasio_terklip": 0.3344443137334523,
+        "diklip": false
+      },
+      "1": {
+        "entropi_rata_rata": 4.339846611022949,
+        "entropi_relatif": 1.0101034597432437,
+        "bobot_balik": 0.9899975991114693,
+        "jumlah_channel": 144,
+        "rasio_mentah": 0.37201236812964866,
+        "rasio_terklip": 0.37201236812964866,
+        "diklip": false
+      },
+      "2": {
+        "entropi_rata_rata": 5.539371967315674,
+        "entropi_relatif": 1.2892941365205113,
+        "bobot_balik": 0.7756182019866737,
+        "jumlah_channel": 144,
+        "rasio_mentah": 0.29145481195559386,
+        "rasio_terklip": 0.29145481195559386,
+        "diklip": false
+      },
+      "3": {
+        "entropi_rata_rata": 3.8430802822113037,
+        "entropi_relatif": 0.894480620414755,
+        "bobot_balik": 1.1179672059706756,
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.42009963272406836,
+        "rasio_terklip": 0.42009963272406836,
+        "diklip": false
+      },
+      "4": {
+        "entropi_rata_rata": 3.5426180362701416,
+        "entropi_relatif": 0.8245477445899443,
+        "bobot_balik": 1.2127860473347238,
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.4557298016768088,
+        "rasio_terklip": 0.4557298016768088,
+        "diklip": false
+      },
+      "5": {
+        "entropi_rata_rata": 6.138027191162109,
+        "entropi_relatif": 1.4286317138590143,
+        "bobot_balik": 0.6999704614556007,
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.2630285863527447,
+        "rasio_terklip": 0.2630285863527447,
+        "diklip": false
+      },
+      "6": {
+        "entropi_rata_rata": 3.99835467338562,
+        "entropi_relatif": 0.9306208838370451,
+        "bobot_balik": 1.0745514283720967,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.403785243423394,
+        "rasio_terklip": 0.403785243423394,
+        "diklip": false
+      },
+      "7": {
+        "entropi_rata_rata": 4.0311384201049805,
+        "entropi_relatif": 0.9382513323189021,
+        "bobot_balik": 1.0658125019961178,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.4005014084939392,
+        "rasio_terklip": 0.4005014084939392,
+        "diklip": false
+      },
+      "8": {
+        "entropi_rata_rata": 3.8381595611572266,
+        "entropi_relatif": 0.8933353178714507,
+        "bobot_balik": 1.1194004983287789,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.4206382223982642,
+        "rasio_terklip": 0.4206382223982642,
+        "diklip": false
+      },
+      "9": {
+        "entropi_rata_rata": 4.857252597808838,
+        "entropi_relatif": 1.1305301992544594,
+        "bobot_balik": 0.88454072315756,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.3323847344925785,
+        "rasio_terklip": 0.3323847344925785,
+        "diklip": false
+      },
+      "10": {
+        "entropi_rata_rata": 3.667335033416748,
+        "entropi_relatif": 0.8535757452539773,
+        "bobot_balik": 1.1715421924300988,
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.44023155789557555,
+        "rasio_terklip": 0.44023155789557555,
+        "diklip": false
+      },
+      "11": {
+        "entropi_rata_rata": 3.5975112915039062,
+        "entropi_relatif": 0.8373242023770375,
+        "bobot_balik": 1.1942805393193585,
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.4487759687923484,
+        "rasio_terklip": 0.4487759687923484,
+        "diklip": false
+      },
+      "12": {
+        "entropi_rata_rata": 4.775269508361816,
+        "entropi_relatif": 1.1114485565806054,
+        "bobot_balik": 0.8997267521553322,
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.33809120349312666,
+        "rasio_terklip": 0.33809120349312666,
+        "diklip": false
+      },
+      "13": {
+        "entropi_rata_rata": 3.8597757816314697,
+        "entropi_relatif": 0.898366513912377,
+        "bobot_balik": 1.113131427444919,
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.4182824874878256,
+        "rasio_terklip": 0.4182824874878256,
+        "diklip": false
+      },
+      "14": {
+        "entropi_rata_rata": 3.702115774154663,
+        "entropi_relatif": 0.8616709960083627,
+        "bobot_balik": 1.160535755099612,
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.4360956581523239,
+        "rasio_terklip": 0.4360956581523239,
+        "diklip": false
+      },
+      "15": {
+        "entropi_rata_rata": 4.1858062744140625,
+        "entropi_relatif": 0.9742504237042638,
+        "bobot_balik": 1.0264301412339467,
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.38570266019109434,
+        "rasio_terklip": 0.38570266019109434,
+        "diklip": false
+      }
+    },
+    "ringkasan": {
+      "rasio_target": 0.4,
+      "total_channel": 7104,
+      "total_prune_target": 2841.6000000000004,
+      "total_prune_aktual": 2845,
+      "rasio_aktual": 0.4004786036036036,
+      "selisih_persen_dari_target": 0.11965090090089447,
+      "std_rasio_per_lapisan_aktual": 0.056044524962763145,
+      "mode": "entropi",
+      "alpha": 1.0
+    }
+  },
+  "entropi_alpha_2.0": {
+    "alokasi": {
+      "0": {
+        "entropi_rata_rata": 4.827340602874756,
+        "entropi_relatif": 1.1235681537540503,
+        "bobot_balik": 0.7921385658405377,
+        "jumlah_channel": 96,
+        "rasio_mentah": 0.2760620006987524,
+        "rasio_terklip": 0.2760620006987524,
+        "diklip": false
+      },
+      "1": {
+        "entropi_rata_rata": 4.339846611022949,
+        "entropi_relatif": 1.0101034597432437,
+        "bobot_balik": 0.9800952462464736,
+        "jumlah_channel": 144,
+        "rasio_mentah": 0.341565309684221,
+        "rasio_terklip": 0.341565309684221,
+        "diklip": false
+      },
+      "2": {
+        "entropi_rata_rata": 5.539371967315674,
+        "entropi_relatif": 1.2892941365205113,
+        "bobot_balik": 0.6015835952530406,
+        "jumlah_channel": 144,
+        "rasio_mentah": 0.20965318197439547,
+        "rasio_terklip": 0.20965318197439547,
+        "diklip": false
+      },
+      "3": {
+        "entropi_rata_rata": 3.8430802822113037,
+        "entropi_relatif": 0.894480620414755,
+        "bobot_balik": 1.249850673625879,
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.4355756586219557,
+        "rasio_terklip": 0.4355756586219557,
+        "diklip": false
+      },
+      "4": {
+        "entropi_rata_rata": 3.5426180362701416,
+        "entropi_relatif": 0.8245477445899443,
+        "bobot_balik": 1.470849996609783,
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.5125943998964311,
+        "rasio_terklip": 0.5125943998964311,
+        "diklip": false
+      },
+      "5": {
+        "entropi_rata_rata": 6.138027191162109,
+        "entropi_relatif": 1.4286317138590143,
+        "bobot_balik": 0.4899586469103666,
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.17075164643979457,
+        "rasio_terklip": 0.17075164643979457,
+        "diklip": false
+      },
+      "6": {
+        "entropi_rata_rata": 3.99835467338562,
+        "entropi_relatif": 0.9306208838370451,
+        "bobot_balik": 1.1546607722165132,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.4024017724326088,
+        "rasio_terklip": 0.4024017724326088,
+        "diklip": false
+      },
+      "7": {
+        "entropi_rata_rata": 4.0311384201049805,
+        "entropi_relatif": 0.9382513323189021,
+        "bobot_balik": 1.1359562894112245,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.39588321978546637,
+        "rasio_terklip": 0.39588321978546637,
+        "diklip": false
+      },
+      "8": {
+        "entropi_rata_rata": 3.8381595611572266,
+        "entropi_relatif": 0.8933353178714507,
+        "bobot_balik": 1.2530574756587185,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.4366932360550038,
+        "rasio_terklip": 0.4366932360550038,
+        "diklip": false
+      },
+      "9": {
+        "entropi_rata_rata": 4.857252597808838,
+        "entropi_relatif": 1.1305301992544594,
+        "bobot_balik": 0.7824122909240993,
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.27267237288795526,
+        "rasio_terklip": 0.27267237288795526,
+        "diklip": false
+      },
+      "10": {
+        "entropi_rata_rata": 3.667335033416748,
+        "entropi_relatif": 0.8535757452539773,
+        "bobot_balik": 1.3725111086439228,
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.47832308509238597,
+        "rasio_terklip": 0.47832308509238597,
+        "diklip": false
+      },
+      "11": {
+        "entropi_rata_rata": 3.5975112915039062,
+        "entropi_relatif": 0.8373242023770375,
+        "bobot_balik": 1.4263060065969377,
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.49707072319095075,
+        "rasio_terklip": 0.49707072319095075,
+        "diklip": false
+      },
+      "12": {
+        "entropi_rata_rata": 4.775269508361816,
+        "entropi_relatif": 1.1114485565806054,
+        "bobot_balik": 0.8095082285439825,
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.2821153656580603,
+        "rasio_terklip": 0.2821153656580603,
+        "diklip": false
+      },
+      "13": {
+        "entropi_rata_rata": 3.8597757816314697,
+        "entropi_relatif": 0.898366513912377,
+        "bobot_balik": 1.2390615747655631,
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.4318156343717098,
+        "rasio_terklip": 0.4318156343717098,
+        "diklip": false
+      },
+      "14": {
+        "entropi_rata_rata": 3.702115774154663,
+        "entropi_relatif": 0.8616709960083627,
+        "bobot_balik": 1.3468432388646268,
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.46937777704842193,
+        "rasio_terklip": 0.46937777704842193,
+        "diklip": false
+      },
+      "15": {
+        "entropi_rata_rata": 4.1858062744140625,
+        "entropi_relatif": 0.9742504237042638,
+        "bobot_balik": 1.0535588348335398,
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.3671675289403128,
+        "rasio_terklip": 0.3671675289403128,
+        "diklip": false
+      }
+    },
+    "ringkasan": {
+      "rasio_target": 0.4,
+      "total_channel": 7104,
+      "total_prune_target": 2841.6000000000004,
+      "total_prune_aktual": 2843,
+      "rasio_aktual": 0.40019707207207206,
+      "selisih_persen_dari_target": 0.04926801801800884,
+      "std_rasio_per_lapisan_aktual": 0.10136705215402324,
+      "mode": "entropi",
+      "alpha": 2.0
+    }
+  },
+  "acak_dipadankan_alpha_1.0": {
+    "alokasi": {
+      "0": {
+        "jumlah_channel": 96,
+        "rasio_mentah": 0.4562532950154974,
+        "rasio_terklip": 0.4562532950154974,
+        "diklip": false
+      },
+      "1": {
+        "jumlah_channel": 144,
+        "rasio_mentah": 0.41840362439991075,
+        "rasio_terklip": 0.41840362439991075,
+        "diklip": false
+      },
+      "2": {
+        "jumlah_channel": 144,
+        "rasio_mentah": 0.4652525464221997,
+        "rasio_terklip": 0.4652525464221997,
+        "diklip": false
+      },
+      "3": {
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.5174297192946322,
+        "rasio_terklip": 0.5174297192946322,
+        "diklip": false
+      },
+      "4": {
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.4126878873923366,
+        "rasio_terklip": 0.4126878873923366,
+        "diklip": false
+      },
+      "5": {
+        "jumlah_channel": 192,
+        "rasio_mentah": 0.4126888660197844,
+        "rasio_terklip": 0.4126888660197844,
+        "diklip": false
+      },
+      "6": {
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.5207786620534192,
+        "rasio_terklip": 0.5207786620534192,
+        "diklip": false
+      },
+      "7": {
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.47239035379022015,
+        "rasio_terklip": 0.47239035379022015,
+        "diklip": false
+      },
+      "8": {
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.3986609189107766,
+        "rasio_terklip": 0.3986609189107766,
+        "diklip": false
+      },
+      "9": {
+        "jumlah_channel": 384,
+        "rasio_mentah": 0.4589860678299169,
+        "rasio_terklip": 0.4589860678299169,
+        "diklip": false
+      },
+      "10": {
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.3990219450813434,
+        "rasio_terklip": 0.3990219450813434,
+        "diklip": false
+      },
+      "11": {
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.39888412821913444,
+        "rasio_terklip": 0.39888412821913444,
+        "diklip": false
+      },
+      "12": {
+        "jumlah_channel": 576,
+        "rasio_mentah": 0.4410680950486467,
+        "rasio_terklip": 0.4410680950486467,
+        "diklip": false
+      },
+      "13": {
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.3125988236923226,
+        "rasio_terklip": 0.3125988236923226,
+        "diklip": false
+      },
+      "14": {
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.3238266932508519,
+        "rasio_terklip": 0.3238266932508519,
+        "diklip": false
+      },
+      "15": {
+        "jumlah_channel": 960,
+        "rasio_mentah": 0.3931285313474012,
+        "rasio_terklip": 0.3931285313474012,
+        "diklip": false
+      }
+    },
+    "ringkasan": {
+      "rasio_target": 0.4,
+      "total_channel": 7104.0,
+      "total_prune_target": 2841.6000000000004,
+      "total_prune_aktual": 2840,
+      "rasio_aktual": 0.3997747747747748,
+      "selisih_persen_dari_target": 0.05630630630630573,
+      "std_rasio_per_lapisan_aktual": 0.05604452496276313,
+      "mode": "acak",
+      "seed": 42,
+      "std_target_setara_entropi": 0.056044524962763145
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "checkpoint_baseline": "baseline_9class.pth",
+  "formula": "I(c) = w1*S_norm_L1 + w2*S_norm_Entropi + w3*S_norm_GM (menggantikan BN)",
+  "rasio": 0.4,
+  "konfigurasi_bobot": {
+    "A": {
+      "w1_l1": 0.5,
+      "w2_entropi": 0.0,
+      "w3_gm": 0.5,
+      "deskripsi": "Dua kriteria terkuat dan paling berbeda, tanpa entropi."
+    },
+    "B": {
+      "w1_l1": 0.45,
+      "w2_entropi": 0.1,
+      "w3_gm": 0.45,
+      "deskripsi": "Sama seperti A tetapi entropi diberi porsi kecil."
+    },
+    "C": {
+      "w1_l1": 0.4,
+      "w2_entropi": 0.2,
+      "w3_gm": 0.4,
+      "deskripsi": "Entropi diberi porsi sedang."
+    },
+    "D": {
+      "w1_l1": 0.33884297520661155,
+      "w2_entropi": 0.32644628099173556,
+      "w3_gm": 0.3347107438016529,
+      "deskripsi": "Diturunkan dari rasio akurasi validasi (L1=94.25%, Entropi=90.80%, GM=93.10%) pada rasio 40% -- rumus w_k=acc_k/sum(acc), sama dengan compute_optimal_weights; ini bobot yang dihitung versi PERTAMA skrip ini, sebelum diganti konfigurasi manual A/B/C."
+    }
+  },
+  "pemeriksaan_mask_40pct": {
+    "A": {
+      "persen_vs_l1": 23.338963963963963,
+      "persen_vs_gm": 31.109234234234233
+    },
+    "B": {
+      "persen_vs_l1": 27.027027027027028,
+      "persen_vs_gm": 32.01013513513514
+    },
+    "C": {
+      "persen_vs_l1": 34.74099099099099,
+      "persen_vs_gm": 37.44369369369369
+    },
+    "D": {
+      "persen_vs_l1": 40.03378378378378,
+      "persen_vs_gm": 43.215090090090094
+    }
+  },
+  "semua_konfigurasi_di_bawah_ambang_25persen_vs_l1": false,
+  "seed": 42,
+  "epochs": 30,
+  "catatan_evaluasi": "accuracy pada 'validasi' untuk keputusan metodologis; 'test' hanya untuk pelaporan, TIDAK dipakai untuk memilih apa pun.",
+  "results": {
+    "A": {
+      "deskripsi": "Dua kriteria terkuat dan paling berbeda, tanpa entropi.",
+      "bobot": {
+        "w1_l1": 0.5,
+        "w2_entropi": 0.0,
+        "w3_gm": 0.5
+      },
+      "checkpoint": "multikriteria_gm_configA_40pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9482758620689655,
+        "precision": 0.9502111084768285,
+        "recall": 0.9482758620689655,
+        "f1_score": 0.9477000020103469
+      },
+      "test": {
+        "accuracy": 0.9485714285714286,
+        "precision": 0.9503566274994845,
+        "recall": 0.9485714285714286,
+        "f1_score": 0.9486326384584225
+      },
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 21.707999985665083,
+      "num_params_l1_rasio_sama": 1513575,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,513,575)"
+    },
+    "B": {
+      "deskripsi": "Sama seperti A tetapi entropi diberi porsi kecil.",
+      "bobot": {
+        "w1_l1": 0.45,
+        "w2_entropi": 0.1,
+        "w3_gm": 0.45
+      },
+      "checkpoint": "multikriteria_gm_configB_40pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9482758620689655,
+        "precision": 0.949247400109469,
+        "recall": 0.9482758620689655,
+        "f1_score": 0.94793154406164
+      },
+      "test": {
+        "accuracy": 0.96,
+        "precision": 0.9612339723768295,
+        "recall": 0.96,
+        "f1_score": 0.9599406275364464
+      },
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 21.347050002077594,
+      "num_params_l1_rasio_sama": 1513575,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,513,575)"
+    },
+    "C": {
+      "deskripsi": "Entropi diberi porsi sedang.",
+      "bobot": {
+        "w1_l1": 0.4,
+        "w2_entropi": 0.2,
+        "w3_gm": 0.4
+      },
+      "checkpoint": "multikriteria_gm_configC_40pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9367816091954023,
+        "precision": 0.9370067890031593,
+        "recall": 0.9367816091954023,
+        "f1_score": 0.9364749364749364
+      },
+      "test": {
+        "accuracy": 0.9314285714285714,
+        "precision": 0.9371851990224007,
+        "recall": 0.9314285714285714,
+        "f1_score": 0.9318417648485285
+      },
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 18.900449998909608,
+      "num_params_l1_rasio_sama": 1513575,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,513,575)"
+    },
+    "D": {
+      "deskripsi": "Diturunkan dari rasio akurasi validasi (L1=94.25%, Entropi=90.80%, GM=93.10%) pada rasio 40% -- rumus w_k=acc_k/sum(acc), sama dengan compute_optimal_weights; ini bobot yang dihitung versi PERTAMA skrip ini, sebelum diganti konfigurasi manual A/B/C.",
+      "bobot": {
+        "w1_l1": 0.33884297520661155,
+        "w2_entropi": 0.32644628099173556,
+        "w3_gm": 0.3347107438016529
+      },
+      "checkpoint": "multikriteria_gm_configD_40pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9195402298850575,
+        "precision": 0.9225827095789174,
+        "recall": 0.9195402298850575,
+        "f1_score": 0.9195806966055563
+      },
+      "test": {
+        "accuracy": 0.96,
+        "precision": 0.9643809523809523,
+        "recall": 0.96,
+        "f1_score": 0.9603735672307101
+      },
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 18.819450007868,
+      "num_params_l1_rasio_sama": 1513575,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,513,575)"
+    }
+  },
+  "status": "SELESAI",
+  "total_time_seconds": 3700.4891061782837
+}

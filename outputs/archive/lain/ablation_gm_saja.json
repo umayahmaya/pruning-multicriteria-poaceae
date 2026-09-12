@@ -1,0 +1,115 @@
+{
+  "criterion": "gm",
+  "definisi": "s_GM(c) = sum_{j!=c} ||W_c - W_j||_2, dari bobot DEPTHWISE CONV (src/gm_scores.py) -- beda dari GM redundansi berbasis conv ekspansi di 36_skor_redundansi.py dst.",
+  "epochs_used": 30,
+  "seed": 42,
+  "results": {
+    "10%": {
+      "checkpoint": "ablation_gm_10pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9425287356321839,
+        "f1_score": 0.9418177376435091
+      },
+      "test": {
+        "accuracy": 0.9542857142857143,
+        "f1_score": 0.954717945268468
+      },
+      "num_params": 2055492,
+      "model_size_mb": 7.960845947265625,
+      "flops": 298766039.0,
+      "inference_ms": 25.236600020434707
+    },
+    "20%": {
+      "checkpoint": "ablation_gm_20pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9367816091954023,
+        "f1_score": 0.9361798611798613
+      },
+      "test": {
+        "accuracy": 0.9371428571428572,
+        "f1_score": 0.9373404544414996
+      },
+      "num_params": 1874851,
+      "model_size_mb": 7.260936737060547,
+      "flops": 270836921.0,
+      "inference_ms": 22.974399966187775
+    },
+    "30%": {
+      "checkpoint": "ablation_gm_30pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9310344827586207,
+        "f1_score": 0.9302959442251637
+      },
+      "test": {
+        "accuracy": 0.9314285714285714,
+        "f1_score": 0.9310691120725963
+      },
+      "num_params": 1694216,
+      "model_size_mb": 6.5610198974609375,
+      "flops": 242937840.0,
+      "inference_ms": 21.619200007990003
+    },
+    "40%": {
+      "checkpoint": "ablation_gm_40pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9252873563218391,
+        "f1_score": 0.924932160276988
+      },
+      "test": {
+        "accuracy": 0.9257142857142857,
+        "f1_score": 0.9245629959300793
+      },
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 19.35334998415783
+    },
+    "50%": {
+      "checkpoint": "ablation_gm_50pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.896551724137931,
+        "f1_score": 0.8969700636258269
+      },
+      "test": {
+        "accuracy": 0.92,
+        "f1_score": 0.9197763398042144
+      },
+      "num_params": 1331945,
+      "model_size_mb": 5.157291412353516,
+      "flops": 186462400.0,
+      "inference_ms": 16.679649997968227
+    },
+    "60%": {
+      "checkpoint": "ablation_gm_60pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.8505747126436781,
+        "f1_score": 0.8491709689985554
+      },
+      "test": {
+        "accuracy": 0.8628571428571429,
+        "f1_score": 0.862289428728453
+      },
+      "num_params": 1152036,
+      "model_size_mb": 4.460235595703125,
+      "flops": 159010199.0,
+      "inference_ms": 15.193400089628994
+    },
+    "70%": {
+      "checkpoint": "ablation_gm_70pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.7586206896551724,
+        "f1_score": 0.7504070428578378
+      },
+      "test": {
+        "accuracy": 0.8228571428571428,
+        "f1_score": 0.8213844465273037
+      },
+      "num_params": 971395,
+      "model_size_mb": 3.760326385498047,
+      "flops": 131081081.0,
+      "inference_ms": 13.031800044700503
+    }
+  },
+  "status": "SELESAI",
+  "total_time_seconds": 17558.389245271683
+}

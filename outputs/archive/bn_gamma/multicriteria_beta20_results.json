@@ -1,0 +1,66 @@
+{
+  "beta": 20,
+  "bobot_sumber": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\outputs\\bobot_per_rasio_results.json",
+  "calibration_source": "train",
+  "seed": 42,
+  "epochs": 30,
+  "catatan_evaluasi": "accuracy pada 'validasi' untuk keputusan metodologis; 'test' hanya untuk pelaporan, TIDAK dipakai untuk memilih apa pun.",
+  "results": {
+    "50%": {
+      "bobot": {
+        "w1": 0.5939012227147563,
+        "w2": 0.2427410256521196,
+        "w3": 0.16335775163312405
+      },
+      "checkpoint": "multicriteria_beta20_50pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9022988505747126,
+        "precision": 0.9047414120463122,
+        "recall": 0.9022988505747126,
+        "f1_score": 0.9010974955676385
+      },
+      "test": {
+        "accuracy": 0.9085714285714286,
+        "precision": 0.9113328058912352,
+        "recall": 0.9085714285714286,
+        "f1_score": 0.9064240555562167
+      },
+      "num_params": 1331945,
+      "model_size_mb": 5.157291412353516,
+      "flops": 186462400.0,
+      "inference_ms": 16.539449992706068,
+      "num_params_l1_rasio_sama": 1331945,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,331,945)"
+    },
+    "60%": {
+      "bobot": {
+        "w1": 0.44190745397481446,
+        "w2": 0.052930003929855904,
+        "w3": 0.5051625420953297
+      },
+      "checkpoint": "multicriteria_beta20_60pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.867816091954023,
+        "precision": 0.8684890766880732,
+        "recall": 0.867816091954023,
+        "f1_score": 0.8669632686874066
+      },
+      "test": {
+        "accuracy": 0.8742857142857143,
+        "precision": 0.8783082917377477,
+        "recall": 0.8742857142857143,
+        "f1_score": 0.8736574455836408
+      },
+      "num_params": 1152036,
+      "model_size_mb": 4.460235595703125,
+      "flops": 159010199.0,
+      "inference_ms": 14.905700001691002,
+      "num_params_l1_rasio_sama": 1152036,
+      "num_params_identik_dengan_l1": true,
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,152,036)"
+    }
+  },
+  "status": "SELESAI",
+  "total_time_seconds": 5247.693669557571
+}

@@ -1,0 +1,211 @@
+{
+  "old_weights": {
+    "w1_l1": 0.34012219959266804,
+    "w2_bn": 0.3258655804480652,
+    "w3_entropy": 0.33401221995926683
+  },
+  "new_weights": {
+    "w1_l1": 0.3360824742268041,
+    "w2_bn": 0.3319587628865979,
+    "w3_entropy": 0.3319587628865979
+  },
+  "total_channels": 7104,
+  "num_layers": 16,
+  "old_vs_new_by_ratio": {
+    "10%": {
+      "channels_different": 10,
+      "total_channels": 7104,
+      "percent_different": 0.14076576576576577,
+      "spearman_rho_old_vs_new": 0.9999399311836289
+    },
+    "20%": {
+      "channels_different": 10,
+      "total_channels": 7104,
+      "percent_different": 0.14076576576576577,
+      "spearman_rho_old_vs_new": 0.9999399311836289
+    },
+    "30%": {
+      "channels_different": 22,
+      "total_channels": 7104,
+      "percent_different": 0.3096846846846847,
+      "spearman_rho_old_vs_new": 0.9999399311836289
+    },
+    "40%": {
+      "channels_different": 16,
+      "total_channels": 7104,
+      "percent_different": 0.22522522522522523,
+      "spearman_rho_old_vs_new": 0.9999399311836289
+    },
+    "50%": {
+      "channels_different": 20,
+      "total_channels": 7104,
+      "percent_different": 0.28153153153153154,
+      "spearman_rho_old_vs_new": 0.9999399311836289
+    },
+    "60%": {
+      "channels_different": 22,
+      "total_channels": 7104,
+      "percent_different": 0.3096846846846847,
+      "spearman_rho_old_vs_new": 0.9999399311836289
+    },
+    "70%": {
+      "channels_different": 28,
+      "total_channels": 7104,
+      "percent_different": 0.3941441441441441,
+      "spearman_rho_old_vs_new": 0.9999399311836289
+    }
+  },
+  "spearman_old_vs_new_overall": {
+    "rho": 0.9999399311836289,
+    "pvalue": 0.0
+  },
+  "multi_vs_single_criterion_by_ratio": {
+    "10%": {
+      "vs_l1": {
+        "channels_different": 730,
+        "percent_different": 10.2759009009009,
+        "spearman_rho": 0.6993953022030086,
+        "spearman_pvalue": 0.0
+      },
+      "vs_bn": {
+        "channels_different": 1158,
+        "percent_different": 16.300675675675674,
+        "spearman_rho": 0.3917531929390115,
+        "spearman_pvalue": 2.75331013265762e-259
+      },
+      "vs_entropy": {
+        "channels_different": 614,
+        "percent_different": 8.643018018018019,
+        "spearman_rho": 0.6308732303143426,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    },
+    "20%": {
+      "vs_l1": {
+        "channels_different": 1474,
+        "percent_different": 20.748873873873876,
+        "spearman_rho": 0.6993953022030086,
+        "spearman_pvalue": 0.0
+      },
+      "vs_bn": {
+        "channels_different": 2132,
+        "percent_different": 30.011261261261264,
+        "spearman_rho": 0.3917531929390115,
+        "spearman_pvalue": 2.75331013265762e-259
+      },
+      "vs_entropy": {
+        "channels_different": 1024,
+        "percent_different": 14.414414414414415,
+        "spearman_rho": 0.6308732303143426,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    },
+    "30%": {
+      "vs_l1": {
+        "channels_different": 2082,
+        "percent_different": 29.307432432432435,
+        "spearman_rho": 0.6993953022030086,
+        "spearman_pvalue": 0.0
+      },
+      "vs_bn": {
+        "channels_different": 2900,
+        "percent_different": 40.822072072072075,
+        "spearman_rho": 0.3917531929390115,
+        "spearman_pvalue": 2.75331013265762e-259
+      },
+      "vs_entropy": {
+        "channels_different": 1200,
+        "percent_different": 16.89189189189189,
+        "spearman_rho": 0.6308732303143426,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    },
+    "40%": {
+      "vs_l1": {
+        "channels_different": 2478,
+        "percent_different": 34.88175675675676,
+        "spearman_rho": 0.6993953022030086,
+        "spearman_pvalue": 0.0
+      },
+      "vs_bn": {
+        "channels_different": 3372,
+        "percent_different": 47.46621621621622,
+        "spearman_rho": 0.3917531929390115,
+        "spearman_pvalue": 2.75331013265762e-259
+      },
+      "vs_entropy": {
+        "channels_different": 1278,
+        "percent_different": 17.989864864864867,
+        "spearman_rho": 0.6308732303143426,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    },
+    "50%": {
+      "vs_l1": {
+        "channels_different": 2522,
+        "percent_different": 35.501126126126124,
+        "spearman_rho": 0.6993953022030086,
+        "spearman_pvalue": 0.0
+      },
+      "vs_bn": {
+        "channels_different": 3532,
+        "percent_different": 49.718468468468465,
+        "spearman_rho": 0.3917531929390115,
+        "spearman_pvalue": 2.75331013265762e-259
+      },
+      "vs_entropy": {
+        "channels_different": 1356,
+        "percent_different": 19.08783783783784,
+        "spearman_rho": 0.6308732303143426,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    },
+    "60%": {
+      "vs_l1": {
+        "channels_different": 2214,
+        "percent_different": 31.165540540540544,
+        "spearman_rho": 0.6993953022030086,
+        "spearman_pvalue": 0.0
+      },
+      "vs_bn": {
+        "channels_different": 3350,
+        "percent_different": 47.156531531531535,
+        "spearman_rho": 0.3917531929390115,
+        "spearman_pvalue": 2.75331013265762e-259
+      },
+      "vs_entropy": {
+        "channels_different": 1462,
+        "percent_different": 20.579954954954953,
+        "spearman_rho": 0.6308732303143426,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    },
+    "70%": {
+      "vs_l1": {
+        "channels_different": 1726,
+        "percent_different": 24.29617117117117,
+        "spearman_rho": 0.6993953022030086,
+        "spearman_pvalue": 0.0
+      },
+      "vs_bn": {
+        "channels_different": 2856,
+        "percent_different": 40.2027027027027,
+        "spearman_rho": 0.3917531929390115,
+        "spearman_pvalue": 2.75331013265762e-259
+      },
+      "vs_entropy": {
+        "channels_different": 1536,
+        "percent_different": 21.62162162162162,
+        "spearman_rho": 0.6308732303143426,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "checkpoint_baseline": "baseline_9class.pth",
+  "konvensi_arah_skor": {
+    "gm": "dipakai apa adanya (jarak kecil ke median geometrik = redundan = dipangkas)",
+    "cos": "dibalik tandanya (-COS); COS tinggi = redundan = harus berskor rendah setelah dibalik supaya ikut terpangkas"
+  },
+  "pemeriksaan_mask_40pct": {
+    "total_channel": 7104,
+    "gm_vs_cos_persen_beda": 51.35135135135135,
+    "gm_vs_l1_persen_beda": 52.759009009009006,
+    "cos_vs_l1_persen_beda": 48.141891891891895
+  },
+  "seed": 42,
+  "epochs": 30,
+  "catatan_evaluasi": "accuracy pada 'validasi' untuk keputusan metodologis; 'test' hanya untuk pelaporan, TIDAK dipakai untuk memilih apa pun.",
+  "results": {
+    "gm": {
+      "40%": {
+        "checkpoint": "redundansi_gm_40pct_30ep.pth",
+        "validasi": {
+          "accuracy": 0.9310344827586207,
+          "precision": 0.9325865874040317,
+          "recall": 0.9310344827586207,
+          "f1_score": 0.9301609985366791
+        },
+        "test": {
+          "accuracy": 0.9314285714285714,
+          "precision": 0.9335492790417602,
+          "recall": 0.9314285714285714,
+          "f1_score": 0.9307935657064577
+        },
+        "num_params": 1513575,
+        "model_size_mb": 5.861110687255859,
+        "flops": 215008722.0,
+        "inference_ms": 18.660299996554386,
+        "num_params_l1_rasio_sama": 1513575,
+        "num_params_identik_dengan_l1": true,
+        "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,513,575)"
+      },
+      "50%": {
+        "checkpoint": "redundansi_gm_50pct_30ep.pth",
+        "validasi": {
+          "accuracy": 0.9137931034482759,
+          "precision": 0.9148104936671179,
+          "recall": 0.9137931034482759,
+          "f1_score": 0.9137520129950744
+        },
+        "test": {
+          "accuracy": 0.9257142857142857,
+          "precision": 0.9302097850998106,
+          "recall": 0.9257142857142857,
+          "f1_score": 0.9254472392645959
+        },
+        "num_params": 1331945,
+        "model_size_mb": 5.157291412353516,
+        "flops": 186462400.0,
+        "inference_ms": 16.260949996649288,
+        "num_params_l1_rasio_sama": 1331945,
+        "num_params_identik_dengan_l1": true,
+        "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,331,945)"
+      }
+    },
+    "cos": {
+      "40%": {
+        "checkpoint": "redundansi_cos_40pct_30ep.pth",
+        "validasi": {
+          "accuracy": 0.9310344827586207,
+          "precision": 0.9311211457763182,
+          "recall": 0.9310344827586207,
+          "f1_score": 0.9303918468851408
+        },
+        "test": {
+          "accuracy": 0.9257142857142857,
+          "precision": 0.9295840032982888,
+          "recall": 0.9257142857142857,
+          "f1_score": 0.9258329879404517
+        },
+        "num_params": 1513575,
+        "model_size_mb": 5.861110687255859,
+        "flops": 215008722.0,
+        "inference_ms": 18.521749996580184,
+        "num_params_l1_rasio_sama": 1513575,
+        "num_params_identik_dengan_l1": true,
+        "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,513,575)"
+      },
+      "50%": {
+        "checkpoint": "redundansi_cos_50pct_30ep.pth",
+        "validasi": {
+          "accuracy": 0.8908045977011494,
+          "precision": 0.8919106314637169,
+          "recall": 0.8908045977011494,
+          "f1_score": 0.8900814702538841
+        },
+        "test": {
+          "accuracy": 0.88,
+          "precision": 0.8830273616693054,
+          "recall": 0.88,
+          "f1_score": 0.8795206088289648
+        },
+        "num_params": 1331945,
+        "model_size_mb": 5.157291412353516,
+        "flops": 186462400.0,
+        "inference_ms": 17.398450007021893,
+        "num_params_l1_rasio_sama": 1331945,
+        "num_params_identik_dengan_l1": true,
+        "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,331,945)"
+      }
+    }
+  },
+  "status": "SELESAI",
+  "total_time_seconds": 11027.816162109375
+}

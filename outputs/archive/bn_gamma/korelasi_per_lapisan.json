@@ -1,0 +1,194 @@
+{
+  "checkpoint": "baseline_9class.pth",
+  "entropy_calibration": {
+    "source_split": "train",
+    "samples_per_class": 20,
+    "seed": 42
+  },
+  "per_layer": [
+    {
+      "layer_idx": 0,
+      "block_idx_mobilenetv2": 2,
+      "jumlah_channel": 96,
+      "spearman_l1_vs_entropi": -0.3089120998372219,
+      "spearman_l1_vs_entropi_pvalue": 0.002196232481314649,
+      "spearman_l1_vs_bn": 0.32093054801953336,
+      "spearman_l1_vs_bn_pvalue": 0.0014323602687173844,
+      "entropi_mentah_rata_rata": 4.827341079711914,
+      "entropi_mentah_simpangan_baku": 1.5056840181350708
+    },
+    {
+      "layer_idx": 1,
+      "block_idx_mobilenetv2": 3,
+      "jumlah_channel": 144,
+      "spearman_l1_vs_entropi": 0.2776304155614501,
+      "spearman_l1_vs_entropi_pvalue": 0.0007543855516235656,
+      "spearman_l1_vs_bn": 0.1628848163330922,
+      "spearman_l1_vs_bn_pvalue": 0.05110108853867563,
+      "entropi_mentah_rata_rata": 4.339846134185791,
+      "entropi_mentah_simpangan_baku": 1.3132458925247192
+    },
+    {
+      "layer_idx": 2,
+      "block_idx_mobilenetv2": 4,
+      "jumlah_channel": 144,
+      "spearman_l1_vs_entropi": 0.15469817538783057,
+      "spearman_l1_vs_entropi_pvalue": 0.06411774319940013,
+      "spearman_l1_vs_bn": 0.11887709991158267,
+      "spearman_l1_vs_bn_pvalue": 0.15586116200284422,
+      "entropi_mentah_rata_rata": 5.539371967315674,
+      "entropi_mentah_simpangan_baku": 1.3976112604141235
+    },
+    {
+      "layer_idx": 3,
+      "block_idx_mobilenetv2": 5,
+      "jumlah_channel": 192,
+      "spearman_l1_vs_entropi": 0.1858062284675691,
+      "spearman_l1_vs_entropi_pvalue": 0.009871356336070898,
+      "spearman_l1_vs_bn": 0.38678858204703903,
+      "spearman_l1_vs_bn_pvalue": 2.995262585424832e-08,
+      "entropi_mentah_rata_rata": 3.843080520629883,
+      "entropi_mentah_simpangan_baku": 1.371219277381897
+    },
+    {
+      "layer_idx": 4,
+      "block_idx_mobilenetv2": 6,
+      "jumlah_channel": 192,
+      "spearman_l1_vs_entropi": 0.23463567805116245,
+      "spearman_l1_vs_entropi_pvalue": 0.0010535198412150158,
+      "spearman_l1_vs_bn": 0.2062569514146977,
+      "spearman_l1_vs_bn_pvalue": 0.0041015366700361796,
+      "entropi_mentah_rata_rata": 3.5426180362701416,
+      "entropi_mentah_simpangan_baku": 1.5566295385360718
+    },
+    {
+      "layer_idx": 5,
+      "block_idx_mobilenetv2": 7,
+      "jumlah_channel": 192,
+      "spearman_l1_vs_entropi": -0.06262546455795784,
+      "spearman_l1_vs_entropi_pvalue": 0.38816780348906016,
+      "spearman_l1_vs_bn": 0.20013122914575593,
+      "spearman_l1_vs_bn_pvalue": 0.005382479158194926,
+      "entropi_mentah_rata_rata": 6.138027191162109,
+      "entropi_mentah_simpangan_baku": 1.173617959022522
+    },
+    {
+      "layer_idx": 6,
+      "block_idx_mobilenetv2": 8,
+      "jumlah_channel": 384,
+      "spearman_l1_vs_entropi": 0.22565549659218065,
+      "spearman_l1_vs_entropi_pvalue": 7.998121379675302e-06,
+      "spearman_l1_vs_bn": 0.45645069682275946,
+      "spearman_l1_vs_bn_pvalue": 3.6911987186770675e-21,
+      "entropi_mentah_rata_rata": 3.99835467338562,
+      "entropi_mentah_simpangan_baku": 1.3572601079940796
+    },
+    {
+      "layer_idx": 7,
+      "block_idx_mobilenetv2": 9,
+      "jumlah_channel": 384,
+      "spearman_l1_vs_entropi": 0.13104170150251673,
+      "spearman_l1_vs_entropi_pvalue": 0.010152114797684896,
+      "spearman_l1_vs_bn": 0.3505491082025024,
+      "spearman_l1_vs_bn_pvalue": 1.5204593992872147e-12,
+      "entropi_mentah_rata_rata": 4.031138896942139,
+      "entropi_mentah_simpangan_baku": 1.5112096071243286
+    },
+    {
+      "layer_idx": 8,
+      "block_idx_mobilenetv2": 10,
+      "jumlah_channel": 384,
+      "spearman_l1_vs_entropi": 0.3149472666951713,
+      "spearman_l1_vs_entropi_pvalue": 2.7380150462030663e-10,
+      "spearman_l1_vs_bn": 0.24760689701942967,
+      "spearman_l1_vs_bn_pvalue": 8.970326196019096e-07,
+      "entropi_mentah_rata_rata": 3.8381595611572266,
+      "entropi_mentah_simpangan_baku": 1.8014287948608398
+    },
+    {
+      "layer_idx": 9,
+      "block_idx_mobilenetv2": 11,
+      "jumlah_channel": 384,
+      "spearman_l1_vs_entropi": 0.2448424943203011,
+      "spearman_l1_vs_entropi_pvalue": 1.1954784844103107e-06,
+      "spearman_l1_vs_bn": 0.3282548065511512,
+      "spearman_l1_vs_bn_pvalue": 4.249351492698283e-11,
+      "entropi_mentah_rata_rata": 4.85725212097168,
+      "entropi_mentah_simpangan_baku": 1.5666415691375732
+    },
+    {
+      "layer_idx": 10,
+      "block_idx_mobilenetv2": 12,
+      "jumlah_channel": 576,
+      "spearman_l1_vs_entropi": 0.17669884671997474,
+      "spearman_l1_vs_entropi_pvalue": 1.9975403411152683e-05,
+      "spearman_l1_vs_bn": 0.24217485494687668,
+      "spearman_l1_vs_bn_pvalue": 3.922455010694185e-09,
+      "entropi_mentah_rata_rata": 3.667335033416748,
+      "entropi_mentah_simpangan_baku": 1.7542585134506226
+    },
+    {
+      "layer_idx": 11,
+      "block_idx_mobilenetv2": 13,
+      "jumlah_channel": 576,
+      "spearman_l1_vs_entropi": 0.22155132128449637,
+      "spearman_l1_vs_entropi_pvalue": 7.76142672797354e-08,
+      "spearman_l1_vs_bn": 0.24236926380830387,
+      "spearman_l1_vs_bn_pvalue": 3.808502799822235e-09,
+      "entropi_mentah_rata_rata": 3.5975112915039062,
+      "entropi_mentah_simpangan_baku": 1.8580691814422607
+    },
+    {
+      "layer_idx": 12,
+      "block_idx_mobilenetv2": 14,
+      "jumlah_channel": 576,
+      "spearman_l1_vs_entropi": -0.5798763999804776,
+      "spearman_l1_vs_entropi_pvalue": 4.693947621478924e-53,
+      "spearman_l1_vs_bn": 0.6674745058146838,
+      "spearman_l1_vs_bn_pvalue": 1.554812473326631e-75,
+      "entropi_mentah_rata_rata": 4.775269031524658,
+      "entropi_mentah_simpangan_baku": 1.6583406925201416
+    },
+    {
+      "layer_idx": 13,
+      "block_idx_mobilenetv2": 15,
+      "jumlah_channel": 960,
+      "spearman_l1_vs_entropi": -0.11380658778926625,
+      "spearman_l1_vs_entropi_pvalue": 0.0004107814966122036,
+      "spearman_l1_vs_bn": 0.38250189344823504,
+      "spearman_l1_vs_bn_pvalue": 8.303543019618435e-35,
+      "entropi_mentah_rata_rata": 3.859776020050049,
+      "entropi_mentah_simpangan_baku": 1.5411814451217651
+    },
+    {
+      "layer_idx": 14,
+      "block_idx_mobilenetv2": 16,
+      "jumlah_channel": 960,
+      "spearman_l1_vs_entropi": -0.05726438699424816,
+      "spearman_l1_vs_entropi_pvalue": 0.07615982083011863,
+      "spearman_l1_vs_bn": 0.27158941958487365,
+      "spearman_l1_vs_bn_pvalue": 1.0767480298106924e-17,
+      "entropi_mentah_rata_rata": 3.702115535736084,
+      "entropi_mentah_simpangan_baku": 1.7760957479476929
+    },
+    {
+      "layer_idx": 15,
+      "block_idx_mobilenetv2": 17,
+      "jumlah_channel": 960,
+      "spearman_l1_vs_entropi": 0.5063088854263079,
+      "spearman_l1_vs_entropi_pvalue": 1.2340816403593562e-63,
+      "spearman_l1_vs_bn": -0.2065563900351454,
+      "spearman_l1_vs_bn_pvalue": 1.0375179349039996e-10,
+      "entropi_mentah_rata_rata": 4.1858062744140625,
+      "entropi_mentah_simpangan_baku": 1.5071721076965332
+    }
+  ],
+  "ringkasan": {
+    "rho_l1_entropi_min": -0.5798763999804776,
+    "rho_l1_entropi_maks": 0.5063088854263079,
+    "rho_l1_bn_min": -0.2065563900351454,
+    "rho_l1_bn_maks": 0.6674745058146838,
+    "layer_entropi_mentah_terendah": 4,
+    "layer_entropi_mentah_tertinggi": 5
+  }
+}

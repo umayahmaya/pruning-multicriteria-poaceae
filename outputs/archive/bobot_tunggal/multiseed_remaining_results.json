@@ -1,0 +1,162 @@
+{
+  "seeds_new": [
+    123,
+    2024
+  ],
+  "epochs": 30,
+  "weights_used": {
+    "w1": 0.3360824742268041,
+    "w2": 0.3319587628865979,
+    "w3": 0.3319587628865979
+  },
+  "pruning_note": "Mask pemangkasan dihitung sekali dari baseline yang sama dan IDENTIK di semua seed (termasuk seed 42 dari 12_multicriteria_valweights.py) untuk rasio yang sama. Variasi antar seed murni variasi fine-tuning, bukan pemilihan channel. Seed 42 TIDAK dijalankan ulang di sini -- hasilnya dibaca dari outputs/multicriteria_valweights_results.json.",
+  "configs": {
+    "multicriteria_30pct": {
+      "per_seed": {
+        "123": {
+          "accuracy": 0.9371428571428572,
+          "f1_score": 0.9372731838315235,
+          "correct": 164,
+          "total": 175,
+          "checkpoint": "multicriteria_30pct_30ep_valweights_seed123.pth"
+        },
+        "42": {
+          "accuracy": 0.9485714285714286,
+          "f1_score": 0.9488269407774051,
+          "correct": 166,
+          "total": 175,
+          "checkpoint": "multicriteria_30pct_30ep_valweights.pth",
+          "source": "12_multicriteria_valweights.py (tidak dijalankan ulang)"
+        },
+        "2024": {
+          "accuracy": 0.9314285714285714,
+          "f1_score": 0.9314369440083724,
+          "correct": 163,
+          "total": 175,
+          "checkpoint": "multicriteria_30pct_30ep_valweights_seed2024.pth"
+        }
+      },
+      "mean_accuracy": 0.939047619047619,
+      "std_accuracy": 0.0071269664509980195,
+      "n_seeds": 3
+    },
+    "multicriteria_40pct": {
+      "per_seed": {
+        "123": {
+          "accuracy": 0.9314285714285714,
+          "f1_score": 0.9318323271772749,
+          "correct": 163,
+          "total": 175,
+          "checkpoint": "multicriteria_40pct_30ep_valweights_seed123.pth"
+        },
+        "42": {
+          "accuracy": 0.9142857142857143,
+          "f1_score": 0.9145377440934932,
+          "correct": 160,
+          "total": 175,
+          "checkpoint": "multicriteria_40pct_30ep_valweights.pth",
+          "source": "12_multicriteria_valweights.py (tidak dijalankan ulang)"
+        },
+        "2024": {
+          "accuracy": 0.9257142857142857,
+          "f1_score": 0.9256165696337865,
+          "correct": 162,
+          "total": 175,
+          "checkpoint": "multicriteria_40pct_30ep_valweights_seed2024.pth"
+        }
+      },
+      "mean_accuracy": 0.9238095238095237,
+      "std_accuracy": 0.0071269664509979805,
+      "n_seeds": 3
+    },
+    "multicriteria_50pct": {
+      "per_seed": {
+        "123": {
+          "accuracy": 0.92,
+          "f1_score": 0.9190584133068533,
+          "correct": 161,
+          "total": 175,
+          "checkpoint": "multicriteria_50pct_30ep_valweights_seed123.pth"
+        },
+        "42": {
+          "accuracy": 0.9142857142857143,
+          "f1_score": 0.9139887139887141,
+          "correct": 160,
+          "total": 175,
+          "checkpoint": "multicriteria_50pct_30ep_valweights.pth",
+          "source": "12_multicriteria_valweights.py (tidak dijalankan ulang)"
+        },
+        "2024": {
+          "accuracy": 0.92,
+          "f1_score": 0.9203787124098664,
+          "correct": 161,
+          "total": 175,
+          "checkpoint": "multicriteria_50pct_30ep_valweights_seed2024.pth"
+        }
+      },
+      "mean_accuracy": 0.9180952380952382,
+      "std_accuracy": 0.002693740118805928,
+      "n_seeds": 3
+    },
+    "multicriteria_10pct": {
+      "per_seed": {
+        "123": {
+          "accuracy": 0.9485714285714286,
+          "f1_score": 0.9487123918343431,
+          "correct": 166,
+          "total": 175,
+          "checkpoint": "multicriteria_10pct_30ep_valweights_seed123.pth"
+        },
+        "42": {
+          "accuracy": 0.9485714285714286,
+          "f1_score": 0.9488458568458569,
+          "correct": 166,
+          "total": 175,
+          "checkpoint": "multicriteria_10pct_30ep_valweights.pth",
+          "source": "12_multicriteria_valweights.py (tidak dijalankan ulang)"
+        },
+        "2024": {
+          "accuracy": 0.9714285714285714,
+          "f1_score": 0.9715257800972087,
+          "correct": 170,
+          "total": 175,
+          "checkpoint": "multicriteria_10pct_30ep_valweights_seed2024.pth"
+        }
+      },
+      "mean_accuracy": 0.9561904761904763,
+      "std_accuracy": 0.010774960475223553,
+      "n_seeds": 3
+    },
+    "multicriteria_70pct": {
+      "per_seed": {
+        "123": {
+          "accuracy": 0.8342857142857143,
+          "f1_score": 0.8346699935695965,
+          "correct": 146,
+          "total": 175,
+          "checkpoint": "multicriteria_70pct_30ep_valweights_seed123.pth"
+        },
+        "42": {
+          "accuracy": 0.84,
+          "f1_score": 0.8387614106730931,
+          "correct": 147,
+          "total": 175,
+          "checkpoint": "multicriteria_70pct_30ep_valweights.pth",
+          "source": "12_multicriteria_valweights.py (tidak dijalankan ulang)"
+        },
+        "2024": {
+          "accuracy": 0.84,
+          "f1_score": 0.8411160047669928,
+          "correct": 147,
+          "total": 175,
+          "checkpoint": "multicriteria_70pct_30ep_valweights_seed2024.pth"
+        }
+      },
+      "mean_accuracy": 0.8380952380952381,
+      "std_accuracy": 0.0026937401188058753,
+      "n_seeds": 3
+    }
+  },
+  "status": "SELESAI",
+  "total_time_seconds": 24046.34730029106
+}

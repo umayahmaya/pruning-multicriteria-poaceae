@@ -1,0 +1,69 @@
+{
+  "eval_split": "val",
+  "results": {
+    "10%": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_10pct_30ep_valweights.pth",
+      "accuracy": 0.9425287356321839,
+      "f1_score": 0.9420334619750317,
+      "num_params": 2055492,
+      "model_size_mb": 7.960845947265625,
+      "flops": 298766039.0,
+      "inference_ms": 24.590872000699164
+    },
+    "20%": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_20pct_30ep_valweights.pth",
+      "accuracy": 0.9540229885057471,
+      "f1_score": 0.9537282640730917,
+      "num_params": 1874851,
+      "model_size_mb": 7.260936737060547,
+      "flops": 270836921.0,
+      "inference_ms": 24.713358999142656
+    },
+    "30%": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_30pct_30ep_valweights.pth",
+      "accuracy": 0.9425287356321839,
+      "f1_score": 0.9416331830124933,
+      "num_params": 1694216,
+      "model_size_mb": 6.5610198974609375,
+      "flops": 242937840.0,
+      "inference_ms": 24.795148999692174
+    },
+    "40%": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_40pct_30ep_valweights.pth",
+      "accuracy": 0.9252873563218391,
+      "f1_score": 0.9244417977176598,
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 27.961696999700507
+    },
+    "50%": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_50pct_30ep_valweights.pth",
+      "accuracy": 0.896551724137931,
+      "f1_score": 0.896177486073905,
+      "num_params": 1331945,
+      "model_size_mb": 5.157291412353516,
+      "flops": 186462400.0,
+      "inference_ms": 20.799804999987828
+    },
+    "60%": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_60pct_30ep_valweights.pth",
+      "accuracy": 0.8448275862068966,
+      "f1_score": 0.845330031911741,
+      "num_params": 1152036,
+      "model_size_mb": 4.460235595703125,
+      "flops": 159010199.0,
+      "inference_ms": 19.423550000065006
+    },
+    "70%": {
+      "checkpoint": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\checkpoints\\multicriteria_70pct_30ep_valweights.pth",
+      "accuracy": 0.8218390804597702,
+      "f1_score": 0.8202605378482289,
+      "num_params": 971395,
+      "model_size_mb": 3.760326385498047,
+      "flops": 131081081.0,
+      "inference_ms": 16.81817599950591
+    }
+  },
+  "status": "SELESAI"
+}
