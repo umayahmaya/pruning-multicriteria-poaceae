@@ -1,0 +1,3777 @@
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+======================================================================
+VALIDASI MULTI-SEED -- LIMA RASIO TERSISA (10/30/40/50/70%)
+======================================================================
+  Seed      : [42, 123, 2024] (SEMUA dilatih fresh, termasuk 42 -- atas instruksi eksplisit)
+  Rasio     : [10, 30, 40, 50, 70]%
+  Epoch     : 30
+  Device    : cpu
+
+[INFO] Memuat baseline & menghitung skor L1, GM-Ekspansi, Entropi sekali (dipakai untuk kelima rasio di ketiga seed)...
+[INFO] MobileNetV2 tanpa pretrained dimuat.
+[INFO] Classifier head diganti: 1280 -> 9 kelas
+[INFO] Checkpoint dimuat: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\baseline_9class.pth
+  Best Acc: 0.9367816091954023
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+[L1-Norm] Dihitung untuk 16 lapisan depthwise (skip t=1)
+[GM-Ekspansi] Dihitung untuk 16 lapisan (skip t=1)
+[Entropi] Dihitung untuk 16 lapisan menggunakan 180 gambar kalibrasi (20 per kelas x 9 kelas, seed=42)
+
+[INFO] Rasio 10%: bobot w_L1=0.3333333333, w_GM=0.3333333333, w_Ent=0.3333333333 (dari multicriteria_per_rasio.json, tidak dihitung ulang)
+[WSM] Bobot: w1(L1)=0.3333, w2(BN)=0.3333, w3(H)=0.3333
+[WSM] Verifikasi: w1+w2+w3 = 1.0000
+[WSM] Skor gabungan dihitung untuk 16 lapisan
+[Pruning] Rasio: 10%
+  Channel total  : 7104
+  Channel dipangkas: 705
+  Channel tersisa  : 6399
+
+[INFO] Rasio 30%: bobot w_L1=0.4549878345, w_GM=0.3333333333, w_Ent=0.2116788321 (dari multicriteria_per_rasio.json, tidak dihitung ulang)
+[WSM] Bobot: w1(L1)=0.4550, w2(BN)=0.3333, w3(H)=0.2117
+[WSM] Verifikasi: w1+w2+w3 = 1.0000
+[WSM] Skor gabungan dihitung untuk 16 lapisan
+[Pruning] Rasio: 30%
+  Channel total  : 7104
+  Channel dipangkas: 2125
+  Channel tersisa  : 4979
+
+[INFO] Rasio 40%: bobot w_L1=0.5443037975, w_GM=0.3333333333, w_Ent=0.1223628692 (dari multicriteria_per_rasio.json, tidak dihitung ulang)
+[WSM] Bobot: w1(L1)=0.5443, w2(BN)=0.3333, w3(H)=0.1224
+[WSM] Verifikasi: w1+w2+w3 = 1.0000
+[WSM] Skor gabungan dihitung untuk 16 lapisan
+[Pruning] Rasio: 40%
+  Channel total  : 7104
+  Channel dipangkas: 2834
+  Channel tersisa  : 4270
+
+[INFO] Rasio 50%: bobot w_L1=0.4655035686, w_GM=0.4655035686, w_Ent=0.0689928628 (dari multicriteria_per_rasio.json, tidak dihitung ulang)
+[WSM] Bobot: w1(L1)=0.4655, w2(BN)=0.4655, w3(H)=0.0690
+[WSM] Verifikasi: w1+w2+w3 = 1.0000
+[WSM] Skor gabungan dihitung untuk 16 lapisan
+[Pruning] Rasio: 50%
+  Channel total  : 7104
+  Channel dipangkas: 3552
+  Channel tersisa  : 3552
+
+[INFO] Rasio 70%: bobot w_L1=0.0860534125, w_GM=0.3827893175, w_Ent=0.5311572700 (dari multicriteria_per_rasio.json, tidak dihitung ulang)
+[WSM] Bobot: w1(L1)=0.0861, w2(BN)=0.3828, w3(H)=0.5312
+[WSM] Verifikasi: w1+w2+w3 = 1.0000
+[WSM] Skor gabungan dihitung untuk 16 lapisan
+[Pruning] Rasio: 70%
+  Channel total  : 7104
+  Channel dipangkas: 4966
+  Channel tersisa  : 2138
+
+>>> Run 1/15 | rasio=10% seed=42 | Waktu berjalan: 0.0 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 10% seed=42 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 10% seed=42 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.0723 Acc: 0.9606
+  val   Loss: 0.3162 Acc: 0.9253
+  >> Model terbaik diperbarui! Val Acc: 0.9253
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.0761 Acc: 0.9643
+  val   Loss: 0.3096 Acc: 0.9195
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0869 Acc: 0.9606
+  val   Loss: 0.3015 Acc: 0.9425
+  >> Model terbaik diperbarui! Val Acc: 0.9425
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0581 Acc: 0.9692
+  val   Loss: 0.2913 Acc: 0.9310
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0421 Acc: 0.9704
+  val   Loss: 0.2739 Acc: 0.9425
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0226 Acc: 0.9803
+  val   Loss: 0.2950 Acc: 0.9425
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0410 Acc: 0.9729
+  val   Loss: 0.3055 Acc: 0.9253
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0344 Acc: 0.9741
+  val   Loss: 0.3195 Acc: 0.9425
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0299 Acc: 0.9741
+  val   Loss: 0.2838 Acc: 0.9310
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0302 Acc: 0.9754
+  val   Loss: 0.3013 Acc: 0.9425
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0327 Acc: 0.9741
+  val   Loss: 0.2992 Acc: 0.9425
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0377 Acc: 0.9754
+  val   Loss: 0.3053 Acc: 0.9425
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0307 Acc: 0.9766
+  val   Loss: 0.3039 Acc: 0.9425
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0155 Acc: 0.9828
+  val   Loss: 0.3002 Acc: 0.9483
+  >> Model terbaik diperbarui! Val Acc: 0.9483
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0345 Acc: 0.9741
+  val   Loss: 0.3049 Acc: 0.9483
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0254 Acc: 0.9778
+  val   Loss: 0.3022 Acc: 0.9368
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0289 Acc: 0.9754
+  val   Loss: 0.3122 Acc: 0.9425
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0223 Acc: 0.9840
+  val   Loss: 0.3097 Acc: 0.9368
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0357 Acc: 0.9729
+  val   Loss: 0.3056 Acc: 0.9368
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0297 Acc: 0.9766
+  val   Loss: 0.3006 Acc: 0.9425
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0189 Acc: 0.9803
+  val   Loss: 0.3012 Acc: 0.9368
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0175 Acc: 0.9803
+  val   Loss: 0.3110 Acc: 0.9425
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0295 Acc: 0.9717
+  val   Loss: 0.3032 Acc: 0.9425
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0224 Acc: 0.9791
+  val   Loss: 0.2975 Acc: 0.9368
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0182 Acc: 0.9803
+  val   Loss: 0.3005 Acc: 0.9425
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0292 Acc: 0.9778
+  val   Loss: 0.3138 Acc: 0.9425
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0169 Acc: 0.9828
+  val   Loss: 0.3145 Acc: 0.9368
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0289 Acc: 0.9766
+  val   Loss: 0.3072 Acc: 0.9368
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0238 Acc: 0.9803
+  val   Loss: 0.3060 Acc: 0.9425
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0271 Acc: 0.9754
+  val   Loss: 0.2986 Acc: 0.9368
+
+[SELESAI] Multi-Kriteria-PerRasio 10% seed=42 - Best Val Acc: 0.9483
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_10pct_30ep_seed42.pth
+[INFO] Inferensi: median=33.40 ms (rata-rata=33.39 +/- 2.91 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9483 (94.83%)
+  Precision    : 0.9497
+  Recall       : 0.9483
+  F1-Score     : 0.9479
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 33.40 ms (median, std=2.91, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8636    0.9500    0.9048        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9474    0.9474    0.9474        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9483       174
+          macro avg     0.9499    0.9491    0.9485       174
+       weighted avg     0.9497    0.9483    0.9479       174
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+======================================================================
+VALIDASI MULTI-SEED -- LIMA RASIO TERSISA (10/30/40/50/70%)
+======================================================================
+  Seed      : [42, 123, 2024] (SEMUA dilatih fresh, termasuk 42 -- atas instruksi eksplisit)
+  Rasio     : [10, 30, 40, 50, 70]%
+  Epoch     : 30
+  Device    : cpu
+
+[INFO] Memuat baseline & menghitung skor L1, GM-Ekspansi, Entropi sekali (dipakai untuk kelima rasio di ketiga seed)...
+[INFO] MobileNetV2 tanpa pretrained dimuat.
+[INFO] Classifier head diganti: 1280 -> 9 kelas
+[INFO] Checkpoint dimuat: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\baseline_9class.pth
+  Best Acc: 0.9367816091954023
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+[L1-Norm] Dihitung untuk 16 lapisan depthwise (skip t=1)
+[GM-Ekspansi] Dihitung untuk 16 lapisan (skip t=1)
+[Entropi] Dihitung untuk 16 lapisan menggunakan 180 gambar kalibrasi (20 per kelas x 9 kelas, seed=42)
+
+[INFO] Rasio 10%: bobot w_L1=0.3333333333, w_GM=0.3333333333, w_Ent=0.3333333333 (dari multicriteria_per_rasio.json, tidak dihitung ulang)
+[WSM] Bobot: w1(L1)=0.3333, w2(BN)=0.3333, w3(H)=0.3333
+[WSM] Verifikasi: w1+w2+w3 = 1.0000
+[WSM] Skor gabungan dihitung untuk 16 lapisan
+[Pruning] Rasio: 10%
+  Channel total  : 7104
+  Channel dipangkas: 705
+  Channel tersisa  : 6399
+
+[INFO] Rasio 30%: bobot w_L1=0.4549878345, w_GM=0.3333333333, w_Ent=0.2116788321 (dari multicriteria_per_rasio.json, tidak dihitung ulang)
+[WSM] Bobot: w1(L1)=0.4550, w2(BN)=0.3333, w3(H)=0.2117
+[WSM] Verifikasi: w1+w2+w3 = 1.0000
+[WSM] Skor gabungan dihitung untuk 16 lapisan
+[Pruning] Rasio: 30%
+  Channel total  : 7104
+  Channel dipangkas: 2125
+  Channel tersisa  : 4979
+
+[INFO] Rasio 40%: bobot w_L1=0.5443037975, w_GM=0.3333333333, w_Ent=0.1223628692 (dari multicriteria_per_rasio.json, tidak dihitung ulang)
+[WSM] Bobot: w1(L1)=0.5443, w2(BN)=0.3333, w3(H)=0.1224
+[WSM] Verifikasi: w1+w2+w3 = 1.0000
+[WSM] Skor gabungan dihitung untuk 16 lapisan
+[Pruning] Rasio: 40%
+  Channel total  : 7104
+  Channel dipangkas: 2834
+  Channel tersisa  : 4270
+
+[INFO] Rasio 50%: bobot w_L1=0.4655035686, w_GM=0.4655035686, w_Ent=0.0689928628 (dari multicriteria_per_rasio.json, tidak dihitung ulang)
+[WSM] Bobot: w1(L1)=0.4655, w2(BN)=0.4655, w3(H)=0.0690
+[WSM] Verifikasi: w1+w2+w3 = 1.0000
+[WSM] Skor gabungan dihitung untuk 16 lapisan
+[Pruning] Rasio: 50%
+  Channel total  : 7104
+  Channel dipangkas: 3552
+  Channel tersisa  : 3552
+
+[INFO] Rasio 70%: bobot w_L1=0.0860534125, w_GM=0.3827893175, w_Ent=0.5311572700 (dari multicriteria_per_rasio.json, tidak dihitung ulang)
+[WSM] Bobot: w1(L1)=0.0861, w2(BN)=0.3828, w3(H)=0.5312
+[WSM] Verifikasi: w1+w2+w3 = 1.0000
+[WSM] Skor gabungan dihitung untuk 16 lapisan
+[Pruning] Rasio: 70%
+  Channel total  : 7104
+  Channel dipangkas: 4966
+  Channel tersisa  : 2138
+
+>>> Run 1/15 | rasio=10% seed=42 | Waktu berjalan: 0.0 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+[SKIP] Multi-Kriteria-PerRasio 10% seed=42: checkpoint sudah ada (multicriteria_per_rasio_10pct_30ep_seed42.pth)
+[INFO] MobileNetV2 tanpa pretrained dimuat.
+[INFO] Classifier head diganti: 1280 -> 9 kelas
+[INFO] Checkpoint dimuat: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_10pct_30ep_seed42.pth
+  Best Acc: 0.9482758620689655
+[INFO] Inferensi: median=40.01 ms (rata-rata=40.25 +/- 1.12 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9483 (94.83%)
+  Precision    : 0.9497
+  Recall       : 0.9483
+  F1-Score     : 0.9479
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 40.01 ms (median, std=1.12, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8636    0.9500    0.9048        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9474    0.9474    0.9474        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9483       174
+          macro avg     0.9499    0.9491    0.9485       174
+       weighted avg     0.9497    0.9483    0.9479       174
+
+[INFO] Inferensi: median=40.55 ms (rata-rata=40.89 +/- 1.81 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9486 (94.86%)
+  Precision    : 0.9527
+  Recall       : 0.9486
+  F1-Score     : 0.9489
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 40.55 ms (median, std=1.81, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8182    0.9474    0.8780        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9500    0.9500    0.9500        20
+  Healthy_Sugarcane     0.9444    0.8500    0.8947        20
+    Leaf_Blast_Rice     1.0000    0.8421    0.9143        19
+   Mosaic_Sugarcane     0.8571    0.9474    0.9000        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9486       175
+          macro avg     0.9522    0.9485    0.9486       175
+       weighted avg     0.9527    0.9486    0.9489       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 2/15 | rasio=10% seed=123 | Waktu berjalan: 1.6 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 10% seed=123 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 10% seed=123 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.0853 Acc: 0.9581
+  val   Loss: 0.2835 Acc: 0.9253
+  >> Model terbaik diperbarui! Val Acc: 0.9253
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.0547 Acc: 0.9667
+  val   Loss: 0.2657 Acc: 0.9253
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0669 Acc: 0.9655
+  val   Loss: 0.2882 Acc: 0.9310
+  >> Model terbaik diperbarui! Val Acc: 0.9310
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0661 Acc: 0.9631
+  val   Loss: 0.3212 Acc: 0.9195
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0391 Acc: 0.9741
+  val   Loss: 0.3128 Acc: 0.9253
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0521 Acc: 0.9643
+  val   Loss: 0.2953 Acc: 0.9253
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0385 Acc: 0.9729
+  val   Loss: 0.3079 Acc: 0.9195
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0347 Acc: 0.9766
+  val   Loss: 0.3100 Acc: 0.9253
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0317 Acc: 0.9717
+  val   Loss: 0.3363 Acc: 0.9253
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0223 Acc: 0.9778
+  val   Loss: 0.3306 Acc: 0.9310D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0170 Acc: 0.9791
+  val   Loss: 0.3154 Acc: 0.9310
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0212 Acc: 0.9803
+  val   Loss: 0.3162 Acc: 0.9310
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0231 Acc: 0.9791
+  val   Loss: 0.3100 Acc: 0.9368
+  >> Model terbaik diperbarui! Val Acc: 0.9368
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0268 Acc: 0.9754
+  val   Loss: 0.3203 Acc: 0.9310
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0242 Acc: 0.9778
+  val   Loss: 0.3047 Acc: 0.9310
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0199 Acc: 0.9778
+  val   Loss: 0.3153 Acc: 0.9368
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0306 Acc: 0.9778
+  val   Loss: 0.3203 Acc: 0.9310
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0316 Acc: 0.9741
+  val   Loss: 0.3173 Acc: 0.9310
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0227 Acc: 0.9791
+  val   Loss: 0.3053 Acc: 0.9310
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0211 Acc: 0.9815
+  val   Loss: 0.3018 Acc: 0.9310
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0214 Acc: 0.9791
+  val   Loss: 0.3081 Acc: 0.9253
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0184 Acc: 0.9815
+  val   Loss: 0.3053 Acc: 0.9310
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0155 Acc: 0.9803
+  val   Loss: 0.3185 Acc: 0.9253
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0274 Acc: 0.9791
+  val   Loss: 0.2952 Acc: 0.9310
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0167 Acc: 0.9791
+  val   Loss: 0.3112 Acc: 0.9253
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0226 Acc: 0.9766
+  val   Loss: 0.3061 Acc: 0.9253
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0206 Acc: 0.9791
+  val   Loss: 0.3051 Acc: 0.9310
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0181 Acc: 0.9803
+  val   Loss: 0.3041 Acc: 0.9253
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0207 Acc: 0.9791
+  val   Loss: 0.3112 Acc: 0.9310
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0234 Acc: 0.9778
+  val   Loss: 0.3137 Acc: 0.9253
+
+[SELESAI] Multi-Kriteria-PerRasio 10% seed=123 - Best Val Acc: 0.9368
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_10pct_30ep_seed123.pth
+[INFO] Inferensi: median=39.70 ms (rata-rata=40.03 +/- 2.80 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9368 (93.68%)
+  Precision    : 0.9392
+  Recall       : 0.9368
+  F1-Score     : 0.9359
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 39.70 ms (median, std=2.80, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8261    0.9500    0.8837        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     0.9500    1.0000    0.9744        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9000    0.9474    0.9231        19
+    Leaf_Blast_Rice     0.9375    0.7500    0.8333        20
+   Mosaic_Sugarcane     0.9444    0.8947    0.9189        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9368       174
+          macro avg     0.9395    0.9377    0.9366       174
+       weighted avg     0.9392    0.9368    0.9359       174
+
+[INFO] Inferensi: median=39.48 ms (rata-rata=41.40 +/- 6.24 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9543 (95.43%)
+  Precision    : 0.9577
+  Recall       : 0.9543
+  F1-Score     : 0.9546
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 39.48 ms (median, std=6.24, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8182    0.9474    0.8780        19
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9500    0.9500    0.9500        20
+  Healthy_Sugarcane     0.9500    0.9500    0.9500        20
+    Leaf_Blast_Rice     1.0000    0.8421    0.9143        19
+   Mosaic_Sugarcane     0.9474    0.9474    0.9474        19
+     Rust_Sugarcane     1.0000    0.9500    0.9744        20
+
+           accuracy                         0.9543       175
+          macro avg     0.9573    0.9541    0.9543       175
+       weighted avg     0.9577    0.9543    0.9546       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 3/15 | rasio=10% seed=2024 | Waktu berjalan: 74.1 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 10% seed=2024 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 10% seed=2024 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.0975 Acc: 0.9544
+  val   Loss: 0.3138 Acc: 0.8908
+  >> Model terbaik diperbarui! Val Acc: 0.8908
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.0669 Acc: 0.9667
+  val   Loss: 0.2692 Acc: 0.9253
+  >> Model terbaik diperbarui! Val Acc: 0.9253
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0787 Acc: 0.9594
+  val   Loss: 0.2803 Acc: 0.9253
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0526 Acc: 0.9704
+  val   Loss: 0.2684 Acc: 0.9310
+  >> Model terbaik diperbarui! Val Acc: 0.9310
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0459 Acc: 0.9680
+  val   Loss: 0.2913 Acc: 0.9310
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0361 Acc: 0.9766
+  val   Loss: 0.2868 Acc: 0.9425
+  >> Model terbaik diperbarui! Val Acc: 0.9425
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0373 Acc: 0.9729
+  val   Loss: 0.2602 Acc: 0.9368
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0465 Acc: 0.9680
+  val   Loss: 0.3332 Acc: 0.9310
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0328 Acc: 0.9741
+  val   Loss: 0.2941 Acc: 0.9368
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0232 Acc: 0.9778
+  val   Loss: 0.2862 Acc: 0.9540
+  >> Model terbaik diperbarui! Val Acc: 0.9540
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0229 Acc: 0.9803
+  val   Loss: 0.2724 Acc: 0.9598
+  >> Model terbaik diperbarui! Val Acc: 0.9598
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0264 Acc: 0.9729
+  val   Loss: 0.2846 Acc: 0.9540
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0211 Acc: 0.9778
+  val   Loss: 0.2925 Acc: 0.9425
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0326 Acc: 0.9791
+  val   Loss: 0.2804 Acc: 0.9483
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0371 Acc: 0.9754D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  val   Loss: 0.2889 Acc: 0.9540
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0154 Acc: 0.9815
+  val   Loss: 0.2848 Acc: 0.9425
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0236 Acc: 0.9778
+  val   Loss: 0.2929 Acc: 0.9483
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0191 Acc: 0.9828
+  val   Loss: 0.2921 Acc: 0.9540
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0236 Acc: 0.9791
+  val   Loss: 0.2940 Acc: 0.9540
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0200 Acc: 0.9791
+  val   Loss: 0.2874 Acc: 0.9540
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0273 Acc: 0.9741
+  val   Loss: 0.2820 Acc: 0.9483
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0150 Acc: 0.9815
+  val   Loss: 0.2862 Acc: 0.9425
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0234 Acc: 0.9791
+  val   Loss: 0.2896 Acc: 0.9540
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0201 Acc: 0.9791
+  val   Loss: 0.2842 Acc: 0.9483
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0196 Acc: 0.9778
+  val   Loss: 0.2879 Acc: 0.9540
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0255 Acc: 0.9803
+  val   Loss: 0.2966 Acc: 0.9425
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0220 Acc: 0.9766
+  val   Loss: 0.2917 Acc: 0.9483
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0163 Acc: 0.9815
+  val   Loss: 0.2844 Acc: 0.9483
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0218 Acc: 0.9791
+  val   Loss: 0.2881 Acc: 0.9425
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0225 Acc: 0.9815
+  val   Loss: 0.2903 Acc: 0.9425
+
+[SELESAI] Multi-Kriteria-PerRasio 10% seed=2024 - Best Val Acc: 0.9598
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_10pct_30ep_seed2024.pth
+[INFO] Inferensi: median=39.60 ms (rata-rata=39.93 +/- 1.24 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9598 (95.98%)
+  Precision    : 0.9606
+  Recall       : 0.9598
+  F1-Score     : 0.9592
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 39.60 ms (median, std=1.24, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8636    0.9500    0.9048        20
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9474    0.9474    0.9474        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.9474    0.9474    0.9474        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9598       174
+          macro avg     0.9611    0.9605    0.9599       174
+       weighted avg     0.9606    0.9598    0.9592       174
+
+[INFO] Inferensi: median=39.30 ms (rata-rata=39.48 +/- 0.69 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9600 (96.00%)
+  Precision    : 0.9619
+  Recall       : 0.9600
+  F1-Score     : 0.9602
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 39.30 ms (median, std=0.69, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8571    0.9474    0.9000        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9500    0.9500    0.9500        20
+  Healthy_Sugarcane     0.9048    0.9500    0.9268        20
+    Leaf_Blast_Rice     1.0000    0.8947    0.9444        19
+   Mosaic_Sugarcane     0.9444    0.8947    0.9189        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9600       175
+          macro avg     0.9618    0.9596    0.9600       175
+       weighted avg     0.9619    0.9600    0.9602       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 4/15 | rasio=30% seed=42 | Waktu berjalan: 142.1 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 30% seed=42 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 30% seed=42 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.1068 Acc: 0.9458
+  val   Loss: 0.3230 Acc: 0.8966
+  >> Model terbaik diperbarui! Val Acc: 0.8966
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.0953 Acc: 0.9532
+  val   Loss: 0.2851 Acc: 0.9138
+  >> Model terbaik diperbarui! Val Acc: 0.9138
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0842 Acc: 0.9520
+  val   Loss: 0.2539 Acc: 0.9253
+  >> Model terbaik diperbarui! Val Acc: 0.9253
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0803 Acc: 0.9618
+  val   Loss: 0.3170 Acc: 0.9138
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0581 Acc: 0.9667
+  val   Loss: 0.2708 Acc: 0.9253
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0680 Acc: 0.9581
+  val   Loss: 0.2597 Acc: 0.9310
+  >> Model terbaik diperbarui! Val Acc: 0.9310
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0622 Acc: 0.9667
+  val   Loss: 0.2574 Acc: 0.9310
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0471 Acc: 0.9692
+  val   Loss: 0.2577 Acc: 0.9310
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0520 Acc: 0.9692
+  val   Loss: 0.2447 Acc: 0.9425
+  >> Model terbaik diperbarui! Val Acc: 0.9425
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0614 Acc: 0.9667
+  val   Loss: 0.2431 Acc: 0.9425
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0357 Acc: 0.9754
+  val   Loss: 0.2346 Acc: 0.9425
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0317 Acc: 0.9741
+  val   Loss: 0.2311 Acc: 0.9483
+  >> Model terbaik diperbarui! Val Acc: 0.9483
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0300 Acc: 0.9766
+  val   Loss: 0.2431 Acc: 0.9425
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0407 Acc: 0.9729
+  val   Loss: 0.2450 Acc: 0.9425
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0390 Acc: 0.9717
+  val   Loss: 0.2342 Acc: 0.9483
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0354 Acc: 0.9741
+  val   Loss: 0.2454 Acc: 0.9425
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0254 Acc: 0.9815
+  val   Loss: 0.2455 Acc: 0.9425
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0384 Acc: 0.9704
+  val   Loss: 0.2520 Acc: 0.9425
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0373 Acc: 0.9729
+  val   Loss: 0.2494 Acc: 0.9425
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0382 Acc: 0.9717D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  val   Loss: 0.2582 Acc: 0.9368
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0359 Acc: 0.9704
+  val   Loss: 0.2616 Acc: 0.9425
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0262 Acc: 0.9791
+  val   Loss: 0.2505 Acc: 0.9368
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0312 Acc: 0.9778
+  val   Loss: 0.2558 Acc: 0.9310
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0254 Acc: 0.9791
+  val   Loss: 0.2607 Acc: 0.9425
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0305 Acc: 0.9741
+  val   Loss: 0.2499 Acc: 0.9310
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0280 Acc: 0.9791
+  val   Loss: 0.2491 Acc: 0.9368
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0271 Acc: 0.9803
+  val   Loss: 0.2487 Acc: 0.9310
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0318 Acc: 0.9754
+  val   Loss: 0.2546 Acc: 0.9425
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0453 Acc: 0.9717
+  val   Loss: 0.2525 Acc: 0.9425
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0318 Acc: 0.9766
+  val   Loss: 0.2550 Acc: 0.9425
+
+[SELESAI] Multi-Kriteria-PerRasio 30% seed=42 - Best Val Acc: 0.9483
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_30pct_30ep_seed42.pth
+[INFO] Inferensi: median=33.60 ms (rata-rata=33.76 +/- 0.60 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9483 (94.83%)
+  Precision    : 0.9503
+  Recall       : 0.9483
+  F1-Score     : 0.9481
+  Parameter    : 1,694,216
+  Ukuran (MB)  : 6.56
+  FLOPs        : 242.938 M
+  Inferensi    : 33.60 ms (median, std=0.60, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8261    0.9500    0.8837        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.9500    0.9500    0.9500        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     1.0000    1.0000    1.0000        19
+  Healthy_Sugarcane     0.9474    0.9474    0.9474        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.9474    0.9474    0.9474        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9483       174
+          macro avg     0.9510    0.9491    0.9490       174
+       weighted avg     0.9503    0.9483    0.9481       174
+
+[INFO] Inferensi: median=33.77 ms (rata-rata=33.93 +/- 0.75 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9657 (96.57%)
+  Precision    : 0.9691
+  Recall       : 0.9657
+  F1-Score     : 0.9660
+  Parameter    : 1,694,216
+  Ukuran (MB)  : 6.56
+  FLOPs        : 242.938 M
+  Inferensi    : 33.77 ms (median, std=0.75, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8182    0.9474    0.8780        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9500    0.9500    0.9500        20
+  Healthy_Sugarcane     0.9524    1.0000    0.9756        20
+    Leaf_Blast_Rice     1.0000    0.8421    0.9143        19
+   Mosaic_Sugarcane     1.0000    0.9474    0.9730        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9657       175
+          macro avg     0.9690    0.9652    0.9657       175
+       weighted avg     0.9691    0.9657    0.9660       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 5/15 | rasio=30% seed=123 | Waktu berjalan: 203.6 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 30% seed=123 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 30% seed=123 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.1139 Acc: 0.9421
+  val   Loss: 0.3215 Acc: 0.8736
+  >> Model terbaik diperbarui! Val Acc: 0.8736
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.0596 Acc: 0.9655
+  val   Loss: 0.3036 Acc: 0.9023
+  >> Model terbaik diperbarui! Val Acc: 0.9023
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0637 Acc: 0.9618
+  val   Loss: 0.2808 Acc: 0.9195
+  >> Model terbaik diperbarui! Val Acc: 0.9195
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0757 Acc: 0.9581
+  val   Loss: 0.3111 Acc: 0.9023
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0655 Acc: 0.9667
+  val   Loss: 0.3770 Acc: 0.9195
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0746 Acc: 0.9606
+  val   Loss: 0.3044 Acc: 0.9253
+  >> Model terbaik diperbarui! Val Acc: 0.9253
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0742 Acc: 0.9618
+  val   Loss: 0.2938 Acc: 0.9195
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0605 Acc: 0.9655
+  val   Loss: 0.2823 Acc: 0.9310
+  >> Model terbaik diperbarui! Val Acc: 0.9310
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0477 Acc: 0.9680
+  val   Loss: 0.2771 Acc: 0.9310
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0460 Acc: 0.9729
+  val   Loss: 0.2657 Acc: 0.9368
+  >> Model terbaik diperbarui! Val Acc: 0.9368
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0440 Acc: 0.9729
+  val   Loss: 0.2702 Acc: 0.9310
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0345 Acc: 0.9754
+  val   Loss: 0.2688 Acc: 0.9368
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0566 Acc: 0.9680
+  val   Loss: 0.2900 Acc: 0.9310
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0288 Acc: 0.9778
+  val   Loss: 0.2858 Acc: 0.9253
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0333 Acc: 0.9741
+  val   Loss: 0.2735 Acc: 0.9310
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0335 Acc: 0.9791
+  val   Loss: 0.2757 Acc: 0.9310
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0294 Acc: 0.9766
+  val   Loss: 0.2737 Acc: 0.9310
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0304 Acc: 0.9766
+  val   Loss: 0.2748 Acc: 0.9253
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0251 Acc: 0.9778
+  val   Loss: 0.2672 Acc: 0.9368
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0396 Acc: 0.9741
+  val   Loss: 0.2852 Acc: 0.9368
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0385 Acc: 0.9741
+  val   Loss: 0.2850 Acc: 0.9310
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0259 Acc: 0.9778
+  val   Loss: 0.2776 Acc: 0.9368
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0303 Acc: 0.9791
+  val   Loss: 0.2779 Acc: 0.9425
+  >> Model terbaik diperbarui! Val Acc: 0.9425
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0206 Acc: 0.9803
+  val   Loss: 0.2787 Acc: 0.9368
+
+Epoch 25/30
+----------------------------------------D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  train Loss: 0.0236 Acc: 0.9778
+  val   Loss: 0.2835 Acc: 0.9310
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0236 Acc: 0.9791
+  val   Loss: 0.2754 Acc: 0.9425
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0256 Acc: 0.9766
+  val   Loss: 0.2832 Acc: 0.9425
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0288 Acc: 0.9741
+  val   Loss: 0.2856 Acc: 0.9425
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0259 Acc: 0.9741
+  val   Loss: 0.2759 Acc: 0.9310
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0173 Acc: 0.9828
+  val   Loss: 0.2854 Acc: 0.9310
+
+[SELESAI] Multi-Kriteria-PerRasio 30% seed=123 - Best Val Acc: 0.9425
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_30pct_30ep_seed123.pth
+[INFO] Inferensi: median=33.88 ms (rata-rata=34.17 +/- 1.05 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9425 (94.25%)
+  Precision    : 0.9429
+  Recall       : 0.9425
+  F1-Score     : 0.9420
+  Parameter    : 1,694,216
+  Ukuran (MB)  : 6.56
+  FLOPs        : 242.938 M
+  Inferensi    : 33.88 ms (median, std=1.05, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8571    0.9000    0.8780        20
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9444    0.8947    0.9189        19
+    Leaf_Blast_Rice     0.8889    0.8000    0.8421        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9425       174
+          macro avg     0.9434    0.9436    0.9428       174
+       weighted avg     0.9429    0.9425    0.9420       174
+
+[INFO] Inferensi: median=34.59 ms (rata-rata=34.89 +/- 1.53 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9657 (96.57%)
+  Precision    : 0.9673
+  Recall       : 0.9657
+  F1-Score     : 0.9660
+  Parameter    : 1,694,216
+  Ukuran (MB)  : 6.56
+  FLOPs        : 242.938 M
+  Inferensi    : 34.59 ms (median, std=1.53, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8571    0.9474    0.9000        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9500    0.9500    0.9500        20
+  Healthy_Sugarcane     0.9500    0.9500    0.9500        20
+    Leaf_Blast_Rice     1.0000    0.8947    0.9444        19
+   Mosaic_Sugarcane     0.9474    0.9474    0.9474        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9657       175
+          macro avg     0.9672    0.9655    0.9658       175
+       weighted avg     0.9673    0.9657    0.9660       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 6/15 | rasio=30% seed=2024 | Waktu berjalan: 265.3 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 30% seed=2024 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 30% seed=2024 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.1394 Acc: 0.9397
+  val   Loss: 0.3267 Acc: 0.8908
+  >> Model terbaik diperbarui! Val Acc: 0.8908
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.0880 Acc: 0.9581
+  val   Loss: 0.2838 Acc: 0.9080
+  >> Model terbaik diperbarui! Val Acc: 0.9080
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0900 Acc: 0.9532
+  val   Loss: 0.2927 Acc: 0.9195
+  >> Model terbaik diperbarui! Val Acc: 0.9195
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0836 Acc: 0.9557
+  val   Loss: 0.3291 Acc: 0.9195
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0755 Acc: 0.9631
+  val   Loss: 0.3860 Acc: 0.9138
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0462 Acc: 0.9717
+  val   Loss: 0.2977 Acc: 0.9138
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0677 Acc: 0.9618
+  val   Loss: 0.3036 Acc: 0.9138
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0586 Acc: 0.9631
+  val   Loss: 0.3352 Acc: 0.9368
+  >> Model terbaik diperbarui! Val Acc: 0.9368
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0355 Acc: 0.9704
+  val   Loss: 0.2975 Acc: 0.9368
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0419 Acc: 0.9729
+  val   Loss: 0.3084 Acc: 0.9310
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0471 Acc: 0.9717
+  val   Loss: 0.3045 Acc: 0.9368
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0419 Acc: 0.9717
+  val   Loss: 0.2939 Acc: 0.9368
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0200 Acc: 0.9815
+  val   Loss: 0.2978 Acc: 0.9425
+  >> Model terbaik diperbarui! Val Acc: 0.9425
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0395 Acc: 0.9704
+  val   Loss: 0.2896 Acc: 0.9368
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0341 Acc: 0.9741
+  val   Loss: 0.3055 Acc: 0.9425
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0410 Acc: 0.9717
+  val   Loss: 0.2915 Acc: 0.9483
+  >> Model terbaik diperbarui! Val Acc: 0.9483
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0266 Acc: 0.9754
+  val   Loss: 0.2987 Acc: 0.9368
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0423 Acc: 0.9704
+  val   Loss: 0.3041 Acc: 0.9368
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0393 Acc: 0.9754
+  val   Loss: 0.2949 Acc: 0.9483
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0295 Acc: 0.9729
+  val   Loss: 0.3004 Acc: 0.9425
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0264 Acc: 0.9754
+  val   Loss: 0.2895 Acc: 0.9483
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0229 Acc: 0.9815
+  val   Loss: 0.3061 Acc: 0.9368
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0272 Acc: 0.9766
+  val   Loss: 0.2963 Acc: 0.9425
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0239 Acc: 0.9754
+  val   Loss: 0.2905 Acc: 0.9483
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0380 Acc: 0.9704
+  val   Loss: 0.3011 Acc: 0.9425
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0314 Acc: 0.9741
+  val   Loss: 0.3006 Acc: 0.9425
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0446 Acc: 0.9692
+  val   Loss: 0.2988 Acc: 0.9368
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0342 Acc: 0.9717
+  val   Loss: 0.2943 Acc: 0.9483
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0334 Acc: 0.9766
+  val   Loss: 0.3002 Acc: 0.9368
+
+Epoch 30/30
+----------------------------------------D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  train Loss: 0.0328 Acc: 0.9778
+  val   Loss: 0.2897 Acc: 0.9425
+
+[SELESAI] Multi-Kriteria-PerRasio 30% seed=2024 - Best Val Acc: 0.9483
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_30pct_30ep_seed2024.pth
+[INFO] Inferensi: median=45.13 ms (rata-rata=49.64 +/- 12.59 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9483 (94.83%)
+  Precision    : 0.9497
+  Recall       : 0.9483
+  F1-Score     : 0.9477
+  Parameter    : 1,694,216
+  Ukuran (MB)  : 6.56
+  FLOPs        : 242.938 M
+  Inferensi    : 45.13 ms (median, std=12.59, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8636    0.9500    0.9048        20
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9444    0.8947    0.9189        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9483       174
+          macro avg     0.9499    0.9491    0.9483       174
+       weighted avg     0.9497    0.9483    0.9477       174
+
+[INFO] Inferensi: median=61.20 ms (rata-rata=76.91 +/- 106.08 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9600 (96.00%)
+  Precision    : 0.9630
+  Recall       : 0.9600
+  F1-Score     : 0.9603
+  Parameter    : 1,694,216
+  Ukuran (MB)  : 6.56
+  FLOPs        : 242.938 M
+  Inferensi    : 61.20 ms (median, std=106.08, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8095    0.8947    0.8500        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9048    0.9500    0.9268        20
+  Healthy_Sugarcane     0.9524    1.0000    0.9756        20
+    Leaf_Blast_Rice     1.0000    0.8421    0.9143        19
+   Mosaic_Sugarcane     1.0000    0.9474    0.9730        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9600       175
+          macro avg     0.9630    0.9594    0.9600       175
+       weighted avg     0.9630    0.9600    0.9603       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 7/15 | rasio=40% seed=42 | Waktu berjalan: 332.3 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 40% seed=42 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 40% seed=42 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.1945 Acc: 0.9224
+  val   Loss: 0.3234 Acc: 0.8851
+  >> Model terbaik diperbarui! Val Acc: 0.8851
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.1241 Acc: 0.9433
+  val   Loss: 0.2679 Acc: 0.9253
+  >> Model terbaik diperbarui! Val Acc: 0.9253
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.1208 Acc: 0.9433
+  val   Loss: 0.2556 Acc: 0.9138
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0971 Acc: 0.9557
+  val   Loss: 0.2393 Acc: 0.9253
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0805 Acc: 0.9594
+  val   Loss: 0.2211 Acc: 0.9253
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0733 Acc: 0.9631
+  val   Loss: 0.2141 Acc: 0.9253
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0752 Acc: 0.9581
+  val   Loss: 0.2670 Acc: 0.9138
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0816 Acc: 0.9569
+  val   Loss: 0.2353 Acc: 0.9368
+  >> Model terbaik diperbarui! Val Acc: 0.9368
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0874 Acc: 0.9594
+  val   Loss: 0.2425 Acc: 0.9368
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0465 Acc: 0.9741
+  val   Loss: 0.2855 Acc: 0.9310
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0456 Acc: 0.9754
+  val   Loss: 0.2983 Acc: 0.9195
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0671 Acc: 0.9618
+  val   Loss: 0.2812 Acc: 0.9253
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0448 Acc: 0.9667
+  val   Loss: 0.2667 Acc: 0.9253
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0431 Acc: 0.9704
+  val   Loss: 0.2655 Acc: 0.9253
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0470 Acc: 0.9729
+  val   Loss: 0.2699 Acc: 0.9425
+  >> Model terbaik diperbarui! Val Acc: 0.9425
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0595 Acc: 0.9704
+  val   Loss: 0.2653 Acc: 0.9310
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0479 Acc: 0.9717
+  val   Loss: 0.2557 Acc: 0.9368
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0290 Acc: 0.9778
+  val   Loss: 0.2598 Acc: 0.9368
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0313 Acc: 0.9791
+  val   Loss: 0.2643 Acc: 0.9368
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0375 Acc: 0.9766
+  val   Loss: 0.2654 Acc: 0.9310
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0431 Acc: 0.9692
+  val   Loss: 0.2679 Acc: 0.9310
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0352 Acc: 0.9766
+  val   Loss: 0.2629 Acc: 0.9310
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0426 Acc: 0.9704
+  val   Loss: 0.2638 Acc: 0.9310
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0398 Acc: 0.9729
+  val   Loss: 0.2724 Acc: 0.9310
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0223 Acc: 0.9815
+  val   Loss: 0.2643 Acc: 0.9310
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0258 Acc: 0.9803
+  val   Loss: 0.2664 Acc: 0.9310
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0371 Acc: 0.9754
+  val   Loss: 0.2516 Acc: 0.9310
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0424 Acc: 0.9729
+  val   Loss: 0.2586 Acc: 0.9310
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0413 Acc: 0.9754
+  val   Loss: 0.2650 Acc: 0.9310
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0392 Acc: 0.9704
+  val   Loss: 0.2648 Acc: 0.9310
+
+[SELESAI] Multi-Kriteria-PerRasio 40% seed=42 - Best Val Acc: 0.9425
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_40pct_30ep_seed42.pth
+[INFO] Inferensi: median=19.37 ms (rata-rata=19.63 +/- 0.88 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9425 (94.25%)
+  Precision    : 0.9449
+  Recall       : 0.9425
+  F1-Score     : 0.9417
+  Parameter    : 1,513,575
+  Ukuran (MB)  : 5.86
+  FLOPs        : 215.009 M
+  Inferensi    : 19.37 ms (median, std=0.88, n=300)D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8261    0.9500    0.8837        20
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9444    0.8947    0.9189        19
+    Leaf_Blast_Rice     0.9375    0.7500    0.8333        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9425       174
+          macro avg     0.9453    0.9436    0.9425       174
+       weighted avg     0.9449    0.9425    0.9417       174
+
+[INFO] Inferensi: median=19.48 ms (rata-rata=20.18 +/- 2.22 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9600 (96.00%)
+  Precision    : 0.9625
+  Recall       : 0.9600
+  F1-Score     : 0.9602
+  Parameter    : 1,513,575
+  Ukuran (MB)  : 5.86
+  FLOPs        : 215.009 M
+  Inferensi    : 19.48 ms (median, std=2.22, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.9000    0.9474    0.9231        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Rice     0.8696    1.0000    0.9302        20
+  Healthy_Sugarcane     0.9500    0.9500    0.9500        20
+    Leaf_Blast_Rice     1.0000    0.8947    0.9444        19
+   Mosaic_Sugarcane     0.9444    0.8947    0.9189        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9600       175
+          macro avg     0.9627    0.9596    0.9601       175
+       weighted avg     0.9625    0.9600    0.9602       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 8/15 | rasio=40% seed=123 | Waktu berjalan: 395.7 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 40% seed=123 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 40% seed=123 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.1931 Acc: 0.9138
+  val   Loss: 0.3221 Acc: 0.8678
+  >> Model terbaik diperbarui! Val Acc: 0.8678
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.1190 Acc: 0.9384
+  val   Loss: 0.2814 Acc: 0.8793
+  >> Model terbaik diperbarui! Val Acc: 0.8793
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0831 Acc: 0.9581
+  val   Loss: 0.3107 Acc: 0.9195
+  >> Model terbaik diperbarui! Val Acc: 0.9195
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0902 Acc: 0.9507
+  val   Loss: 0.2831 Acc: 0.9195
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0991 Acc: 0.9495
+  val   Loss: 0.2979 Acc: 0.8908
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0643 Acc: 0.9618
+  val   Loss: 0.2890 Acc: 0.9080
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0483 Acc: 0.9667
+  val   Loss: 0.2643 Acc: 0.9080
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0746 Acc: 0.9618
+  val   Loss: 0.2564 Acc: 0.9310
+  >> Model terbaik diperbarui! Val Acc: 0.9310
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0479 Acc: 0.9704
+  val   Loss: 0.2698 Acc: 0.9310
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0712 Acc: 0.9643
+  val   Loss: 0.2808 Acc: 0.9195
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0496 Acc: 0.9631
+  val   Loss: 0.2740 Acc: 0.9195
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0594 Acc: 0.9680
+  val   Loss: 0.2744 Acc: 0.9253
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0399 Acc: 0.9729
+  val   Loss: 0.2647 Acc: 0.9195
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0600 Acc: 0.9667
+  val   Loss: 0.2720 Acc: 0.9195
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0373 Acc: 0.9729
+  val   Loss: 0.2788 Acc: 0.9253
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0313 Acc: 0.9741
+  val   Loss: 0.2764 Acc: 0.9195
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0386 Acc: 0.9754
+  val   Loss: 0.2683 Acc: 0.9195
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0361 Acc: 0.9741
+  val   Loss: 0.2653 Acc: 0.9195
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0329 Acc: 0.9754
+  val   Loss: 0.2578 Acc: 0.9253
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0241 Acc: 0.9791
+  val   Loss: 0.2600 Acc: 0.9195
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0361 Acc: 0.9778
+  val   Loss: 0.2633 Acc: 0.9368
+  >> Model terbaik diperbarui! Val Acc: 0.9368
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0253 Acc: 0.9791
+  val   Loss: 0.2669 Acc: 0.9253
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0397 Acc: 0.9741
+  val   Loss: 0.2625 Acc: 0.9368
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0306 Acc: 0.9791
+  val   Loss: 0.2628 Acc: 0.9368
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0463 Acc: 0.9754
+  val   Loss: 0.2584 Acc: 0.9368
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0356 Acc: 0.9741
+  val   Loss: 0.2669 Acc: 0.9425
+  >> Model terbaik diperbarui! Val Acc: 0.9425
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0525 Acc: 0.9655
+  val   Loss: 0.2664 Acc: 0.9253
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0368 Acc: 0.9741
+  val   Loss: 0.2748 Acc: 0.9253
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0369 Acc: 0.9754
+  val   Loss: 0.2717 Acc: 0.9310
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0557 Acc: 0.9680
+  val   Loss: 0.2661 Acc: 0.9310
+
+[SELESAI] Multi-Kriteria-PerRasio 40% seed=123 - Best Val Acc: 0.9425
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_40pct_30ep_seed123.pth
+[INFO] Inferensi: median=18.87 ms (rata-rata=19.20 +/- 2.02 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9425 (94.25%)
+  Precision    : 0.9435
+  Recall       : 0.9425
+  F1-Score     : 0.9420
+  Parameter    : 1,513,575
+  Ukuran (MB)  : 5.86
+  FLOPs        : 215.009 M
+  Inferensi    : 18.87 ms (median, std=2.02, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8571    0.9000    0.8780        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.9500    0.9500    0.9500        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     1.0000    0.8947    0.9444        19
+    Leaf_Blast_Rice     0.8889    0.8000    0.8421        20
+   Mosaic_Sugarcane     0.9048    1.0000    0.9500        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9425       174
+          macro avg     0.9442    0.9436    0.9429       174
+       weighted avg     0.9435    0.9425    0.9420       174
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+[INFO] Inferensi: median=19.14 ms (rata-rata=19.34 +/- 0.65 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9600 (96.00%)
+  Precision    : 0.9614
+  Recall       : 0.9600
+  F1-Score     : 0.9601
+  Parameter    : 1,513,575
+  Ukuran (MB)  : 5.86
+  FLOPs        : 215.009 M
+  Inferensi    : 19.14 ms (median, std=0.65, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8500    0.8947    0.8718        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9048    0.9500    0.9268        20
+  Healthy_Sugarcane     0.9524    1.0000    0.9756        20
+    Leaf_Blast_Rice     0.9444    0.8947    0.9189        19
+   Mosaic_Sugarcane     1.0000    0.8947    0.9444        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9600       175
+          macro avg     0.9613    0.9594    0.9597       175
+       weighted avg     0.9614    0.9600    0.9601       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 9/15 | rasio=40% seed=2024 | Waktu berjalan: 437.4 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 40% seed=2024 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 40% seed=2024 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.1965 Acc: 0.9212
+  val   Loss: 0.2896 Acc: 0.8851
+  >> Model terbaik diperbarui! Val Acc: 0.8851
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.1627 Acc: 0.9224
+  val   Loss: 0.2284 Acc: 0.9310
+  >> Model terbaik diperbarui! Val Acc: 0.9310
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0926 Acc: 0.9594
+  val   Loss: 0.2257 Acc: 0.9310
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0955 Acc: 0.9446
+  val   Loss: 0.2376 Acc: 0.9368
+  >> Model terbaik diperbarui! Val Acc: 0.9368
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0710 Acc: 0.9631
+  val   Loss: 0.2818 Acc: 0.9080
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0981 Acc: 0.9495
+  val   Loss: 0.2346 Acc: 0.9253
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0603 Acc: 0.9631
+  val   Loss: 0.2396 Acc: 0.9310
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0543 Acc: 0.9704
+  val   Loss: 0.2555 Acc: 0.9368
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0540 Acc: 0.9655
+  val   Loss: 0.2930 Acc: 0.9253
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0841 Acc: 0.9557
+  val   Loss: 0.2818 Acc: 0.9368
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0560 Acc: 0.9643
+  val   Loss: 0.2677 Acc: 0.9310
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0366 Acc: 0.9754
+  val   Loss: 0.2641 Acc: 0.9310
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0513 Acc: 0.9692
+  val   Loss: 0.2624 Acc: 0.9310
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0369 Acc: 0.9754
+  val   Loss: 0.2698 Acc: 0.9368
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0325 Acc: 0.9754
+  val   Loss: 0.2614 Acc: 0.9253
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0407 Acc: 0.9704
+  val   Loss: 0.2615 Acc: 0.9310
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0581 Acc: 0.9618
+  val   Loss: 0.2625 Acc: 0.9195
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0336 Acc: 0.9791
+  val   Loss: 0.2603 Acc: 0.9368
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0392 Acc: 0.9729
+  val   Loss: 0.2622 Acc: 0.9310
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0324 Acc: 0.9778
+  val   Loss: 0.2517 Acc: 0.9368
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0439 Acc: 0.9680
+  val   Loss: 0.2477 Acc: 0.9425
+  >> Model terbaik diperbarui! Val Acc: 0.9425
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0456 Acc: 0.9680
+  val   Loss: 0.2539 Acc: 0.9310
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0534 Acc: 0.9692
+  val   Loss: 0.2537 Acc: 0.9253
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0444 Acc: 0.9729
+  val   Loss: 0.2480 Acc: 0.9368
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0333 Acc: 0.9778
+  val   Loss: 0.2528 Acc: 0.9195
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0304 Acc: 0.9766
+  val   Loss: 0.2510 Acc: 0.9425
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0362 Acc: 0.9741
+  val   Loss: 0.2525 Acc: 0.9425
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0281 Acc: 0.9766
+  val   Loss: 0.2471 Acc: 0.9425
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0419 Acc: 0.9704
+  val   Loss: 0.2513 Acc: 0.9368
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0386 Acc: 0.9754
+  val   Loss: 0.2532 Acc: 0.9368
+
+[SELESAI] Multi-Kriteria-PerRasio 40% seed=2024 - Best Val Acc: 0.9425
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_40pct_30ep_seed2024.pth
+[INFO] Inferensi: median=19.57 ms (rata-rata=19.81 +/- 0.75 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9425 (94.25%)
+  Precision    : 0.9429
+  Recall       : 0.9425
+  F1-Score     : 0.9420
+  Parameter    : 1,513,575
+  Ukuran (MB)  : 5.86
+  FLOPs        : 215.009 M
+  Inferensi    : 19.57 ms (median, std=0.75, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8571    0.9000    0.8780        20
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9444    0.8947    0.9189        19
+    Leaf_Blast_Rice     0.8889    0.8000    0.8421        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9425       174
+          macro avg     0.9434    0.9436    0.9428       174
+       weighted avg     0.9429    0.9425    0.9420       174
+
+[INFO] Inferensi: median=18.86 ms (rata-rata=19.05 +/- 0.67 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9657 (96.57%)
+  Precision    : 0.9682
+  Recall       : 0.9657
+  F1-Score     : 0.9659
+  Parameter    : 1,513,575
+  Ukuran (MB)  : 5.86
+  FLOPs        : 215.009 M
+  Inferensi    : 18.86 ms (median, std=0.67, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8571    0.9474    0.9000        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9048    0.9500    0.9268        20
+  Healthy_Sugarcane     0.9524    1.0000    0.9756        20
+    Leaf_Blast_Rice     1.0000    0.8947    0.9444        19
+   Mosaic_Sugarcane     1.0000    0.8947    0.9444        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9657       175
+          macro avg     0.9683    0.9652    0.9657       175
+       weighted avg     0.9682    0.9657    0.9659       175
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 10/15 | rasio=50% seed=42 | Waktu berjalan: 479.0 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 50% seed=42 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 50% seed=42 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.3389 Acc: 0.8707
+  val   Loss: 0.4359 Acc: 0.8333
+  >> Model terbaik diperbarui! Val Acc: 0.8333
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.2118 Acc: 0.9039
+  val   Loss: 0.3547 Acc: 0.8908
+  >> Model terbaik diperbarui! Val Acc: 0.8908
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.1706 Acc: 0.9249
+  val   Loss: 0.3499 Acc: 0.8851
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.1580 Acc: 0.9298
+  val   Loss: 0.3294 Acc: 0.9080
+  >> Model terbaik diperbarui! Val Acc: 0.9080
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.1303 Acc: 0.9483
+  val   Loss: 0.2984 Acc: 0.9138
+  >> Model terbaik diperbarui! Val Acc: 0.9138
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.1078 Acc: 0.9458
+  val   Loss: 0.2873 Acc: 0.9253
+  >> Model terbaik diperbarui! Val Acc: 0.9253
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.1139 Acc: 0.9458
+  val   Loss: 0.3087 Acc: 0.8908
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0981 Acc: 0.9520
+  val   Loss: 0.2625 Acc: 0.9195
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0993 Acc: 0.9520
+  val   Loss: 0.2865 Acc: 0.9195
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0861 Acc: 0.9606
+  val   Loss: 0.3262 Acc: 0.9253
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0794 Acc: 0.9680
+  val   Loss: 0.3105 Acc: 0.9195
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0764 Acc: 0.9544
+  val   Loss: 0.3005 Acc: 0.9195
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0719 Acc: 0.9606
+  val   Loss: 0.3006 Acc: 0.9253
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0636 Acc: 0.9655
+  val   Loss: 0.3138 Acc: 0.9195
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0734 Acc: 0.9618
+  val   Loss: 0.3036 Acc: 0.9195
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0606 Acc: 0.9692
+  val   Loss: 0.2929 Acc: 0.9195
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0792 Acc: 0.9581
+  val   Loss: 0.2867 Acc: 0.9253
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0757 Acc: 0.9643
+  val   Loss: 0.3066 Acc: 0.9195
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0686 Acc: 0.9655
+  val   Loss: 0.3045 Acc: 0.9195
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0753 Acc: 0.9631
+  val   Loss: 0.3013 Acc: 0.9253
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0686 Acc: 0.9631
+  val   Loss: 0.3026 Acc: 0.9253
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0730 Acc: 0.9631
+  val   Loss: 0.2977 Acc: 0.9253
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0820 Acc: 0.9544
+  val   Loss: 0.3051 Acc: 0.9253
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0569 Acc: 0.9667
+  val   Loss: 0.3038 Acc: 0.9253
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0590 Acc: 0.9692
+  val   Loss: 0.2997 Acc: 0.9253
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0672 Acc: 0.9667
+  val   Loss: 0.3017 Acc: 0.9253
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0664 Acc: 0.9631
+  val   Loss: 0.3009 Acc: 0.9195
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0821 Acc: 0.9618
+  val   Loss: 0.2995 Acc: 0.9253
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0818 Acc: 0.9594
+  val   Loss: 0.3048 Acc: 0.9253
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0587 Acc: 0.9704
+  val   Loss: 0.2956 Acc: 0.9253
+
+[SELESAI] Multi-Kriteria-PerRasio 50% seed=42 - Best Val Acc: 0.9253
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_50pct_30ep_seed42.pth
+[INFO] Inferensi: median=17.23 ms (rata-rata=17.91 +/- 2.83 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9253 (92.53%)
+  Precision    : 0.9264
+  Recall       : 0.9253
+  F1-Score     : 0.9246
+  Parameter    : 1,331,945
+  Ukuran (MB)  : 5.16
+  FLOPs        : 186.462 M
+  Inferensi    : 17.23 ms (median, std=2.83, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8571    0.9000    0.8780        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.9474    0.9000    0.9231        20
+       Healthy_Corn     0.9500    1.0000    0.9744        19
+       Healthy_Rice     0.9048    1.0000    0.9500        19
+  Healthy_Sugarcane     0.9444    0.8947    0.9189        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     0.9474    0.9474    0.9474        19
+
+           accuracy                         0.9253       174
+          macro avg     0.9266    0.9263    0.9252       174
+       weighted avg     0.9264    0.9253    0.9246       174
+
+[INFO] Inferensi: median=16.87 ms (rata-rata=17.29 +/- 1.96 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9086 (90.86%)
+  Precision    : 0.9127
+  Recall       : 0.9086
+  F1-Score     : 0.9078
+  Parameter    : 1,331,945
+  Ukuran (MB)  : 5.16
+  FLOPs        : 186.462 M
+  Inferensi    : 16.87 ms (median, std=1.96, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8000    0.8421    0.8205        19
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     0.9444    0.8947    0.9189        19
+       Healthy_Corn     0.9500    0.9500    0.9500        20
+       Healthy_Rice     0.8261    0.9500    0.8837        20
+  Healthy_Sugarcane     0.8696    1.0000    0.9302        20
+    Leaf_Blast_Rice     0.9412    0.8421    0.8889        19
+   Mosaic_Sugarcane     0.9333    0.7368    0.8235        19
+     Rust_Sugarcane     0.9524    1.0000    0.9756        20
+
+           accuracy                         0.9086       175
+          macro avg     0.9130    0.9070    0.9072       175
+       weighted avg     0.9127    0.9086    0.9078       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 11/15 | rasio=50% seed=123 | Waktu berjalan: 517.5 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 50% seed=123 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 50% seed=123 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.3246 Acc: 0.8756D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  val   Loss: 0.4167 Acc: 0.8448
+  >> Model terbaik diperbarui! Val Acc: 0.8448
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.2067 Acc: 0.9113
+  val   Loss: 0.3096 Acc: 0.8793
+  >> Model terbaik diperbarui! Val Acc: 0.8793
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.1956 Acc: 0.9175
+  val   Loss: 0.3213 Acc: 0.8736
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.1601 Acc: 0.9249
+  val   Loss: 0.2958 Acc: 0.8966
+  >> Model terbaik diperbarui! Val Acc: 0.8966
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.1138 Acc: 0.9470
+  val   Loss: 0.2808 Acc: 0.9080
+  >> Model terbaik diperbarui! Val Acc: 0.9080
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0976 Acc: 0.9544
+  val   Loss: 0.2881 Acc: 0.8966
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.1128 Acc: 0.9446
+  val   Loss: 0.2901 Acc: 0.8966
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0916 Acc: 0.9483
+  val   Loss: 0.3021 Acc: 0.9080
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0816 Acc: 0.9606
+  val   Loss: 0.3145 Acc: 0.9080
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0918 Acc: 0.9495
+  val   Loss: 0.2600 Acc: 0.9138
+  >> Model terbaik diperbarui! Val Acc: 0.9138
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0834 Acc: 0.9594
+  val   Loss: 0.2419 Acc: 0.9253
+  >> Model terbaik diperbarui! Val Acc: 0.9253
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0694 Acc: 0.9680
+  val   Loss: 0.2498 Acc: 0.9138
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0835 Acc: 0.9557
+  val   Loss: 0.2499 Acc: 0.9253
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0725 Acc: 0.9606
+  val   Loss: 0.2426 Acc: 0.9253
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0772 Acc: 0.9594
+  val   Loss: 0.2425 Acc: 0.9195
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0759 Acc: 0.9594
+  val   Loss: 0.2518 Acc: 0.9253
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0701 Acc: 0.9631
+  val   Loss: 0.2484 Acc: 0.9310
+  >> Model terbaik diperbarui! Val Acc: 0.9310
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0531 Acc: 0.9680
+  val   Loss: 0.2490 Acc: 0.9195
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0839 Acc: 0.9581
+  val   Loss: 0.2604 Acc: 0.9253
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0589 Acc: 0.9717
+  val   Loss: 0.2530 Acc: 0.9195
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0706 Acc: 0.9594
+  val   Loss: 0.2519 Acc: 0.9253
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0539 Acc: 0.9729
+  val   Loss: 0.2550 Acc: 0.9253
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0509 Acc: 0.9692
+  val   Loss: 0.2534 Acc: 0.9195
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0820 Acc: 0.9569
+  val   Loss: 0.2554 Acc: 0.9253
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0645 Acc: 0.9667
+  val   Loss: 0.2501 Acc: 0.9253
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0659 Acc: 0.9692
+  val   Loss: 0.2552 Acc: 0.9253
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0640 Acc: 0.9631
+  val   Loss: 0.2505 Acc: 0.9253
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0540 Acc: 0.9643
+  val   Loss: 0.2545 Acc: 0.9253
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0667 Acc: 0.9594
+  val   Loss: 0.2601 Acc: 0.9310
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0661 Acc: 0.9606
+  val   Loss: 0.2585 Acc: 0.9253
+
+[SELESAI] Multi-Kriteria-PerRasio 50% seed=123 - Best Val Acc: 0.9310
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_50pct_30ep_seed123.pth
+[INFO] Inferensi: median=16.63 ms (rata-rata=16.88 +/- 0.68 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9310 (93.10%)
+  Precision    : 0.9309
+  Recall       : 0.9310
+  F1-Score     : 0.9304
+  Parameter    : 1,331,945
+  Ukuran (MB)  : 5.16
+  FLOPs        : 186.462 M
+  Inferensi    : 16.63 ms (median, std=0.68, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8421    0.8000    0.8205        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9048    1.0000    0.9500        19
+  Healthy_Sugarcane     0.9474    0.9474    0.9474        19
+    Leaf_Blast_Rice     0.8421    0.8000    0.8205        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9310       174
+          macro avg     0.9315    0.9325    0.9315       174
+       weighted avg     0.9309    0.9310    0.9304       174
+
+[INFO] Inferensi: median=16.92 ms (rata-rata=17.09 +/- 0.56 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9314 (93.14%)
+  Precision    : 0.9371
+  Recall       : 0.9314
+  F1-Score     : 0.9308
+  Parameter    : 1,331,945
+  Ukuran (MB)  : 5.16
+  FLOPs        : 186.462 M
+  Inferensi    : 16.92 ms (median, std=0.56, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8182    0.9474    0.8780        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    0.9474    0.9730        19
+       Healthy_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Rice     0.8636    0.9500    0.9048        20
+  Healthy_Sugarcane     0.8696    1.0000    0.9302        20
+    Leaf_Blast_Rice     1.0000    0.8421    0.9143        19
+   Mosaic_Sugarcane     0.9333    0.7368    0.8235        19
+     Rust_Sugarcane     0.9524    1.0000    0.9756        20
+
+           accuracy                         0.9314       175
+          macro avg     0.9375    0.9304    0.9304       175
+       weighted avg     0.9371    0.9314    0.9308       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 12/15 | rasio=50% seed=2024 | Waktu berjalan: 556.1 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 50% seed=2024 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 50% seed=2024 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.3324 Acc: 0.8781
+  val   Loss: 0.4394 Acc: 0.8621
+  >> Model terbaik diperbarui! Val Acc: 0.8621
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.1776 Acc: 0.9273
+  val   Loss: 0.3401 Acc: 0.8851
+  >> Model terbaik diperbarui! Val Acc: 0.8851
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.1735 Acc: 0.9236
+  val   Loss: 0.3357 Acc: 0.8851
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.1536 Acc: 0.9323
+  val   Loss: 0.3355 Acc: 0.8966
+  >> Model terbaik diperbarui! Val Acc: 0.8966
+
+Epoch 5/30
+----------------------------------------D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  train Loss: 0.1311 Acc: 0.9372
+  val   Loss: 0.2919 Acc: 0.9080
+  >> Model terbaik diperbarui! Val Acc: 0.9080
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.1142 Acc: 0.9433
+  val   Loss: 0.2980 Acc: 0.9023
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0926 Acc: 0.9544
+  val   Loss: 0.2923 Acc: 0.9138
+  >> Model terbaik diperbarui! Val Acc: 0.9138
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.1017 Acc: 0.9606
+  val   Loss: 0.2969 Acc: 0.9195
+  >> Model terbaik diperbarui! Val Acc: 0.9195
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0838 Acc: 0.9507
+  val   Loss: 0.3169 Acc: 0.9138
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0778 Acc: 0.9569
+  val   Loss: 0.2978 Acc: 0.9138
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0802 Acc: 0.9581
+  val   Loss: 0.2977 Acc: 0.9195
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0857 Acc: 0.9594
+  val   Loss: 0.3047 Acc: 0.9195
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0690 Acc: 0.9643
+  val   Loss: 0.2859 Acc: 0.9195
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0831 Acc: 0.9532
+  val   Loss: 0.3079 Acc: 0.9253
+  >> Model terbaik diperbarui! Val Acc: 0.9253
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.1082 Acc: 0.9507
+  val   Loss: 0.3082 Acc: 0.9253
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0598 Acc: 0.9655
+  val   Loss: 0.2887 Acc: 0.9253
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0646 Acc: 0.9643
+  val   Loss: 0.2997 Acc: 0.9253
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0632 Acc: 0.9692
+  val   Loss: 0.2813 Acc: 0.9253
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0757 Acc: 0.9569
+  val   Loss: 0.2961 Acc: 0.9310
+  >> Model terbaik diperbarui! Val Acc: 0.9310
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0631 Acc: 0.9667
+  val   Loss: 0.2842 Acc: 0.9253
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0632 Acc: 0.9643
+  val   Loss: 0.3052 Acc: 0.9195
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0664 Acc: 0.9655
+  val   Loss: 0.2939 Acc: 0.9253
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0546 Acc: 0.9680
+  val   Loss: 0.2976 Acc: 0.9195
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0711 Acc: 0.9544
+  val   Loss: 0.2958 Acc: 0.9253
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0743 Acc: 0.9655
+  val   Loss: 0.2988 Acc: 0.9195
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0534 Acc: 0.9631
+  val   Loss: 0.3010 Acc: 0.9195
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0720 Acc: 0.9643
+  val   Loss: 0.2942 Acc: 0.9253
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0735 Acc: 0.9631
+  val   Loss: 0.2925 Acc: 0.9253
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0677 Acc: 0.9606
+  val   Loss: 0.2939 Acc: 0.9253
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0654 Acc: 0.9655
+  val   Loss: 0.2922 Acc: 0.9253
+
+[SELESAI] Multi-Kriteria-PerRasio 50% seed=2024 - Best Val Acc: 0.9310
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_50pct_30ep_seed2024.pth
+[INFO] Inferensi: median=16.60 ms (rata-rata=16.87 +/- 0.70 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9310 (93.10%)
+  Precision    : 0.9348
+  Recall       : 0.9310
+  F1-Score     : 0.9312
+  Parameter    : 1,331,945
+  Ukuran (MB)  : 5.16
+  FLOPs        : 186.462 M
+  Inferensi    : 16.60 ms (median, std=0.70, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8571    0.9000    0.8780        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9048    1.0000    0.9500        19
+  Healthy_Sugarcane     0.9444    0.8947    0.9189        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.8182    0.9474    0.8780        19
+     Rust_Sugarcane     1.0000    0.9474    0.9730        19
+
+           accuracy                         0.9310       174
+          macro avg     0.9348    0.9319    0.9316       174
+       weighted avg     0.9348    0.9310    0.9312       174
+
+[INFO] Inferensi: median=16.45 ms (rata-rata=16.71 +/- 0.79 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9429 (94.29%)
+  Precision    : 0.9468
+  Recall       : 0.9429
+  F1-Score     : 0.9433
+  Parameter    : 1,331,945
+  Ukuran (MB)  : 5.16
+  FLOPs        : 186.462 M
+  Inferensi    : 16.45 ms (median, std=0.79, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8095    0.8947    0.8500        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    0.9474    0.9730        19
+       Healthy_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Rice     0.8636    0.9500    0.9048        20
+  Healthy_Sugarcane     0.9524    1.0000    0.9756        20
+    Leaf_Blast_Rice     1.0000    0.8421    0.9143        19
+   Mosaic_Sugarcane     0.9444    0.8947    0.9189        19
+     Rust_Sugarcane     0.9524    1.0000    0.9756        20
+
+           accuracy                         0.9429       175
+          macro avg     0.9469    0.9421    0.9429       175
+       weighted avg     0.9468    0.9429    0.9433       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 13/15 | rasio=70% seed=42 | Waktu berjalan: 594.5 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 70% seed=42 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 70% seed=42 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 1.8493 Acc: 0.5246
+  val   Loss: 1.5428 Acc: 0.4770
+  >> Model terbaik diperbarui! Val Acc: 0.4770
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.7949 Acc: 0.7266
+  val   Loss: 0.7490 Acc: 0.7241
+  >> Model terbaik diperbarui! Val Acc: 0.7241
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.6154 Acc: 0.7771
+  val   Loss: 0.6439 Acc: 0.8046
+  >> Model terbaik diperbarui! Val Acc: 0.8046
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.5095 Acc: 0.7857
+  val   Loss: 0.6012 Acc: 0.8046
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.4513 Acc: 0.8153
+  val   Loss: 0.6001 Acc: 0.7816
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.4131 Acc: 0.8177
+  val   Loss: 0.5834 Acc: 0.7931
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.3741 Acc: 0.8571
+  val   Loss: 0.5263 Acc: 0.7989
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.3313 Acc: 0.8633
+  val   Loss: 0.5264 Acc: 0.8103
+  >> Model terbaik diperbarui! Val Acc: 0.8103
+
+Epoch 9/30
+----------------------------------------D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  train Loss: 0.3483 Acc: 0.8645
+  val   Loss: 0.5443 Acc: 0.7931
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.2569 Acc: 0.9076
+  val   Loss: 0.5169 Acc: 0.8161
+  >> Model terbaik diperbarui! Val Acc: 0.8161
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.2809 Acc: 0.8855
+  val   Loss: 0.5092 Acc: 0.8161
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.2681 Acc: 0.8855
+  val   Loss: 0.5070 Acc: 0.8103
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.2533 Acc: 0.9039
+  val   Loss: 0.5014 Acc: 0.8161
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.2402 Acc: 0.8916
+  val   Loss: 0.5147 Acc: 0.8046
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.2527 Acc: 0.8941
+  val   Loss: 0.5125 Acc: 0.8218
+  >> Model terbaik diperbarui! Val Acc: 0.8218
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.2544 Acc: 0.8916
+  val   Loss: 0.5282 Acc: 0.8161
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.2506 Acc: 0.8978
+  val   Loss: 0.5230 Acc: 0.8161
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.2025 Acc: 0.9150
+  val   Loss: 0.5205 Acc: 0.8161
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.2350 Acc: 0.8892
+  val   Loss: 0.5185 Acc: 0.8218
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.2515 Acc: 0.8892
+  val   Loss: 0.5223 Acc: 0.8161
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.2439 Acc: 0.8929
+  val   Loss: 0.5122 Acc: 0.8161
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.2277 Acc: 0.8990
+  val   Loss: 0.5166 Acc: 0.8218
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.2074 Acc: 0.9126
+  val   Loss: 0.5153 Acc: 0.8103
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.2292 Acc: 0.8916
+  val   Loss: 0.5131 Acc: 0.8218
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.2161 Acc: 0.9126
+  val   Loss: 0.5156 Acc: 0.8103
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.2530 Acc: 0.8855
+  val   Loss: 0.5248 Acc: 0.8046
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.2399 Acc: 0.8953
+  val   Loss: 0.5152 Acc: 0.8103
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.2223 Acc: 0.9089
+  val   Loss: 0.5040 Acc: 0.8218
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.2357 Acc: 0.9052
+  val   Loss: 0.5117 Acc: 0.8161
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.2246 Acc: 0.9052
+  val   Loss: 0.5224 Acc: 0.8161
+
+[SELESAI] Multi-Kriteria-PerRasio 70% seed=42 - Best Val Acc: 0.8218
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_70pct_30ep_seed42.pth
+[INFO] Inferensi: median=13.48 ms (rata-rata=13.65 +/- 0.49 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8218 (82.18%)
+  Precision    : 0.8248
+  Recall       : 0.8218
+  F1-Score     : 0.8187
+  Parameter    : 971,395
+  Ukuran (MB)  : 3.76
+  FLOPs        : 131.081 M
+  Inferensi    : 13.48 ms (median, std=0.49, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7333    0.5500    0.6286        20
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     0.8889    0.8000    0.8421        20
+       Healthy_Corn     0.8500    0.8947    0.8718        19
+       Healthy_Rice     0.8261    1.0000    0.9048        19
+  Healthy_Sugarcane     0.9333    0.7368    0.8235        19
+    Leaf_Blast_Rice     0.6522    0.7500    0.6977        20
+   Mosaic_Sugarcane     0.7500    0.7895    0.7692        19
+     Rust_Sugarcane     0.8500    0.8947    0.8718        19
+
+           accuracy                         0.8218       174
+          macro avg     0.8260    0.8240    0.8204       174
+       weighted avg     0.8248    0.8218    0.8187       174
+
+[INFO] Inferensi: median=13.44 ms (rata-rata=13.56 +/- 0.47 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8857 (88.57%)
+  Precision    : 0.8845
+  Recall       : 0.8857
+  F1-Score     : 0.8842
+  Parameter    : 971,395
+  Ukuran (MB)  : 3.76
+  FLOPs        : 131.081 M
+  Inferensi    : 13.44 ms (median, std=0.47, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8235    0.7368    0.7778        19
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     0.9000    0.9474    0.9231        19
+       Healthy_Corn     0.9474    0.9000    0.9231        20
+       Healthy_Rice     0.8636    0.9500    0.9048        20
+  Healthy_Sugarcane     0.8421    0.8000    0.8205        20
+    Leaf_Blast_Rice     0.8947    0.8947    0.8947        19
+   Mosaic_Sugarcane     0.8333    0.7895    0.8108        19
+     Rust_Sugarcane     0.9048    0.9500    0.9268        20
+
+           accuracy                         0.8857       175
+          macro avg     0.8844    0.8854    0.8840       175
+       weighted avg     0.8845    0.8857    0.8842       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 14/15 | rasio=70% seed=123 | Waktu berjalan: 627.9 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 70% seed=123 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 70% seed=123 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 1.7971 Acc: 0.5025
+  val   Loss: 1.6346 Acc: 0.4310
+  >> Model terbaik diperbarui! Val Acc: 0.4310
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.7905 Acc: 0.7057
+  val   Loss: 0.7148 Acc: 0.7586
+  >> Model terbaik diperbarui! Val Acc: 0.7586
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.5933 Acc: 0.7451
+  val   Loss: 0.6755 Acc: 0.7356
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.4875 Acc: 0.7943
+  val   Loss: 0.6540 Acc: 0.7759
+  >> Model terbaik diperbarui! Val Acc: 0.7759
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.4244 Acc: 0.8337
+  val   Loss: 0.5683 Acc: 0.7874
+  >> Model terbaik diperbarui! Val Acc: 0.7874
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.3894 Acc: 0.8436
+  val   Loss: 0.6027 Acc: 0.7931
+  >> Model terbaik diperbarui! Val Acc: 0.7931
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.3420 Acc: 0.8473
+  val   Loss: 0.5932 Acc: 0.8161
+  >> Model terbaik diperbarui! Val Acc: 0.8161
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.3650 Acc: 0.8534
+  val   Loss: 0.6015 Acc: 0.7874
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.3081 Acc: 0.8670
+  val   Loss: 0.5653 Acc: 0.8103
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.3231 Acc: 0.8559
+  val   Loss: 0.5483 Acc: 0.7931
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.2678 Acc: 0.8904
+  val   Loss: 0.5255 Acc: 0.8161
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.2595 Acc: 0.8916
+  val   Loss: 0.5232 Acc: 0.7989
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.2721 Acc: 0.8867D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  val   Loss: 0.5269 Acc: 0.8103
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.2534 Acc: 0.8953
+  val   Loss: 0.5317 Acc: 0.8103
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.2447 Acc: 0.8941
+  val   Loss: 0.5197 Acc: 0.8103
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.2475 Acc: 0.8929
+  val   Loss: 0.5278 Acc: 0.8046
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.2572 Acc: 0.8953
+  val   Loss: 0.5196 Acc: 0.8161
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.2792 Acc: 0.8830
+  val   Loss: 0.5198 Acc: 0.8103
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.2447 Acc: 0.8978
+  val   Loss: 0.5348 Acc: 0.8218
+  >> Model terbaik diperbarui! Val Acc: 0.8218
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.2314 Acc: 0.8990
+  val   Loss: 0.5415 Acc: 0.8046
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.2222 Acc: 0.8953
+  val   Loss: 0.5380 Acc: 0.8161
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.2178 Acc: 0.9101
+  val   Loss: 0.5308 Acc: 0.8161
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.2454 Acc: 0.8953
+  val   Loss: 0.5322 Acc: 0.8161
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.2657 Acc: 0.8805
+  val   Loss: 0.5399 Acc: 0.8161
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.2417 Acc: 0.8892
+  val   Loss: 0.5401 Acc: 0.8218
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.2279 Acc: 0.9064
+  val   Loss: 0.5189 Acc: 0.8161
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.2176 Acc: 0.9138
+  val   Loss: 0.5246 Acc: 0.8161
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.2400 Acc: 0.9064
+  val   Loss: 0.5366 Acc: 0.8161
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.2334 Acc: 0.9002
+  val   Loss: 0.5237 Acc: 0.8103
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.2071 Acc: 0.9126
+  val   Loss: 0.5179 Acc: 0.8103
+
+[SELESAI] Multi-Kriteria-PerRasio 70% seed=123 - Best Val Acc: 0.8218
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_70pct_30ep_seed123.pth
+[INFO] Inferensi: median=13.30 ms (rata-rata=13.55 +/- 1.34 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8218 (82.18%)
+  Precision    : 0.8271
+  Recall       : 0.8218
+  F1-Score     : 0.8194
+  Parameter    : 971,395
+  Ukuran (MB)  : 3.76
+  FLOPs        : 131.081 M
+  Inferensi    : 13.30 ms (median, std=1.34, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7857    0.5500    0.6471        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.8889    0.8000    0.8421        20
+       Healthy_Corn     0.9444    0.8947    0.9189        19
+       Healthy_Rice     0.8261    1.0000    0.9048        19
+  Healthy_Sugarcane     0.8824    0.7895    0.8333        19
+    Leaf_Blast_Rice     0.6667    0.8000    0.7273        20
+   Mosaic_Sugarcane     0.7368    0.7368    0.7368        19
+     Rust_Sugarcane     0.7727    0.8947    0.8293        19
+
+           accuracy                         0.8218       174
+          macro avg     0.8279    0.8237    0.8208       174
+       weighted avg     0.8271    0.8218    0.8194       174
+
+[INFO] Inferensi: median=13.40 ms (rata-rata=13.62 +/- 0.60 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8857 (88.57%)
+  Precision    : 0.8859
+  Recall       : 0.8857
+  F1-Score     : 0.8851
+  Parameter    : 971,395
+  Ukuran (MB)  : 3.76
+  FLOPs        : 131.081 M
+  Inferensi    : 13.40 ms (median, std=0.60, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7778    0.7368    0.7568        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Rice     0.8636    0.9500    0.9048        20
+  Healthy_Sugarcane     0.7619    0.8000    0.7805        20
+    Leaf_Blast_Rice     0.8421    0.8421    0.8421        19
+   Mosaic_Sugarcane     0.8235    0.7368    0.7778        19
+     Rust_Sugarcane     0.9048    0.9500    0.9268        20
+
+           accuracy                         0.8857       175
+          macro avg     0.8860    0.8851    0.8848       175
+       weighted avg     0.8859    0.8857    0.8851       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+>>> Run 15/15 | rasio=70% seed=2024 | Waktu berjalan: 661.4 menit
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+============================================================
+MULTI-KRITERIA-PERRASIO 70% seed=2024 (mask identik di ketiga seed)
+============================================================
+[INFO] Training Multi-Kriteria-PerRasio 70% seed=2024 pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 1.8069 Acc: 0.5135
+  val   Loss: 1.6751 Acc: 0.4598
+  >> Model terbaik diperbarui! Val Acc: 0.4598
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.7844 Acc: 0.7167
+  val   Loss: 0.7950 Acc: 0.7299
+  >> Model terbaik diperbarui! Val Acc: 0.7299
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.6366 Acc: 0.7574
+  val   Loss: 0.6833 Acc: 0.7816
+  >> Model terbaik diperbarui! Val Acc: 0.7816
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.5112 Acc: 0.7968
+  val   Loss: 0.5866 Acc: 0.7816
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.4667 Acc: 0.8190
+  val   Loss: 0.6113 Acc: 0.7701
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.3877 Acc: 0.8387
+  val   Loss: 0.6069 Acc: 0.7874
+  >> Model terbaik diperbarui! Val Acc: 0.7874
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.3513 Acc: 0.8498
+  val   Loss: 0.6015 Acc: 0.7816
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.3140 Acc: 0.8584
+  val   Loss: 0.6015 Acc: 0.8046
+  >> Model terbaik diperbarui! Val Acc: 0.8046
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.3631 Acc: 0.8436
+  val   Loss: 0.6186 Acc: 0.7759
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.3457 Acc: 0.8547
+  val   Loss: 0.5868 Acc: 0.8046
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.2912 Acc: 0.8707
+  val   Loss: 0.5760 Acc: 0.7931
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.2758 Acc: 0.8732
+  val   Loss: 0.5662 Acc: 0.7816
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.2897 Acc: 0.8867
+  val   Loss: 0.5528 Acc: 0.7874
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.2451 Acc: 0.9027
+  val   Loss: 0.5348 Acc: 0.7759
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.2417 Acc: 0.9027
+  val   Loss: 0.5315 Acc: 0.7989
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.2434 Acc: 0.8953
+  val   Loss: 0.5300 Acc: 0.7931
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.2775 Acc: 0.8892
+  val   Loss: 0.5352 Acc: 0.7931
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.2498 Acc: 0.8953D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  val   Loss: 0.5378 Acc: 0.7931
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.2477 Acc: 0.9052
+  val   Loss: 0.5309 Acc: 0.7989
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.2202 Acc: 0.9064
+  val   Loss: 0.5184 Acc: 0.8103
+  >> Model terbaik diperbarui! Val Acc: 0.8103
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.2315 Acc: 0.8978
+  val   Loss: 0.5185 Acc: 0.7989
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.2205 Acc: 0.9064
+  val   Loss: 0.5262 Acc: 0.7989
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.2328 Acc: 0.9027
+  val   Loss: 0.5202 Acc: 0.8046
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.2470 Acc: 0.8929
+  val   Loss: 0.5176 Acc: 0.7989
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.2439 Acc: 0.8941
+  val   Loss: 0.5201 Acc: 0.8046
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.2360 Acc: 0.9039
+  val   Loss: 0.5211 Acc: 0.8046
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.2332 Acc: 0.8941
+  val   Loss: 0.5228 Acc: 0.8046
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.2478 Acc: 0.9052
+  val   Loss: 0.5213 Acc: 0.8046
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.2487 Acc: 0.8916
+  val   Loss: 0.5263 Acc: 0.8046
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.2612 Acc: 0.8916
+  val   Loss: 0.5128 Acc: 0.8161
+  >> Model terbaik diperbarui! Val Acc: 0.8161
+
+[SELESAI] Multi-Kriteria-PerRasio 70% seed=2024 - Best Val Acc: 0.8161
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\multicriteria_per_rasio_70pct_30ep_seed2024.pth
+[INFO] Inferensi: median=13.53 ms (rata-rata=13.70 +/- 0.56 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8161 (81.61%)
+  Precision    : 0.8176
+  Recall       : 0.8161
+  F1-Score     : 0.8153
+  Parameter    : 971,395
+  Ukuran (MB)  : 3.76
+  FLOPs        : 131.081 M
+  Inferensi    : 13.53 ms (median, std=0.56, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7647    0.6500    0.7027        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.8333    0.7500    0.7895        20
+       Healthy_Corn     0.8500    0.8947    0.8718        19
+       Healthy_Rice     0.9474    0.9474    0.9474        19
+  Healthy_Sugarcane     0.8333    0.7895    0.8108        19
+    Leaf_Blast_Rice     0.6818    0.7500    0.7143        20
+   Mosaic_Sugarcane     0.7368    0.7368    0.7368        19
+     Rust_Sugarcane     0.7727    0.8947    0.8293        19
+
+           accuracy                         0.8161       174
+          macro avg     0.8186    0.8178    0.8167       174
+       weighted avg     0.8176    0.8161    0.8153       174
+
+[INFO] Inferensi: median=13.49 ms (rata-rata=13.72 +/- 0.79 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8914 (89.14%)
+  Precision    : 0.8912
+  Recall       : 0.8914
+  F1-Score     : 0.8895
+  Parameter    : 971,395
+  Ukuran (MB)  : 3.76
+  FLOPs        : 131.081 M
+  Inferensi    : 13.49 ms (median, std=0.79, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8333    0.7895    0.8108        19
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     0.9000    0.9474    0.9231        19
+       Healthy_Corn     0.9048    0.9500    0.9268        20
+       Healthy_Rice     0.9048    0.9500    0.9268        20
+  Healthy_Sugarcane     0.8095    0.8500    0.8293        20
+    Leaf_Blast_Rice     0.8947    0.8947    0.8947        19
+   Mosaic_Sugarcane     0.8667    0.6842    0.7647        19
+     Rust_Sugarcane     0.9091    1.0000    0.9524        20
+
+           accuracy                         0.8914       175
+          macro avg     0.8914    0.8904    0.8891       175
+       weighted avg     0.8912    0.8914    0.8895       175
+
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json
+
+======================================================================
+RINGKASAN -- LIMA RASIO TERSISA
+======================================================================
+
+rasio 10%:
+  seed=42     akurasi=94.86%
+  seed=123    akurasi=95.43%
+  seed=2024   akurasi=96.00%
+  Rata-rata = 95.43%  Std = 0.47%  (n=3)
+
+rasio 30%:
+  seed=42     akurasi=96.57%
+  seed=123    akurasi=96.57%
+  seed=2024   akurasi=96.00%
+  Rata-rata = 96.38%  Std = 0.27%  (n=3)
+
+rasio 40%:
+  seed=42     akurasi=96.00%
+  seed=123    akurasi=96.00%
+  seed=2024   akurasi=96.57%
+  Rata-rata = 96.19%  Std = 0.27%  (n=3)
+
+rasio 50%:
+  seed=42     akurasi=90.86%
+  seed=123    akurasi=93.14%
+  seed=2024   akurasi=94.29%
+  Rata-rata = 92.76%  Std = 1.43%  (n=3)
+
+rasio 70%:
+  seed=42     akurasi=88.57%
+  seed=123    akurasi=88.57%
+  seed=2024   akurasi=89.14%
+  Rata-rata = 88.76%  Std = 0.27%  (n=3)
+======================================================================
+
+[INFO] Hasil disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\multiseed_per_rasio_results.json

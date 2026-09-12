@@ -1,0 +1,299 @@
+{
+  "seeds_baru": [
+    123,
+    2024
+  ],
+  "seed_42_sumber": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\outputs\\multicriteria_per_rasio.json",
+  "epochs": 30,
+  "formula": "I(c) = w_L1(r)*S_L1 + w_GM(r)*S_GM-Ekspansi + w_Ent(r)*S_Entropi (bobot per rasio)",
+  "bobot_per_rasio_dipakai": {
+    "20%": {
+      "acc_l1_val": 0.9482758620689655,
+      "acc_gm_val": 0.9482758620689655,
+      "acc_entropi_val": 0.9540229885057471,
+      "d_l1": 0.01,
+      "d_gm": 0.01,
+      "d_entropi": 0.01574712643678155,
+      "w_l1": 0.2797427652733124,
+      "w_gm": 0.2797427652733124,
+      "w_entropi": 0.4405144694533753
+    },
+    "60%": {
+      "acc_l1_val": 0.8563218390804598,
+      "acc_gm_val": 0.8793103448275862,
+      "acc_entropi_val": 0.8620689655172413,
+      "d_l1": 0.01,
+      "d_gm": 0.03298850574712641,
+      "d_entropi": 0.01574712643678155,
+      "w_l1": 0.1702544031311157,
+      "w_gm": 0.5616438356164387,
+      "w_entropi": 0.26810176125244556
+    }
+  },
+  "pruning_note": "Mask pemangkasan dihitung SEKALI dari baseline yang sudah ada dan IDENTIK di ketiga seed (42 dari 44_multicriteria_per_rasio.py, 123 dan 2024 dari skrip ini) -- channel yang dibuang sama persis. Variasi antar seed murni variasi fine-tuning, BUKAN variasi pemilihan channel.",
+  "configs": {
+    "multicriteria_per_rasio_20pct": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.9714285714285714,
+          "f1_score": 0.971490514905149,
+          "val_accuracy": 0.9540229885057471,
+          "checkpoint": "multicriteria_per_rasio_20pct_30ep.pth",
+          "sumber": "dipakai ulang dari 44_multicriteria_per_rasio.py (tidak dilatih ulang)"
+        },
+        "123": {
+          "accuracy": 0.9485714285714286,
+          "f1_score": 0.9486060180169628,
+          "val_accuracy": 0.9367816091954023,
+          "correct": 166,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_20pct_30ep_seed123.pth"
+        },
+        "2024": {
+          "accuracy": 0.9657142857142857,
+          "f1_score": 0.9660173543379119,
+          "val_accuracy": 0.9367816091954023,
+          "correct": 169,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_20pct_30ep_seed2024.pth"
+        }
+      },
+      "mean_accuracy": 0.9619047619047619,
+      "std_accuracy": 0.009712418121129093,
+      "n_seeds": 3
+    },
+    "multicriteria_per_rasio_60pct": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.8971428571428571,
+          "f1_score": 0.8975883962951632,
+          "val_accuracy": 0.8793103448275862,
+          "checkpoint": "multicriteria_per_rasio_60pct_30ep.pth",
+          "sumber": "dipakai ulang dari 44_multicriteria_per_rasio.py (tidak dilatih ulang)"
+        },
+        "123": {
+          "accuracy": 0.8857142857142857,
+          "f1_score": 0.8856701361230978,
+          "val_accuracy": 0.8793103448275862,
+          "correct": 155,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_60pct_30ep_seed123.pth"
+        },
+        "2024": {
+          "accuracy": 0.8971428571428571,
+          "f1_score": 0.896864247182755,
+          "val_accuracy": 0.8735632183908046,
+          "correct": 157,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_60pct_30ep_seed2024.pth"
+        }
+      },
+      "mean_accuracy": 0.8933333333333334,
+      "std_accuracy": 0.0053874802376118035,
+      "n_seeds": 3
+    },
+    "multicriteria_per_rasio_10pct": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.9485714285714286,
+          "f1_score": 0.9488519556731552,
+          "val_accuracy": 0.9482758620689655,
+          "correct": 166,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_10pct_30ep_seed42.pth",
+          "catatan": "seed 42 di run ini DILATIH ULANG FRESH, BUKAN dipakai ulang dari 44_multicriteria_per_rasio.py"
+        },
+        "123": {
+          "accuracy": 0.9542857142857143,
+          "f1_score": 0.9545963165754104,
+          "val_accuracy": 0.9367816091954023,
+          "correct": 167,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_10pct_30ep_seed123.pth",
+          "catatan": null
+        },
+        "2024": {
+          "accuracy": 0.96,
+          "f1_score": 0.9602313672557574,
+          "val_accuracy": 0.9597701149425287,
+          "correct": 168,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_10pct_30ep_seed2024.pth",
+          "catatan": null
+        }
+      },
+      "mean_accuracy": 0.9542857142857143,
+      "std_accuracy": 0.0046656947481583996,
+      "n_seeds": 3
+    },
+    "multicriteria_per_rasio_30pct": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.9657142857142857,
+          "f1_score": 0.9660173543379119,
+          "val_accuracy": 0.9482758620689655,
+          "correct": 169,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_30pct_30ep_seed42.pth",
+          "catatan": "seed 42 di run ini DILATIH ULANG FRESH, BUKAN dipakai ulang dari 44_multicriteria_per_rasio.py"
+        },
+        "123": {
+          "accuracy": 0.9657142857142857,
+          "f1_score": 0.9659682539682538,
+          "val_accuracy": 0.9425287356321839,
+          "correct": 169,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_30pct_30ep_seed123.pth",
+          "catatan": null
+        },
+        "2024": {
+          "accuracy": 0.96,
+          "f1_score": 0.9603239745469712,
+          "val_accuracy": 0.9482758620689655,
+          "correct": 168,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_30pct_30ep_seed2024.pth",
+          "catatan": null
+        }
+      },
+      "mean_accuracy": 0.9638095238095238,
+      "std_accuracy": 0.0026937401188059274,
+      "n_seeds": 3
+    },
+    "multicriteria_per_rasio_40pct": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.96,
+          "f1_score": 0.9601954062419179,
+          "val_accuracy": 0.9425287356321839,
+          "correct": 168,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_40pct_30ep_seed42.pth",
+          "catatan": "seed 42 di run ini DILATIH ULANG FRESH, BUKAN dipakai ulang dari 44_multicriteria_per_rasio.py"
+        },
+        "123": {
+          "accuracy": 0.96,
+          "f1_score": 0.9600959254617791,
+          "val_accuracy": 0.9425287356321839,
+          "correct": 168,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_40pct_30ep_seed123.pth",
+          "catatan": null
+        },
+        "2024": {
+          "accuracy": 0.9657142857142857,
+          "f1_score": 0.9659295392953929,
+          "val_accuracy": 0.9425287356321839,
+          "correct": 169,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_40pct_30ep_seed2024.pth",
+          "catatan": null
+        }
+      },
+      "mean_accuracy": 0.9619047619047619,
+      "std_accuracy": 0.0026937401188059274,
+      "n_seeds": 3
+    },
+    "multicriteria_per_rasio_50pct": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.9085714285714286,
+          "f1_score": 0.9077880122142908,
+          "val_accuracy": 0.9252873563218391,
+          "correct": 159,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_50pct_30ep_seed42.pth",
+          "catatan": "seed 42 di run ini DILATIH ULANG FRESH, BUKAN dipakai ulang dari 44_multicriteria_per_rasio.py"
+        },
+        "123": {
+          "accuracy": 0.9314285714285714,
+          "f1_score": 0.9307837975878412,
+          "val_accuracy": 0.9310344827586207,
+          "correct": 163,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_50pct_30ep_seed123.pth",
+          "catatan": null
+        },
+        "2024": {
+          "accuracy": 0.9428571428571428,
+          "f1_score": 0.9432810419639688,
+          "val_accuracy": 0.9310344827586207,
+          "correct": 165,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_50pct_30ep_seed2024.pth",
+          "catatan": null
+        }
+      },
+      "mean_accuracy": 0.9276190476190477,
+      "std_accuracy": 0.01425393290199595,
+      "n_seeds": 3
+    },
+    "multicriteria_per_rasio_70pct": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.8857142857142857,
+          "f1_score": 0.8842176203848677,
+          "val_accuracy": 0.8218390804597702,
+          "correct": 155,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_70pct_30ep_seed42.pth",
+          "catatan": "seed 42 di run ini DILATIH ULANG FRESH, BUKAN dipakai ulang dari 44_multicriteria_per_rasio.py"
+        },
+        "123": {
+          "accuracy": 0.8857142857142857,
+          "f1_score": 0.8850566582970765,
+          "val_accuracy": 0.8218390804597702,
+          "correct": 155,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_70pct_30ep_seed123.pth",
+          "catatan": null
+        },
+        "2024": {
+          "accuracy": 0.8914285714285715,
+          "f1_score": 0.8895195475888241,
+          "val_accuracy": 0.8160919540229885,
+          "correct": 156,
+          "total": 175,
+          "checkpoint": "multicriteria_per_rasio_70pct_30ep_seed2024.pth",
+          "catatan": null
+        }
+      },
+      "mean_accuracy": 0.8876190476190476,
+      "std_accuracy": 0.0026937401188059274,
+      "n_seeds": 3
+    }
+  },
+  "status": "SELESAI (baseline + 7 rasio lengkap 3 seed)",
+  "total_time_seconds": 11351.239423513412,
+  "baseline_dipakai_ulang": {
+    "sumber": "D:\\S2 UMAYAH\\TESIS\\Pra Penelitian 2\\outputs\\multiseed_results.json",
+    "catatan": "Baseline tidak bergantung formula I(c) (tanpa pruning), dipakai ulang apa adanya.",
+    "per_seed": {
+      "42": {
+        "accuracy": 0.96,
+        "f1_score": 0.9602503656162192,
+        "correct": 168,
+        "total": 175,
+        "checkpoint": "baseline_30ep_seed42.pth"
+      },
+      "123": {
+        "accuracy": 0.9428571428571428,
+        "f1_score": 0.9430057713263289,
+        "correct": 165,
+        "total": 175,
+        "checkpoint": "baseline_30ep_seed123.pth"
+      },
+      "2024": {
+        "accuracy": 0.96,
+        "f1_score": 0.9599511838128214,
+        "correct": 168,
+        "total": 175,
+        "checkpoint": "baseline_30ep_seed2024.pth"
+      }
+    },
+    "mean_accuracy": 0.9542857142857143,
+    "std_accuracy": 0.008081220356417678,
+    "n_seeds": 3
+  },
+  "total_time_seconds_lima_rasio_tersisa": 41683.96635365486
+}
