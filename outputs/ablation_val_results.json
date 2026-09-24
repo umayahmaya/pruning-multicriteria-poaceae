@@ -7,7 +7,8 @@
         "num_params": 2055492,
         "model_size_mb": 7.960845947265625,
         "flops": 298766039.0,
-        "inference_ms": 21.14576899995882
+        "inference_ms": 21.14576899995882,
+        "flops_true_2x_macs": 597532078.0
       },
       "bn": {
         "accuracy": 0.9425287356321839,
@@ -15,7 +16,8 @@
         "num_params": 2055492,
         "model_size_mb": 7.960845947265625,
         "flops": 298766039.0,
-        "inference_ms": 21.77157600002829
+        "inference_ms": 21.77157600002829,
+        "flops_true_2x_macs": 597532078.0
       },
       "entropy": {
         "accuracy": 0.9482758620689655,
@@ -23,7 +25,8 @@
         "num_params": 2055492,
         "model_size_mb": 7.960845947265625,
         "flops": 298766039.0,
-        "inference_ms": 21.04967100021895
+        "inference_ms": 21.04967100021895,
+        "flops_true_2x_macs": 597532078.0
       }
     },
     "20%": {
@@ -33,7 +36,8 @@
         "num_params": 1874851,
         "model_size_mb": 7.260936737060547,
         "flops": 270836921.0,
-        "inference_ms": 20.767595000033907
+        "inference_ms": 20.767595000033907,
+        "flops_true_2x_macs": 541673842.0
       },
       "bn": {
         "accuracy": 0.9482758620689655,
@@ -41,7 +45,8 @@
         "num_params": 1874851,
         "model_size_mb": 7.260936737060547,
         "flops": 270836921.0,
-        "inference_ms": 20.22576899984415
+        "inference_ms": 20.22576899984415,
+        "flops_true_2x_macs": 541673842.0
       },
       "entropy": {
         "accuracy": 0.9540229885057471,
@@ -49,7 +54,8 @@
         "num_params": 1874851,
         "model_size_mb": 7.260936737060547,
         "flops": 270836921.0,
-        "inference_ms": 21.551148000144167
+        "inference_ms": 21.551148000144167,
+        "flops_true_2x_macs": 541673842.0
       }
     },
     "30%": {
@@ -59,7 +65,8 @@
         "num_params": 1694216,
         "model_size_mb": 6.5610198974609375,
         "flops": 242937840.0,
-        "inference_ms": 19.05809900003078
+        "inference_ms": 19.05809900003078,
+        "flops_true_2x_macs": 485875680.0
       },
       "bn": {
         "accuracy": 0.9252873563218391,
@@ -67,7 +74,8 @@
         "num_params": 1694216,
         "model_size_mb": 6.5610198974609375,
         "flops": 242937840.0,
-        "inference_ms": 19.429034999775467
+        "inference_ms": 19.429034999775467,
+        "flops_true_2x_macs": 485875680.0
       },
       "entropy": {
         "accuracy": 0.9252873563218391,
@@ -75,7 +83,8 @@
         "num_params": 1694216,
         "model_size_mb": 6.5610198974609375,
         "flops": 242937840.0,
-        "inference_ms": 19.112452999979723
+        "inference_ms": 19.112452999979723,
+        "flops_true_2x_macs": 485875680.0
       }
     },
     "40%": {
@@ -85,7 +94,8 @@
         "num_params": 1513575,
         "model_size_mb": 5.861110687255859,
         "flops": 215008722.0,
-        "inference_ms": 17.510789999978442
+        "inference_ms": 17.510789999978442,
+        "flops_true_2x_macs": 430017444.0
       },
       "bn": {
         "accuracy": 0.9022988505747126,
@@ -93,7 +103,8 @@
         "num_params": 1513575,
         "model_size_mb": 5.861110687255859,
         "flops": 215008722.0,
-        "inference_ms": 18.00410899995768
+        "inference_ms": 18.00410899995768,
+        "flops_true_2x_macs": 430017444.0
       },
       "entropy": {
         "accuracy": 0.9080459770114943,
@@ -101,7 +112,8 @@
         "num_params": 1513575,
         "model_size_mb": 5.861110687255859,
         "flops": 215008722.0,
-        "inference_ms": 17.250699999822245
+        "inference_ms": 17.250699999822245,
+        "flops_true_2x_macs": 430017444.0
       }
     },
     "50%": {
@@ -111,7 +123,8 @@
         "num_params": 1331945,
         "model_size_mb": 5.157291412353516,
         "flops": 186462400.0,
-        "inference_ms": 14.774163000038243
+        "inference_ms": 14.774163000038243,
+        "flops_true_2x_macs": 372924800.0
       },
       "bn": {
         "accuracy": 0.8793103448275862,
@@ -119,7 +132,8 @@
         "num_params": 1331945,
         "model_size_mb": 5.157291412353516,
         "flops": 186462400.0,
-        "inference_ms": 14.621457999710401
+        "inference_ms": 14.621457999710401,
+        "flops_true_2x_macs": 372924800.0
       },
       "entropy": {
         "accuracy": 0.8620689655172413,
@@ -127,7 +141,8 @@
         "num_params": 1331945,
         "model_size_mb": 5.157291412353516,
         "flops": 186462400.0,
-        "inference_ms": 14.59700100003829
+        "inference_ms": 14.59700100003829,
+        "flops_true_2x_macs": 372924800.0
       }
     },
     "60%": {
@@ -137,7 +152,8 @@
         "num_params": 1152036,
         "model_size_mb": 4.460235595703125,
         "flops": 159010199.0,
-        "inference_ms": 14.626152999917394
+        "inference_ms": 14.626152999917394,
+        "flops_true_2x_macs": 318020398.0
       },
       "bn": {
         "accuracy": 0.7701149425287356,
@@ -145,7 +161,8 @@
         "num_params": 1152036,
         "model_size_mb": 4.460235595703125,
         "flops": 159010199.0,
-        "inference_ms": 14.555802999966545
+        "inference_ms": 14.555802999966545,
+        "flops_true_2x_macs": 318020398.0
       },
       "entropy": {
         "accuracy": 0.8620689655172413,
@@ -153,7 +170,8 @@
         "num_params": 1152036,
         "model_size_mb": 4.460235595703125,
         "flops": 159010199.0,
-        "inference_ms": 14.514217000141798
+        "inference_ms": 14.514217000141798,
+        "flops_true_2x_macs": 318020398.0
       }
     },
     "70%": {
@@ -163,7 +181,8 @@
         "num_params": 971395,
         "model_size_mb": 3.760326385498047,
         "flops": 131081081.0,
-        "inference_ms": 13.83915500013245
+        "inference_ms": 13.83915500013245,
+        "flops_true_2x_macs": 262162162.0
       },
       "bn": {
         "accuracy": 0.6781609195402298,
@@ -171,7 +190,8 @@
         "num_params": 971395,
         "model_size_mb": 3.760326385498047,
         "flops": 131081081.0,
-        "inference_ms": 13.02595500008465
+        "inference_ms": 13.02595500008465,
+        "flops_true_2x_macs": 262162162.0
       },
       "entropy": {
         "accuracy": 0.8333333333333334,
@@ -179,7 +199,8 @@
         "num_params": 971395,
         "model_size_mb": 3.760326385498047,
         "flops": 131081081.0,
-        "inference_ms": 13.394686000137881
+        "inference_ms": 13.394686000137881,
+        "flops_true_2x_macs": 262162162.0
       }
     }
   },
@@ -205,5 +226,6 @@
     "acc_entropy": 0.9371428571428572
   },
   "epochs_used": 30,
-  "status": "SELESAI"
+  "status": "SELESAI",
+  "_catatan_macs_vs_flops": "Field 'flops' di seluruh berkas ini sebenarnya MACs (multiply-accumulate) dari thop.profile() via measure_flops() di src/model.py -- thop TIDAK mengalikan faktor 2 per MAC. Field 'flops_true_2x_macs' (ditambahkan 2026-09-24, scripts/56_tambah_flops_sebenarnya.py) adalah FLOPs sebenarnya = 2 x nilai 'flops'. Field 'flops' asli TIDAK diubah supaya konsumen lama (skrip/kode yang sudah membaca field ini) tidak terdampak -- lihat CLAUDE.md Bagian 8 butir 12."
 }

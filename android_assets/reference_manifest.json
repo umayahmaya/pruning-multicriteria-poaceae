@@ -1,5 +1,5 @@
 {
-  "reference_checkpoint": "multicriteria_20pct_30ep_valweights.pth",
+  "reference_checkpoint": "multicriteria_per_rasio_20pct_30ep.pth",
   "n_input_values": 150528,
   "n_output_values": 9,
   "file_format": "Satu angka per baris. N_INPUT_VALUES baris pertama adalah tensor input hasil praproses, flatten C-order (seluruh piksel channel R, lalu G, lalu B, tiap channel baris demi baris/row-major). N_OUTPUT_VALUES baris terakhir adalah logit keluaran model mentah (SEBELUM softmax), urutan sesuai labels.txt / CFG.CLASS_NAMES.",

@@ -7,8 +7,9 @@ Jalankan:
     python scripts/06_deploy_flask.py --port 8080
 
 Akses di browser: http://localhost:5000
-Pilih model lewat dropdown "Rasio Pemangkasan" di halaman -- seluruh 6
-model (baseline + rasio 10/20/30/40/50 persen, bobot val-derived) dimuat
+Pilih model lewat dropdown "Rasio Pemangkasan" di halaman -- seluruh 8
+model (baseline + ketujuh rasio 10-70%, formula AKTIF: L1 + GM-Ekspansi
++ Entropi, bobot w_k(r) per rasio -- lihat CLAUDE.md Bagian 2) dimuat
 sekali saat startup dan disimpan di memori.
 """
 
@@ -35,17 +36,19 @@ except ImportError:
 
 
 # Model yang dimuat saat startup: (kunci rasio, label tampilan, nama berkas
-# checkpoint). Kunci "baseline" dan bobot val-derived (_valweights) dipakai
-# konsisten dengan klaim tesis -- lihat outputs/tabel_hasil_lengkap.json.
+# checkpoint). Checkpoint formula AKTIF (L1 + GM-Ekspansi + Entropi, bobot
+# per rasio -- CLAUDE.md Bagian 2), dihasilkan scripts/44_multicriteria_per_rasio.py.
+# Sebelumnya dropdown ini memuat checkpoint formula LAMA (_valweights, S_BN,
+# bobot konstan) -- diperbaiki 2026-09-24, lihat CLAUDE.md Bagian 8 butir 11.
 MODEL_CHOICES = [
     ("baseline", "Baseline (tanpa pemangkasan)", "baseline_9class.pth"),
-    ("10", "Rasio 10% (zona kompresi rendah)", "multicriteria_10pct_30ep_valweights.pth"),
-    ("20", "Rasio 20% (titik operasi direkomendasikan)", "multicriteria_20pct_30ep_valweights.pth"),
-    ("30", "Rasio 30% (zona kompresi rendah)", "multicriteria_30pct_30ep_valweights.pth"),
-    ("40", "Rasio 40% (zona kompresi menengah)", "multicriteria_40pct_30ep_valweights.pth"),
-    ("50", "Rasio 50% (zona kompresi menengah)", "multicriteria_50pct_30ep_valweights.pth"),
-    ("60", "Rasio 60% (zona kompresi tinggi)", "multicriteria_60pct_30ep_valweights.pth"),
-    ("70", "Rasio 70% (zona kompresi tinggi)", "multicriteria_70pct_30ep_valweights.pth"),
+    ("10", "Rasio 10% (zona kompresi rendah)", "multicriteria_per_rasio_10pct_30ep.pth"),
+    ("20", "Rasio 20% (titik operasi direkomendasikan)", "multicriteria_per_rasio_20pct_30ep.pth"),
+    ("30", "Rasio 30% (zona kompresi rendah)", "multicriteria_per_rasio_30pct_30ep.pth"),
+    ("40", "Rasio 40% (zona kompresi menengah)", "multicriteria_per_rasio_40pct_30ep.pth"),
+    ("50", "Rasio 50% (zona kompresi menengah)", "multicriteria_per_rasio_50pct_30ep.pth"),
+    ("60", "Rasio 60% (zona kompresi tinggi)", "multicriteria_per_rasio_60pct_30ep.pth"),
+    ("70", "Rasio 70% (zona kompresi tinggi)", "multicriteria_per_rasio_70pct_30ep.pth"),
 ]
 MODEL_LABELS = {key: label for key, label, _ in MODEL_CHOICES}
 DEFAULT_RATIO_KEY = "20"
@@ -297,7 +300,7 @@ HTML_TEMPLATE = r"""
                 eff.num_params + ' <span style="color:#666">(' + eff.num_params_change + ')</span></span></div>';
             html += '<div class="result-item"><span>Ukuran Model</span><span>' +
                 eff.model_size_mb + ' <span style="color:#666">(' + eff.model_size_mb_change + ')</span></span></div>';
-            html += '<div class="result-item"><span>FLOPs</span><span>' +
+            html += '<div class="result-item"><span>MACs (thop)</span><span>' +
                 eff.flops + ' <span style="color:#666">(' + eff.flops_change + ')</span></span></div>';
             html += '<div class="result-item"><span>Akurasi Uji Tercatat</span><span>' +
                 eff.accuracy + ' <span style="color:#666">(' + eff.accuracy_change + ')</span></span></div>';
@@ -388,7 +391,7 @@ def load_model(checkpoint_path):
         raise FileNotFoundError(
             f"Checkpoint tidak ditemukan: {checkpoint_path}. "
             "Deployment wajib memakai checkpoint terlatih -- jalankan "
-            "12_multicriteria_valweights.py untuk menghasilkan checkpoint yang hilang."
+            "44_multicriteria_per_rasio.py untuk menghasilkan checkpoint yang hilang."
         )
 
     model, checkpoint = load_checkpoint(checkpoint_path, device)
@@ -439,37 +442,72 @@ def verify_class_consistency(model):
 
 
 def load_hasil_table():
-    """Muat outputs/tabel_hasil_lengkap.json sekali saat startup -- sumber
-    tunggal nilai acuan Panel Efisiensi Model (jumlah parameter, ukuran MB,
-    FLOPs, akurasi uji). Tidak ada nilai ini yang ditulis sebagai konstanta
-    di kode. Mengembalikan None kalau berkas tidak ada (soft-warning, bukan
-    hard-fail, karena aplikasi tetap bisa melayani prediksi tanpa panel ini)."""
+    """Muat outputs/tabel_hasil_lengkap.json sekali saat startup -- HANYA
+    dipakai untuk entri "baseline" (model tanpa pemangkasan, tidak bergantung
+    formula I(c) apa pun sehingga tetap valid). Entri rasio 10-70% TIDAK
+    diambil dari sini lagi -- lihat load_per_rasio_table(). Mengembalikan
+    None kalau berkas tidak ada (soft-warning, bukan hard-fail, karena
+    aplikasi tetap bisa melayani prediksi tanpa panel ini)."""
     table_path = CFG.OUTPUT_DIR / "tabel_hasil_lengkap.json"
     if not table_path.exists():
         print(f"[PERINGATAN] {table_path} tidak ditemukan -- Panel Efisiensi "
-              "Model akan menampilkan 'Tidak tercatat' untuk seluruh metrik acuan. "
+              "Model akan menampilkan 'Tidak tercatat' untuk baseline. "
               "Jalankan 17_generate_final_table.py untuk mengisi ini.")
         return None
     with open(table_path) as f:
         return json.load(f)
 
 
-def load_efficiency_metrics(checkpoint_name, table):
-    """Cari entri checkpoint_name di tabel_hasil_lengkap.json, kembalikan
-    nilai MENTAH (num_params, model_size_mb, flops, accuracy) -- bukan
-    string tampilan -- supaya persentase perubahan terhadap baseline bisa
-    dihitung ulang setiap request. None kalau tidak ditemukan."""
-    if table is None:
+def load_per_rasio_table():
+    """Muat outputs/multicriteria_per_rasio.json sekali saat startup --
+    sumber nilai acuan Panel Efisiensi Model (jumlah parameter, ukuran MB,
+    MACs/FLOPs, akurasi uji) untuk KETUJUH rasio formula AKTIF (L1 +
+    GM-Ekspansi + Entropi, bobot per rasio). Menggantikan
+    tabel_hasil_lengkap.json (formula lama, S_BN, bobot konstan) untuk
+    rasio 10-70% -- lihat CLAUDE.md Bagian 8 butir 11. Mengembalikan None
+    kalau berkas tidak ada (soft-warning, bukan hard-fail)."""
+    table_path = CFG.OUTPUT_DIR / "multicriteria_per_rasio.json"
+    if not table_path.exists():
+        print(f"[PERINGATAN] {table_path} tidak ditemukan -- Panel Efisiensi "
+              "Model akan menampilkan 'Tidak tercatat' untuk rasio 10-70%. "
+              "Jalankan 44_multicriteria_per_rasio.py untuk mengisi ini.")
         return None
-    results = table.get("results", {})
-    base = results.get("baseline")
-    if base and base.get("checkpoint") == checkpoint_name:
+    with open(table_path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def load_efficiency_metrics(ratio_key, hasil_table, per_rasio_table):
+    """Kembalikan nilai MENTAH (num_params, model_size_mb, flops, accuracy)
+    -- bukan string tampilan -- supaya persentase perubahan terhadap
+    baseline bisa dihitung ulang setiap request. None kalau tidak ditemukan.
+
+    "baseline" diambil dari tabel_hasil_lengkap.json (formula-independent).
+    Rasio 10-70% diambil dari multicriteria_per_rasio.json (formula AKTIF)
+    -- field "flops" di sana sebenarnya MACs (thop, lihat CLAUDE.md Bagian
+    8 butir 12), TIDAK dikoreksi di sini supaya konsisten dengan field
+    "flops" yang sama pada entri baseline (dua-duanya harus dalam satuan
+    yang sama supaya persentase perubahan valid); label tampilan di panel
+    HTML sudah disesuaikan jadi "MACs (thop)".
+    """
+    if ratio_key == "baseline":
+        if hasil_table is None:
+            return None
+        base = hasil_table.get("results", {}).get("baseline")
+        if base is None:
+            return None
         return {k: base[k] for k in ("num_params", "model_size_mb", "flops", "accuracy")}
-    for scenario_key in ("l1", "bn", "entropy", "multicriteria"):
-        for candidate in results.get(scenario_key, {}).values():
-            if candidate.get("checkpoint") == checkpoint_name:
-                return {k: candidate[k] for k in ("num_params", "model_size_mb", "flops", "accuracy")}
-    return None
+
+    if per_rasio_table is None:
+        return None
+    entry = per_rasio_table.get("results", {}).get(f"{ratio_key}%")
+    if entry is None:
+        return None
+    return {
+        "num_params": entry["num_params"],
+        "model_size_mb": entry["model_size_mb"],
+        "flops": entry["flops"],
+        "accuracy": entry["test"]["accuracy"],
+    }
 
 
 def load_penanganan_data():
@@ -496,11 +534,12 @@ def format_probability(score_percent):
 
 def build_efficiency_panel(ratio_key, efficiency_by_ratio):
     """Susun Panel Efisiensi Model untuk rasio yang dipakai pada satu
-    prediksi: nilai mentah dari tabel_hasil_lengkap.json plus perubahan
-    terhadap baseline, dihitung saat itu juga. Akurasi dilaporkan sebagai
-    selisih POIN PERSENTASE (bukan persentase relatif) karena akurasi
-    sendiri sudah berupa persentase -- num_params/model_size_mb/flops
-    tetap persentase relatif seperti biasa."""
+    prediksi: nilai mentah dari load_efficiency_metrics() (baseline dari
+    tabel_hasil_lengkap.json, rasio 10-70% dari multicriteria_per_rasio.json)
+    plus perubahan terhadap baseline, dihitung saat itu juga. Akurasi
+    dilaporkan sebagai selisih POIN PERSENTASE (bukan persentase relatif)
+    karena akurasi sendiri sudah berupa persentase -- num_params/
+    model_size_mb/flops tetap persentase relatif seperti biasa."""
     panel = {"model_label": MODEL_LABELS.get(ratio_key, ratio_key)}
     current = efficiency_by_ratio.get(ratio_key)
     baseline = efficiency_by_ratio.get("baseline")
@@ -587,9 +626,10 @@ def main():
     args = parser.parse_args()
 
     hasil_table = load_hasil_table()
+    per_rasio_table = load_per_rasio_table()
     penanganan_data = load_penanganan_data()
 
-    # Muat keenam model sekali saat startup. Checkpoint hilang atau gagal
+    # Muat kedelapan model sekali saat startup. Checkpoint hilang atau gagal
     # verifikasi (parameter/urutan kelas) membuat aplikasi berhenti dengan
     # pesan yang menyebut checkpoint mana -- tidak ada fallback diam-diam.
     models = {}
@@ -603,11 +643,10 @@ def main():
             print(f"[ERROR] Gagal memuat model '{label}' ({ckpt_filename}): {e}")
             sys.exit(1)
         models[ratio_key] = model
-        efficiency_by_ratio[ratio_key] = load_efficiency_metrics(ckpt_filename, hasil_table)
+        efficiency_by_ratio[ratio_key] = load_efficiency_metrics(ratio_key, hasil_table, per_rasio_table)
         if efficiency_by_ratio[ratio_key] is None:
-            print(f"[PERINGATAN] Checkpoint '{ckpt_filename}' ({label}) tidak ditemukan "
-                  "di tabel_hasil_lengkap.json -- Panel Efisiensi Model akan menampilkan "
-                  "'Tidak tercatat' untuk rasio ini.")
+            print(f"[PERINGATAN] Metrik acuan untuk '{label}' ({ckpt_filename}) tidak ditemukan "
+                  "-- Panel Efisiensi Model akan menampilkan 'Tidak tercatat' untuk rasio ini.")
         print(f"[INFO] Model dimuat: {label} ({ckpt_filename})")
 
     # Buat Flask app

@@ -105,7 +105,8 @@
       "inference_ms": 28.90809999371413,
       "num_params_l1_rasio_sama": 2055492,
       "num_params_identik_dengan_l1": true,
-      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (2,055,492)"
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (2,055,492)",
+      "flops_true_2x_macs": 597532078.0
     },
     "20%": {
       "bobot": {
@@ -128,7 +129,8 @@
       "inference_ms": 31.19735000655055,
       "num_params_l1_rasio_sama": 1874851,
       "num_params_identik_dengan_l1": true,
-      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,874,851)"
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,874,851)",
+      "flops_true_2x_macs": 541673842.0
     },
     "30%": {
       "bobot": {
@@ -151,7 +153,8 @@
       "inference_ms": 21.422100006020628,
       "num_params_l1_rasio_sama": 1694216,
       "num_params_identik_dengan_l1": true,
-      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,694,216)"
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,694,216)",
+      "flops_true_2x_macs": 485875680.0
     },
     "40%": {
       "bobot": {
@@ -174,7 +177,8 @@
       "inference_ms": 19.113550006295554,
       "num_params_l1_rasio_sama": 1513575,
       "num_params_identik_dengan_l1": true,
-      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,513,575)"
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,513,575)",
+      "flops_true_2x_macs": 430017444.0
     },
     "50%": {
       "bobot": {
@@ -197,7 +201,8 @@
       "inference_ms": 16.469449998112395,
       "num_params_l1_rasio_sama": 1331945,
       "num_params_identik_dengan_l1": true,
-      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,331,945)"
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,331,945)",
+      "flops_true_2x_macs": 372924800.0
     },
     "60%": {
       "bobot": {
@@ -220,7 +225,8 @@
       "inference_ms": 14.851249987259507,
       "num_params_l1_rasio_sama": 1152036,
       "num_params_identik_dengan_l1": true,
-      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,152,036)"
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (1,152,036)",
+      "flops_true_2x_macs": 318020398.0
     },
     "70%": {
       "bobot": {
@@ -243,9 +249,11 @@
       "inference_ms": 13.7620000023162,
       "num_params_l1_rasio_sama": 971395,
       "num_params_identik_dengan_l1": true,
-      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (971,395)"
+      "catatan_perbandingan_params": "IDENTIK dengan ablation_l1 (971,395)",
+      "flops_true_2x_macs": 262162162.0
     }
   },
   "status": "SELESAI",
-  "total_time_seconds": 40992.772691726685
+  "total_time_seconds": 40992.772691726685,
+  "_catatan_macs_vs_flops": "Field 'flops' di seluruh berkas ini sebenarnya MACs (multiply-accumulate) dari thop.profile() via measure_flops() di src/model.py -- thop TIDAK mengalikan faktor 2 per MAC. Field 'flops_true_2x_macs' (ditambahkan 2026-09-24, scripts/56_tambah_flops_sebenarnya.py) adalah FLOPs sebenarnya = 2 x nilai 'flops'. Field 'flops' asli TIDAK diubah supaya konsumen lama (skrip/kode yang sudah membaca field ini) tidak terdampak -- lihat CLAUDE.md Bagian 8 butir 12."
 }

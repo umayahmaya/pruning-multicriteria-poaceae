@@ -215,18 +215,54 @@ Catatan penting soal lokasi file:
    ```
    (torch 2.9.1+cpu terpasang otomatis sebagai dependensi executorch==1.0.1). `flatc` (kompilator FlatBuffers, dibutuhkan saat serialisasi .pte) di-resolve otomatis lewat env var `FLATC_EXECUTABLE` di dalam `20_test_executorch_runtime.py` sendiri karena `venv_mobile/Scripts` tidak selalu ada di PATH -- tidak perlu setup manual tambahan.
 
-9. **SELESAI (2026-08-26), didokumentasikan di sini 2026-09-10, diperbarui 2026-09-11 setelah validasi multi-seed.** Kriteria kedua I(c) diganti dari S_BN ke S_GM-Ekspansi dan skema bobot diganti dari konstan ke per-rasio -- lihat Bagian 2 (formula aktif) dan Bagian 2a (formula lama, diarsipkan). Hasil seed 42: `outputs/multicriteria_per_rasio.json`. Hasil validasi 3 seed (42/123/2024, `45_multiseed_per_rasio.py`): `outputs/multiseed_per_rasio_results.json`.
+9. **SELESAI (2026-08-26), didokumentasikan di sini 2026-09-10, diperbarui 2026-09-11 setelah validasi multi-seed 20%/60%, DIKOREKSI 2026-09-24 setelah ditemukan cakupan sebenarnya sudah lengkap 7 rasio.** Kriteria kedua I(c) diganti dari S_BN ke S_GM-Ekspansi dan skema bobot diganti dari konstan ke per-rasio -- lihat Bagian 2 (formula aktif) dan Bagian 2a (formula lama, diarsipkan). Hasil seed 42 (tarikan tunggal, RNG sekuensial -- lihat Bagian 9 keterbatasan metodologis): `outputs/multicriteria_per_rasio.json`. Hasil validasi 3 seed (42/123/2024): `outputs/multiseed_per_rasio_results.json`, dihasilkan `scripts/45_multiseed_per_rasio.py` (rasio 20%/60%, 3,15 jam) + `scripts/46_multiseed_remaining5.py` (rasio 10/30/40/50/70%, 11,58 jam) -- **total 14,73 jam, KEDUANYA SUDAH SELESAI, mencakup ketujuh rasio + baseline**, bukan cuma 3 titik seperti sempat tertulis di versi entri ini sebelum 2026-09-24 (kesalahan dokumentasi murni -- file hasilnya sendiri sudah berisi ketujuh rasio sejak sebelum tanggal itu, ke-10 checkpoint seed123/seed2024 untuk rasio 10/30/40/50/70% terverifikasi ada di `checkpoints/`, CLAUDE.md-nya saja yang tidak diperbarui).
 
-   **Klaim "rasio 20% melampaui baseline" DICABUT.** Baseline rata-rata 3 seed = 95,43% (std 0,81 pp, dipakai ulang dari `scripts/archive/15_multiseed_validation.py` -- baseline tidak bergantung formula I(c)). Rasio 20% formula aktif rata-rata 3 seed = 96,19% (std 0,97 pp; per-seed: 97,14% / 94,86% / 96,57%). Selisih 0,76 pp berada DI BAWAH ambang 2 pp Aturan 5 (Bagian 4) -- ditafsirkan sebagai **kesetaraan** dengan baseline, BUKAN peningkatan. Angka 97,14% (seed 42 saja) yang sebelumnya disebut di entri ini TIDAK representatif sendirian dan tidak boleh dikutip tanpa konteks rata-rata 3 seed ini.
+   **Tabel lengkap 3-seed vs baseline (95,43%, std 0,81 pp, dipakai ulang dari `scripts/archive/15_multiseed_validation.py` -- baseline tidak bergantung formula I(c)), Aturan 5 ambang 2 pp:**
 
-   **Rasio 60% menunjukkan penurunan ~6,1 pp yang konsisten di ketiga seed, bukan artefak seed tunggal.** Rata-rata 3 seed = 89,33% (std 0,54 pp; per-seed: 89,71% / 88,57% / 89,71%) -- selisih 6,10 pp di bawah baseline (95,43%), konsisten arahnya di ketiga seed. Ini memperkuat klaim adanya jurang performa (performance cliff) antara rasio 50% dan 60% yang mendasari H2.
+   | Rasio | Mean 3-seed | Std | Selisih vs baseline | Ambang 2 pp |
+   |---|---|---|---|---|
+   | 10% | 95,43% | 0,47 pp | -0,00 pp | dalam ambang (setara) |
+   | 20% | 96,19% | 0,97 pp | +0,76 pp | dalam ambang (setara) |
+   | 30% | 96,38% | 0,27 pp | +0,95 pp | dalam ambang (setara) |
+   | 40% | 96,19% | 0,27 pp | +0,76 pp | dalam ambang (setara) |
+   | 50% | 92,76% | 1,43 pp | -2,67 pp | **MELEBIHI (turun)** |
+   | 60% | 89,33% | 0,54 pp | -6,10 pp | **MELEBIHI (turun)** |
+   | 70% | 88,76% | 0,27 pp | -6,67 pp | **MELEBIHI (turun)** |
 
-   **Cakupan multi-seed saat ini TERBATAS pada baseline, rasio 20%, dan rasio 60%.** Rasio 10/30/40/50/70% pada formula aktif MASIH single-seed (seed 42 saja, dari `multicriteria_per_rasio.json`) -- **BELUM divalidasi multi-seed. JANGAN ditutup sebagai selesai** sampai ada perluasan pengujian. Menunggu arahan lebih lanjut soal apakah validasi diperluas ke rasio 40% dan 50%.
+   **Klaim "rasio 20% melampaui baseline" DICABUT** (per-seed 20%: 97,14% / 94,86% / 96,57% -- angka 97,14% seed 42 saja TIDAK representatif sendirian, sudah dicabut sejak versi entri sebelumnya, tetap berlaku).
+
+   **Rasio 60% menunjukkan penurunan ~6,1 pp yang konsisten di ketiga seed** (per-seed: 89,71% / 88,57% / 89,71%), bukan artefak seed tunggal -- sudah didokumentasikan sejak versi entri sebelumnya, tetap berlaku.
+
+   **Temuan BARU (baru tersurfaces 2026-09-24 karena koreksi cakupan di atas): rasio 50% JUGA melebihi ambang 2 pp (-2,67 pp), bukan cuma 60% dan 70%.** Per-seed 50%: 90,86% / 93,14% / 94,29% (std tertinggi dari ketujuh rasio, 1,43 pp -- lihat Bagian 8 butir 10 soal kenapa std ini tidak diwariskan dari kriteria tunggal manapun). Data mentah disajikan apa adanya -- TIDAK ditarik kesimpulan di sini apakah ini mengubah letak "jurang performa" (performance cliff) yang mendasari H2 dari "antara 50% dan 60%" menjadi "mulai dari 50%"; itu keputusan interpretasi untuk pembimbing/penulis tesis.
+
+   **Catatan metodologis penting: nilai seed-42 "resmi" di `multicriteria_per_rasio.json` (dipakai di README.md, tabel-tabel lain) BERBEDA dari nilai seed-42 di validasi multi-seed ini untuk rasio 10/30/40/50/70%**, karena kelima rasio itu di-retrain FRESH dengan seed di-reset eksplisit untuk validasi multi-seed (`catatan` per-seed di JSON: "DILATIH ULANG FRESH, BUKAN dipakai ulang"), sedangkan nilai "resmi" berasal dari tarikan sekuensial `44_multicriteria_per_rasio.py` (RNG bergantung rasio sebelumnya -- keterbatasan metodologis Bagian 9). Selisihnya bervariasi per rasio: 10% identik (94,86% vs 94,86%), 70% hampir identik (88,00% vs 88,57%), tapi 30% berbeda 0,57 pp, 40% berbeda 1,71 pp, dan **50% berbeda 3,43 pp** (94,29% resmi vs 90,86% retrain fresh) -- ilustrasi konkret seberapa besar dampak keterbatasan RNG-sekuensial yang sudah lama didokumentasikan di Bagian 9, baru sekarang terkuantifikasi angkanya.
 
    **Item lama di bagian "masih terbuka", status diperbarui:**
    - ~~Seluruh pekerjaan eksplorasi 10-26 Agustus 2026 ... belum pernah di-commit ke git~~ **SELESAI (2026-09-10).** Di-commit ke `main` (`6a6aad8`, `14b5d01`, `0b0a1a1`) dan dipublikasikan ke `publish` (`ddd9bd2`).
    - ~~README.md ... belum menyebut skrip 43/44 sama sekali~~ **SELESAI (2026-09-10).** Bagian "Hasil Utama" dan "Urutan Menjalankan" README.md diperbarui untuk mencakup formula aktif dan rantai skrip 42-44.
-   - `outputs/archive/bn_gamma/channel_selection_comparison.json` (Bagian 8 butir 3) dan uji sensitivitas bobot terkait masih hanya membandingkan bobot konstan lama vs lebih lama -- **MASIH TERBUKA**, belum dihitung ulang untuk bobot per-rasio yang baru.
+   - ~~`outputs/archive/bn_gamma/channel_selection_comparison.json` (Bagian 8 butir 3) dan uji sensitivitas bobot terkait masih hanya membandingkan bobot konstan lama vs lebih lama~~ **SELESAI (2026-09-24).** Dihitung ulang untuk formula aktif lewat `scripts/54_perbandingan_seleksi_channel.py`. Hasil: `outputs/channel_selection_comparison_per_rasio.json`. Data mentah saja, tanpa interpretasi -- keputusan penafsiran diserahkan ke pembimbing/penulis tesis:
+
+     **A. Sensitivitas bobot** (bobot ablation per-rasio vs bobot rata 1/3-1/3-1/3, korelasi Spearman I(c) dan persentase channel yang beda status pangkas/pertahankan):
+     | Rasio | w_L1/w_GM/w_Ent | Channel beda | Persentase | Spearman rho |
+     |---|---|---|---|---|
+     | 10% | 0,333/0,333/0,333 | 0 | 0,00% | 1,0000 |
+     | 20% | 0,280/0,280/0,441 | 240 | 3,38% | 0,9792 |
+     | 30% | 0,455/0,333/0,212 | 536 | 7,55% | 0,9495 |
+     | 40% | 0,544/0,333/0,122 | 1506 | 21,20% | 0,8424 |
+     | 50% | 0,466/0,466/0,069 | 2106 | 29,65% | 0,7849 |
+     | 60% | 0,170/0,562/0,268 | 848 | 11,94% | 0,9018 |
+     | 70% | 0,086/0,383/0,531 | 724 | 10,19% | 0,9144 |
+
+     **B. Multi-kriteria (bobot per-rasio) vs kriteria tunggal** (persentase channel berbeda dan Spearman rho, per rasio -- berbeda dari skrip 08 lama karena bobot bukan konstan lagi sehingga korelasi ikut berubah per rasio, bukan satu nilai untuk semua rasio):
+     | Rasio | vs L1 | vs GM-Ekspansi | vs Entropi |
+     |---|---|---|---|
+     | 10% | 12,02% (854), rho=0,528 | 15,15% (1076), rho=0,403 | 7,57% (538), rho=0,747 |
+     | 20% | 24,32% (1728), rho=0,437 | 29,62% (2104), rho=0,297 | 9,23% (656), rho=0,861 |
+     | 30% | 26,94% (1914), rho=0,715 | 35,05% (2490), rho=0,422 | 21,42% (1522), rho=0,546 |
+     | 40% | 22,52% (1600), rho=0,825 | 39,56% (2810), rho=0,414 | 34,52% (2452), rho=0,351 |
+     | 50% | 26,80% (1904), rho=0,691 | 29,42% (2090), rho=0,632 | 44,96% (3194), rho=0,223 |
+     | 60% | 43,86% (3116), rho=0,288 | 33,36% (2370), rho=0,724 | 23,09% (1640), rho=0,576 |
+     | 70% | 38,85% (2760), rho=0,194 | 41,69% (2962), rho=0,372 | 7,49% (532), rho=0,893 |
 
 10. **SELESAI (2026-09-14, dicatat 2026-09-12).** Validasi multi-seed untuk KETIGA kriteria tunggal (L1, GM-Ekspansi, Entropi) di SELURUH 7 rasio, seed 123 dan 2024 (42 run: 21 pasang kriteria x rasio x 2 seed baru; seed 42 dipakai ulang dari checkpoint yang sudah ada). Cakupan diperluas dari rencana awal ("kriteria terbaik per rasio" saja) karena ditemukan seri antar kriteria pada seed 42 di 3 rasio (20%: GM=Ent; 40%: L1=GM; 70%: GM=Ent), sehingga "terbaik per rasio" tidak selalu tunggal. Skrip: `48_multiseed_single_criteria.py` (31,25 jam komputasi). Hasil: `outputs/multiseed_single_criteria_results.json`.
 
@@ -241,7 +277,40 @@ Catatan penting soal lokasi file:
     - Entropi lonjakan di 60% (89,71 -> 92,57): **terkonfirmasi kuat**, rata-rata 3 seed identik dengan seed 42, ~2,75x gabungan std -- reproducible, bukan keberuntungan seed tunggal.
     - Simpangan baku Multi-Kriteria tertinggi di rasio 50% (1,43 pp, Bagian 8 butir 9) **tidak diwariskan** dari L1 atau GM manapun -- std tertinggi masing-masing kriteria tunggal ada di rasio BERBEDA (L1 tertinggi di 30%=0,97pp; GM tertinggi di 20%=1,40pp; Entropi tertinggi di 70%=1,23pp) -- kemungkinan muncul dari kombinasi bobot w_L1≈w_GM≈0,47 (hampir seimbang) khusus di rasio 50% itu, bukan warisan ketidakstabilan satu kriteria.
 
-11. **[BUG - PERBAIKI SEBELUM SIDANG HASIL].** Aplikasi Android dan server Flask demo masih mengirim/memuat model dari formula LAMA (valweights / checkpoint default lama), bukan formula aktif (GM-Ekspansi + bobot per rasio). Ditemukan saat reorganisasi `outputs/` pada 2026-09-12. Dampak: demo langsung akan menunjukkan hasil yang tidak cocok dengan angka di tesis. Rincian file yang terlibat ada di `outputs/README_OUTPUTS.md` bagian "Perhatian -- belum diselaraskan". Wajib diperbaiki sebelum aplikasi ini didemokan di sidang hasil, tidak mendesak untuk sidang proposal.
+11. **[BUG - PERBAIKI SEBELUM SIDANG HASIL]. SELESAI (2026-09-24).** Aplikasi Android dan server Flask demo sempat masih mengirim/memuat model dari formula LAMA (valweights / checkpoint default lama), bukan formula aktif (GM-Ekspansi + bobot per rasio). Ditemukan saat reorganisasi `outputs/` pada 2026-09-12, diperbaiki 2026-09-24 setelah audit kebersihan skrip (Bagian 8 butir 9 sub-item dan butir 12 diselesaikan lebih dulu, lalu `test_system.py` 75/75 PASS dan `py_compile` bersih di seluruh `src/`+`scripts/` sebagai gerbang sebelum bug ini disentuh, sesuai urutan kerja yang diminta).
+
+    **Perbaikan:**
+    - `scripts/06_deploy_flask.py`: `MODEL_CHOICES` kini memuat `multicriteria_per_rasio_{10-70}pct_30ep.pth` (8 model: baseline + ketujuh rasio -- sebelumnya cuma 6 disebut di docstring padahal 8 di-load, sekalian diperbaiki). Panel Efisiensi Model membaca `outputs/multicriteria_per_rasio.json` untuk rasio 10-70% (fungsi baru `load_per_rasio_table()`), baseline tetap dari `tabel_hasil_lengkap.json` (formula-independent, tidak perlu diganti). Label "FLOPs" di panel diganti "MACs (thop)" mengikuti temuan butir 12. Diverifikasi lewat permintaan HTTP nyata ke `/predict` (baseline, rasio 20%, rasio 70%) -- bukan cuma baca kode.
+    - `scripts/55_export_verify_pte_per_rasio.py` (skrip BARU, pola identik `scripts/20_test_executorch_runtime.py` yang TIDAK diubah): ekspor + verifikasi `.pte` untuk `multicriteria_per_rasio_{20,60}pct_30ep.pth`. Hasil: 20/20 prediksi PyTorch vs ExecuTorch identik, selisih logit maksimum ~1e-05 (kedua rasio) -- `outputs/executorch_runtime_test_per_rasio.json`.
+    - `scripts/21_export_android_assets.py`: `PTE_FILENAMES`/`REFERENCE_CHECKPOINT` diarahkan ke checkpoint formula aktif dan `.pte` hasil skrip 55. `android_assets/` diregenerasi; dua `.pte` formula lama yang jadi basi dihapus (gitignored, tidak pernah ter-track git).
+    - `scripts/24_uji_banding_android.py`, `25_siapkan_demo_proporsional.py`, `26_banding_demo_sidang.py`, `27_diagnosa_resize.py` (rantai persiapan demo sidang Android, ditemukan ikut memakai checkpoint formula lama saat audit ini, di luar dua file yang awalnya dilaporkan): `CHECKPOINT_NAME` diarahkan ke `multicriteria_per_rasio_20pct_30ep.pth`. `demo_sidang/` diregenerasi ulang (akurasi acuan berubah dari 96,00% jadi 97,14% karena checkpoint beda, komposisi 8 citra ikut berubah -- satu berkas basi dari seleksi lama dihapus); integritas salinan diverifikasi ulang lewat skrip 26 (8/8 status prediksi cocok).
+    - `scripts/18_prepare_demo_images.py` (`DEFAULT_CHECKPOINT`, menghasilkan `outputs/citra_demo.json`): **ditemukan terlewat** dari sapuan pertama (2026-09-24, saat audit ulang lebih teliti) karena outputnya murni referensi manual (tidak dibaca skrip lain, jadi tidak muncul di jejak pemanggilan seperti Flask/Android). Diperbaiki dan diregenerasi -- akurasi acuan berubah dari 96,00% jadi 97,14% (checkpoint formula aktif).
+    - **Project Android Studio (`D:\Tesis_Android\DeteksiDaunPoaceae`, di luar repositori Python ini) SUDAH diperbaiki (2026-09-24)**, bukan lagi di luar jangkauan: `Klasifikasi.kt` (alur produksi) dan `PreprocessTest.kt` (harness verifikasi) diarahkan ke `multicriteria_per_rasio_20pct_30ep.pte`; `app/src/main/assets/` diisi ulang dengan aset formula aktif (kedua `.pte`, `reference_*`, `labels.txt`, dst.), `.pte` lama dihapus. `gradlew compileDebugKotlin` -- BUILD SUCCESSFUL. `HASIL_VERIFIKASI.md` di project itu TIDAK diubah (tetap sah sebagai catatan historis run 2026-08-04 dengan checkpoint lama), tapi PERLU dijalankan ulang manual (lewat emulator/device) untuk angka verifikasi yang mencerminkan checkpoint aktif -- prediksi end-to-end di device sungguhan TIDAK bisa diverifikasi dari sesi ini.
+
+    Rincian lengkap: `outputs/README_OUTPUTS.md` bagian "Perhatian -- SUDAH DISELARASKAN".
+
+12. **[TEMUAN -- WAJIB DIPERHATIKAN SAAT MENULIS PAPER/TESIS, bukan bug kode].** Seluruh angka "flops" di proyek ini, sejak awal, sebenarnya adalah MACs (multiply-accumulate), bukan FLOPs. Ditemukan saat menyusun `scripts/51_hitung_flops.py` (2026-09-24 -- lihat juga item ini di riwayat kerja sebelumnya).
+
+    **Akar masalah:** `measure_flops()` di `src/model.py` memanggil `thop.profile()` dan menyimpan nilai kembaliannya langsung sebagai `flops` (`src/model.py:99-101,315-316`). Nilai kembalian `thop.profile()` adalah MACs, BUKAN FLOPs -- diverifikasi lewat pembacaan source code thop (`calculate_conv2d_flops()` tidak mengalikan 2) dan lewat perhitungan MAC manual via forward hook (`Cout*Hout*Wout*(Cin/groups)*Kh*Kw` per Conv2d) yang cocok dengan angka thop hingga selisih 0,26% (angka thop sendiri memasukkan BatchNorm2d ke total, manual hook murni conv+linear). FLOPs sebenarnya = 2 x MACs (satu perkalian + satu penjumlahan per MAC), konvensi umum di literatur (termasuk Sandler et al. 2018 yang dirujuk di Bagian 10).
+
+    **`measure_flops()` di `src/model.py` SENGAJA TIDAK diubah** -- konsisten dengan konvensi proyek ini untuk tidak mengubah kode inti yang sudah dipakai banyak skrip lama (`03,04,05,06,07,11,12,17` dan lain-lain, semuanya memanggil `evaluate_model()` yang memanggil `measure_flops()`). Akibatnya, **setiap angka "flops" pada SETIAP file berikut adalah MACs, bukan FLOPs**: `outputs/tabel_hasil_lengkap.json`, `outputs/ablation_val_results.json`, `outputs/multicriteria_per_rasio.json`, `outputs/ablation_gm_expansion.json`, `outputs/ablation_l1_expansion.json` -- berlaku surut untuk seluruh riwayat eksperimen proyek ini, bukan cuma file yang disebut di sini.
+
+    **DIBERSIHKAN (2026-09-24)** lewat `scripts/56_tambah_flops_sebenarnya.py`: kelima file JSON di atas kini masing-masing punya field baru `flops_true_2x_macs` (= 2 x field `flops` asli) di setiap entri yang sebelumnya punya `flops`, ditambahkan secara ADITIF -- field `flops` asli TIDAK diubah/dihapus (supaya kode yang sudah membaca field itu, mis. `load_efficiency_metrics()` di `06_deploy_flask.py`, tidak terdampak), plus catatan `_catatan_macs_vs_flops` di level atas tiap file. Jadi sekarang kalau mau kutip FLOPs sebenarnya, tinggal ambil `flops_true_2x_macs` dari file manapun di atas -- tidak perlu hitung manual x2 lagi atau cuma mengandalkan `tabel_flops_per_rasio.csv`.
+
+    **Angka FLOPs sebenarnya (2 x MACs) sudah dihitung untuk baseline dan ketujuh rasio formula aktif**, lewat `scripts/51_hitung_flops.py`, hasil di `outputs/tabel_flops_per_rasio.csv`:
+
+    | Rasio | MACs (M) | FLOPs sebenarnya (M) | Hemat MACs/FLOPs (%, sama) | Hemat params (%) |
+    |---|---|---|---|---|
+    | 0% (baseline) | 326,22 | 652,44 | 0,00 | 0,00 |
+    | 10% | 298,77 | 597,53 | 8,42 | 8,05 |
+    | 20% | 270,84 | 541,67 | 16,98 | 16,13 |
+    | 30% | 242,94 | 485,88 | 25,53 | 24,21 |
+    | 40% | 215,01 | 430,02 | 34,09 | 32,29 |
+    | 50% | 186,46 | 372,92 | 42,84 | 40,42 |
+    | 60% | 159,01 | 318,02 | 51,26 | 48,46 |
+    | 70% | 131,08 | 262,16 | 59,82 | 56,54 |
+
+    Karena FLOPs = 2 x MACs adalah faktor pengali KONSTAN, seluruh persentase penghematan (kolom "hemat") TIDAK berubah oleh koreksi ini -- hanya angka ABSOLUT (MFLOPs/MMACs) yang berbeda 2x lipat. **Penting untuk penulisan paper/tesis:** kutip angka absolut beban komputasi dari `outputs/tabel_flops_per_rasio.csv` (kolom `flops_M` untuk FLOPs sebenarnya, atau `macs_M` jika memilih melaporkan sebagai MACs -- keduanya sekarang berlabel benar), JANGAN dari kolom `flops` pada file JSON lama di atas tanpa mengoreksinya lebih dulu (kalikan 2 jika ingin FLOPs, atau ganti label jadi MACs jika ingin memakai angka aslinya apa adanya). Data disajikan apa adanya di sini tanpa rekomendasi mana yang dipilih -- itu keputusan penulisan, bukan keputusan teknis.
 
 ---
 

@@ -13,7 +13,9 @@ terpisah yang khusus disalin untuk pengujian manual lewat antarmuka
 aplikasi (kamera/galeri), lihat percakapan "Salin 5 gambar uji ke
 emulator Android".
 
-Memuat checkpoints/multicriteria_20pct_30ep_valweights.pth, menjalankan
+Memuat checkpoints/multicriteria_per_rasio_20pct_30ep.pth (formula AKTIF --
+diperbaiki 2026-09-24, sebelumnya checkpoint formula lama _valweights,
+lihat CLAUDE.md Bagian 8 butir 11), menjalankan
 praproses evaluasi standar get_transforms("test") -- praproses PyTorch
 biasa (resize bilinear + antialias), BUKAN tiruan praprosesBertahap
 Android -- sehingga angka di sini adalah baseline "PyTorch murni" untuk
@@ -38,7 +40,7 @@ from src.config import CFG
 from src.dataset import get_transforms
 from src.model import load_checkpoint
 
-CHECKPOINT_NAME = "multicriteria_20pct_30ep_valweights.pth"
+CHECKPOINT_NAME = "multicriteria_per_rasio_20pct_30ep.pth"
 TEST_DIR = CFG.DATASET_DIR.parent / "dataset_split" / "test"
 
 # Kelima berkas yang disalin ke /sdcard/Pictures/ emulator lewat adb push,

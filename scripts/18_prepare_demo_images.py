@@ -1,9 +1,12 @@
 """
 18_prepare_demo_images.py
-Menjalankan checkpoint default deployment (multicriteria_20pct_30ep_valweights.pth)
-pada seluruh 175 citra subset test satu per satu, lalu menyusun daftar citra
-demonstrasi: untuk masing-masing dari sembilan kelas, tiga citra dengan
-probabilitas prediksi BENAR tertinggi.
+Menjalankan checkpoint default deployment (multicriteria_per_rasio_20pct_30ep.pth,
+formula AKTIF -- diperbaiki 2026-09-24, sebelumnya checkpoint formula lama
+_valweights, ditemukan terlewat dari perbaikan awal CLAUDE.md Bagian 8
+butir 11 karena outputnya (citra_demo.json) murni referensi manual, tidak
+dibaca skrip lain) pada seluruh 175 citra subset test satu per satu, lalu
+menyusun daftar citra demonstrasi: untuk masing-masing dari sembilan kelas,
+tiga citra dengan probabilitas prediksi BENAR tertinggi.
 
 Juga mencatat daftar LENGKAP citra yang salah diprediksi (nama berkas, kelas
 asli, kelas prediksi, probabilitas) supaya diketahui citra mana yang harus
@@ -29,7 +32,7 @@ from src.config import CFG
 from src.dataset import get_transforms
 from src.model import load_checkpoint
 
-DEFAULT_CHECKPOINT = "multicriteria_20pct_30ep_valweights.pth"
+DEFAULT_CHECKPOINT = "multicriteria_per_rasio_20pct_30ep.pth"
 RESULTS_PATH = CFG.OUTPUT_DIR / "citra_demo.json"
 TOP_N_PER_CLASS = 3
 

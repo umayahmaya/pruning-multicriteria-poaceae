@@ -50,6 +50,44 @@ Tetap di `outputs/` langsung (bukan di `archive/`).
 - **`penanganan_penyakit.json`** -- info penanganan 9 kelas penyakit,
   tidak terkait kriteria/bobot, dipakai Panel Informasi Penanganan di
   `scripts/06_deploy_flask.py`.
+- **`tabel_parameter_per_blok.csv`** -- penghematan parameter per block
+  inverted residual (16 block prunable), ketujuh rasio formula aktif,
+  diverifikasi silang terhadap penjumlahan langsung parameter model
+  terpangkas (0 selisih, 7/7 rasio LULUS). Sumber:
+  `scripts/49_tabel_parameter_per_blok.py`.
+- **`visualisasi_peta_fitur_skor_rendah.png`**, **`visualisasi_peta_fitur_skor_tinggi.png`**
+  -- peta fitur depthwise (setelah BN+ReLU6) untuk 5 channel skor I(c)
+  terendah dan tertinggi di block tengah (block_idx=10), 4 citra val
+  (satu per beberapa kelas), skala warna global sama di kedua gambar.
+  Sumber: `scripts/50_visualisasi_peta_fitur.py`.
+- **`tabel_flops_per_rasio.csv`** -- MACs dan FLOPs sebenarnya (2 x MACs,
+  lihat CLAUDE.md Bagian 8 butir 12) untuk baseline + ketujuh rasio formula
+  aktif, plus persentase hemat MACs/FLOPs/params dan selisih pola hemat.
+  Sumber: `scripts/51_hitung_flops.py`. Kolom `flops` pada file JSON lain di
+  `outputs/` (termasuk `multicriteria_per_rasio.json`, `tabel_hasil_lengkap.json`,
+  `ablation_val_results.json`, `ablation_gm_expansion.json`,
+  `ablation_l1_expansion.json`) sebenarnya MACs, bukan FLOPs -- **field
+  `flops_true_2x_macs` sudah ditambahkan ke kelima file itu** (aditif, `flops`
+  asli tidak diubah) lewat `scripts/56_tambah_flops_sebenarnya.py`, jadi FLOPs
+  sebenarnya bisa langsung dikutip dari file manapun tanpa hitung manual x2.
+- **`daftar_channel_dipangkas.csv`** -- daftar rinci per channel (49.728
+  baris: rasio x block x channel) berisi status pangkas/pertahankan, skor
+  I(c) dan ketiga komponen ternormalisasinya, serta peringkat di lapisan;
+  diverifikasi terhadap `tabel_parameter_per_blok.csv` (112/112 titik
+  rasio-block LULUS). Sumber: `scripts/52_daftar_channel_dipangkas.py`.
+- **`channel_selection_comparison_per_rasio.json`** -- versi formula AKTIF
+  dari perbandingan seleksi channel: (A) sensitivitas bobot ablation
+  per-rasio vs bobot rata 1/3-1/3-1/3, (B) korelasi Spearman + persentase
+  channel berbeda antara I(c) multi-kriteria dan tiap kriteria tunggal
+  (L1/GM-Ekspansi/Entropi), keduanya dihitung PER RASIO (bukan sekali untuk
+  semua rasio seperti versi arsip, karena bobot kini beda tiap rasio).
+  Data mentah, tanpa interpretasi. Sumber:
+  `scripts/54_perbandingan_seleksi_channel.py`.
+- **`ablation_l1_expansion.json`** -- ablasi L1-norm dari bobot conv
+  EKSPANSI (pembanding L1-depthwise yang dipakai formula aktif), val & test,
+  7 rasio. Hasil campuran (ekspansi lebih baik di 20/60/70%, lebih buruk di
+  30/40/50%, seri di 10%) -- data mentah, belum ada keputusan apakah ini
+  mengubah formula aktif. Sumber: `scripts/53_ablation_l1_expansion.py`.
 
 ### Gambar dan checkpoint ekspor aktif
 
@@ -63,26 +101,52 @@ Tetap di `outputs/` langsung (bukan di `archive/`).
   "Multi-Kriteria" di gambar ini formula AWAL/ARSIP (sama seperti kolom
   "multicriteria" di `tabel_hasil_lengkap.json`) -- belum ada versi kurva
   untuk formula aktif per-rasio. Sumber: `scripts/05_generate_report.py`.
+- **`kurva_kompresi_akurasi_per_rasio.png`** -- versi formula AKTIF dari
+  grafik di atas (L1/GM-Ekspansi/Entropi/Multi-Kriteria vs rasio, error bar
+  hanya di titik yang punya data 3-seed). Sumber:
+  `scripts/47_kurva_kompresi_per_rasio.py` -- **skrip ini SENGAJA TIDAK
+  di-commit ke git** (instruksi eksplisit), file PNG-nya ada di `outputs/`
+  secara lokal tapi juga tidak ter-track git (lihat `.gitignore`).
 - **`baseline_9class.pte`** -- ekspor ExecuTorch model baseline (tidak
   bergantung formula I(c), tetap berlaku). Sumber: `scripts/19_test_executorch_export.py`.
-- **`multicriteria_20pct_30ep_valweights.pte`**, **`multicriteria_60pct_30ep_valweights.pte`**
-  -- ekspor ExecuTorch checkpoint FORMULA AWAL. **AKTIF secara teknis**
-  (masih disalin `scripts/21_export_android_assets.py` ke aset Android),
-  BUKAN karena formulanya masih dianggap resmi -- ini instans KEDUA dari
-  masalah "belum diselaraskan" yang sama seperti checkpoint default Flask
-  di bawah: aplikasi Android saat ini JUGA mengirim model formula AWAL,
-  bukan `multicriteria_per_rasio_20pct_30ep.pte` (belum pernah diekspor).
+- **`multicriteria_per_rasio_20pct_30ep.pte`**, **`multicriteria_per_rasio_60pct_30ep.pte`**
+  -- ekspor ExecuTorch checkpoint FORMULA AKTIF, disalin
+  `scripts/21_export_android_assets.py` ke aset Android. Diverifikasi
+  kesetaraan prediksi PyTorch vs ExecuTorch (20/20 identik, selisih logit
+  maksimum ~1e-05, noise floating-point) lewat
+  `scripts/55_export_verify_pte_per_rasio.py` (`venv_mobile/`), hasil di
+  `outputs/executorch_runtime_test_per_rasio.json`. Menggantikan
+  `multicriteria_{20,60}pct_30ep_valweights.pte` (formula AWAL, lihat
+  `archive/lain/` di bawah).
 
-**Perhatian -- belum diselaraskan (dua tempat):**
-1. Checkpoint default deployment Flask masih `multicriteria_20pct_30ep_valweights.pth`
-   (formula AWAL), bukan `multicriteria_per_rasio_20pct_30ep.pth` (formula
-   aktif) -- lihat `DEFAULT_CHECKPOINT` di `scripts/06_deploy_flask.py`.
-2. Aset Android (`scripts/21_export_android_assets.py`) menyalin
-   `multicriteria_{20,60}pct_30ep_valweights.pte` (formula AWAL) -- checkpoint
-   formula aktif belum pernah diekspor ke `.pte` sama sekali.
+**Perhatian -- SUDAH DISELARASKAN (2026-09-24, CLAUDE.md Bagian 8 butir 11):**
+Dua tempat yang sebelumnya mengirim/memuat model formula AWAL (S_BN, bobot
+konstan) sekarang memakai formula AKTIF (L1 + GM-Ekspansi + Entropi, bobot
+per rasio):
+1. Checkpoint deployment Flask: `scripts/06_deploy_flask.py` kini memuat
+   `multicriteria_per_rasio_{10-70}pct_30ep.pth` (8 model: baseline +
+   ketujuh rasio, bukan cuma 6), Panel Efisiensi Model membaca dari
+   `multicriteria_per_rasio.json` untuk rasio 10-70% (baseline tetap dari
+   `tabel_hasil_lengkap.json`, formula-independent). Diverifikasi lewat
+   permintaan HTTP nyata ke `/predict` untuk baseline, rasio 20%, rasio 70%.
+2. Aset Android (`scripts/21_export_android_assets.py`) kini menyalin
+   `multicriteria_per_rasio_{20,60}pct_30ep.pte` (lihat poin di atas) dan
+   memakai checkpoint yang sama untuk kelima berkas referensi praproses.
+   Skrip demo sidang yang bergantung checkpoint yang sama juga diperbaiki
+   dan dijalankan ulang: `scripts/24_uji_banding_android.py`,
+   `25_siapkan_demo_proporsional.py` (menghasilkan ulang `demo_sidang/`,
+   akurasi acuan berubah dari 96,00% menjadi 97,14% karena checkpoint
+   berbeda, komposisi citra ikut berubah), `26_banding_demo_sidang.py`
+   (integritas salinan demo_sidang/ terverifikasi, 8/8 status prediksi
+   cocok), `27_diagnosa_resize.py`.
 
-Keduanya belum diganti karena memengaruhi demo/deployment yang berjalan,
-perlu konfirmasi eksplisit sebelum diubah.
+Catatan: Android Studio project (kode Kotlin aplikasinya sendiri) berada
+DI LUAR repositori ini -- `android_assets/` hanya folder staging yang
+disalin manual ke sana. Nama berkas `.pte` yang dirujuk kode Kotlin (mis.
+`MainActivity.kt`) perlu diperiksa/disesuaikan manual di project Android
+itu sendiri supaya memuat `multicriteria_per_rasio_{20,60}pct_30ep.pte`
+yang baru, bukan nama `_valweights` yang lama -- di luar jangkauan
+perbaikan lewat repositori Python ini.
 
 ## Arsip
 
@@ -110,8 +174,10 @@ skor dengan BN masih jadi salah satu dari tiga kriteria:
   Sumber: `scripts/archive/33_bandingkan_mask_beta.py`,
   `scripts/archive/34_multicriteria_beta20.py`.
 - `channel_selection_comparison.json` -- korelasi Spearman I(c) vs kriteria
-  tunggal formula AWAL (L1/BN/Entropi, bobot konstan), belum dihitung ulang
-  untuk formula aktif. Sumber: `scripts/archive/08_compare_channel_selection.py`.
+  tunggal formula AWAL (L1/BN/Entropi, bobot konstan). **Digantikan**
+  `channel_selection_comparison_per_rasio.json` di atas (formula aktif,
+  `scripts/54_perbandingan_seleksi_channel.py`, 2026-09-24). Sumber:
+  `scripts/archive/08_compare_channel_selection.py`.
 - `cm_multicriteria_beta20_50pct.png`, `cm_multicriteria_beta20_60pct.png`
   -- confusion matrix varian bobot power-law beta=20, masih BN. Sumber:
   `scripts/archive/34_multicriteria_beta20.py`.
@@ -182,10 +248,11 @@ memakai bobot TUNGGAL yang sama untuk ketujuh rasio:
 - `executorch_export_test.json`, `executorch_runtime_test.json` -- verifikasi
   ekspor ExecuTorch (4 Agustus 2026) dilakukan pada checkpoint FORMULA AWAL
   (`multicriteria_20pct_30ep_valweights.pth`, dkk.), sebelum formula aktif
-  ada. Mekanisme ekspor ExecuTorch itu sendiri masih valid -- hanya hasil
-  verifikasi kesetaraan prediksi ini yang terikat checkpoint lama dan perlu
-  diulang pada checkpoint `multicriteria_per_rasio_*` kalau mau dikutip
-  untuk deployment saat ini. Sumber: `scripts/19_test_executorch_export.py`,
+  ada. Mekanisme ekspor ExecuTorch itu sendiri masih valid. **Diulang untuk
+  checkpoint formula aktif** (2026-09-24) lewat
+  `scripts/55_export_verify_pte_per_rasio.py` -> `outputs/executorch_runtime_test_per_rasio.json`
+  (lihat entri di atas) -- kutip yang itu untuk deployment saat ini.
+  Sumber: `scripts/19_test_executorch_export.py`,
   `scripts/20_test_executorch_runtime.py` (KEDUA skrip TETAP AKTIF sebagai
   alat/mekanisme, hanya hasil ujinya yang terikat checkpoint lama).
 

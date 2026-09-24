@@ -61,11 +61,12 @@ Total 1.161 citra (129 x 9 kelas), dibagi 70/15/15 stratified dengan seed 42 (li
 
 | | Baseline | Multi-Kriteria 20% (formula per-rasio) |
 |---|---|---|
-| Akurasi test | 96,00% | 97,14% |
+| Akurasi test (rerata 3 seed) | 95,43% (std 0,81 pp) | 96,19% (std 0,97 pp) |
 | Jumlah parameter | 2.235.401 | 1.874.851 (turun 16,13%) |
-| FLOPs | 326.218.240 | 270.836.921 (turun 16,98%) |
+| MACs (thop) | 326.218.240 | 270.836.921 (turun 16,98%) |
+| FLOPs sebenarnya (2 x MACs) | 652.436.480 | 541.673.842 (turun 16,98%) |
 
-Rasio 20% adalah titik operasi terpilih. Selisih akurasi test terhadap baseline (1,14 poin persentase) berada di atas resolusi 0,57%/gambar tapi di bawah ambang 2 poin persentase pada Aturan 5 (CLAUDE.md Bagian 4) -- **belum boleh diklaim sebagai peningkatan** sampai diuji multi-seed. Validasi multi-seed yang sudah ada (`outputs/multiseed_results.json`: rerata 94,67%, simpangan baku 1,17 poin persentase pada rasio 20%) mengacu ke formula LAMA (bobot konstan), BELUM ke formula per-rasio ini -- lihat CLAUDE.md Bagian 8 butir 9 untuk pekerjaan yang masih terbuka. Parameter dan FLOPs pada rasio ini identik dengan ablation L1 tunggal (konsekuensi rasio target, bukan pilihan channel). Rincian lengkap per rasio (bobot, akurasi val/test, params, ukuran, FLOPs, waktu inferensi) ada di `outputs/multicriteria_per_rasio.json`. Tabel 4 skenario x 7 rasio untuk formula LAMA (arsip, masih berguna sebagai pembanding kriteria tunggal L1/BN/Entropi) ada di `outputs/tabel_hasil_lengkap.json`. Berkas mana yang sah dikutip untuk bab hasil, dan mana yang arsip metodologi lama, dijelaskan di `outputs/README_OUTPUTS.md`.
+Rasio 20% adalah titik operasi terpilih. Selisih akurasi test rerata 3 seed terhadap baseline (0,76 poin persentase) berada **di bawah** ambang 2 poin persentase pada Aturan 5 (CLAUDE.md Bagian 4) -- diinterpretasikan sebagai **kesetaraan** dengan baseline, BUKAN peningkatan. Klaim "melampaui baseline" yang sebelumnya memakai angka seed tunggal (97,14%) sudah **dicabut** setelah validasi 3 seed (42/123/2024): lihat CLAUDE.md Bagian 8 butir 9 untuk rincian dan per-seed. Baris "MACs" pada tabel di atas adalah nilai mentah `thop.profile()` -- proyek ini sebelumnya melabeli nilai ini sebagai "FLOPs" di banyak tempat (`outputs/*.json` lama, tabel di atas versi sebelumnya), padahal thop tidak mengalikan faktor 2 per MAC; baris "FLOPs sebenarnya" adalah koreksinya (lihat CLAUDE.md Bagian 8 butir 12 dan `outputs/tabel_flops_per_rasio.csv` untuk ketujuh rasio). Parameter dan MACs/FLOPs pada rasio ini identik dengan ablation L1 tunggal (konsekuensi rasio target, bukan pilihan channel). Rincian lengkap per rasio (bobot, akurasi val/test, params, ukuran, MACs, waktu inferensi) ada di `outputs/multicriteria_per_rasio.json`. Tabel 4 skenario x 7 rasio untuk formula LAMA (arsip, masih berguna sebagai pembanding kriteria tunggal L1/BN/Entropi) ada di `outputs/tabel_hasil_lengkap.json`. Berkas mana yang sah dikutip untuk bab hasil, dan mana yang arsip metodologi lama, dijelaskan di `outputs/README_OUTPUTS.md`.
 
 ## Cara Memulai
 
@@ -106,11 +107,16 @@ Skrip 07 kini bagian dari alur utama: bobot w1/w2/w3 harus diturunkan dari akura
 
 **Formula I(c) aktif (26 Agustus 2026 dan seterusnya)** dijalankan lewat rantai skrip terpisah, DI LUAR alur 01-07 di atas:
 ```bash
-venv/Scripts/python.exe scripts/42_ablation_gm.py              # ablation kriteria GM tunggal (depthwise)
 venv/Scripts/python.exe scripts/43_ablation_gm_expansion.py    # ablation kriteria GM-Ekspansi tunggal, 7 rasio
 venv/Scripts/python.exe scripts/44_multicriteria_per_rasio.py  # I(c) final, bobot w_k(r) per rasio
 ```
-Skrip 43 mensyaratkan skrip 01/02/07 sudah dijalankan lebih dulu (butuh `checkpoints/baseline_9class.pth` dan `outputs/ablation_val_results.json`). Skrip 44 mensyaratkan skrip 43 sudah selesai (butuh `outputs/ablation_gm_expansion.json`). Hasil: `outputs/multicriteria_per_rasio.json` -- lihat CLAUDE.md Bagian 2 untuk formula lengkap, Bagian 8 butir 9 untuk status dan pekerjaan yang masih terbuka (validasi multi-seed formula ini belum dijalankan). Skrip 22-41 (aset demo Android, eksplorasi kriteria redundansi lain yang TIDAK diadopsi) tidak perlu dijalankan untuk mereproduksi hasil akhir.
+(`scripts/archive/42_ablation_gm.py` adalah varian GM dari bobot DEPTHWISE yang TIDAK diadopsi -- bukan bagian rantai ini, lihat `outputs/README_OUTPUTS.md` bagian `archive/lain/`.) Skrip 43 mensyaratkan skrip 01/02/07 sudah dijalankan lebih dulu (butuh `checkpoints/baseline_9class.pth` dan `outputs/ablation_val_results.json`). Skrip 44 mensyaratkan skrip 43 sudah selesai (butuh `outputs/ablation_gm_expansion.json`). Hasil: `outputs/multicriteria_per_rasio.json` -- lihat CLAUDE.md Bagian 2 untuk formula lengkap.
+
+**Validasi multi-seed formula aktif SUDAH dijalankan** (bukan lagi pekerjaan terbuka): `scripts/45_multiseed_per_rasio.py` dan `46_multiseed_remaining5.py` (3 seed, ketujuh rasio + baseline -- hasil `outputs/multiseed_per_rasio_results.json`), `scripts/48_multiseed_single_criteria.py` (3 seed x 3 kriteria tunggal x 7 rasio -- hasil `outputs/multiseed_single_criteria_results.json`). Lihat CLAUDE.md Bagian 8 butir 9-10 untuk temuan lengkap, termasuk pencabutan klaim "rasio 20% melampaui baseline".
+
+**Skrip 47, 49 sampai 54** adalah analisis pendukung tambahan untuk Bab IV (grafik kurva kompresi, tabel parameter/FLOPs per block, visualisasi peta fitur, daftar channel dipangkas, ablasi L1-ekspansi, sensitivitas bobot) -- tidak perlu dijalankan untuk mereproduksi I(c)/checkpoint hasil akhir, hanya untuk melengkapi laporan. Rincian tiap berkas keluarannya ada di `outputs/README_OUTPUTS.md`. (`scripts/47_kurva_kompresi_per_rasio.py` sengaja tidak di-commit ke git.)
+
+Skrip 22-41 (aset demo Android, eksplorasi kriteria redundansi lain yang TIDAK diadopsi) tidak perlu dijalankan untuk mereproduksi hasil akhir.
 
 ## Opsi Command Line
 

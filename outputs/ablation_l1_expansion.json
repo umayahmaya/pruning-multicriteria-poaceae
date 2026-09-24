@@ -17,7 +17,8 @@
       "num_params": 2055492,
       "model_size_mb": 7.960845947265625,
       "flops": 298766039.0,
-      "inference_ms": 34.15575000690296
+      "inference_ms": 34.15575000690296,
+      "flops_true_2x_macs": 597532078.0
     },
     "20%": {
       "checkpoint": "ablation_l1exp_20pct_30ep.pth",
@@ -32,7 +33,8 @@
       "num_params": 1874851,
       "model_size_mb": 7.260936737060547,
       "flops": 270836921.0,
-      "inference_ms": 30.121900024823844
+      "inference_ms": 30.121900024823844,
+      "flops_true_2x_macs": 541673842.0
     },
     "30%": {
       "checkpoint": "ablation_l1exp_30pct_30ep.pth",
@@ -47,7 +49,8 @@
       "num_params": 1694216,
       "model_size_mb": 6.5610198974609375,
       "flops": 242937840.0,
-      "inference_ms": 25.612450030166656
+      "inference_ms": 25.612450030166656,
+      "flops_true_2x_macs": 485875680.0
     },
     "40%": {
       "checkpoint": "ablation_l1exp_40pct_30ep.pth",
@@ -62,7 +65,8 @@
       "num_params": 1513575,
       "model_size_mb": 5.861110687255859,
       "flops": 215008722.0,
-      "inference_ms": 28.55565003119409
+      "inference_ms": 28.55565003119409,
+      "flops_true_2x_macs": 430017444.0
     },
     "50%": {
       "checkpoint": "ablation_l1exp_50pct_30ep.pth",
@@ -77,7 +81,8 @@
       "num_params": 1331945,
       "model_size_mb": 5.157291412353516,
       "flops": 186462400.0,
-      "inference_ms": 23.778699978720397
+      "inference_ms": 23.778699978720397,
+      "flops_true_2x_macs": 372924800.0
     },
     "60%": {
       "checkpoint": "ablation_l1exp_60pct_30ep.pth",
@@ -92,7 +97,8 @@
       "num_params": 1152036,
       "model_size_mb": 4.460235595703125,
       "flops": 159010199.0,
-      "inference_ms": 14.686800073832273
+      "inference_ms": 14.686800073832273,
+      "flops_true_2x_macs": 318020398.0
     },
     "70%": {
       "checkpoint": "ablation_l1exp_70pct_30ep.pth",
@@ -107,7 +113,8 @@
       "num_params": 971395,
       "model_size_mb": 3.760326385498047,
       "flops": 131081081.0,
-      "inference_ms": 13.160499976947904
+      "inference_ms": 13.160499976947904,
+      "flops_true_2x_macs": 262162162.0
     }
   },
   "status": "SELESAI",
@@ -155,5 +162,6 @@
       "l1_ekspansi_val": 0.7873563218390804,
       "selisih_pp": 0.5747126436781547
     }
-  ]
+  ],
+  "_catatan_macs_vs_flops": "Field 'flops' di seluruh berkas ini sebenarnya MACs (multiply-accumulate) dari thop.profile() via measure_flops() di src/model.py -- thop TIDAK mengalikan faktor 2 per MAC. Field 'flops_true_2x_macs' (ditambahkan 2026-09-24, scripts/56_tambah_flops_sebenarnya.py) adalah FLOPs sebenarnya = 2 x nilai 'flops'. Field 'flops' asli TIDAK diubah supaya konsumen lama (skrip/kode yang sudah membaca field ini) tidak terdampak -- lihat CLAUDE.md Bagian 8 butir 12."
 }

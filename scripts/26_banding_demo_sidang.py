@@ -43,7 +43,7 @@ from src.config import CFG
 from src.dataset import get_transforms
 from src.model import load_checkpoint
 
-CHECKPOINT_NAME = "multicriteria_20pct_30ep_valweights.pth"
+CHECKPOINT_NAME = "multicriteria_per_rasio_20pct_30ep.pth"  # formula AKTIF, harus sama dengan skrip 25 -- lihat CLAUDE.md Bagian 8 butir 11
 DEMO_DIR = CFG.ROOT_DIR / "demo_sidang"
 
 POLA_NAMA = re.compile(r"^demo_(\d+)_(benar|salah)_(.+)$")

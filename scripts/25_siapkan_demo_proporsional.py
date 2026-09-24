@@ -3,15 +3,19 @@
 Menyiapkan 8 citra demonstrasi untuk sidang dengan komposisi yang
 merepresentasikan akurasi model sebenarnya: 7 benar, 1 salah. Rasio
 7:1 (87,5%) adalah pendekatan bilangan bulat terdekat ke akurasi uji
-riil model (96,00% pada 175 citra) yang masih bisa ditampilkan dalam
+riil model (97,14% pada 175 citra untuk checkpoint formula AKTIF rasio
+20% -- diperbarui 2026-09-24 dari 96,00% pada checkpoint formula lama,
+lihat CLAUDE.md Bagian 8 butir 11) yang masih bisa ditampilkan dalam
 satu citra salah pada sampel sekecil 8 -- 8/8 benar tidak jujur (tidak
-merepresentasikan bahwa model memang salah pada ~4% kasus), sementara
-menyertakan lebih dari satu citra salah akan melebih-lebihkan tingkat
-kesalahan sebenarnya.
+merepresentasikan bahwa model memang salah pada sebagian kecil kasus),
+sementara menyertakan lebih dari satu citra salah akan melebih-lebihkan
+tingkat kesalahan sebenarnya.
 
 Langkah:
-1. Evaluasi checkpoint multicriteria_20pct_30ep_valweights.pth pada
-   SELURUH dataset_split/test (175 citra), catat benar/salah per citra
+1. Evaluasi checkpoint multicriteria_per_rasio_20pct_30ep.pth (formula
+   AKTIF -- diperbaiki 2026-09-24, sebelumnya checkpoint formula lama
+   _valweights, lihat CLAUDE.md Bagian 8 butir 11) pada SELURUH
+   dataset_split/test (175 citra), catat benar/salah per citra
    beserta tiga kelas teratas dan persentasenya. Confusion matrix
    dihitung ULANG di sini dari evaluasi ini -- tidak diasumsikan dari
    sesi/skrip sebelumnya.
@@ -68,7 +72,7 @@ from src.config import CFG
 from src.dataset import get_transforms
 from src.model import load_checkpoint
 
-CHECKPOINT_NAME = "multicriteria_20pct_30ep_valweights.pth"
+CHECKPOINT_NAME = "multicriteria_per_rasio_20pct_30ep.pth"
 DEMO_DIR = CFG.ROOT_DIR / "demo_sidang"
 CATATAN_PATH = DEMO_DIR / "CATATAN_DEMO.md"
 
@@ -132,19 +136,28 @@ def hitung_pasangan_tertukar_tebu(hasil):
     return pasangan_teratas[0], pasangan_teratas[1], hitungan
 
 
-def pilih_terbaik(hasil, kelas_asli, benar, kelas_prediksi=None):
+def pilih_terbaik(hasil, kelas_asli, benar, kelas_prediksi=None, kecuali_path=None):
     """Pilih satu citra dari daftar hasil: kelas_asli cocok, status
     benar/salah cocok, (opsional) kelas_prediksi cocok -- diurutkan
-    probabilitas top-1 tertinggi, seri dipecah nama berkas menaik."""
+    probabilitas top-1 tertinggi, seri dipecah nama berkas menaik.
+
+    kecuali_path (opsional): kumpulan Path yang SUDAH terpilih di
+    pemanggilan sebelumnya -- dikecualikan supaya tidak ada dua slot demo
+    berisi citra identik. Kasusnya: kalau kelas tujuan pasangan tertukar
+    tebu (kelas_prediksi_salah) kebetulan SAMA dengan salah satu kelas
+    padi/jagung yang sudah dipilih duluan (mis. Healthy_Rice), tanpa
+    pengecualian ini pilih_terbaik() akan mengembalikan citra top-1 yang
+    SAMA PERSIS dengan yang sudah dipakai slot padi/jagung tersebut."""
     kandidat = [
         r for r in hasil
         if r["kelas_asli"] == kelas_asli and r["benar"] == benar
         and (kelas_prediksi is None or r["kelas_prediksi"] == kelas_prediksi)
+        and (kecuali_path is None or r["path"] not in kecuali_path)
     ]
     if not kandidat:
         raise RuntimeError(
             f"Tidak ada kandidat untuk kelas_asli={kelas_asli}, benar={benar}, "
-            f"kelas_prediksi={kelas_prediksi}"
+            f"kelas_prediksi={kelas_prediksi}, kecuali_path={kecuali_path}"
         )
     kandidat.sort(key=lambda r: (-r["tiga_teratas"][0][1], r["filename"]))
     return kandidat[0]
@@ -199,7 +212,12 @@ def main():
 
     # Citra tebu BENAR: dari kelas yang jadi tujuan pasangan tertukar,
     # supaya berdampingan langsung memperagakan pasangan yang tertukar.
-    r_tebu_benar = pilih_terbaik(hasil, kelas_prediksi_salah, benar=True)
+    # kecuali_path mengecualikan citra yang sudah terpilih di atas -- perlu
+    # kalau kelas_prediksi_salah kebetulan SAMA dengan salah satu kelas
+    # padi/jagung yang sudah dipilih (mis. Healthy_Rice), supaya tidak
+    # dapat citra duplikat persis di dua slot demo.
+    path_terpilih = {r["path"] for _, r in terpilih}
+    r_tebu_benar = pilih_terbaik(hasil, kelas_prediksi_salah, benar=True, kecuali_path=path_terpilih)
     terpilih.append(("benar", r_tebu_benar))
 
     # Citra tebu SALAH: contoh pasangan tertukar paling sering, dengan
@@ -267,7 +285,7 @@ def tulis_catatan_demo(baris_tabel, n_benar, n_total, kelas_asli_salah, kelas_pr
         f"performa model, bukan hanya menampilkan kasus yang mudah)."
     )
     lines.append("")
-    lines.append(f"Checkpoint: `multicriteria_20pct_30ep_valweights.pth`")
+    lines.append(f"Checkpoint: `{CHECKPOINT_NAME}`")
     lines.append("")
     lines.append(
         f"Pemilihan deterministik (seed {CFG.SEED}): tiap citra benar diambil "

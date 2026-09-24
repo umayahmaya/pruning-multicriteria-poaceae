@@ -1,0 +1,310 @@
+{
+  "catatan": "Formula AKTIF (L1 + GM-Ekspansi + Entropi, bobot w_k(r) per rasio, CLAUDE.md Bagian 2). Menggantikan outputs/archive/bn_gamma/channel_selection_comparison.json (formula lama, S_BN, bobot konstan).",
+  "total_channels": 7104,
+  "num_layers": 16,
+  "sensitivitas_bobot_ablation_vs_sepertiga_rata": {
+    "10%": {
+      "bobot_ablation": {
+        "w_l1": 0.33333333333333337,
+        "w_gm": 0.33333333333333337,
+        "w_entropi": 0.33333333333333337
+      },
+      "bobot_pembanding": {
+        "w_l1": 0.3333333333333333,
+        "w_gm": 0.3333333333333333,
+        "w_entropi": 0.3333333333333333
+      },
+      "channels_different": 0,
+      "total_channels": 7104,
+      "percent_different": 0.0,
+      "spearman_rho": 1.0,
+      "spearman_pvalue": 0.0
+    },
+    "20%": {
+      "bobot_ablation": {
+        "w_l1": 0.2797427652733124,
+        "w_gm": 0.2797427652733124,
+        "w_entropi": 0.4405144694533753
+      },
+      "bobot_pembanding": {
+        "w_l1": 0.3333333333333333,
+        "w_gm": 0.3333333333333333,
+        "w_entropi": 0.3333333333333333
+      },
+      "channels_different": 240,
+      "total_channels": 7104,
+      "percent_different": 3.3783783783783785,
+      "spearman_rho": 0.9792307444315652,
+      "spearman_pvalue": 0.0
+    },
+    "30%": {
+      "bobot_ablation": {
+        "w_l1": 0.4549878345498788,
+        "w_gm": 0.33333333333333254,
+        "w_entropi": 0.21167883211678865
+      },
+      "bobot_pembanding": {
+        "w_l1": 0.3333333333333333,
+        "w_gm": 0.3333333333333333,
+        "w_entropi": 0.3333333333333333
+      },
+      "channels_different": 536,
+      "total_channels": 7104,
+      "percent_different": 7.545045045045046,
+      "spearman_rho": 0.949463512451501,
+      "spearman_pvalue": 0.0
+    },
+    "40%": {
+      "bobot_ablation": {
+        "w_l1": 0.544303797468354,
+        "w_gm": 0.3333333333333338,
+        "w_entropi": 0.12236286919831225
+      },
+      "bobot_pembanding": {
+        "w_l1": 0.3333333333333333,
+        "w_gm": 0.3333333333333333,
+        "w_entropi": 0.3333333333333333
+      },
+      "channels_different": 1506,
+      "total_channels": 7104,
+      "percent_different": 21.199324324324326,
+      "spearman_rho": 0.8424130672325509,
+      "spearman_pvalue": 0.0
+    },
+    "50%": {
+      "bobot_ablation": {
+        "w_l1": 0.4655035685963521,
+        "w_gm": 0.4655035685963521,
+        "w_entropi": 0.06899286280729576
+      },
+      "bobot_pembanding": {
+        "w_l1": 0.3333333333333333,
+        "w_gm": 0.3333333333333333,
+        "w_entropi": 0.3333333333333333
+      },
+      "channels_different": 2106,
+      "total_channels": 7104,
+      "percent_different": 29.64527027027027,
+      "spearman_rho": 0.7849021474240643,
+      "spearman_pvalue": 0.0
+    },
+    "60%": {
+      "bobot_ablation": {
+        "w_l1": 0.1702544031311157,
+        "w_gm": 0.5616438356164387,
+        "w_entropi": 0.26810176125244556
+      },
+      "bobot_pembanding": {
+        "w_l1": 0.3333333333333333,
+        "w_gm": 0.3333333333333333,
+        "w_entropi": 0.3333333333333333
+      },
+      "channels_different": 848,
+      "total_channels": 7104,
+      "percent_different": 11.936936936936938,
+      "spearman_rho": 0.9018210158242274,
+      "spearman_pvalue": 0.0
+    },
+    "70%": {
+      "bobot_ablation": {
+        "w_l1": 0.08605341246290805,
+        "w_gm": 0.38278931750741824,
+        "w_entropi": 0.5311572700296737
+      },
+      "bobot_pembanding": {
+        "w_l1": 0.3333333333333333,
+        "w_gm": 0.3333333333333333,
+        "w_entropi": 0.3333333333333333
+      },
+      "channels_different": 724,
+      "total_channels": 7104,
+      "percent_different": 10.191441441441441,
+      "spearman_rho": 0.9144208884370851,
+      "spearman_pvalue": 0.0
+    }
+  },
+  "multi_vs_single_criterion_by_ratio": {
+    "10%": {
+      "bobot": {
+        "w_l1": 0.33333333333333337,
+        "w_gm": 0.33333333333333337,
+        "w_entropi": 0.33333333333333337
+      },
+      "vs_l1": {
+        "channels_different": 854,
+        "percent_different": 12.021396396396396,
+        "spearman_rho": 0.5284052098486979,
+        "spearman_pvalue": 0.0
+      },
+      "vs_gm": {
+        "channels_different": 1076,
+        "percent_different": 15.146396396396398,
+        "spearman_rho": 0.40335191878147714,
+        "spearman_pvalue": 3.4222121635722948e-276
+      },
+      "vs_entropy": {
+        "channels_different": 538,
+        "percent_different": 7.573198198198199,
+        "spearman_rho": 0.7470430916904414,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    },
+    "20%": {
+      "bobot": {
+        "w_l1": 0.2797427652733124,
+        "w_gm": 0.2797427652733124,
+        "w_entropi": 0.4405144694533753
+      },
+      "vs_l1": {
+        "channels_different": 1728,
+        "percent_different": 24.324324324324326,
+        "spearman_rho": 0.4373948490166088,
+        "spearman_pvalue": 0.0
+      },
+      "vs_gm": {
+        "channels_different": 2104,
+        "percent_different": 29.617117117117115,
+        "spearman_rho": 0.29651259658163764,
+        "spearman_pvalue": 3.810454938500207e-144
+      },
+      "vs_entropy": {
+        "channels_different": 656,
+        "percent_different": 9.234234234234235,
+        "spearman_rho": 0.8609070419039826,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    },
+    "30%": {
+      "bobot": {
+        "w_l1": 0.4549878345498788,
+        "w_gm": 0.33333333333333254,
+        "w_entropi": 0.21167883211678865
+      },
+      "vs_l1": {
+        "channels_different": 1914,
+        "percent_different": 26.942567567567565,
+        "spearman_rho": 0.715091090503187,
+        "spearman_pvalue": 0.0
+      },
+      "vs_gm": {
+        "channels_different": 2490,
+        "percent_different": 35.05067567567568,
+        "spearman_rho": 0.4217613176819941,
+        "spearman_pvalue": 1.9095660914690544e-304
+      },
+      "vs_entropy": {
+        "channels_different": 1522,
+        "percent_different": 21.42454954954955,
+        "spearman_rho": 0.5459783205322097,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    },
+    "40%": {
+      "bobot": {
+        "w_l1": 0.544303797468354,
+        "w_gm": 0.3333333333333338,
+        "w_entropi": 0.12236286919831225
+      },
+      "vs_l1": {
+        "channels_different": 1600,
+        "percent_different": 22.52252252252252,
+        "spearman_rho": 0.8251938156217834,
+        "spearman_pvalue": 0.0
+      },
+      "vs_gm": {
+        "channels_different": 2810,
+        "percent_different": 39.55518018018018,
+        "spearman_rho": 0.4135312100543465,
+        "spearman_pvalue": 1.3538518190224615e-291
+      },
+      "vs_entropy": {
+        "channels_different": 2452,
+        "percent_different": 34.515765765765764,
+        "spearman_rho": 0.35098264116287003,
+        "spearman_pvalue": 4.897904070985188e-205
+      },
+      "total_channels": 7104
+    },
+    "50%": {
+      "bobot": {
+        "w_l1": 0.4655035685963521,
+        "w_gm": 0.4655035685963521,
+        "w_entropi": 0.06899286280729576
+      },
+      "vs_l1": {
+        "channels_different": 1904,
+        "percent_different": 26.8018018018018,
+        "spearman_rho": 0.6909808238412062,
+        "spearman_pvalue": 0.0
+      },
+      "vs_gm": {
+        "channels_different": 2090,
+        "percent_different": 29.420045045045047,
+        "spearman_rho": 0.6323413987062144,
+        "spearman_pvalue": 0.0
+      },
+      "vs_entropy": {
+        "channels_different": 3194,
+        "percent_different": 44.960585585585584,
+        "spearman_rho": 0.22320407242701537,
+        "spearman_pvalue": 6.530962787089623e-81
+      },
+      "total_channels": 7104
+    },
+    "60%": {
+      "bobot": {
+        "w_l1": 0.1702544031311157,
+        "w_gm": 0.5616438356164387,
+        "w_entropi": 0.26810176125244556
+      },
+      "vs_l1": {
+        "channels_different": 3116,
+        "percent_different": 43.86261261261261,
+        "spearman_rho": 0.2875051109005603,
+        "spearman_pvalue": 2.9072496565900997e-135
+      },
+      "vs_gm": {
+        "channels_different": 2370,
+        "percent_different": 33.361486486486484,
+        "spearman_rho": 0.7242017059720216,
+        "spearman_pvalue": 0.0
+      },
+      "vs_entropy": {
+        "channels_different": 1640,
+        "percent_different": 23.085585585585587,
+        "spearman_rho": 0.5763267032729736,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    },
+    "70%": {
+      "bobot": {
+        "w_l1": 0.08605341246290805,
+        "w_gm": 0.38278931750741824,
+        "w_entropi": 0.5311572700296737
+      },
+      "vs_l1": {
+        "channels_different": 2760,
+        "percent_different": 38.85135135135135,
+        "spearman_rho": 0.1936178157333485,
+        "spearman_pvalue": 5.797067632431817e-61
+      },
+      "vs_gm": {
+        "channels_different": 2962,
+        "percent_different": 41.69481981981982,
+        "spearman_rho": 0.37228515872608053,
+        "spearman_pvalue": 2.1095822223546657e-232
+      },
+      "vs_entropy": {
+        "channels_different": 532,
+        "percent_different": 7.488738738738738,
+        "spearman_rho": 0.893076740876121,
+        "spearman_pvalue": 0.0
+      },
+      "total_channels": 7104
+    }
+  }
+}

@@ -4,10 +4,14 @@ Menyiapkan seluruh aset untuk aplikasi Android di folder android_assets/.
 
 Isi yang dihasilkan:
   1. Salinan dua checkpoint .pte (rasio 20% dan 60%) dari outputs/ --
-     berkas ini WAJIB sudah ada (hasil 19_test_executorch_export.py /
-     20_test_executorch_runtime.py). Skrip ini menyalin, BUKAN mengekspor
+     berkas ini WAJIB sudah ada (hasil 55_export_verify_pte_per_rasio.py,
+     dijalankan lewat venv_mobile/). Skrip ini menyalin, BUKAN mengekspor
      ulang, supaya aset Android persis sama dengan berkas yang sudah
-     diverifikasi kesetaraan prediksinya di 20_test_executorch_runtime.py.
+     diverifikasi kesetaraan prediksinya di 55_export_verify_pte_per_rasio.py.
+     Checkpoint FORMULA AKTIF (L1 + GM-Ekspansi + Entropi, bobot per rasio
+     -- CLAUDE.md Bagian 2); sebelumnya skrip ini menyalin checkpoint
+     FORMULA LAMA (_valweights) -- diperbaiki 2026-09-24, lihat CLAUDE.md
+     Bagian 8 butir 11.
   2. Salinan outputs/penanganan_penyakit.json
   3. labels.txt -- 9 nama kelas sesuai urutan CFG.CLASS_NAMES, satu per baris
   4. preprocessing_config.json -- parameter praproses PERSIS yang dipakai
@@ -18,9 +22,9 @@ Isi yang dihasilkan:
      input hasil praproses (150.528 angka -- 3x224x224, flatten C-order:
      seluruh piksel channel R, lalu G, lalu B) diikuti 9 logit keluaran
      (urutan CFG.CLASS_NAMES), satu angka per baris, dari model rasio 20%
-     (multicriteria_20pct_30ep_valweights.pth). Dipakai memverifikasi
-     praproses Android menghasilkan angka yang sama dengan Python.
-     Metadata (nama citra asli, kelas benar, jumlah baris) ada di
+     FORMULA AKTIF (multicriteria_per_rasio_20pct_30ep.pth). Dipakai
+     memverifikasi praproses Android menghasilkan angka yang sama dengan
+     Python. Metadata (nama citra asli, kelas benar, jumlah baris) ada di
      reference_manifest.json terpisah -- berkas .txt sendiri murni angka.
 
 Sampel 5 citra: acak deterministik (seed CFG.SEED) dari dataset_split/test.
@@ -47,10 +51,10 @@ from src.model import load_checkpoint
 
 ANDROID_ASSETS_DIR = CFG.ROOT_DIR / "android_assets"
 PTE_FILENAMES = [
-    "multicriteria_20pct_30ep_valweights.pte",
-    "multicriteria_60pct_30ep_valweights.pte",
+    "multicriteria_per_rasio_20pct_30ep.pte",
+    "multicriteria_per_rasio_60pct_30ep.pte",
 ]
-REFERENCE_CHECKPOINT = "multicriteria_20pct_30ep_valweights.pth"
+REFERENCE_CHECKPOINT = "multicriteria_per_rasio_20pct_30ep.pth"
 N_REFERENCE_IMAGES = 5
 
 
@@ -60,8 +64,8 @@ def copy_pte_files():
         src = CFG.OUTPUT_DIR / filename
         if not src.exists():
             raise FileNotFoundError(
-                f"{src} tidak ditemukan. Jalankan 19_test_executorch_export.py "
-                "(venv/) atau 20_test_executorch_runtime.py (venv_mobile/) dulu "
+                f"{src} tidak ditemukan. Jalankan "
+                "55_export_verify_pte_per_rasio.py (venv_mobile/) dulu "
                 "untuk menghasilkan berkas .pte."
             )
         dst = ANDROID_ASSETS_DIR / filename

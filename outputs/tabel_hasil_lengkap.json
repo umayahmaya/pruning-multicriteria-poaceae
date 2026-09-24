@@ -49,7 +49,8 @@
       "inference_ms": 30.8900999953039,
       "inference_std_ms": 3.366797392236569,
       "inference_runs": 300,
-      "checkpoint": "baseline_9class.pth"
+      "checkpoint": "baseline_9class.pth",
+      "flops_true_2x_macs": 652436480.0
     },
     "l1": {
       "10%": {
@@ -63,7 +64,8 @@
         "inference_ms": 27.896599989617243,
         "inference_std_ms": 1.3146377634252142,
         "inference_runs": 300,
-        "checkpoint": "ablation_l1_10pct_30ep.pth"
+        "checkpoint": "ablation_l1_10pct_30ep.pth",
+        "flops_true_2x_macs": 597532078.0
       },
       "20%": {
         "accuracy": 0.9314285714285714,
@@ -76,7 +78,8 @@
         "inference_ms": 31.2366999569349,
         "inference_std_ms": 3.009830792602176,
         "inference_runs": 300,
-        "checkpoint": "ablation_l1_20pct_30ep.pth"
+        "checkpoint": "ablation_l1_20pct_30ep.pth",
+        "flops_true_2x_macs": 541673842.0
       },
       "30%": {
         "accuracy": 0.9542857142857143,
@@ -89,7 +92,8 @@
         "inference_ms": 29.00335000595078,
         "inference_std_ms": 7.135592561593582,
         "inference_runs": 300,
-        "checkpoint": "ablation_l1_30pct_30ep.pth"
+        "checkpoint": "ablation_l1_30pct_30ep.pth",
+        "flops_true_2x_macs": 485875680.0
       },
       "40%": {
         "accuracy": 0.9542857142857143,
@@ -102,7 +106,8 @@
         "inference_ms": 25.935900019248948,
         "inference_std_ms": 4.468419647981453,
         "inference_runs": 300,
-        "checkpoint": "ablation_l1_40pct_30ep.pth"
+        "checkpoint": "ablation_l1_40pct_30ep.pth",
+        "flops_true_2x_macs": 430017444.0
       },
       "50%": {
         "accuracy": 0.9542857142857143,
@@ -115,7 +120,8 @@
         "inference_ms": 21.904249966610223,
         "inference_std_ms": 4.314834768176944,
         "inference_runs": 300,
-        "checkpoint": "ablation_l1_50pct_30ep.pth"
+        "checkpoint": "ablation_l1_50pct_30ep.pth",
+        "flops_true_2x_macs": 372924800.0
       },
       "60%": {
         "accuracy": 0.88,
@@ -128,7 +134,8 @@
         "inference_ms": 19.371700007468462,
         "inference_std_ms": 2.089515505500152,
         "inference_runs": 300,
-        "checkpoint": "ablation_l1_60pct_30ep.pth"
+        "checkpoint": "ablation_l1_60pct_30ep.pth",
+        "flops_true_2x_macs": 318020398.0
       },
       "70%": {
         "accuracy": 0.8342857142857143,
@@ -141,7 +148,8 @@
         "inference_ms": 16.881649993592873,
         "inference_std_ms": 1.8186419620531742,
         "inference_runs": 300,
-        "checkpoint": "ablation_l1_70pct_30ep.pth"
+        "checkpoint": "ablation_l1_70pct_30ep.pth",
+        "flops_true_2x_macs": 262162162.0
       }
     },
     "bn": {
@@ -156,7 +164,8 @@
         "inference_ms": 32.48879997408949,
         "inference_std_ms": 2.5581290663713654,
         "inference_runs": 300,
-        "checkpoint": "ablation_bn_10pct_30ep.pth"
+        "checkpoint": "ablation_bn_10pct_30ep.pth",
+        "flops_true_2x_macs": 597532078.0
       },
       "20%": {
         "accuracy": 0.9542857142857143,
@@ -169,7 +178,8 @@
         "inference_ms": 28.00369999022223,
         "inference_std_ms": 4.717977867962513,
         "inference_runs": 300,
-        "checkpoint": "ablation_bn_20pct_30ep.pth"
+        "checkpoint": "ablation_bn_20pct_30ep.pth",
+        "flops_true_2x_macs": 541673842.0
       },
       "30%": {
         "accuracy": 0.9142857142857143,
@@ -182,7 +192,8 @@
         "inference_ms": 25.636800011852756,
         "inference_std_ms": 5.580178175620043,
         "inference_runs": 300,
-        "checkpoint": "ablation_bn_30pct_30ep.pth"
+        "checkpoint": "ablation_bn_30pct_30ep.pth",
+        "flops_true_2x_macs": 485875680.0
       },
       "40%": {
         "accuracy": 0.88,
@@ -195,7 +206,8 @@
         "inference_ms": 21.71010000165552,
         "inference_std_ms": 3.90388294068789,
         "inference_runs": 300,
-        "checkpoint": "ablation_bn_40pct_30ep.pth"
+        "checkpoint": "ablation_bn_40pct_30ep.pth",
+        "flops_true_2x_macs": 430017444.0
       },
       "50%": {
         "accuracy": 0.8571428571428571,
@@ -208,7 +220,8 @@
         "inference_ms": 18.43100003316067,
         "inference_std_ms": 2.874772177207897,
         "inference_runs": 300,
-        "checkpoint": "ablation_bn_50pct_30ep.pth"
+        "checkpoint": "ablation_bn_50pct_30ep.pth",
+        "flops_true_2x_macs": 372924800.0
       },
       "60%": {
         "accuracy": 0.7657142857142857,
@@ -221,7 +234,8 @@
         "inference_ms": 16.713199991500005,
         "inference_std_ms": 4.711130656861556,
         "inference_runs": 300,
-        "checkpoint": "ablation_bn_60pct_30ep.pth"
+        "checkpoint": "ablation_bn_60pct_30ep.pth",
+        "flops_true_2x_macs": 318020398.0
       },
       "70%": {
         "accuracy": 0.68,
@@ -234,7 +248,8 @@
         "inference_ms": 15.043399995192885,
         "inference_std_ms": 1.73832115348298,
         "inference_runs": 300,
-        "checkpoint": "ablation_bn_70pct_30ep.pth"
+        "checkpoint": "ablation_bn_70pct_30ep.pth",
+        "flops_true_2x_macs": 262162162.0
       }
     },
     "entropy": {
@@ -249,7 +264,8 @@
         "inference_ms": 32.005549990572035,
         "inference_std_ms": 8.846054930604476,
         "inference_runs": 300,
-        "checkpoint": "ablation_entropy_10pct_30ep_traincal.pth"
+        "checkpoint": "ablation_entropy_10pct_30ep_traincal.pth",
+        "flops_true_2x_macs": 597532078.0
       },
       "20%": {
         "accuracy": 0.9657142857142857,
@@ -262,7 +278,8 @@
         "inference_ms": 29.839000024367124,
         "inference_std_ms": 6.078719966748183,
         "inference_runs": 300,
-        "checkpoint": "ablation_entropy_20pct_30ep_traincal.pth"
+        "checkpoint": "ablation_entropy_20pct_30ep_traincal.pth",
+        "flops_true_2x_macs": 541673842.0
       },
       "30%": {
         "accuracy": 0.9314285714285714,
@@ -275,7 +292,8 @@
         "inference_ms": 28.622750018257648,
         "inference_std_ms": 2.6122042896593034,
         "inference_runs": 300,
-        "checkpoint": "ablation_entropy_30pct_30ep_traincal.pth"
+        "checkpoint": "ablation_entropy_30pct_30ep_traincal.pth",
+        "flops_true_2x_macs": 485875680.0
       },
       "40%": {
         "accuracy": 0.92,
@@ -288,7 +306,8 @@
         "inference_ms": 27.004400006262586,
         "inference_std_ms": 7.161509514735806,
         "inference_runs": 300,
-        "checkpoint": "ablation_entropy_40pct_30ep_traincal.pth"
+        "checkpoint": "ablation_entropy_40pct_30ep_traincal.pth",
+        "flops_true_2x_macs": 430017444.0
       },
       "50%": {
         "accuracy": 0.8971428571428571,
@@ -301,7 +320,8 @@
         "inference_ms": 20.576250011799857,
         "inference_std_ms": 2.2096963521783484,
         "inference_runs": 300,
-        "checkpoint": "ablation_entropy_50pct_30ep_traincal.pth"
+        "checkpoint": "ablation_entropy_50pct_30ep_traincal.pth",
+        "flops_true_2x_macs": 372924800.0
       },
       "60%": {
         "accuracy": 0.9257142857142857,
@@ -314,7 +334,8 @@
         "inference_ms": 19.423299992922693,
         "inference_std_ms": 3.513985275019774,
         "inference_runs": 300,
-        "checkpoint": "ablation_entropy_60pct_30ep_traincal.pth"
+        "checkpoint": "ablation_entropy_60pct_30ep_traincal.pth",
+        "flops_true_2x_macs": 318020398.0
       },
       "70%": {
         "accuracy": 0.8457142857142858,
@@ -327,7 +348,8 @@
         "inference_ms": 16.3326500041876,
         "inference_std_ms": 1.3845896804636395,
         "inference_runs": 300,
-        "checkpoint": "ablation_entropy_70pct_30ep_traincal.pth"
+        "checkpoint": "ablation_entropy_70pct_30ep_traincal.pth",
+        "flops_true_2x_macs": 262162162.0
       }
     },
     "multicriteria": {
@@ -342,7 +364,8 @@
         "inference_ms": 33.303349977359176,
         "inference_std_ms": 5.340237425867344,
         "inference_runs": 300,
-        "checkpoint": "multicriteria_10pct_30ep_valweights.pth"
+        "checkpoint": "multicriteria_10pct_30ep_valweights.pth",
+        "flops_true_2x_macs": 597532078.0
       },
       "20%": {
         "accuracy": 0.96,
@@ -355,7 +378,8 @@
         "inference_ms": 28.455949999624863,
         "inference_std_ms": 1.4497870304005294,
         "inference_runs": 300,
-        "checkpoint": "multicriteria_20pct_30ep_valweights.pth"
+        "checkpoint": "multicriteria_20pct_30ep_valweights.pth",
+        "flops_true_2x_macs": 541673842.0
       },
       "30%": {
         "accuracy": 0.9485714285714286,
@@ -368,7 +392,8 @@
         "inference_ms": 28.86459999717772,
         "inference_std_ms": 2.58633012007643,
         "inference_runs": 300,
-        "checkpoint": "multicriteria_30pct_30ep_valweights.pth"
+        "checkpoint": "multicriteria_30pct_30ep_valweights.pth",
+        "flops_true_2x_macs": 485875680.0
       },
       "40%": {
         "accuracy": 0.9142857142857143,
@@ -381,7 +406,8 @@
         "inference_ms": 23.091499984730035,
         "inference_std_ms": 1.4081609739187273,
         "inference_runs": 300,
-        "checkpoint": "multicriteria_40pct_30ep_valweights.pth"
+        "checkpoint": "multicriteria_40pct_30ep_valweights.pth",
+        "flops_true_2x_macs": 430017444.0
       },
       "50%": {
         "accuracy": 0.9142857142857143,
@@ -394,7 +420,8 @@
         "inference_ms": 19.96515001519583,
         "inference_std_ms": 0.9751128955177422,
         "inference_runs": 300,
-        "checkpoint": "multicriteria_50pct_30ep_valweights.pth"
+        "checkpoint": "multicriteria_50pct_30ep_valweights.pth",
+        "flops_true_2x_macs": 372924800.0
       },
       "60%": {
         "accuracy": 0.9142857142857143,
@@ -407,7 +434,8 @@
         "inference_ms": 18.48009997047484,
         "inference_std_ms": 1.183326114018956,
         "inference_runs": 300,
-        "checkpoint": "multicriteria_60pct_30ep_valweights.pth"
+        "checkpoint": "multicriteria_60pct_30ep_valweights.pth",
+        "flops_true_2x_macs": 318020398.0
       },
       "70%": {
         "accuracy": 0.84,
@@ -420,9 +448,11 @@
         "inference_ms": 16.316299967002124,
         "inference_std_ms": 1.1009563906252078,
         "inference_runs": 300,
-        "checkpoint": "multicriteria_70pct_30ep_valweights.pth"
+        "checkpoint": "multicriteria_70pct_30ep_valweights.pth",
+        "flops_true_2x_macs": 262162162.0
       }
     }
   },
-  "status": "SELESAI"
+  "status": "SELESAI",
+  "_catatan_macs_vs_flops": "Field 'flops' di seluruh berkas ini sebenarnya MACs (multiply-accumulate) dari thop.profile() via measure_flops() di src/model.py -- thop TIDAK mengalikan faktor 2 per MAC. Field 'flops_true_2x_macs' (ditambahkan 2026-09-24, scripts/56_tambah_flops_sebenarnya.py) adalah FLOPs sebenarnya = 2 x nilai 'flops'. Field 'flops' asli TIDAK diubah supaya konsumen lama (skrip/kode yang sudah membaca field ini) tidak terdampak -- lihat CLAUDE.md Bagian 8 butir 12."
 }

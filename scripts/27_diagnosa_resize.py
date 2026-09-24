@@ -52,7 +52,7 @@ from src.config import CFG
 from src.dataset import get_transforms
 from src.model import load_checkpoint
 
-CHECKPOINT_NAME = "multicriteria_20pct_30ep_valweights.pth"
+CHECKPOINT_NAME = "multicriteria_per_rasio_20pct_30ep.pth"  # formula AKTIF, harus sama dengan skrip 25/26 -- lihat CLAUDE.md Bagian 8 butir 11
 DEMO_DIR = CFG.ROOT_DIR / "demo_sidang"
 IMG_SIZE = 224
 SISI_MAKSIMUM = 1024
