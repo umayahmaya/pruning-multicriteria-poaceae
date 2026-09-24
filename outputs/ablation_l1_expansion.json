@@ -1,0 +1,159 @@
+{
+  "criterion": "l1_expansion",
+  "definisi": "s_L1exp(c) = sum(|W_c|), W_c = baris bobot EXPANSION CONV 1x1 channel c -- rumus sama dengan compute_l1_scores() (src/pruning.py), sumber tensor beda (expansion, bukan depthwise). Pembanding L1 depthwise yang dipakai formula aktif.",
+  "epochs_used": 30,
+  "seed": 42,
+  "results": {
+    "10%": {
+      "checkpoint": "ablation_l1exp_10pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9482758620689655,
+        "f1_score": 0.9477199822027409
+      },
+      "test": {
+        "accuracy": 0.9485714285714286,
+        "f1_score": 0.9487453436280922
+      },
+      "num_params": 2055492,
+      "model_size_mb": 7.960845947265625,
+      "flops": 298766039.0,
+      "inference_ms": 34.15575000690296
+    },
+    "20%": {
+      "checkpoint": "ablation_l1exp_20pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9540229885057471,
+        "f1_score": 0.953622436381057
+      },
+      "test": {
+        "accuracy": 0.9714285714285714,
+        "f1_score": 0.9716750060164694
+      },
+      "num_params": 1874851,
+      "model_size_mb": 7.260936737060547,
+      "flops": 270836921.0,
+      "inference_ms": 30.121900024823844
+    },
+    "30%": {
+      "checkpoint": "ablation_l1exp_30pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9252873563218391,
+        "f1_score": 0.9241776741776742
+      },
+      "test": {
+        "accuracy": 0.92,
+        "f1_score": 0.9204856521672736
+      },
+      "num_params": 1694216,
+      "model_size_mb": 6.5610198974609375,
+      "flops": 242937840.0,
+      "inference_ms": 25.612450030166656
+    },
+    "40%": {
+      "checkpoint": "ablation_l1exp_40pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.9137931034482759,
+        "f1_score": 0.9129111629111628
+      },
+      "test": {
+        "accuracy": 0.9142857142857143,
+        "f1_score": 0.9144743754811392
+      },
+      "num_params": 1513575,
+      "model_size_mb": 5.861110687255859,
+      "flops": 215008722.0,
+      "inference_ms": 28.55565003119409
+    },
+    "50%": {
+      "checkpoint": "ablation_l1exp_50pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.8850574712643678,
+        "f1_score": 0.8848497400221538
+      },
+      "test": {
+        "accuracy": 0.9028571428571428,
+        "f1_score": 0.9031342968265764
+      },
+      "num_params": 1331945,
+      "model_size_mb": 5.157291412353516,
+      "flops": 186462400.0,
+      "inference_ms": 23.778699978720397
+    },
+    "60%": {
+      "checkpoint": "ablation_l1exp_60pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.8793103448275862,
+        "f1_score": 0.8784024122685691
+      },
+      "test": {
+        "accuracy": 0.8628571428571429,
+        "f1_score": 0.862663807308922
+      },
+      "num_params": 1152036,
+      "model_size_mb": 4.460235595703125,
+      "flops": 159010199.0,
+      "inference_ms": 14.686800073832273
+    },
+    "70%": {
+      "checkpoint": "ablation_l1exp_70pct_30ep.pth",
+      "validasi": {
+        "accuracy": 0.7873563218390804,
+        "f1_score": 0.787000294985776
+      },
+      "test": {
+        "accuracy": 0.8114285714285714,
+        "f1_score": 0.8059434863927559
+      },
+      "num_params": 971395,
+      "model_size_mb": 3.760326385498047,
+      "flops": 131081081.0,
+      "inference_ms": 13.160499976947904
+    }
+  },
+  "status": "SELESAI",
+  "total_time_seconds": 4689.490133523941,
+  "perbandingan_l1_depthwise_vs_ekspansi": [
+    {
+      "rasio": "10%",
+      "l1_depthwise_val": 0.9482758620689655,
+      "l1_ekspansi_val": 0.9482758620689655,
+      "selisih_pp": 0.0
+    },
+    {
+      "rasio": "20%",
+      "l1_depthwise_val": 0.9482758620689655,
+      "l1_ekspansi_val": 0.9540229885057471,
+      "selisih_pp": 0.5747126436781547
+    },
+    {
+      "rasio": "30%",
+      "l1_depthwise_val": 0.9367816091954023,
+      "l1_ekspansi_val": 0.9252873563218391,
+      "selisih_pp": -1.1494252873563204
+    },
+    {
+      "rasio": "40%",
+      "l1_depthwise_val": 0.9425287356321839,
+      "l1_ekspansi_val": 0.9137931034482759,
+      "selisih_pp": -2.8735632183907955
+    },
+    {
+      "rasio": "50%",
+      "l1_depthwise_val": 0.9195402298850575,
+      "l1_ekspansi_val": 0.8850574712643678,
+      "selisih_pp": -3.4482758620689613
+    },
+    {
+      "rasio": "60%",
+      "l1_depthwise_val": 0.8563218390804598,
+      "l1_ekspansi_val": 0.8793103448275862,
+      "selisih_pp": 2.298850574712641
+    },
+    {
+      "rasio": "70%",
+      "l1_depthwise_val": 0.7816091954022989,
+      "l1_ekspansi_val": 0.7873563218390804,
+      "selisih_pp": 0.5747126436781547
+    }
+  ]
+}

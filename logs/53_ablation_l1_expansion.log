@@ -1,0 +1,2682 @@
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+======================================================================
+ABLATION STUDY: L1-EKSPANSI SAJA (expansion conv, |bobot|) -- 7 RASIO
+======================================================================
+  Rasio   : ['10%', '20%', '30%', '40%', '50%', '60%', '70%']
+  Epoch   : 30
+  LR      : 0.0001
+  Seed    : 42
+  Optimizer: Adam + StepLR(step_size=10, gamma=0.1)  [via train_model(), src/model.py]
+[INFO] MobileNetV2 tanpa pretrained dimuat.
+[INFO] Classifier head diganti: 1280 -> 9 kelas
+[INFO] Checkpoint dimuat: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\baseline_9class.pth
+  Best Acc: 0.9367816091954023
+[L1-Norm] Dihitung untuk 16 lapisan depthwise (skip t=1)
+[L1-Ekspansi] Dihitung untuk 16 lapisan (skip t=1)
+
+======================================================================
+VERIFIKASI WAJIB: kesejajaran channel L1-depthwise vs L1-ekspansi
+======================================================================
+ layer_idx  len(L1 depthwise)  len(L1 ekspansi)  status
+-------------------------------------------------------
+         0                 96                96  OK
+         1                144               144  OK
+         2                144               144  OK
+         3                192               192  OK
+         4                192               192  OK
+         5                192               192  OK
+         6                384               384  OK
+         7                384               384  OK
+         8                384               384  OK
+         9                384               384  OK
+        10                576               576  OK
+        11                576               576  OK
+        12                576               576  OK
+        13                960               960  OK
+        14                960               960  OK
+        15                960               960  OK
+-------------------------------------------------------
+[VERIFIKASI WAJIB] Semua 16 layer sejajar jumlah channelnya? True
+
+[INFO] Akurasi validasi L1 depthwise (lama) tersedia lengkap untuk 7 rasio di D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_val_results.json -- TIDAK dihitung ulang.
+
+======================================================================
+RENCANA
+======================================================================
+  Checkpoint sudah ada (di-skip)  : (tidak ada)
+  Akan dilatih (30 epoch)         : ['10%', '20%', '30%', '40%', '50%', '60%', '70%']
+
+======================================================================
+PERKIRAAN DURASI
+======================================================================
+  Rasio akan dilatih : 7
+  Basis perkiraan    : rerata 53.8 menit/rasio (riwayat scripts/43_ablation_gm_expansion.py, arsitektur+epoch identik)
+  Estimasi total     : 377 menit (~6.3 jam)
+  (Perkiraan berbasis riwayat, BUKAN kalibrasi langsung -- durasi aktual bisa berbeda.)
+======================================================================
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+>>> Rasio 1/7 | 10% | Waktu berjalan: 0.0 menit
+
+============================================================
+ABLATION: L1-Ekspansi saja | Rasio 10% | 30 epoch
+============================================================
+[Pruning] Rasio: 10%
+  Channel total  : 7104
+  Channel dipangkas: 705
+  Channel tersisa  : 6399
+[INFO] Training Ablation L1-Ekspansi 10% pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.0681 Acc: 0.9643
+  val   Loss: 0.2957 Acc: 0.9483
+  >> Model terbaik diperbarui! Val Acc: 0.9483
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.0760 Acc: 0.9557
+  val   Loss: 0.3089 Acc: 0.9368
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0816 Acc: 0.9557
+  val   Loss: 0.2841 Acc: 0.9368
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0610 Acc: 0.9631
+  val   Loss: 0.2735 Acc: 0.9368
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0345 Acc: 0.9754
+  val   Loss: 0.2822 Acc: 0.9310
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0282 Acc: 0.9754
+  val   Loss: 0.2945 Acc: 0.9253
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0434 Acc: 0.9717
+  val   Loss: 0.2995 Acc: 0.9253
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0307 Acc: 0.9754
+  val   Loss: 0.3100 Acc: 0.9368
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0274 Acc: 0.9791
+  val   Loss: 0.2882 Acc: 0.9483
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0336 Acc: 0.9766
+  val   Loss: 0.3005 Acc: 0.9483
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0285 Acc: 0.9766
+  val   Loss: 0.3059 Acc: 0.9483
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0375 Acc: 0.9754
+  val   Loss: 0.3096 Acc: 0.9483
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0324 Acc: 0.9729
+  val   Loss: 0.3115 Acc: 0.9368
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0180 Acc: 0.9791
+  val   Loss: 0.3092 Acc: 0.9483
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0356 Acc: 0.9692
+  val   Loss: 0.3179 Acc: 0.9483
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0257 Acc: 0.9791
+  val   Loss: 0.3071 Acc: 0.9425
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0310 Acc: 0.9766
+  val   Loss: 0.3161 Acc: 0.9483
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0223 Acc: 0.9828
+  val   Loss: 0.3133 Acc: 0.9483
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0324 Acc: 0.9729
+  val   Loss: 0.3050 Acc: 0.9425
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0276 Acc: 0.9791
+  val   Loss: 0.2932 Acc: 0.9425
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0207 Acc: 0.9741
+  val   Loss: 0.2918 Acc: 0.9310
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0198 Acc: 0.9754
+  val   Loss: 0.3056 Acc: 0.9483
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0318 Acc: 0.9741
+  val   Loss: 0.3011 Acc: 0.9368
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0213 Acc: 0.9791
+  val   Loss: 0.2911 Acc: 0.9368
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0280 Acc: 0.9766
+  val   Loss: 0.2955 Acc: 0.9310
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0253 Acc: 0.9766
+  val   Loss: 0.3066 Acc: 0.9483
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0157 Acc: 0.9828
+  val   Loss: 0.3102 Acc: 0.9425
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0269 Acc: 0.9766
+  val   Loss: 0.3005 Acc: 0.9368
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0220 Acc: 0.9766
+  val   Loss: 0.2955 Acc: 0.9425
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0238 Acc: 0.9766
+  val   Loss: 0.2886 Acc: 0.9368
+
+[SELESAI] Ablation L1-Ekspansi 10% - Best Val Acc: 0.9483
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_10pct_30ep.pth
+[INFO] Inferensi: median=32.96 ms (rata-rata=33.67 +/- 5.58 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9483 (94.83%)
+  Precision    : 0.9497
+  Recall       : 0.9483
+  F1-Score     : 0.9477
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 32.96 ms (median, std=5.58, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8636    0.9500    0.9048        20
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9000    0.9474    0.9231        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.9444    0.8947    0.9189        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9483       174
+          macro avg     0.9499    0.9491    0.9483       174
+       weighted avg     0.9497    0.9483    0.9477       174
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+
+============================================================
+  L1-Ekspansi | 10% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              94.83%
+  Precision            0.9497
+  Recall               0.9483
+  F1-Score             0.9477
+  Parameter            2,055,492
+  Ukuran (MB)          7.96
+  FLOPs (M)            298.766
+  Inferensi (ms)       32.96
+============================================================
+[INFO] Inferensi: median=30.57 ms (rata-rata=32.25 +/- 5.80 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9486 (94.86%)
+  Precision    : 0.9542
+  Recall       : 0.9486
+  F1-Score     : 0.9487
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 30.57 ms (median, std=5.80, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8182    0.9474    0.8780        19
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9500    0.9500    0.9500        20
+  Healthy_Sugarcane     0.8696    1.0000    0.9302        20
+    Leaf_Blast_Rice     1.0000    0.8421    0.9143        19
+   Mosaic_Sugarcane     1.0000    0.8421    0.9143        19
+     Rust_Sugarcane     1.0000    0.9500    0.9744        20
+
+           accuracy                         0.9486       175
+          macro avg     0.9542    0.9480    0.9484       175
+       weighted avg     0.9542    0.9486    0.9487       175
+
+
+============================================================
+  L1-Ekspansi | 10% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              94.86%
+  Precision            0.9542
+  Recall               0.9486
+  F1-Score             0.9487
+  Parameter            2,055,492
+  Ukuran (MB)          7.96
+  FLOPs (M)            298.766
+  Inferensi (ms)       30.57
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 2/7 | 20% | Waktu berjalan: 56.6 menit
+
+============================================================
+ABLATION: L1-Ekspansi saja | Rasio 20% | 30 epoch
+============================================================
+[Pruning] Rasio: 20%
+  Channel total  : 7104
+  Channel dipangkas: 1414
+  Channel tersisa  : 5690
+[INFO] Training Ablation L1-Ekspansi 20% pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.1094 Acc: 0.9446
+  val   Loss: 0.2672 Acc: 0.9138
+  >> Model terbaik diperbarui! Val Acc: 0.9138
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.0822 Acc: 0.9667
+  val   Loss: 0.2658 Acc: 0.9310
+  >> Model terbaik diperbarui! Val Acc: 0.9310
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0829 Acc: 0.9581
+  val   Loss: 0.2514 Acc: 0.9310
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0569 Acc: 0.9655
+  val   Loss: 0.2973 Acc: 0.9138
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0685 Acc: 0.9606
+  val   Loss: 0.2482 Acc: 0.9310
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0689 Acc: 0.9594
+  val   Loss: 0.2570 Acc: 0.9310
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0443 Acc: 0.9704
+  val   Loss: 0.2392 Acc: 0.9310
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0437 Acc: 0.9692
+  val   Loss: 0.2911 Acc: 0.9368
+  >> Model terbaik diperbarui! Val Acc: 0.9368
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0385 Acc: 0.9729
+  val   Loss: 0.3122 Acc: 0.9253
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0417 Acc: 0.9692
+  val   Loss: 0.3041 Acc: 0.9368
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0424 Acc: 0.9717
+  val   Loss: 0.2985 Acc: 0.9310
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0315 Acc: 0.9766
+  val   Loss: 0.2981 Acc: 0.9310
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0432 Acc: 0.9741
+  val   Loss: 0.3176 Acc: 0.9253
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0214 Acc: 0.9803
+  val   Loss: 0.3003 Acc: 0.9368
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0342 Acc: 0.9692
+  val   Loss: 0.3003 Acc: 0.9368
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0155 Acc: 0.9852
+  val   Loss: 0.2918 Acc: 0.9310
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0329 Acc: 0.9741
+  val   Loss: 0.2983 Acc: 0.9425
+  >> Model terbaik diperbarui! Val Acc: 0.9425
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0401 Acc: 0.9704
+  val   Loss: 0.2958 Acc: 0.9368
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0184 Acc: 0.9828
+  val   Loss: 0.2920 Acc: 0.9425
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0337 Acc: 0.9717
+  val   Loss: 0.2934 Acc: 0.9483
+  >> Model terbaik diperbarui! Val Acc: 0.9483
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0333 Acc: 0.9754
+  val   Loss: 0.2922 Acc: 0.9540
+  >> Model terbaik diperbarui! Val Acc: 0.9540
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0241 Acc: 0.9791
+  val   Loss: 0.2869 Acc: 0.9483
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0280 Acc: 0.9741
+  val   Loss: 0.2839 Acc: 0.9483
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0416 Acc: 0.9667
+  val   Loss: 0.2891 Acc: 0.9368
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0237 Acc: 0.9766
+  val   Loss: 0.2991 Acc: 0.9425
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0157 Acc: 0.9815
+  val   Loss: 0.2859 Acc: 0.9425
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0190 Acc: 0.9803
+  val   Loss: 0.2925 Acc: 0.9425
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0202 Acc: 0.9803
+  val   Loss: 0.2917 Acc: 0.9425
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0248 Acc: 0.9778
+  val   Loss: 0.2910 Acc: 0.9483
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0292 Acc: 0.9766
+  val   Loss: 0.2967 Acc: 0.9540
+
+[SELESAI] Ablation L1-Ekspansi 20% - Best Val Acc: 0.9540
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_20pct_30ep.pth
+[INFO] Inferensi: median=25.26 ms (rata-rata=25.66 +/- 1.28 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9540 (95.40%)
+  Precision    : 0.9554
+  Recall       : 0.9540
+  F1-Score     : 0.9536
+  Parameter    : 1,874,851
+  Ukuran (MB)  : 7.26
+  FLOPs        : 270.837 M
+  Inferensi    : 25.26 ms (median, std=1.28, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8636    0.9500    0.9048        20
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9000    0.9474    0.9231        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.9474    0.9474    0.9474        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9540       174
+          macro avg     0.9558    0.9547    0.9542       174
+       weighted avg     0.9554    0.9540    0.9536       174
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+
+============================================================
+  L1-Ekspansi | 20% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              95.40%
+  Precision            0.9554
+  Recall               0.9540
+  F1-Score             0.9536
+  Parameter            1,874,851
+  Ukuran (MB)          7.26
+  FLOPs (M)            270.837
+  Inferensi (ms)       25.26
+============================================================
+[INFO] Inferensi: median=24.90 ms (rata-rata=25.35 +/- 1.33 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9714 (97.14%)
+  Precision    : 0.9733
+  Recall       : 0.9714
+  F1-Score     : 0.9717
+  Parameter    : 1,874,851
+  Ukuran (MB)  : 7.26
+  FLOPs        : 270.837 M
+  Inferensi    : 24.90 ms (median, std=1.33, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8571    0.9474    0.9000        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9500    0.9500    0.9500        20
+  Healthy_Sugarcane     0.9524    1.0000    0.9756        20
+    Leaf_Blast_Rice     1.0000    0.8947    0.9444        19
+   Mosaic_Sugarcane     1.0000    0.9474    0.9730        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9714       175
+          macro avg     0.9733    0.9711    0.9714       175
+       weighted avg     0.9733    0.9714    0.9717       175
+
+
+============================================================
+  L1-Ekspansi | 20% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              97.14%
+  Precision            0.9733
+  Recall               0.9714
+  F1-Score             0.9717
+  Parameter            1,874,851
+  Ukuran (MB)          7.26
+  FLOPs (M)            270.837
+  Inferensi (ms)       24.90
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 3/7 | 30% | Waktu berjalan: 112.6 menit
+
+============================================================
+ABLATION: L1-Ekspansi saja | Rasio 30% | 30 epoch
+============================================================
+[Pruning] Rasio: 30%
+  Channel total  : 7104
+  Channel dipangkas: 2125
+  Channel tersisa  : 4979
+[INFO] Training Ablation L1-Ekspansi 30% pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.1876 Acc: 0.9200
+  val   Loss: 0.3106 Acc: 0.9080
+  >> Model terbaik diperbarui! Val Acc: 0.9080
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.1225 Acc: 0.9470
+  val   Loss: 0.2950 Acc: 0.9253
+  >> Model terbaik diperbarui! Val Acc: 0.9253
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.0668 Acc: 0.9643
+  val   Loss: 0.2821 Acc: 0.9080
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.0843 Acc: 0.9606
+  val   Loss: 0.2768 Acc: 0.9195
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.0894 Acc: 0.9544
+  val   Loss: 0.2891 Acc: 0.9253
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0558 Acc: 0.9741
+  val   Loss: 0.2958 Acc: 0.9138
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0783 Acc: 0.9594
+  val   Loss: 0.3166 Acc: 0.9080
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.0857 Acc: 0.9557
+  val   Loss: 0.2844 Acc: 0.9138
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0631 Acc: 0.9655
+  val   Loss: 0.2648 Acc: 0.9253
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0509 Acc: 0.9680
+  val   Loss: 0.2913 Acc: 0.9023
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0583 Acc: 0.9655
+  val   Loss: 0.2714 Acc: 0.9138
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0557 Acc: 0.9680
+  val   Loss: 0.2815 Acc: 0.9253
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0352 Acc: 0.9729
+  val   Loss: 0.2670 Acc: 0.9195
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0444 Acc: 0.9729
+  val   Loss: 0.2720 Acc: 0.9195
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0475 Acc: 0.9680
+  val   Loss: 0.2659 Acc: 0.9195
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0612 Acc: 0.9655
+  val   Loss: 0.2722 Acc: 0.9253
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0361 Acc: 0.9729
+  val   Loss: 0.2771 Acc: 0.9253
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0548 Acc: 0.9692
+  val   Loss: 0.2753 Acc: 0.9253
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0351 Acc: 0.9717
+  val   Loss: 0.2731 Acc: 0.9253
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0425 Acc: 0.9729
+  val   Loss: 0.2699 Acc: 0.9253
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0390 Acc: 0.9729
+  val   Loss: 0.2757 Acc: 0.9253
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0499 Acc: 0.9692
+  val   Loss: 0.2699 Acc: 0.9253
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0449 Acc: 0.9754
+  val   Loss: 0.2799 Acc: 0.9253
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0313 Acc: 0.9778
+  val   Loss: 0.2685 Acc: 0.9253
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0295 Acc: 0.9778
+  val   Loss: 0.2688 Acc: 0.9253
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0364 Acc: 0.9741
+  val   Loss: 0.2743 Acc: 0.9253
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0320 Acc: 0.9754
+  val   Loss: 0.2726 Acc: 0.9253
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0342 Acc: 0.9729
+  val   Loss: 0.2677 Acc: 0.9253
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0446 Acc: 0.9692
+  val   Loss: 0.2801 Acc: 0.9195
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0424 Acc: 0.9717
+  val   Loss: 0.2830 Acc: 0.9253
+
+[SELESAI] Ablation L1-Ekspansi 30% - Best Val Acc: 0.9253
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_30pct_30ep.pth
+[INFO] Inferensi: median=23.24 ms (rata-rata=23.55 +/- 1.29 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9253 (92.53%)
+  Precision    : 0.9296
+  Recall       : 0.9253
+  F1-Score     : 0.9242
+  Parameter    : 1,694,216
+  Ukuran (MB)  : 6.56
+  FLOPs        : 242.938 M
+  Inferensi    : 23.24 ms (median, std=1.29, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7917    0.9500    0.8636        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.9500    0.9500    0.9500        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9000    0.9474    0.9231        19
+    Leaf_Blast_Rice     0.9333    0.7000    0.8000        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    0.8947    0.9444        19
+
+           accuracy                         0.9253       174
+          macro avg     0.9303    0.9263    0.9251       174
+       weighted avg     0.9296    0.9253    0.9242       174
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+
+============================================================
+  L1-Ekspansi | 30% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              92.53%
+  Precision            0.9296
+  Recall               0.9253
+  F1-Score             0.9242
+  Parameter            1,694,216
+  Ukuran (MB)          6.56
+  FLOPs (M)            242.938
+  Inferensi (ms)       23.24
+============================================================
+[INFO] Inferensi: median=22.75 ms (rata-rata=23.27 +/- 2.56 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9200 (92.00%)
+  Precision    : 0.9304
+  Recall       : 0.9200
+  F1-Score     : 0.9205
+  Parameter    : 1,694,216
+  Ukuran (MB)  : 6.56
+  FLOPs        : 242.938 M
+  Inferensi    : 22.75 ms (median, std=2.56, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7826    0.9474    0.8571        19
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.9048    1.0000    0.9500        19
+       Healthy_Corn     1.0000    0.9000    0.9474        20
+       Healthy_Rice     0.9048    0.9500    0.9268        20
+  Healthy_Sugarcane     0.8333    1.0000    0.9091        20
+    Leaf_Blast_Rice     1.0000    0.7895    0.8824        19
+   Mosaic_Sugarcane     1.0000    0.8421    0.9143        19
+     Rust_Sugarcane     1.0000    0.9000    0.9474        20
+
+           accuracy                         0.9200       175
+          macro avg     0.9303    0.9196    0.9202       175
+       weighted avg     0.9304    0.9200    0.9205       175
+
+
+============================================================
+  L1-Ekspansi | 30% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              92.00%
+  Precision            0.9304
+  Recall               0.9200
+  F1-Score             0.9205
+  Parameter            1,694,216
+  Ukuran (MB)          6.56
+  FLOPs (M)            242.938
+  Inferensi (ms)       22.75
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 4/7 | 40% | Waktu berjalan: 171.2 menit
+
+============================================================
+ABLATION: L1-Ekspansi saja | Rasio 40% | 30 epoch
+============================================================
+[Pruning] Rasio: 40%
+  Channel total  : 7104
+  Channel dipangkas: 2834
+  Channel tersisa  : 4270
+[INFO] Training Ablation L1-Ekspansi 40% pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.2954 Acc: 0.8756
+  val   Loss: 0.4360 Acc: 0.8563
+  >> Model terbaik diperbarui! Val Acc: 0.8563
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.1647 Acc: 0.9286
+  val   Loss: 0.4022 Acc: 0.8736
+  >> Model terbaik diperbarui! Val Acc: 0.8736
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.1220 Acc: 0.9421
+  val   Loss: 0.3134 Acc: 0.9138
+  >> Model terbaik diperbarui! Val Acc: 0.9138
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.1153 Acc: 0.9470
+  val   Loss: 0.3336 Acc: 0.9138
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.1050 Acc: 0.9507
+  val   Loss: 0.3547 Acc: 0.8966
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.0973 Acc: 0.9557
+  val   Loss: 0.3265 Acc: 0.8966
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.0940 Acc: 0.9495
+  val   Loss: 0.3152 Acc: 0.8966
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.1067 Acc: 0.9581
+  val   Loss: 0.2693 Acc: 0.9138
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.0671 Acc: 0.9655
+  val   Loss: 0.2953 Acc: 0.8966
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.0646 Acc: 0.9692
+  val   Loss: 0.3192 Acc: 0.9023
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.0654 Acc: 0.9643
+  val   Loss: 0.3083 Acc: 0.9023
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.0629 Acc: 0.9667
+  val   Loss: 0.3226 Acc: 0.9080
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.0618 Acc: 0.9655
+  val   Loss: 0.3081 Acc: 0.9023
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.0610 Acc: 0.9667
+  val   Loss: 0.3106 Acc: 0.9080
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.0863 Acc: 0.9606
+  val   Loss: 0.3214 Acc: 0.8966
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0902 Acc: 0.9618
+  val   Loss: 0.3207 Acc: 0.8908
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.0536 Acc: 0.9717
+  val   Loss: 0.3064 Acc: 0.8908
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0688 Acc: 0.9618
+  val   Loss: 0.3076 Acc: 0.8908
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0540 Acc: 0.9631
+  val   Loss: 0.3078 Acc: 0.8966
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0817 Acc: 0.9618
+  val   Loss: 0.3301 Acc: 0.8908
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0536 Acc: 0.9667
+  val   Loss: 0.3157 Acc: 0.8908
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0536 Acc: 0.9667
+  val   Loss: 0.3072 Acc: 0.8966
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0514 Acc: 0.9667
+  val   Loss: 0.3147 Acc: 0.8966
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.0486 Acc: 0.9704
+  val   Loss: 0.3082 Acc: 0.8966
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.0522 Acc: 0.9704
+  val   Loss: 0.3126 Acc: 0.8851
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.0511 Acc: 0.9680
+  val   Loss: 0.3203 Acc: 0.8966
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0553 Acc: 0.9680
+  val   Loss: 0.3128 Acc: 0.8966
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.0699 Acc: 0.9655
+  val   Loss: 0.3066 Acc: 0.8908
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.0564 Acc: 0.9680
+  val   Loss: 0.3074 Acc: 0.8966
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.0511 Acc: 0.9680
+  val   Loss: 0.3078 Acc: 0.8908
+
+[SELESAI] Ablation L1-Ekspansi 40% - Best Val Acc: 0.9138
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_40pct_30ep.pth
+[INFO] Inferensi: median=20.10 ms (rata-rata=20.54 +/- 2.34 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9138 (91.38%)
+  Precision    : 0.9188
+  Recall       : 0.9138
+  F1-Score     : 0.9129
+  Parameter    : 1,513,575
+  Ukuran (MB)  : 5.86
+  FLOPs        : 215.009 M
+  Inferensi    : 20.10 ms (median, std=2.34, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7500    0.9000    0.8182        20
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     0.9474    0.9000    0.9231        20
+       Healthy_Corn     0.9500    1.0000    0.9744        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.8947    0.8947    0.8947        19
+    Leaf_Blast_Rice     0.9333    0.7000    0.8000        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    0.8947    0.9444        19
+
+           accuracy                         0.9138       174
+          macro avg     0.9195    0.9152    0.9141       174
+       weighted avg     0.9188    0.9138    0.9129       174
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+
+============================================================
+  L1-Ekspansi | 40% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              91.38%
+  Precision            0.9188
+  Recall               0.9138
+  F1-Score             0.9129
+  Parameter            1,513,575
+  Ukuran (MB)          5.86
+  FLOPs (M)            215.009
+  Inferensi (ms)       20.10
+============================================================
+[INFO] Inferensi: median=19.96 ms (rata-rata=20.20 +/- 0.93 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9143 (91.43%)
+  Precision    : 0.9215
+  Recall       : 0.9143
+  F1-Score     : 0.9145
+  Parameter    : 1,513,575
+  Ukuran (MB)  : 5.86
+  FLOPs        : 215.009 M
+  Inferensi    : 19.96 ms (median, std=0.93, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7826    0.9474    0.8571        19
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     0.8571    0.9474    0.9000        19
+       Healthy_Corn     0.9412    0.8000    0.8649        20
+       Healthy_Rice     0.9048    0.9500    0.9268        20
+  Healthy_Sugarcane     0.9048    0.9500    0.9268        20
+    Leaf_Blast_Rice     1.0000    0.7895    0.8824        19
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    0.9500    0.9744        20
+
+           accuracy                         0.9143       175
+          macro avg     0.9212    0.9143    0.9143       175
+       weighted avg     0.9215    0.9143    0.9145       175
+
+
+============================================================
+  L1-Ekspansi | 40% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              91.43%
+  Precision            0.9215
+  Recall               0.9143
+  F1-Score             0.9145
+  Parameter            1,513,575
+  Ukuran (MB)          5.86
+  FLOPs (M)            215.009
+  Inferensi (ms)       19.96
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 5/7 | 50% | Waktu berjalan: 215.5 menit
+
+============================================================
+ABLATION: L1-Ekspansi saja | Rasio 50% | 30 epoch
+============================================================
+[Pruning] Rasio: 50%
+  Channel total  : 7104
+  Channel dipangkas: 3552
+  Channel tersisa  : 3552
+[INFO] Training Ablation L1-Ekspansi 50% pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 0.6227 Acc: 0.7980
+  val   Loss: 0.4984 Acc: 0.8161
+  >> Model terbaik diperbarui! Val Acc: 0.8161
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.3209 Acc: 0.8830
+  val   Loss: 0.4177 Acc: 0.8506
+  >> Model terbaik diperbarui! Val Acc: 0.8506
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.2589 Acc: 0.8842
+  val   Loss: 0.3882 Acc: 0.8506
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.2208 Acc: 0.8990
+  val   Loss: 0.3956 Acc: 0.8793
+  >> Model terbaik diperbarui! Val Acc: 0.8793
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.1972 Acc: 0.9212
+  val   Loss: 0.3629 Acc: 0.8736
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.1671 Acc: 0.9273
+  val   Loss: 0.3465 Acc: 0.8851
+  >> Model terbaik diperbarui! Val Acc: 0.8851
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.1411 Acc: 0.9409
+  val   Loss: 0.3213 Acc: 0.8851
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.1403 Acc: 0.9372
+  val   Loss: 0.3001 Acc: 0.8678
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.1465 Acc: 0.9483
+  val   Loss: 0.3438 Acc: 0.8736
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.1424 Acc: 0.9483
+  val   Loss: 0.3424 Acc: 0.8793
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.1165 Acc: 0.9483
+  val   Loss: 0.3422 Acc: 0.8736
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.1029 Acc: 0.9495
+  val   Loss: 0.3289 Acc: 0.8736
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.1166 Acc: 0.9446
+  val   Loss: 0.3404 Acc: 0.8736
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.1112 Acc: 0.9495
+  val   Loss: 0.3316 Acc: 0.8678
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.1237 Acc: 0.9470
+  val   Loss: 0.3266 Acc: 0.8736
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.0975 Acc: 0.9520
+  val   Loss: 0.3188 Acc: 0.8793
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.1093 Acc: 0.9507
+  val   Loss: 0.3298 Acc: 0.8736
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.0993 Acc: 0.9544
+  val   Loss: 0.3312 Acc: 0.8736
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.0924 Acc: 0.9520
+  val   Loss: 0.3285 Acc: 0.8736
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.0893 Acc: 0.9581
+  val   Loss: 0.3239 Acc: 0.8736
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.0966 Acc: 0.9495
+  val   Loss: 0.3341 Acc: 0.8736
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.0982 Acc: 0.9544
+  val   Loss: 0.3279 Acc: 0.8793
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.0867 Acc: 0.9544
+  val   Loss: 0.3331 Acc: 0.8793
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.1069 Acc: 0.9532
+  val   Loss: 0.3239 Acc: 0.8736
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.1216 Acc: 0.9421
+  val   Loss: 0.3105 Acc: 0.8793
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.1156 Acc: 0.9409
+  val   Loss: 0.3266 Acc: 0.8851
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.0948 Acc: 0.9631
+  val   Loss: 0.3245 Acc: 0.8793
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.1078 Acc: 0.9483
+  val   Loss: 0.3231 Acc: 0.8736
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.1027 Acc: 0.9458
+  val   Loss: 0.3327 Acc: 0.8736
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.1019 Acc: 0.9544
+  val   Loss: 0.3378 Acc: 0.8793
+
+[SELESAI] Ablation L1-Ekspansi 50% - Best Val Acc: 0.8851
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_50pct_30ep.pth
+[INFO] Inferensi: median=17.51 ms (rata-rata=17.75 +/- 1.15 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8851 (88.51%)
+  Precision    : 0.8907
+  Recall       : 0.8851
+  F1-Score     : 0.8848
+  Parameter    : 1,331,945
+  Ukuran (MB)  : 5.16
+  FLOPs        : 186.462 M
+  Inferensi    : 17.51 ms (median, std=1.15, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8125    0.6500    0.7222        20
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     1.0000    0.8500    0.9189        20
+       Healthy_Corn     0.9048    1.0000    0.9500        19
+       Healthy_Rice     1.0000    1.0000    1.0000        19
+  Healthy_Sugarcane     0.8421    0.8421    0.8421        19
+    Leaf_Blast_Rice     0.7083    0.8500    0.7727        20
+   Mosaic_Sugarcane     0.8095    0.8947    0.8500        19
+     Rust_Sugarcane     0.9474    0.9474    0.9474        19
+
+           accuracy                         0.8851       174
+          macro avg     0.8916    0.8868    0.8863       174
+       weighted avg     0.8907    0.8851    0.8848       174
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+
+============================================================
+  L1-Ekspansi | 50% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              88.51%
+  Precision            0.8907
+  Recall               0.8851
+  F1-Score             0.8848
+  Parameter            1,331,945
+  Ukuran (MB)          5.16
+  FLOPs (M)            186.462
+  Inferensi (ms)       17.51
+============================================================
+[INFO] Inferensi: median=17.65 ms (rata-rata=19.07 +/- 2.86 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9029 (90.29%)
+  Precision    : 0.9061
+  Recall       : 0.9029
+  F1-Score     : 0.9031
+  Parameter    : 1,331,945
+  Ukuran (MB)  : 5.16
+  FLOPs        : 186.462 M
+  Inferensi    : 17.65 ms (median, std=2.86, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8000    0.8421    0.8205        19
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     0.8571    0.9474    0.9000        19
+       Healthy_Corn     0.9444    0.8500    0.8947        20
+       Healthy_Rice     0.8636    0.9500    0.9048        20
+  Healthy_Sugarcane     0.8571    0.9000    0.8780        20
+    Leaf_Blast_Rice     0.9412    0.8421    0.8889        19
+   Mosaic_Sugarcane     0.8889    0.8421    0.8649        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9029       175
+          macro avg     0.9058    0.9023    0.9028       175
+       weighted avg     0.9061    0.9029    0.9031       175
+
+
+============================================================
+  L1-Ekspansi | 50% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              90.29%
+  Precision            0.9061
+  Recall               0.9029
+  F1-Score             0.9031
+  Parameter            1,331,945
+  Ukuran (MB)          5.16
+  FLOPs (M)            186.462
+  Inferensi (ms)       17.65
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 6/7 | 60% | Waktu berjalan: 256.5 menit
+
+============================================================
+ABLATION: L1-Ekspansi saja | Rasio 60% | 30 epoch
+============================================================
+[Pruning] Rasio: 60%
+  Channel total  : 7104
+  Channel dipangkas: 4257
+  Channel tersisa  : 2847
+[INFO] Training Ablation L1-Ekspansi 60% pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 1.0302 Acc: 0.6847
+  val   Loss: 1.0650 Acc: 0.6264
+  >> Model terbaik diperbarui! Val Acc: 0.6264
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.5749 Acc: 0.7697
+  val   Loss: 0.6426 Acc: 0.7816
+  >> Model terbaik diperbarui! Val Acc: 0.7816
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.4103 Acc: 0.8374
+  val   Loss: 0.5776 Acc: 0.8103
+  >> Model terbaik diperbarui! Val Acc: 0.8103
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.3346 Acc: 0.8682
+  val   Loss: 0.5356 Acc: 0.8103
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.3492 Acc: 0.8682
+  val   Loss: 0.4709 Acc: 0.8218
+  >> Model terbaik diperbarui! Val Acc: 0.8218
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.2940 Acc: 0.8855
+  val   Loss: 0.4149 Acc: 0.8333
+  >> Model terbaik diperbarui! Val Acc: 0.8333
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.2711 Acc: 0.8904
+  val   Loss: 0.3849 Acc: 0.8563
+  >> Model terbaik diperbarui! Val Acc: 0.8563
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.2354 Acc: 0.9002
+  val   Loss: 0.3971 Acc: 0.8391
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.2821 Acc: 0.8842
+  val   Loss: 0.4447 Acc: 0.8448
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.2468 Acc: 0.8953
+  val   Loss: 0.4056 Acc: 0.8506
+
+Epoch 11/30
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py", line 1291, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\queues.py", line 120, in get
+    return _ForkingPickler.loads(res)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\multiprocessing\reductions.py", line 555, in rebuild_storage_filename
+    storage = torch.UntypedStorage._new_shared_filename_cpu(manager, handle, size)
+RuntimeError: Couldn't open shared event: <torch_8740_2455297036_0_event>, error code: <2>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\S2 UMAYAH\TESIS\Pra Penelitian 2\scripts\53_ablation_l1_expansion.py", line 376, in <module>
+    main()
+    ~~~~^^
+  File "D:\S2 UMAYAH\TESIS\Pra Penelitian 2\scripts\53_ablation_l1_expansion.py", line 331, in main
+    metrics_val, metrics_test, ckpt_name = run_single_ratio(
+                                           ~~~~~~~~~~~~~~~~^
+        l1_ekspansi_raw, model_baseline, dataloaders, dataset_sizes, ratio, device
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\S2 UMAYAH\TESIS\Pra Penelitian 2\scripts\53_ablation_l1_expansion.py", line 180, in run_single_ratio
+    pruned_model, history = train_model(
+                            ~~~~~~~~~~~^
+        model=pruned_model,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        phase_name=f"Ablation L1-Ekspansi {ratio_persen}%"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\S2 UMAYAH\TESIS\Pra Penelitian 2\src\model.py", line 206, in train_model
+    for inputs, labels in dataloaders[phase]:
+                          ~~~~~~~~~~~^^^^^^^
+  File "D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py", line 725, in __next__
+    data = self._next_data()
+  File "D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py", line 1505, in _next_data
+    idx, data = self._get_data()
+                ~~~~~~~~~~~~~~^^
+  File "D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py", line 1464, in _get_data
+    success, data = self._try_get_data()
+                    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py", line 1304, in _try_get_data
+    raise RuntimeError(
+        f"DataLoader worker (pid(s) {pids_str}) exited unexpectedly"
+    ) from e
+RuntimeError: DataLoader worker (pid(s) 3632, 8740) exited unexpectedly
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+======================================================================
+ABLATION STUDY: L1-EKSPANSI SAJA (expansion conv, |bobot|) -- 7 RASIO
+======================================================================
+  Rasio   : ['10%', '20%', '30%', '40%', '50%', '60%', '70%']
+  Epoch   : 30
+  LR      : 0.0001
+  Seed    : 42
+  Optimizer: Adam + StepLR(step_size=10, gamma=0.1)  [via train_model(), src/model.py]
+[INFO] MobileNetV2 tanpa pretrained dimuat.
+[INFO] Classifier head diganti: 1280 -> 9 kelas
+[INFO] Checkpoint dimuat: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\baseline_9class.pth
+  Best Acc: 0.9367816091954023
+[L1-Norm] Dihitung untuk 16 lapisan depthwise (skip t=1)
+[L1-Ekspansi] Dihitung untuk 16 lapisan (skip t=1)
+
+======================================================================
+VERIFIKASI WAJIB: kesejajaran channel L1-depthwise vs L1-ekspansi
+======================================================================
+ layer_idx  len(L1 depthwise)  len(L1 ekspansi)  status
+-------------------------------------------------------
+         0                 96                96  OK
+         1                144               144  OK
+         2                144               144  OK
+         3                192               192  OK
+         4                192               192  OK
+         5                192               192  OK
+         6                384               384  OK
+         7                384               384  OK
+         8                384               384  OK
+         9                384               384  OK
+        10                576               576  OK
+        11                576               576  OK
+        12                576               576  OK
+        13                960               960  OK
+        14                960               960  OK
+        15                960               960  OK
+-------------------------------------------------------
+[VERIFIKASI WAJIB] Semua 16 layer sejajar jumlah channelnya? True
+
+[INFO] Akurasi validasi L1 depthwise (lama) tersedia lengkap untuk 7 rasio di D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_val_results.json -- TIDAK dihitung ulang.
+
+======================================================================
+RENCANA
+======================================================================
+  Checkpoint sudah ada (di-skip)  : ['10%', '20%', '30%', '40%', '50%']
+  Akan dilatih (30 epoch)         : ['60%', '70%']
+
+======================================================================
+PERKIRAAN DURASI
+======================================================================
+  Rasio akan dilatih : 2
+  Basis perkiraan    : rerata 53.8 menit/rasio (riwayat scripts/43_ablation_gm_expansion.py, arsitektur+epoch identik)
+  Estimasi total     : 108 menit (~1.8 jam)
+  (Perkiraan berbasis riwayat, BUKAN kalibrasi langsung -- durasi aktual bisa berbeda.)
+======================================================================
+[TRAIN] 812 gambar, 9 kelas, batch_size=32
+[VAL] 174 gambar, 9 kelas, batch_size=32
+[TEST] 175 gambar, 9 kelas, batch_size=32
+
+[INFO] Melanjutkan dari hasil sebagian yang sudah ada: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 1/7 | 10% | Waktu berjalan: 0.0 menit
+
+============================================================
+SKIP: L1-Ekspansi | 10% | 30ep (checkpoint sudah ada: ablation_l1exp_10pct_30ep.pth)
+============================================================
+[INFO] MobileNetV2 tanpa pretrained dimuat.
+[INFO] Classifier head diganti: 1280 -> 9 kelas
+[INFO] Checkpoint dimuat: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_10pct_30ep.pth
+  Best Acc: 0.9482758620689655
+[INFO] Inferensi: median=40.14 ms (rata-rata=41.92 +/- 9.24 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9483 (94.83%)
+  Precision    : 0.9497
+  Recall       : 0.9483
+  F1-Score     : 0.9477
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 40.14 ms (median, std=9.24, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8636    0.9500    0.9048        20
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     1.0000    0.9500    0.9744        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9000    0.9474    0.9231        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.9444    0.8947    0.9189        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9483       174
+          macro avg     0.9499    0.9491    0.9483       174
+       weighted avg     0.9497    0.9483    0.9477       174
+
+
+============================================================
+  L1-Ekspansi | 10% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              94.83%
+  Precision            0.9497
+  Recall               0.9483
+  F1-Score             0.9477
+  Parameter            2,055,492
+  Ukuran (MB)          7.96
+  FLOPs (M)            298.766
+  Inferensi (ms)       40.14
+============================================================
+[INFO] Inferensi: median=34.16 ms (rata-rata=34.70 +/- 2.30 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9486 (94.86%)
+  Precision    : 0.9542
+  Recall       : 0.9486
+  F1-Score     : 0.9487
+  Parameter    : 2,055,492
+  Ukuran (MB)  : 7.96
+  FLOPs        : 298.766 M
+  Inferensi    : 34.16 ms (median, std=2.30, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8182    0.9474    0.8780        19
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9500    0.9500    0.9500        20
+  Healthy_Sugarcane     0.8696    1.0000    0.9302        20
+    Leaf_Blast_Rice     1.0000    0.8421    0.9143        19
+   Mosaic_Sugarcane     1.0000    0.8421    0.9143        19
+     Rust_Sugarcane     1.0000    0.9500    0.9744        20
+
+           accuracy                         0.9486       175
+          macro avg     0.9542    0.9480    0.9484       175
+       weighted avg     0.9542    0.9486    0.9487       175
+
+
+============================================================
+  L1-Ekspansi | 10% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              94.86%
+  Precision            0.9542
+  Recall               0.9486
+  F1-Score             0.9487
+  Parameter            2,055,492
+  Ukuran (MB)          7.96
+  FLOPs (M)            298.766
+  Inferensi (ms)       34.16
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 2/7 | 20% | Waktu berjalan: 1.4 menit
+
+============================================================
+SKIP: L1-Ekspansi | 20% | 30ep (checkpoint sudah ada: ablation_l1exp_20pct_30ep.pth)
+============================================================
+[INFO] MobileNetV2 tanpa pretrained dimuat.
+[INFO] Classifier head diganti: 1280 -> 9 kelas
+[INFO] Checkpoint dimuat: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_20pct_30ep.pthD:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  Best Acc: 0.9540229885057471
+[INFO] Inferensi: median=27.14 ms (rata-rata=28.82 +/- 5.80 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9540 (95.40%)
+  Precision    : 0.9554
+  Recall       : 0.9540
+  F1-Score     : 0.9536
+  Parameter    : 1,874,851
+  Ukuran (MB)  : 7.26
+  FLOPs        : 270.837 M
+  Inferensi    : 27.14 ms (median, std=5.80, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8636    0.9500    0.9048        20
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9000    0.9474    0.9231        19
+    Leaf_Blast_Rice     0.9412    0.8000    0.8649        20
+   Mosaic_Sugarcane     0.9474    0.9474    0.9474        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        19
+
+           accuracy                         0.9540       174
+          macro avg     0.9558    0.9547    0.9542       174
+       weighted avg     0.9554    0.9540    0.9536       174
+
+
+============================================================
+  L1-Ekspansi | 20% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              95.40%
+  Precision            0.9554
+  Recall               0.9540
+  F1-Score             0.9536
+  Parameter            1,874,851
+  Ukuran (MB)          7.26
+  FLOPs (M)            270.837
+  Inferensi (ms)       27.14
+============================================================
+[INFO] Inferensi: median=30.12 ms (rata-rata=31.15 +/- 4.23 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9714 (97.14%)
+  Precision    : 0.9733
+  Recall       : 0.9714
+  F1-Score     : 0.9717
+  Parameter    : 1,874,851
+  Ukuran (MB)  : 7.26
+  FLOPs        : 270.837 M
+  Inferensi    : 30.12 ms (median, std=4.23, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8571    0.9474    0.9000        19
+   Common_Rust_Corn     1.0000    1.0000    1.0000        19
+Gray_Leaf_Spot_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Corn     1.0000    1.0000    1.0000        20
+       Healthy_Rice     0.9500    0.9500    0.9500        20
+  Healthy_Sugarcane     0.9524    1.0000    0.9756        20
+    Leaf_Blast_Rice     1.0000    0.8947    0.9444        19
+   Mosaic_Sugarcane     1.0000    0.9474    0.9730        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9714       175
+          macro avg     0.9733    0.9711    0.9714       175
+       weighted avg     0.9733    0.9714    0.9717       175
+
+
+============================================================
+  L1-Ekspansi | 20% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              97.14%
+  Precision            0.9733
+  Recall               0.9714
+  F1-Score             0.9717
+  Parameter            1,874,851
+  Ukuran (MB)          7.26
+  FLOPs (M)            270.837
+  Inferensi (ms)       30.12
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 3/7 | 30% | Waktu berjalan: 2.6 menit
+
+============================================================
+SKIP: L1-Ekspansi | 30% | 30ep (checkpoint sudah ada: ablation_l1exp_30pct_30ep.pth)
+============================================================
+[INFO] MobileNetV2 tanpa pretrained dimuat.
+[INFO] Classifier head diganti: 1280 -> 9 kelas
+[INFO] Checkpoint dimuat: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_30pct_30ep.pth
+  Best Acc: 0.9252873563218391
+[INFO] Inferensi: median=26.11 ms (rata-rata=26.30 +/- 1.34 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9253 (92.53%)
+  Precision    : 0.9296
+  Recall       : 0.9253
+  F1-Score     : 0.9242
+  Parameter    : 1,694,216
+  Ukuran (MB)  : 6.56
+  FLOPs        : 242.938 M
+  Inferensi    : 26.11 ms (median, std=1.34, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7917    0.9500    0.8636        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.9500    0.9500    0.9500        20
+       Healthy_Corn     1.0000    1.0000    1.0000        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.9000    0.9474    0.9231        19
+    Leaf_Blast_Rice     0.9333    0.7000    0.8000        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    0.8947    0.9444        19
+
+           accuracy                         0.9253       174
+          macro avg     0.9303    0.9263    0.9251       174
+       weighted avg     0.9296    0.9253    0.9242       174
+
+
+============================================================
+  L1-Ekspansi | 30% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              92.53%
+  Precision            0.9296
+  Recall               0.9253
+  F1-Score             0.9242
+  Parameter            1,694,216
+  Ukuran (MB)          6.56
+  FLOPs (M)            242.938
+  Inferensi (ms)       26.11
+============================================================
+[INFO] Inferensi: median=25.61 ms (rata-rata=26.02 +/- 1.60 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9200 (92.00%)
+  Precision    : 0.9304
+  Recall       : 0.9200
+  F1-Score     : 0.9205
+  Parameter    : 1,694,216
+  Ukuran (MB)  : 6.56
+  FLOPs        : 242.938 M
+  Inferensi    : 25.61 ms (median, std=1.60, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7826    0.9474    0.8571        19
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.9048    1.0000    0.9500        19
+       Healthy_Corn     1.0000    0.9000    0.9474        20
+       Healthy_Rice     0.9048    0.9500    0.9268        20
+  Healthy_Sugarcane     0.8333    1.0000    0.9091        20
+    Leaf_Blast_Rice     1.0000    0.7895    0.8824        19
+   Mosaic_Sugarcane     1.0000    0.8421    0.9143        19
+     Rust_Sugarcane     1.0000    0.9000    0.9474        20
+
+           accuracy                         0.9200       175
+          macro avg     0.9303    0.9196    0.9202       175
+       weighted avg     0.9304    0.9200    0.9205       175
+
+
+============================================================
+  L1-Ekspansi | 30% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              92.00%
+  Precision            0.9304
+  Recall               0.9200
+  F1-Score             0.9205
+  Parameter            1,694,216D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+  Ukuran (MB)          6.56
+  FLOPs (M)            242.938
+  Inferensi (ms)       25.61
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 4/7 | 40% | Waktu berjalan: 3.7 menit
+
+============================================================
+SKIP: L1-Ekspansi | 40% | 30ep (checkpoint sudah ada: ablation_l1exp_40pct_30ep.pth)
+============================================================
+[INFO] MobileNetV2 tanpa pretrained dimuat.
+[INFO] Classifier head diganti: 1280 -> 9 kelas
+[INFO] Checkpoint dimuat: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_40pct_30ep.pth
+  Best Acc: 0.9137931034482759
+[INFO] Inferensi: median=22.56 ms (rata-rata=22.94 +/- 1.60 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9138 (91.38%)
+  Precision    : 0.9188
+  Recall       : 0.9138
+  F1-Score     : 0.9129
+  Parameter    : 1,513,575
+  Ukuran (MB)  : 5.86
+  FLOPs        : 215.009 M
+  Inferensi    : 22.56 ms (median, std=1.60, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7500    0.9000    0.8182        20
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     0.9474    0.9000    0.9231        20
+       Healthy_Corn     0.9500    1.0000    0.9744        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.8947    0.8947    0.8947        19
+    Leaf_Blast_Rice     0.9333    0.7000    0.8000        20
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    0.8947    0.9444        19
+
+           accuracy                         0.9138       174
+          macro avg     0.9195    0.9152    0.9141       174
+       weighted avg     0.9188    0.9138    0.9129       174
+
+
+============================================================
+  L1-Ekspansi | 40% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              91.38%
+  Precision            0.9188
+  Recall               0.9138
+  F1-Score             0.9129
+  Parameter            1,513,575
+  Ukuran (MB)          5.86
+  FLOPs (M)            215.009
+  Inferensi (ms)       22.56
+============================================================
+[INFO] Inferensi: median=28.56 ms (rata-rata=28.33 +/- 4.16 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9143 (91.43%)
+  Precision    : 0.9215
+  Recall       : 0.9143
+  F1-Score     : 0.9145
+  Parameter    : 1,513,575
+  Ukuran (MB)  : 5.86
+  FLOPs        : 215.009 M
+  Inferensi    : 28.56 ms (median, std=4.16, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.7826    0.9474    0.8571        19
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     0.8571    0.9474    0.9000        19
+       Healthy_Corn     0.9412    0.8000    0.8649        20
+       Healthy_Rice     0.9048    0.9500    0.9268        20
+  Healthy_Sugarcane     0.9048    0.9500    0.9268        20
+    Leaf_Blast_Rice     1.0000    0.7895    0.8824        19
+   Mosaic_Sugarcane     0.9000    0.9474    0.9231        19
+     Rust_Sugarcane     1.0000    0.9500    0.9744        20
+
+           accuracy                         0.9143       175
+          macro avg     0.9212    0.9143    0.9143       175
+       weighted avg     0.9215    0.9143    0.9145       175
+
+
+============================================================
+  L1-Ekspansi | 40% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              91.43%
+  Precision            0.9215
+  Recall               0.9143
+  F1-Score             0.9145
+  Parameter            1,513,575
+  Ukuran (MB)          5.86
+  FLOPs (M)            215.009
+  Inferensi (ms)       28.56
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 5/7 | 50% | Waktu berjalan: 4.7 menit
+
+============================================================
+SKIP: L1-Ekspansi | 50% | 30ep (checkpoint sudah ada: ablation_l1exp_50pct_30ep.pth)
+============================================================
+[INFO] MobileNetV2 tanpa pretrained dimuat.
+[INFO] Classifier head diganti: 1280 -> 9 kelas
+[INFO] Checkpoint dimuat: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_50pct_30ep.pth
+  Best Acc: 0.8850574712643678
+[INFO] Inferensi: median=28.87 ms (rata-rata=30.20 +/- 5.20 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8851 (88.51%)
+  Precision    : 0.8907
+  Recall       : 0.8851
+  F1-Score     : 0.8848
+  Parameter    : 1,331,945
+  Ukuran (MB)  : 5.16
+  FLOPs        : 186.462 M
+  Inferensi    : 28.87 ms (median, std=5.20, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8125    0.6500    0.7222        20
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     1.0000    0.8500    0.9189        20
+       Healthy_Corn     0.9048    1.0000    0.9500        19
+       Healthy_Rice     1.0000    1.0000    1.0000        19
+  Healthy_Sugarcane     0.8421    0.8421    0.8421        19
+    Leaf_Blast_Rice     0.7083    0.8500    0.7727        20
+   Mosaic_Sugarcane     0.8095    0.8947    0.8500        19
+     Rust_Sugarcane     0.9474    0.9474    0.9474        19
+
+           accuracy                         0.8851       174
+          macro avg     0.8916    0.8868    0.8863       174
+       weighted avg     0.8907    0.8851    0.8848       174
+
+
+============================================================
+  L1-Ekspansi | 50% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              88.51%
+  Precision            0.8907
+  Recall               0.8851
+  F1-Score             0.8848
+  Parameter            1,331,945
+  Ukuran (MB)          5.16
+  FLOPs (M)            186.462
+  Inferensi (ms)       28.87
+============================================================
+[INFO] Inferensi: median=23.78 ms (rata-rata=24.50 +/- 3.99 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.9029 (90.29%)
+  Precision    : 0.9061
+  Recall       : 0.9029
+  F1-Score     : 0.9031
+  Parameter    : 1,331,945
+  Ukuran (MB)  : 5.16
+  FLOPs        : 186.462 M
+  Inferensi    : 23.78 ms (median, std=3.99, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8000    0.8421    0.8205        19
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     0.8571    0.9474    0.9000        19
+       Healthy_Corn     0.9444    0.8500    0.8947        20
+       Healthy_Rice     0.8636    0.9500    0.9048        20
+  Healthy_Sugarcane     0.8571    0.9000    0.8780        20
+    Leaf_Blast_Rice     0.9412    0.8421    0.8889        19
+   Mosaic_Sugarcane     0.8889    0.8421    0.8649        19
+     Rust_Sugarcane     1.0000    1.0000    1.0000        20
+
+           accuracy                         0.9029       175
+          macro avg     0.9058    0.9023    0.9028       175
+       weighted avg     0.9061    0.9029    0.9031       175
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+
+============================================================
+  L1-Ekspansi | 50% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              90.29%
+  Precision            0.9061
+  Recall               0.9029
+  F1-Score             0.9031
+  Parameter            1,331,945
+  Ukuran (MB)          5.16
+  FLOPs (M)            186.462
+  Inferensi (ms)       23.78
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 6/7 | 60% | Waktu berjalan: 5.7 menit
+
+============================================================
+ABLATION: L1-Ekspansi saja | Rasio 60% | 30 epoch
+============================================================
+[Pruning] Rasio: 60%
+  Channel total  : 7104
+  Channel dipangkas: 4257
+  Channel tersisa  : 2847
+[INFO] Training Ablation L1-Ekspansi 60% pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 1.0886 Acc: 0.6712
+  val   Loss: 1.0714 Acc: 0.6264
+  >> Model terbaik diperbarui! Val Acc: 0.6264
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.5718 Acc: 0.7845
+  val   Loss: 0.6312 Acc: 0.7701
+  >> Model terbaik diperbarui! Val Acc: 0.7701
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.4896 Acc: 0.8190
+  val   Loss: 0.5966 Acc: 0.7759
+  >> Model terbaik diperbarui! Val Acc: 0.7759
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.3807 Acc: 0.8411
+  val   Loss: 0.5466 Acc: 0.8103
+  >> Model terbaik diperbarui! Val Acc: 0.8103
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.3284 Acc: 0.8732
+  val   Loss: 0.4983 Acc: 0.8276
+  >> Model terbaik diperbarui! Val Acc: 0.8276
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.2996 Acc: 0.8781
+  val   Loss: 0.4207 Acc: 0.8333
+  >> Model terbaik diperbarui! Val Acc: 0.8333
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.2761 Acc: 0.8892
+  val   Loss: 0.4149 Acc: 0.8448
+  >> Model terbaik diperbarui! Val Acc: 0.8448
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.2658 Acc: 0.8904
+  val   Loss: 0.3974 Acc: 0.8391
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.2412 Acc: 0.9052
+  val   Loss: 0.4014 Acc: 0.8506
+  >> Model terbaik diperbarui! Val Acc: 0.8506
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.2337 Acc: 0.9064
+  val   Loss: 0.4160 Acc: 0.8448
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.1904 Acc: 0.9261
+  val   Loss: 0.4222 Acc: 0.8563
+  >> Model terbaik diperbarui! Val Acc: 0.8563
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.2187 Acc: 0.9126
+  val   Loss: 0.4111 Acc: 0.8391
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.2089 Acc: 0.9236
+  val   Loss: 0.4059 Acc: 0.8563
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.1916 Acc: 0.9212
+  val   Loss: 0.3947 Acc: 0.8678
+  >> Model terbaik diperbarui! Val Acc: 0.8678
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.1785 Acc: 0.9286
+  val   Loss: 0.4056 Acc: 0.8563
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.2068 Acc: 0.9187
+  val   Loss: 0.4032 Acc: 0.8621
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.2069 Acc: 0.9089
+  val   Loss: 0.3965 Acc: 0.8736
+  >> Model terbaik diperbarui! Val Acc: 0.8736
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.2212 Acc: 0.9076
+  val   Loss: 0.3850 Acc: 0.8736
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.1669 Acc: 0.9298
+  val   Loss: 0.3852 Acc: 0.8678
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.1889 Acc: 0.9212
+  val   Loss: 0.3896 Acc: 0.8678
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.2123 Acc: 0.9212
+  val   Loss: 0.3883 Acc: 0.8621
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.1636 Acc: 0.9347
+  val   Loss: 0.3866 Acc: 0.8678
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.1676 Acc: 0.9323
+  val   Loss: 0.3872 Acc: 0.8736
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.2055 Acc: 0.9027
+  val   Loss: 0.3874 Acc: 0.8678
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.1743 Acc: 0.9298
+  val   Loss: 0.3768 Acc: 0.8793
+  >> Model terbaik diperbarui! Val Acc: 0.8793
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.2119 Acc: 0.9039
+  val   Loss: 0.3827 Acc: 0.8736
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.1531 Acc: 0.9372
+  val   Loss: 0.3912 Acc: 0.8736
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.1635 Acc: 0.9298
+  val   Loss: 0.3846 Acc: 0.8563
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.1612 Acc: 0.9384
+  val   Loss: 0.3942 Acc: 0.8736
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.1675 Acc: 0.9163
+  val   Loss: 0.3842 Acc: 0.8736
+
+[SELESAI] Ablation L1-Ekspansi 60% - Best Val Acc: 0.8793
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_60pct_30ep.pth
+[INFO] Inferensi: median=14.59 ms (rata-rata=14.87 +/- 0.99 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8793 (87.93%)
+  Precision    : 0.8818
+  Recall       : 0.8793
+  F1-Score     : 0.8784
+  Parameter    : 1,152,036
+  Ukuran (MB)  : 4.46
+  FLOPs        : 159.010 M
+  Inferensi    : 14.59 ms (median, std=0.99, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8750    0.7000    0.7778        20
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.8095    0.8500    0.8293        20
+       Healthy_Corn     0.9048    1.0000    0.9500        19
+       Healthy_Rice     0.9500    1.0000    0.9744        19
+  Healthy_Sugarcane     0.8889    0.8421    0.8649        19
+    Leaf_Blast_Rice     0.7391    0.8500    0.7907        20
+   Mosaic_Sugarcane     0.8889    0.8421    0.8649        19
+     Rust_Sugarcane     0.9444    0.8947    0.9189        19
+
+           accuracy                         0.8793       174
+          macro avg     0.8831    0.8807    0.8798       174
+       weighted avg     0.8818    0.8793    0.8784       174
+
+
+============================================================
+  L1-Ekspansi | 60% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              87.93%
+  Precision            0.8818
+  Recall               0.8793
+  F1-Score             0.8784
+  Parameter            1,152,036
+  Ukuran (MB)          4.46
+  FLOPs (M)            159.010
+  Inferensi (ms)       14.59
+============================================================
+[INFO] Inferensi: median=14.69 ms (rata-rata=14.81 +/- 0.44 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8629 (86.29%)
+  Precision    : 0.8691
+  Recall       : 0.8629
+  F1-Score     : 0.8627
+  Parameter    : 1,152,036
+  Ukuran (MB)  : 4.46
+  FLOPs        : 159.010 M
+  Inferensi    : 14.69 ms (median, std=0.44, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.6667    0.7368    0.7000        19
+   Common_Rust_Corn     0.9474    0.9474    0.9474        19
+Gray_Leaf_Spot_Corn     0.9474    0.9474    0.9474        19
+       Healthy_Corn     0.9444    0.8500    0.8947        20
+       Healthy_Rice     0.8261    0.9500    0.8837        20
+  Healthy_Sugarcane     0.7917    0.9500    0.8636        20
+    Leaf_Blast_Rice     0.8667    0.6842    0.7647        19
+   Mosaic_Sugarcane     0.8824    0.7895    0.8333        19
+     Rust_Sugarcane     0.9474    0.9000    0.9231        20
+
+           accuracy                         0.8629       175
+          macro avg     0.8689    0.8617    0.8620       175
+       weighted avg     0.8691    0.8629    0.8627       175
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+D:\S2 UMAYAH\TESIS\Pra Penelitian 2\venv\Lib\site-packages\torch\utils\data\dataloader.py:1102: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+
+============================================================
+  L1-Ekspansi | 60% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              86.29%
+  Precision            0.8691
+  Recall               0.8629
+  F1-Score             0.8627
+  Parameter            1,152,036
+  Ukuran (MB)          4.46
+  FLOPs (M)            159.010
+  Inferensi (ms)       14.69
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+>>> Rasio 7/7 | 70% | Waktu berjalan: 43.8 menit
+
+============================================================
+ABLATION: L1-Ekspansi saja | Rasio 70% | 30 epoch
+============================================================
+[Pruning] Rasio: 70%
+  Channel total  : 7104
+  Channel dipangkas: 4966
+  Channel tersisa  : 2138
+[INFO] Training Ablation L1-Ekspansi 70% pada cpu, 30 epoch, lr=0.0001
+
+Epoch 1/30
+----------------------------------------
+  train Loss: 2.0146 Acc: 0.4421
+  val   Loss: 1.6658 Acc: 0.3448
+  >> Model terbaik diperbarui! Val Acc: 0.3448
+
+Epoch 2/30
+----------------------------------------
+  train Loss: 0.9501 Acc: 0.6478
+  val   Loss: 1.0151 Acc: 0.6552
+  >> Model terbaik diperbarui! Val Acc: 0.6552
+
+Epoch 3/30
+----------------------------------------
+  train Loss: 0.7964 Acc: 0.6995
+  val   Loss: 0.9020 Acc: 0.6724
+  >> Model terbaik diperbarui! Val Acc: 0.6724
+
+Epoch 4/30
+----------------------------------------
+  train Loss: 0.6727 Acc: 0.7463
+  val   Loss: 0.8431 Acc: 0.7126
+  >> Model terbaik diperbarui! Val Acc: 0.7126
+
+Epoch 5/30
+----------------------------------------
+  train Loss: 0.5667 Acc: 0.7771
+  val   Loss: 0.7377 Acc: 0.7069
+
+Epoch 6/30
+----------------------------------------
+  train Loss: 0.5668 Acc: 0.7783
+  val   Loss: 0.6955 Acc: 0.7414
+  >> Model terbaik diperbarui! Val Acc: 0.7414
+
+Epoch 7/30
+----------------------------------------
+  train Loss: 0.5176 Acc: 0.7882
+  val   Loss: 0.7089 Acc: 0.7529
+  >> Model terbaik diperbarui! Val Acc: 0.7529
+
+Epoch 8/30
+----------------------------------------
+  train Loss: 0.4577 Acc: 0.8153
+  val   Loss: 0.6888 Acc: 0.7414
+
+Epoch 9/30
+----------------------------------------
+  train Loss: 0.4480 Acc: 0.8264
+  val   Loss: 0.6147 Acc: 0.7586
+  >> Model terbaik diperbarui! Val Acc: 0.7586
+
+Epoch 10/30
+----------------------------------------
+  train Loss: 0.4034 Acc: 0.8473
+  val   Loss: 0.6507 Acc: 0.7759
+  >> Model terbaik diperbarui! Val Acc: 0.7759
+
+Epoch 11/30
+----------------------------------------
+  train Loss: 0.3749 Acc: 0.8559
+  val   Loss: 0.6394 Acc: 0.7759
+
+Epoch 12/30
+----------------------------------------
+  train Loss: 0.3399 Acc: 0.8633
+  val   Loss: 0.6253 Acc: 0.7816
+  >> Model terbaik diperbarui! Val Acc: 0.7816
+
+Epoch 13/30
+----------------------------------------
+  train Loss: 0.3670 Acc: 0.8559
+  val   Loss: 0.6169 Acc: 0.7874
+  >> Model terbaik diperbarui! Val Acc: 0.7874
+
+Epoch 14/30
+----------------------------------------
+  train Loss: 0.3447 Acc: 0.8682
+  val   Loss: 0.6380 Acc: 0.7759
+
+Epoch 15/30
+----------------------------------------
+  train Loss: 0.3674 Acc: 0.8436
+  val   Loss: 0.6333 Acc: 0.7701
+
+Epoch 16/30
+----------------------------------------
+  train Loss: 0.3911 Acc: 0.8461
+  val   Loss: 0.6179 Acc: 0.7701
+
+Epoch 17/30
+----------------------------------------
+  train Loss: 0.3738 Acc: 0.8411
+  val   Loss: 0.6125 Acc: 0.7759
+
+Epoch 18/30
+----------------------------------------
+  train Loss: 0.3572 Acc: 0.8732
+  val   Loss: 0.6230 Acc: 0.7816
+
+Epoch 19/30
+----------------------------------------
+  train Loss: 0.3589 Acc: 0.8621
+  val   Loss: 0.5904 Acc: 0.7816
+
+Epoch 20/30
+----------------------------------------
+  train Loss: 0.3325 Acc: 0.8596
+  val   Loss: 0.6145 Acc: 0.7701
+
+Epoch 21/30
+----------------------------------------
+  train Loss: 0.2965 Acc: 0.8904
+  val   Loss: 0.5957 Acc: 0.7759
+
+Epoch 22/30
+----------------------------------------
+  train Loss: 0.3427 Acc: 0.8719
+  val   Loss: 0.6025 Acc: 0.7816
+
+Epoch 23/30
+----------------------------------------
+  train Loss: 0.3534 Acc: 0.8522
+  val   Loss: 0.6551 Acc: 0.7816
+
+Epoch 24/30
+----------------------------------------
+  train Loss: 0.2953 Acc: 0.8855
+  val   Loss: 0.6086 Acc: 0.7759
+
+Epoch 25/30
+----------------------------------------
+  train Loss: 0.3229 Acc: 0.8756
+  val   Loss: 0.5902 Acc: 0.7759
+
+Epoch 26/30
+----------------------------------------
+  train Loss: 0.3016 Acc: 0.8781
+  val   Loss: 0.5832 Acc: 0.7759
+
+Epoch 27/30
+----------------------------------------
+  train Loss: 0.3389 Acc: 0.8670
+  val   Loss: 0.6048 Acc: 0.7816
+
+Epoch 28/30
+----------------------------------------
+  train Loss: 0.3614 Acc: 0.8498
+  val   Loss: 0.6001 Acc: 0.7644
+
+Epoch 29/30
+----------------------------------------
+  train Loss: 0.3640 Acc: 0.8596
+  val   Loss: 0.5868 Acc: 0.7701
+
+Epoch 30/30
+----------------------------------------
+  train Loss: 0.3359 Acc: 0.8670
+  val   Loss: 0.6154 Acc: 0.7759
+
+[SELESAI] Ablation L1-Ekspansi 70% - Best Val Acc: 0.7874
+[INFO] Checkpoint disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\checkpoints\ablation_l1exp_70pct_30ep.pth
+[INFO] Inferensi: median=13.11 ms (rata-rata=13.22 +/- 0.47 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.7874 (78.74%)
+  Precision    : 0.7940
+  Recall       : 0.7874
+  F1-Score     : 0.7870
+  Parameter    : 971,395
+  Ukuran (MB)  : 3.76
+  FLOPs        : 131.081 M
+  Inferensi    : 13.11 ms (median, std=0.47, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.6111    0.5500    0.5789        20
+   Common_Rust_Corn     1.0000    0.9474    0.9730        19
+Gray_Leaf_Spot_Corn     0.8421    0.8000    0.8205        20
+       Healthy_Corn     0.8125    0.6842    0.7429        19
+       Healthy_Rice     0.7600    1.0000    0.8636        19
+  Healthy_Sugarcane     0.8824    0.7895    0.8333        19
+    Leaf_Blast_Rice     0.5833    0.7000    0.6364        20
+   Mosaic_Sugarcane     0.7778    0.7368    0.7568        19
+     Rust_Sugarcane     0.8947    0.8947    0.8947        19
+
+           accuracy                         0.7874       174
+          macro avg     0.7960    0.7892    0.7889       174
+       weighted avg     0.7940    0.7874    0.7870       174
+
+
+============================================================
+  L1-Ekspansi | 70% -- VALIDASI
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              78.74%
+  Precision            0.7940
+  Recall               0.7874
+  F1-Score             0.7870
+  Parameter            971,395
+  Ukuran (MB)          3.76
+  FLOPs (M)            131.081
+  Inferensi (ms)       13.11
+============================================================
+[INFO] Inferensi: median=13.16 ms (rata-rata=13.26 +/- 0.47 ms, 300 runs, 30 warmup, 1 thread)
+
+============================================================
+HASIL EVALUASI
+============================================================
+  Akurasi      : 0.8114 (81.14%)
+  Precision    : 0.8158
+  Recall       : 0.8114
+  F1-Score     : 0.8059
+  Parameter    : 971,395
+  Ukuran (MB)  : 3.76
+  FLOPs        : 131.081 M
+  Inferensi    : 13.16 ms (median, std=0.47, n=300)
+============================================================
+
+Classification Report:
+                     precision    recall  f1-score   support
+
+    Brown_Spot_Rice     0.8000    0.6316    0.7059        19
+   Common_Rust_Corn     0.9500    1.0000    0.9744        19
+Gray_Leaf_Spot_Corn     0.8889    0.8421    0.8649        19
+       Healthy_Corn     0.9444    0.8500    0.8947        20
+       Healthy_Rice     0.7600    0.9500    0.8444        20
+  Healthy_Sugarcane     0.6800    0.8500    0.7556        20
+    Leaf_Blast_Rice     0.7727    0.8947    0.8293        19
+   Mosaic_Sugarcane     0.7500    0.4737    0.5806        19
+     Rust_Sugarcane     0.8000    0.8000    0.8000        20
+
+           accuracy                         0.8114       175
+          macro avg     0.8162    0.8102    0.8055       175
+       weighted avg     0.8158    0.8114    0.8059       175
+
+
+============================================================
+  L1-Ekspansi | 70% -- TEST
+============================================================
+  Metrik               Nilai               
+  ----------------------------------------
+  Akurasi              81.14%
+  Precision            0.8158
+  Recall               0.8114
+  F1-Score             0.8059
+  Parameter            971,395
+  Ukuran (MB)          3.76
+  FLOPs (M)            131.081
+  Inferensi (ms)       13.16
+============================================================
+[INFO] Hasil sementara disimpan: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+
+==========================================================================================
+TABEL PERBANDINGAN: L1 DEPTHWISE (lama) vs L1 EKSPANSI (baru) -- AKURASI VALIDASI
+==========================================================================================
+ Rasio   L1 Depthwise (val)   L1 Ekspansi (val)  Selisih (pp)
+------------------------------------------------------------------------------------------
+   10%               94.83%              94.83%         +0.00
+   20%               94.83%              95.40%         +0.57
+   30%               93.68%              92.53%         -1.15
+   40%               94.25%              91.38%         -2.87
+   50%               91.95%              88.51%         -3.45
+   60%               85.63%              87.93%         +2.30
+   70%               78.16%              78.74%         +0.57
+==========================================================================================
+
+======================================================================
+[SELESAI] Ablation L1-Ekspansi saja -- total waktu: 78.2 menit (1.30 jam)
+Hasil: D:\S2 UMAYAH\TESIS\Pra Penelitian 2\outputs\ablation_l1_expansion.json
+======================================================================
